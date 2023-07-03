@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "wom"
+version = "0.1.0"
+description = ""
+authors = ["Spike2250 <shilov.spike2250@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.10"
+pyside6 = "^6.5.1.1"
+docxtpl = "^0.16.7"
+prettytable = "^3.8.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
