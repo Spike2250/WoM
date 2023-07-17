@@ -1,0 +1,11 @@
+pyside6-uic bta_AddNewPatient.ui > bta_AddNewPatient.py
+pyside6-uic bta_Diagnosis.ui > bta_Diagnosis.py
+pyside6-uic bta_Discharge_details.ui > bta_Discharge_details.py
+pyside6-uic bta_MainMenu.ui > bta_MainMenu.py
+pyside6-uic bta_Neur_status.ui > bta_Neur_status.py
+pyside6-uic bta_Obj_status.ui > bta_Obj_status.py
+pyside6-uic bta_PatientCard.ui > bta_PatientCard.py
+pyside6-uic bta_PatientPassportData.ui > bta_PatientPassportData.py
+pyside6-uic bta_Protocol.ui > bta_Protocol.py
+
+pyside6-rcc res_main.qrc -o res_main_rc.py
