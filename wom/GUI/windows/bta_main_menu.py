@@ -1,8 +1,7 @@
 
-import sys  # sys нужен для передачи argv в QApplication
 import uuid  # генератор случайных UIN
 from datetime import timedelta, datetime
-from PySide6 import QtWidgets, QtCore, QtGui
+from PySide6 import QtWidgets, QtCore
 from PySide6.QtWidgets import (QTableWidgetItem as QTW_Item,
                                QAbstractItemView,
                                QPushButton,
@@ -16,13 +15,15 @@ from wom.app_logic.db_func.db_bta import (read_d_from_db_bta,
                                           read_db_archive_cases_bta,
                                           read_fullness_db_bta)
 from wom.styles_qss import main_styles
+# from wom.GUI.windows.win_aggregator import windows
 
 
 class Ui_MainMenu(QtWidgets.QMainWindow,
                   bta_MainMenu.Ui_MainWindow):
-    def __init__(self):
+    def __init__(self, windows):
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+        self.windows = windows
 
         self.set_connections()
         self.create_tables()
@@ -117,9 +118,9 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
         # создаем уникальный индентификатор случая
         d['unic_number'] = str(uuid.uuid4())  # УНИКАЛЬНЫЙ ID ДЛЯ БАЗЫ ДАННЫХ
         # открываем окно добавления нового пациента
-        # self.window_add_new = Ui_AddNewPatient()
-        # self.window_add_new.show()
-        # self.hide()
+        self.window_add_new = self.windows['bta']['add_new_patient'](self.windows)
+        self.window_add_new.show()
+        self.hide()
 
     def open_patient_card(self):
         # Очищаем глобальный словарь
