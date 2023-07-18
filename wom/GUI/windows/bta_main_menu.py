@@ -1,7 +1,7 @@
 
 import uuid  # генератор случайных UIN
 from datetime import timedelta, datetime
-from PySide6 import QtWidgets, QtCore
+from PySide6 import QtWidgets, QtCore, QtGui
 from PySide6.QtWidgets import (QTableWidgetItem as QTW_Item,
                                QAbstractItemView,
                                QPushButton,
@@ -200,10 +200,10 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
                 # создаем кнопку
                 button = QPushButton('Открыть')
                 # создаем иконку
-                # icon = QtGui.QIcon()
-                # icon.addPixmap(QtGui.QPixmap(":/icon/icons/sticky_note_2_white_36dp.svg"),
-                #                QtGui.QIcon.Normal, QtGui.QIcon.Off)
-                # button.setIcon(icon)
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap(":/icon/icons/sticky_note_2_white_36dp.svg"),
+                               QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                button.setIcon(icon)
                 button.setStyleSheet(main_styles.button_del)
                 # соединяем кнопку с функцией открытия истории болезни
                 button.clicked.connect(self.open_patient_card)
@@ -287,10 +287,10 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
                 # создаем кнопку
                 button = QPushButton('open')
                 # создаем иконку
-                # icon = QtGui.QIcon()
-                # icon.addPixmap(QtGui.QPixmap(":/icon/icons/sticky_note_2_white_36dp.svg"),
-                #                QtGui.QIcon.Normal, QtGui.QIcon.Off)
-                # button.setIcon(icon)
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap(":/icon/icons/sticky_note_2_white_36dp.svg"),
+                               QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                button.setIcon(icon)
                 button.setStyleSheet(main_styles.button_del)
                 # соединяем кнопку с функцией открытия истории болезни
                 button.clicked.connect(self.open_patient_card_from_archive)

@@ -14,4 +14,4 @@ lint:
 	poetry run flake8
 
 start-app:
-	poetry run start_app
+	poetry run start-app
