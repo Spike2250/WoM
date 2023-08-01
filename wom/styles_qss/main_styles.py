@@ -68,3 +68,27 @@ bta_label_style_act = "QLabel {\
                        border-width: 1px;\
                        border-color: rgba(92, 158, 173, 255);\
                    }"
+
+
+bta_style_true_button = "QPushButton {\
+                             background-color: rgba(50, 98, 115, 255);\
+                             font-size: 14pt;\
+                             color: White;\
+                             border: None;\
+                             }\
+                             \
+                         QPushButton::hover {\
+                             background-color: rgba(92, 158, 173, 255);\
+                             border: 1px solid rgba(255, 255, 255, 255);\
+                             }\
+                             \
+                         QPushButton::pressed {\
+                             color: rgba(0, 0, 0, 255)\
+                             background-color: rgba(255, 255, 255, 255);\
+                             border: 1px solid rgba(50, 98, 115, 255);\
+                             }\
+                             \
+                         QPushButton::disabled {\
+                             background-color: #EEEEEE;\
+                             border: 1px solid rgba(50, 98, 115, 255);\
+                             }"

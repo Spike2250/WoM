@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from wom.app_logic.service_func import datedif, count_age
 from wom.settings.config import doc_dict
 

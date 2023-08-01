@@ -16,10 +16,11 @@ from wom.app_logic.postprocessing import update_after_passport_data
 
 class Ui_AddNewPatient(QtWidgets.QMainWindow,
                        bta_AddNewPatient.Ui_PatientPassportData):
-    def __init__(self, windows):
+    def __init__(self, windows, d):
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
         self.windows = windows
+        self.d = d
 
         self.set_connections()
         self.add_values_to_popup_lists()
@@ -94,7 +95,7 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
 
     def show_uin_label(self):
         # написание UIN
-        uin = f"Клиническому случаю будет присвоен UIN: {d['unic_number']}"
+        uin = f"Клиническому случаю будет присвоен UIN: {self.d['unic_number']}"
         self.label_unic_number.setText(uin)
 
     def change_nmu(self):
@@ -191,8 +192,8 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
 
         '''
         self.write_to_dictionary()
-        creating_documents(d, ['Согласия'])
-        open_folder_with_files(d)
+        creating_documents(self.d, ['Согласия'])
+        open_folder_with_files(self.d)
 
     def open_patient_card(self):
         pass
@@ -201,64 +202,64 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
         # self.window_card.show()  # Показываем окно
 
     def write_to_dictionary(self):
-        d['status_act'] = True  # Статус пациента (False - выписан, True - нет)
+        self.d['status_act'] = True  # Статус пациента
         # создаем чек-лайн для БД наполненности
-        d['check_line'] = '1000000'
+        self.d['check_line'] = '1000000'
 
         # записываем остальные данные
         # lineEdit's
-        d['фамилия'] = self.surname.text()
-        d['имя'] = self.name.text()
-        d['отчество'] = self.dadname.text()
-        d['адрес'] = self.adress.text()
-        d['телефон'] = self.phone.text()
-        d['электронная_почта'] = self.email.text()
-        d['паспорт'] = self.passport.text()
-        d['полис_ОМС'] = self.polis_oms.text()
-        d['СНИЛС'] = self.snils.text()
-        d['номер_истории'] = self.history_number.text()
-        d['палата'] = self.room_number.text()
+        self.d['фамилия'] = self.surname.text()
+        self.d['имя'] = self.name.text()
+        self.d['отчество'] = self.dadname.text()
+        self.d['адрес'] = self.adress.text()
+        self.d['телефон'] = self.phone.text()
+        self.d['электронная_почта'] = self.email.text()
+        self.d['паспорт'] = self.passport.text()
+        self.d['полис_ОМС'] = self.polis_oms.text()
+        self.d['СНИЛС'] = self.snils.text()
+        self.d['номер_истории'] = self.history_number.text()
+        self.d['палата'] = self.room_number.text()
         # comboBox's
-        d['препарат_БТА'] = self.comboBox_bta_preparat.currentText()
-        d['тип_стационара'] = self.comboBox_hospit_type.currentText()
-        d['МКБ'] = self.comboBox_mkb.currentText()
-        d['услуга'] = self.comboBox_nmu.currentText()
-        d['ЛПУ_кто_направил'] = self.comboBox_referring_health_facility.currentText()
-        d['пол'] = self.comboBox_gender.currentText()
-        d['ФИО_врача'] = self.comboBox_therapist.currentText()
-        d['зав_отделением'] = self.comboBox_department_head.currentText()
+        self.d['препарат_БТА'] = self.comboBox_bta_preparat.currentText()
+        self.d['тип_стационара'] = self.comboBox_hospit_type.currentText()
+        self.d['МКБ'] = self.comboBox_mkb.currentText()
+        self.d['услуга'] = self.comboBox_nmu.currentText()
+        self.d['ЛПУ_кто_направил'] = self.comboBox_referring_health_facility.currentText()
+        self.d['пол'] = self.comboBox_gender.currentText()
+        self.d['ФИО_врача'] = self.comboBox_therapist.currentText()
+        self.d['зав_отделением'] = self.comboBox_department_head.currentText()
         # dateEdit's
-        d['дата_поступления'] = self.dateEdit_adm_date.dateTime().toString('dd.MM.yyyy')
-        d['дата_выписки_план'] = self.dateEdit_dis_date_plan.dateTime().toString('dd.MM.yyyy')
-        d['дата_рождения'] = self.dateEdit_birthday.dateTime().toString('dd.MM.yyyy')
+        self.d['дата_поступления'] = self.dateEdit_adm_date.dateTime().toString('dd.MM.yyyy')
+        self.d['дата_выписки_план'] = self.dateEdit_dis_date_plan.dateTime().toString('dd.MM.yyyy')
+        self.d['дата_рождения'] = self.dateEdit_birthday.dateTime().toString('dd.MM.yyyy')
         # timeEdit's
-        d['время_поступления'] = self.timeEdit_adm_time.dateTime().toString('hh:mm')
+        self.d['время_поступления'] = self.timeEdit_adm_time.dateTime().toString('hh:mm')
         # checkBox's
-        d['нужда_в_ЛН'] = self.checkBoxPtNeedSickList.isChecked()
-        d['нужда_в_ЛН_первич'] = self.checkBoxPtNeedSickList_2.isChecked()
-        d['не_может_подписаться'] = self.checkBox_signature_cant.isChecked()
+        self.d['нужда_в_ЛН'] = self.checkBoxPtNeedSickList.isChecked()
+        self.d['нужда_в_ЛН_первич'] = self.checkBoxPtNeedSickList_2.isChecked()
+        self.d['не_может_подписаться'] = self.checkBox_signature_cant.isChecked()
 
         # профиль коек
         # НЕЛЬЗЯ ПОТОМ ИЗМЕНИТЬ
-        d['профиль_коек'] = 'неврологические для взрослых'
+        self.d['профиль_коек'] = 'неврологические для взрослых'
 
         # название отделения
-        if d['тип_стационара'] == 'БТ - круглосуточный':
-            d['название_отделения'] = '4102. Неврологическое отделение (Панфилова, 20)'
-        elif d['тип_стационара'] == 'БТ - дневной':
-            d['название_отделения'] = '4202. Неврологический дневной стационар'
+        if self.d['тип_стационара'] == 'БТ - круглосуточный':
+            self.d['название_отделения'] = '4102. Неврологическое отделение (Панфилова, 20)'
+        elif self.d['тип_стационара'] == 'БТ - дневной':
+            self.d['название_отделения'] = '4202. Неврологический дневной стационар'
 
         # добавление надписей, при невозможнссти пациента поставить подпись
-        if d['не_может_подписаться']:
-            d['нмпп'] = 'не может подписаться'
-            d['нмпп_дата_поступления'] = d['дата_поступления']
-            d['нмпп_дата_выписки'] = d['дата_выписки_план']
-            d['нмпп_ФИО_врача'] = d['ФИО_врача']
-            d['нмпп_зав_отделением'] = d['зав_отделением']
+        if self.d['не_может_подписаться']:
+            self.d['нмпп'] = 'не может подписаться'
+            self.d['нмпп_дата_поступления'] = self.d['дата_поступления']
+            self.d['нмпп_дата_выписки'] = self.d['дата_выписки_план']
+            self.d['нмпп_ФИО_врача'] = self.d['ФИО_врача']
+            self.d['нмпп_зав_отделением'] = self.d['зав_отделением']
 
-        add_mkb10_nmu(d)
+        add_mkb10_nmu(self.d)
 
-        update_after_passport_data(d)
+        update_after_passport_data(self.d)
 
     def check_unique_person(self):
         active_data = read_db_active_cases_bta()
@@ -297,7 +298,6 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
         return True
 
     def create_history(self):
-        global d
         uin = self.check_unique_person()
         # если пациент уникальный
         if uin is True:
@@ -364,12 +364,12 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
 
     def save_history(self):
         # записываем словарь в json-файл и обновляем БД
-        write_all_data_to_db_bta(d)
-        write_fullness_table_bta(d)
+        write_all_data_to_db_bta(self.d)
+        write_fullness_table_bta(self.d)
 
     def back_to_main_menu(self):
-        self.window_menu = Ui_MainMenu()
-        self.window_menu.show()  # Показываем окно
+        self.w = self.windows['bta']['main_menu'](self.windows)
+        self.w.show()
         self.hide()
 
     def parse_promed_data(self):

@@ -24,6 +24,7 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
         self.windows = windows
+        self.d = {}
 
         self.set_connections()
         self.create_tables()
@@ -112,20 +113,14 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
             QtCore.QDate.fromString(date2, "dd.MM.yyyy"))
 
     def create_new_case(self):
-        # Очищаем глобальный словарь
-        global d
-        d = {}
         # создаем уникальный индентификатор случая
-        d['unic_number'] = str(uuid.uuid4())  # УНИКАЛЬНЫЙ ID ДЛЯ БАЗЫ ДАННЫХ
+        self.d['unic_number'] = str(uuid.uuid4())  # УНИКАЛЬНЫЙ ID ДЛЯ БД
         # открываем окно добавления нового пациента
-        self.window_add_new = self.windows['bta']['add_new_patient'](self.windows)
-        self.window_add_new.show()
+        self.w = self.windows['bta']['add_new_patient'](self.windows, self.d)
+        self.w.show()
         self.hide()
 
     def open_patient_card(self):
-        # Очищаем глобальный словарь
-        global d
-        d = {}
         # Fucking magic!!!!! (.sender(), .indexAt())
         # Определяем из какой строки была кнопка вызвавшая функцию
         button = self.sender()
@@ -133,16 +128,13 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
         # получаем uin из таблицы
         uin = self.tableWidget_db.item(i, 8).text()
         # записываем словарь из БД в глобальный словарь
-        d = read_d_from_db_bta(uin)
+        self.d = read_d_from_db_bta(uin)
         # открываем окно истории болезни
-        # self.window_card = Ui_PatientCard()
-        # self.window_card.show()
-        # self.hide()
+        self.w = self.windows['bta']['patient_card'](self.windows, self.d)
+        self.w.show()
+        self.hide()
 
     def open_patient_card_from_archive(self):
-        # Очищаем глобальный словарь
-        global d
-        d = {}
         # Fucking magic!!!!! (.sender(), .indexAt())
         # Определяем из какой строки была кнопка вызвавшая функцию
         button = self.sender()
@@ -150,11 +142,11 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
         # получаем uin из таблицы
         uin = self.tableWidget_archive_bd.item(i, 8).text()
         # записываем словарь из БД в глобальный словарь
-        d = read_d_from_db_bta(uin)
+        self.d = read_d_from_db_bta(uin)
         # открываем окно истории болезни
-        # self.window_card = Ui_PatientCard()
-        # self.window_card.show()
-        # self.hide()
+        self.w = self.windows['bta']['patient_card'](self.windows, self.d)
+        self.w.show()
+        self.hide()
 
     def show_active_cases(self):
         # определяем критерии поиска
@@ -201,8 +193,9 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
                 button = QPushButton('Открыть')
                 # создаем иконку
                 icon = QtGui.QIcon()
-                icon.addPixmap(QtGui.QPixmap(":/icon/icons/sticky_note_2_white_36dp.svg"),
-                               QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                icon.addPixmap(
+                    QtGui.QPixmap(":/icon/icons/sticky_note_2_white_36dp.svg"),
+                    QtGui.QIcon.Normal, QtGui.QIcon.Off)
                 button.setIcon(icon)
                 button.setStyleSheet(main_styles.button_del)
                 # соединяем кнопку с функцией открытия истории болезни
@@ -288,8 +281,9 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
                 button = QPushButton('open')
                 # создаем иконку
                 icon = QtGui.QIcon()
-                icon.addPixmap(QtGui.QPixmap(":/icon/icons/sticky_note_2_white_36dp.svg"),
-                               QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                icon.addPixmap(
+                    QtGui.QPixmap(":/icon/icons/sticky_note_2_white_36dp.svg"),
+                    QtGui.QIcon.Normal, QtGui.QIcon.Off)
                 button.setIcon(icon)
                 button.setStyleSheet(main_styles.button_del)
                 # соединяем кнопку с функцией открытия истории болезни
