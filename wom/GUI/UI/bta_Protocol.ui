@@ -159,7 +159,7 @@ border: none;</string>
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="frame">
+         <widget class="QFrame" name="frame_medicine_info">
           <property name="styleSheet">
            <string notr="true">color: rgba(50, 98, 115, 255);
 border: 1px solid  rgba(50, 98, 115, 255);
@@ -3366,7 +3366,7 @@ border: none;</string>
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="frame">
+         <widget class="QFrame" name="frame_add_point">
           <property name="styleSheet">
            <string notr="true">color: rgba(50, 98, 115, 255);
 border: 1px solid  rgba(50, 98, 115, 255);
@@ -3412,7 +3412,7 @@ border: none;</string>
             </widget>
            </item>
            <item>
-            <widget class="QFrame" name="frame">
+            <widget class="QFrame" name="frame_point">
              <layout class="QGridLayout" name="gridLayout_2">
               <property name="leftMargin">
                <number>5</number>
@@ -3430,7 +3430,7 @@ border: none;</string>
                <number>5</number>
               </property>
               <item row="3" column="1">
-               <widget class="QFrame" name="frame">
+               <widget class="QFrame" name="frame_dose">
                 <property name="maximumSize">
                  <size>
                   <width>380</width>
@@ -3903,7 +3903,7 @@ border: none;</string>
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QFrame" name="frame">
+               <widget class="QFrame" name="frame_side">
                 <property name="styleSheet">
                  <string notr="true">background-color: transparent;
 border: none;</string>
@@ -4316,7 +4316,7 @@ font-size: 11pt;
                </widget>
               </item>
               <item row="4" column="0" colspan="2">
-               <widget class="QFrame" name="frame">
+               <widget class="QFrame" name="frame_add_button">
                 <property name="styleSheet">
                  <string notr="true">background-color: transparent;
 border: none;</string>

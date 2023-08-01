@@ -122,16 +122,16 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(5)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.frame = QFrame(self.layoutWidget)
-        self.frame.setObjectName(u"frame")
-        self.frame.setStyleSheet(u"background-color: transparent;")
-        self.horizontalLayout = QHBoxLayout(self.frame)
+        self.frame_templates_macro = QFrame(self.layoutWidget)
+        self.frame_templates_macro.setObjectName(u"frame_templates_macro")
+        self.frame_templates_macro.setStyleSheet(u"background-color: transparent;")
+        self.horizontalLayout = QHBoxLayout(self.frame_templates_macro)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
-        self.frame_templates = QFrame(self.frame)
+        self.frame_templates = QFrame(self.frame_templates_macro)
         self.frame_templates.setObjectName(u"frame_templates")
         self.frame_templates.setStyleSheet(u"font-size: 15pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -452,19 +452,19 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
 
-        self.verticalLayout.addWidget(self.frame)
+        self.verticalLayout.addWidget(self.frame_templates_macro)
 
-        self.frame_2 = QFrame(self.layoutWidget)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
+        self.frame_brain = QFrame(self.layoutWidget)
+        self.frame_brain.setObjectName(u"frame_brain")
+        self.frame_brain.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
 "border: 1px solid  rgba(50, 98, 115, 255);\n"
 "background-color: rgba(50, 98, 115, 40);")
-        self.gridLayout = QGridLayout(self.frame_2)
+        self.gridLayout = QGridLayout(self.frame_brain)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setHorizontalSpacing(5)
         self.gridLayout.setVerticalSpacing(1)
         self.gridLayout.setContentsMargins(5, 5, 5, 5)
-        self.labelPtNEURO_Conscious = QLabel(self.frame_2)
+        self.labelPtNEURO_Conscious = QLabel(self.frame_brain)
         self.labelPtNEURO_Conscious.setObjectName(u"labelPtNEURO_Conscious")
         palette3 = QPalette()
         brush12 = QBrush(QColor(50, 98, 115, 255))
@@ -536,7 +536,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelPtNEURO_Conscious, 1, 0, 1, 1)
 
-        self.comboBoxNS_FuncStatus_walking_type = QComboBox(self.frame_2)
+        self.comboBoxNS_FuncStatus_walking_type = QComboBox(self.frame_brain)
         self.comboBoxNS_FuncStatus_walking_type.addItem("")
         self.comboBoxNS_FuncStatus_walking_type.addItem("")
         self.comboBoxNS_FuncStatus_walking_type.addItem("")
@@ -602,7 +602,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_FuncStatus_walking_type, 15, 1, 1, 1)
 
-        self.labelNS_FuncStatus_other = QLabel(self.frame_2)
+        self.labelNS_FuncStatus_other = QLabel(self.frame_brain)
         self.labelNS_FuncStatus_other.setObjectName(u"labelNS_FuncStatus_other")
         palette5 = QPalette()
         palette5.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -669,7 +669,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelNS_FuncStatus_other, 22, 0, 1, 1)
 
-        self.comboBoxNS_FuncStatus_reading = QComboBox(self.frame_2)
+        self.comboBoxNS_FuncStatus_reading = QComboBox(self.frame_brain)
         self.comboBoxNS_FuncStatus_reading.addItem("")
         self.comboBoxNS_FuncStatus_reading.addItem("")
         self.comboBoxNS_FuncStatus_reading.addItem("")
@@ -731,7 +731,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_FuncStatus_reading, 21, 1, 1, 1)
 
-        self.labelPtNEURO_MeningealSymp = QLabel(self.frame_2)
+        self.labelPtNEURO_MeningealSymp = QLabel(self.frame_brain)
         self.labelPtNEURO_MeningealSymp.setObjectName(u"labelPtNEURO_MeningealSymp")
         palette7 = QPalette()
         palette7.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -797,7 +797,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelPtNEURO_MeningealSymp, 5, 0, 1, 1)
 
-        self.labelNS_FuncStatus_stairway = QLabel(self.frame_2)
+        self.labelNS_FuncStatus_stairway = QLabel(self.frame_brain)
         self.labelNS_FuncStatus_stairway.setObjectName(u"labelNS_FuncStatus_stairway")
         palette8 = QPalette()
         palette8.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -864,7 +864,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelNS_FuncStatus_stairway, 18, 0, 1, 1)
 
-        self.comboBoxNS_Speech_2 = QComboBox(self.frame_2)
+        self.comboBoxNS_Speech_2 = QComboBox(self.frame_brain)
         self.comboBoxNS_Speech_2.addItem("")
         self.comboBoxNS_Speech_2.addItem("")
         self.comboBoxNS_Speech_2.addItem("")
@@ -929,7 +929,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_Speech_2, 9, 1, 1, 1)
 
-        self.comboBoxNS_MeningealSymp_3 = QComboBox(self.frame_2)
+        self.comboBoxNS_MeningealSymp_3 = QComboBox(self.frame_brain)
         self.comboBoxNS_MeningealSymp_3.addItem("")
         self.comboBoxNS_MeningealSymp_3.addItem("")
         self.comboBoxNS_MeningealSymp_3.addItem("")
@@ -990,7 +990,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_MeningealSymp_3, 7, 1, 1, 1)
 
-        self.comboBoxNS_Speech_3 = QComboBox(self.frame_2)
+        self.comboBoxNS_Speech_3 = QComboBox(self.frame_brain)
         self.comboBoxNS_Speech_3.addItem("")
         self.comboBoxNS_Speech_3.addItem("")
         self.comboBoxNS_Speech_3.addItem("")
@@ -1052,7 +1052,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_Speech_3, 10, 1, 1, 1)
 
-        self.labelNS_FuncStatus_walking_type = QLabel(self.frame_2)
+        self.labelNS_FuncStatus_walking_type = QLabel(self.frame_brain)
         self.labelNS_FuncStatus_walking_type.setObjectName(u"labelNS_FuncStatus_walking_type")
         palette12 = QPalette()
         palette12.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -1119,7 +1119,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelNS_FuncStatus_walking_type, 15, 0, 1, 1)
 
-        self.labelPtNEURO_Orientation = QLabel(self.frame_2)
+        self.labelPtNEURO_Orientation = QLabel(self.frame_brain)
         self.labelPtNEURO_Orientation.setObjectName(u"labelPtNEURO_Orientation")
         palette13 = QPalette()
         palette13.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -1185,7 +1185,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelPtNEURO_Orientation, 4, 0, 1, 1)
 
-        self.labelPtNEURO_Speech = QLabel(self.frame_2)
+        self.labelPtNEURO_Speech = QLabel(self.frame_brain)
         self.labelPtNEURO_Speech.setObjectName(u"labelPtNEURO_Speech")
         palette14 = QPalette()
         palette14.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -1251,7 +1251,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelPtNEURO_Speech, 8, 0, 1, 1)
 
-        self.comboBoxNS_MeningealSymp_1 = QComboBox(self.frame_2)
+        self.comboBoxNS_MeningealSymp_1 = QComboBox(self.frame_brain)
         self.comboBoxNS_MeningealSymp_1.addItem("")
         self.comboBoxNS_MeningealSymp_1.addItem("")
         self.comboBoxNS_MeningealSymp_1.setObjectName(u"comboBoxNS_MeningealSymp_1")
@@ -1310,7 +1310,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_MeningealSymp_1, 5, 1, 1, 1)
 
-        self.comboBoxNS_Speech_1 = QComboBox(self.frame_2)
+        self.comboBoxNS_Speech_1 = QComboBox(self.frame_brain)
         self.comboBoxNS_Speech_1.addItem("")
         self.comboBoxNS_Speech_1.addItem("")
         self.comboBoxNS_Speech_1.addItem("")
@@ -1373,7 +1373,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_Speech_1, 8, 1, 1, 1)
 
-        self.comboBoxNS_Contact = QComboBox(self.frame_2)
+        self.comboBoxNS_Contact = QComboBox(self.frame_brain)
         self.comboBoxNS_Contact.addItem("")
         self.comboBoxNS_Contact.addItem("")
         self.comboBoxNS_Contact.addItem("")
@@ -1436,7 +1436,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_Contact, 3, 1, 1, 1)
 
-        self.labelNS_FuncStatus_dressing = QLabel(self.frame_2)
+        self.labelNS_FuncStatus_dressing = QLabel(self.frame_brain)
         self.labelNS_FuncStatus_dressing.setObjectName(u"labelNS_FuncStatus_dressing")
         palette18 = QPalette()
         palette18.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -1503,7 +1503,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelNS_FuncStatus_dressing, 17, 0, 1, 1)
 
-        self.label_12 = QLabel(self.frame_2)
+        self.label_12 = QLabel(self.frame_brain)
         self.label_12.setObjectName(u"label_12")
         self.label_12.setMaximumSize(QSize(16777215, 20))
         self.label_12.setStyleSheet(u"color: #326273;\n"
@@ -1515,7 +1515,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_12, 0, 0, 1, 2)
 
-        self.label_13 = QLabel(self.frame_2)
+        self.label_13 = QLabel(self.frame_brain)
         self.label_13.setObjectName(u"label_13")
         self.label_13.setMaximumSize(QSize(16777215, 20))
         self.label_13.setStyleSheet(u"color: #326273;\n"
@@ -1527,7 +1527,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_13, 12, 0, 1, 2)
 
-        self.comboBoxNS_FuncStatus_writing = QComboBox(self.frame_2)
+        self.comboBoxNS_FuncStatus_writing = QComboBox(self.frame_brain)
         self.comboBoxNS_FuncStatus_writing.addItem("")
         self.comboBoxNS_FuncStatus_writing.addItem("")
         self.comboBoxNS_FuncStatus_writing.addItem("")
@@ -1588,7 +1588,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_FuncStatus_writing, 20, 1, 1, 1)
 
-        self.comboBoxNS_FuncStatus_dressing = QComboBox(self.frame_2)
+        self.comboBoxNS_FuncStatus_dressing = QComboBox(self.frame_brain)
         self.comboBoxNS_FuncStatus_dressing.addItem("")
         self.comboBoxNS_FuncStatus_dressing.addItem("")
         self.comboBoxNS_FuncStatus_dressing.addItem("")
@@ -1650,7 +1650,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_FuncStatus_dressing, 17, 1, 1, 1)
 
-        self.comboBoxNS_Conscious = QComboBox(self.frame_2)
+        self.comboBoxNS_Conscious = QComboBox(self.frame_brain)
         self.comboBoxNS_Conscious.addItem("")
         self.comboBoxNS_Conscious.addItem("")
         self.comboBoxNS_Conscious.addItem("")
@@ -1716,7 +1716,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_Conscious, 1, 1, 1, 1)
 
-        self.labelNS_FuncStatus_reading = QLabel(self.frame_2)
+        self.labelNS_FuncStatus_reading = QLabel(self.frame_brain)
         self.labelNS_FuncStatus_reading.setObjectName(u"labelNS_FuncStatus_reading")
         palette22 = QPalette()
         palette22.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -1783,7 +1783,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelNS_FuncStatus_reading, 21, 0, 1, 1)
 
-        self.comboBoxNS_FuncStatus_motorics = QComboBox(self.frame_2)
+        self.comboBoxNS_FuncStatus_motorics = QComboBox(self.frame_brain)
         self.comboBoxNS_FuncStatus_motorics.addItem("")
         self.comboBoxNS_FuncStatus_motorics.addItem("")
         self.comboBoxNS_FuncStatus_motorics.setObjectName(u"comboBoxNS_FuncStatus_motorics")
@@ -1842,7 +1842,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_FuncStatus_motorics, 16, 1, 1, 1)
 
-        self.comboBoxNS_FuncStatus_walking = QComboBox(self.frame_2)
+        self.comboBoxNS_FuncStatus_walking = QComboBox(self.frame_brain)
         self.comboBoxNS_FuncStatus_walking.addItem("")
         self.comboBoxNS_FuncStatus_walking.addItem("")
         self.comboBoxNS_FuncStatus_walking.addItem("")
@@ -1918,7 +1918,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_FuncStatus_walking, 14, 1, 1, 1)
 
-        self.labelPtNEURO_PelvicFunction = QLabel(self.frame_2)
+        self.labelPtNEURO_PelvicFunction = QLabel(self.frame_brain)
         self.labelPtNEURO_PelvicFunction.setObjectName(u"labelPtNEURO_PelvicFunction")
         self.labelPtNEURO_PelvicFunction.setMinimumSize(QSize(190, 0))
         palette25 = QPalette()
@@ -1985,7 +1985,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelPtNEURO_PelvicFunction, 11, 0, 1, 1)
 
-        self.labelPtNEURO_Contact = QLabel(self.frame_2)
+        self.labelPtNEURO_Contact = QLabel(self.frame_brain)
         self.labelPtNEURO_Contact.setObjectName(u"labelPtNEURO_Contact")
         palette26 = QPalette()
         palette26.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -2051,7 +2051,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelPtNEURO_Contact, 3, 0, 1, 1)
 
-        self.comboBoxNS_FuncStatus_stairway = QComboBox(self.frame_2)
+        self.comboBoxNS_FuncStatus_stairway = QComboBox(self.frame_brain)
         self.comboBoxNS_FuncStatus_stairway.addItem("")
         self.comboBoxNS_FuncStatus_stairway.addItem("")
         self.comboBoxNS_FuncStatus_stairway.addItem("")
@@ -2112,7 +2112,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_FuncStatus_stairway, 18, 1, 1, 1)
 
-        self.comboBoxNS_MeningealSymp_2 = QComboBox(self.frame_2)
+        self.comboBoxNS_MeningealSymp_2 = QComboBox(self.frame_brain)
         self.comboBoxNS_MeningealSymp_2.addItem("")
         self.comboBoxNS_MeningealSymp_2.addItem("")
         self.comboBoxNS_MeningealSymp_2.addItem("")
@@ -2175,7 +2175,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_MeningealSymp_2, 6, 1, 1, 1)
 
-        self.labelNS_FuncStatus_writing = QLabel(self.frame_2)
+        self.labelNS_FuncStatus_writing = QLabel(self.frame_brain)
         self.labelNS_FuncStatus_writing.setObjectName(u"labelNS_FuncStatus_writing")
         palette29 = QPalette()
         palette29.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -2242,7 +2242,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelNS_FuncStatus_writing, 20, 0, 1, 1)
 
-        self.labelNS_FuncStatus_motorics = QLabel(self.frame_2)
+        self.labelNS_FuncStatus_motorics = QLabel(self.frame_brain)
         self.labelNS_FuncStatus_motorics.setObjectName(u"labelNS_FuncStatus_motorics")
         palette30 = QPalette()
         palette30.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -2309,7 +2309,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelNS_FuncStatus_motorics, 16, 0, 1, 1)
 
-        self.comboBoxNS_Orientation = QComboBox(self.frame_2)
+        self.comboBoxNS_Orientation = QComboBox(self.frame_brain)
         self.comboBoxNS_Orientation.addItem("")
         self.comboBoxNS_Orientation.addItem("")
         self.comboBoxNS_Orientation.addItem("")
@@ -2371,7 +2371,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_Orientation, 4, 1, 1, 1)
 
-        self.labelNS_FuncStatus_eating = QLabel(self.frame_2)
+        self.labelNS_FuncStatus_eating = QLabel(self.frame_brain)
         self.labelNS_FuncStatus_eating.setObjectName(u"labelNS_FuncStatus_eating")
         palette32 = QPalette()
         palette32.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -2438,7 +2438,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelNS_FuncStatus_eating, 19, 0, 1, 1)
 
-        self.comboBoxNS_FuncStatus_eating = QComboBox(self.frame_2)
+        self.comboBoxNS_FuncStatus_eating = QComboBox(self.frame_brain)
         self.comboBoxNS_FuncStatus_eating.addItem("")
         self.comboBoxNS_FuncStatus_eating.addItem("")
         self.comboBoxNS_FuncStatus_eating.addItem("")
@@ -2499,7 +2499,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_FuncStatus_eating, 19, 1, 1, 1)
 
-        self.comboBoxNS_PelvicFuntion = QComboBox(self.frame_2)
+        self.comboBoxNS_PelvicFuntion = QComboBox(self.frame_brain)
         self.comboBoxNS_PelvicFuntion.addItem("")
         self.comboBoxNS_PelvicFuntion.addItem("")
         self.comboBoxNS_PelvicFuntion.addItem("")
@@ -2564,7 +2564,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_PelvicFuntion, 11, 1, 1, 1)
 
-        self.labelNS_FuncStatus_common = QLabel(self.frame_2)
+        self.labelNS_FuncStatus_common = QLabel(self.frame_brain)
         self.labelNS_FuncStatus_common.setObjectName(u"labelNS_FuncStatus_common")
         self.labelNS_FuncStatus_common.setMinimumSize(QSize(175, 0))
         palette35 = QPalette()
@@ -2632,7 +2632,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelNS_FuncStatus_common, 13, 0, 1, 1)
 
-        self.comboBoxNS_FuncStatus_common = QComboBox(self.frame_2)
+        self.comboBoxNS_FuncStatus_common = QComboBox(self.frame_brain)
         self.comboBoxNS_FuncStatus_common.addItem("")
         self.comboBoxNS_FuncStatus_common.addItem("")
         self.comboBoxNS_FuncStatus_common.addItem("")
@@ -2694,7 +2694,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBoxNS_FuncStatus_common, 13, 1, 1, 1)
 
-        self.labelNS_FuncStatus_walking = QLabel(self.frame_2)
+        self.labelNS_FuncStatus_walking = QLabel(self.frame_brain)
         self.labelNS_FuncStatus_walking.setObjectName(u"labelNS_FuncStatus_walking")
         palette37 = QPalette()
         palette37.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -2761,18 +2761,18 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.labelNS_FuncStatus_walking, 14, 0, 1, 1)
 
-        self.frame1 = QFrame(self.frame_2)
-        self.frame1.setObjectName(u"frame1")
-        self.frame1.setMinimumSize(QSize(0, 25))
-        self.frame1.setMaximumSize(QSize(16777215, 25))
-        self.frame1.setStyleSheet(u"background-color: transparent;\n"
+        self.frame = QFrame(self.frame_brain)
+        self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(0, 25))
+        self.frame.setMaximumSize(QSize(16777215, 25))
+        self.frame.setStyleSheet(u"background-color: transparent;\n"
 "border: none;")
-        self.gridLayout_Conscious = QGridLayout(self.frame1)
+        self.gridLayout_Conscious = QGridLayout(self.frame)
         self.gridLayout_Conscious.setObjectName(u"gridLayout_Conscious")
         self.gridLayout_Conscious.setHorizontalSpacing(5)
         self.gridLayout_Conscious.setVerticalSpacing(0)
         self.gridLayout_Conscious.setContentsMargins(0, 0, 0, 0)
-        self.labelPtNEURO_RASS = QLabel(self.frame1)
+        self.labelPtNEURO_RASS = QLabel(self.frame)
         self.labelPtNEURO_RASS.setObjectName(u"labelPtNEURO_RASS")
         palette38 = QPalette()
         palette38.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -2838,7 +2838,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_Conscious.addWidget(self.labelPtNEURO_RASS, 0, 2, 1, 1)
 
-        self.labelPtNEURO_GCS = QLabel(self.frame1)
+        self.labelPtNEURO_GCS = QLabel(self.frame)
         self.labelPtNEURO_GCS.setObjectName(u"labelPtNEURO_GCS")
         palette39 = QPalette()
         palette39.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -2909,7 +2909,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_Conscious.addItem(self.horizontalSpacer_3, 0, 4, 1, 1)
 
-        self.comboBoxNS_RASS = QComboBox(self.frame1)
+        self.comboBoxNS_RASS = QComboBox(self.frame)
         self.comboBoxNS_RASS.addItem("")
         self.comboBoxNS_RASS.addItem("")
         self.comboBoxNS_RASS.addItem("")
@@ -2977,7 +2977,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_Conscious.addWidget(self.comboBoxNS_RASS, 0, 3, 1, 1)
 
-        self.comboBoxNS_GCS = QComboBox(self.frame1)
+        self.comboBoxNS_GCS = QComboBox(self.frame)
         self.comboBoxNS_GCS.addItem("")
         self.comboBoxNS_GCS.addItem("")
         self.comboBoxNS_GCS.addItem("")
@@ -3048,9 +3048,9 @@ class Ui_MainWindow(object):
         self.gridLayout_Conscious.addWidget(self.comboBoxNS_GCS, 0, 1, 1, 1)
 
 
-        self.gridLayout.addWidget(self.frame1, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.frame, 2, 1, 1, 1)
 
-        self.plainTextEditNS_FuncStatus = QPlainTextEdit(self.frame_2)
+        self.plainTextEditNS_FuncStatus = QPlainTextEdit(self.frame_brain)
         self.plainTextEditNS_FuncStatus.setObjectName(u"plainTextEditNS_FuncStatus")
         self.plainTextEditNS_FuncStatus.setMaximumSize(QSize(16777215, 40))
         self.plainTextEditNS_FuncStatus.setFont(font3)
@@ -3064,25 +3064,25 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.plainTextEditNS_FuncStatus, 22, 1, 1, 1)
 
 
-        self.verticalLayout.addWidget(self.frame_2)
+        self.verticalLayout.addWidget(self.frame_brain)
 
         icon = QIcon()
         icon.addFile(u":/icon/icons/conditions_FILL1_wght400_GRAD0_opsz48.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.tabWidget.addTab(self.tab, icon, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
-        self.frame_21 = QFrame(self.tab_2)
-        self.frame_21.setObjectName(u"frame_21")
-        self.frame_21.setGeometry(QRect(160, 20, 680, 661))
-        self.frame_21.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
+        self.frame_4mn = QFrame(self.tab_2)
+        self.frame_4mn.setObjectName(u"frame_4mn")
+        self.frame_4mn.setGeometry(QRect(160, 20, 680, 661))
+        self.frame_4mn.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
 "border: 1px solid  rgba(50, 98, 115, 255);\n"
 "background-color: rgba(50, 98, 115, 40);")
-        self.gridLayout_2 = QGridLayout(self.frame_21)
+        self.gridLayout_2 = QGridLayout(self.frame_4mn)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setHorizontalSpacing(5)
         self.gridLayout_2.setVerticalSpacing(1)
         self.gridLayout_2.setContentsMargins(5, 5, 5, 5)
-        self.labelPtNEURO_4MN_346 = QLabel(self.frame_21)
+        self.labelPtNEURO_4MN_346 = QLabel(self.frame_4mn)
         self.labelPtNEURO_4MN_346.setObjectName(u"labelPtNEURO_4MN_346")
         self.labelPtNEURO_4MN_346.setMaximumSize(QSize(100, 16777215))
         palette42 = QPalette()
@@ -3149,7 +3149,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelPtNEURO_4MN_346, 8, 0, 1, 1)
 
-        self.labelNS_4MN_7_Symmetry = QLabel(self.frame_21)
+        self.labelNS_4MN_7_Symmetry = QLabel(self.frame_4mn)
         self.labelNS_4MN_7_Symmetry.setObjectName(u"labelNS_4MN_7_Symmetry")
         palette43 = QPalette()
         palette43.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -3215,7 +3215,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_7_Symmetry, 15, 1, 1, 1)
 
-        self.labelNS_4MN_910_Swallowing = QLabel(self.frame_21)
+        self.labelNS_4MN_910_Swallowing = QLabel(self.frame_4mn)
         self.labelNS_4MN_910_Swallowing.setObjectName(u"labelNS_4MN_910_Swallowing")
         palette44 = QPalette()
         palette44.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -3281,7 +3281,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_910_Swallowing, 21, 1, 1, 1)
 
-        self.labelNS_4MN_2_Fields = QLabel(self.frame_21)
+        self.labelNS_4MN_2_Fields = QLabel(self.frame_4mn)
         self.labelNS_4MN_2_Fields.setObjectName(u"labelNS_4MN_2_Fields")
         palette45 = QPalette()
         palette45.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -3347,7 +3347,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_2_Fields, 3, 1, 1, 1)
 
-        self.labelPtNEURO_4MN_5 = QLabel(self.frame_21)
+        self.labelPtNEURO_4MN_5 = QLabel(self.frame_4mn)
         self.labelPtNEURO_4MN_5.setObjectName(u"labelPtNEURO_4MN_5")
         palette46 = QPalette()
         palette46.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -3413,7 +3413,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelPtNEURO_4MN_5, 12, 0, 1, 1)
 
-        self.comboBoxNS_4MN_2_Fields = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_2_Fields = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_2_Fields.addItem("")
         self.comboBoxNS_4MN_2_Fields.addItem("")
         self.comboBoxNS_4MN_2_Fields.addItem("")
@@ -3476,7 +3476,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_2_Fields, 3, 2, 1, 2)
 
-        self.comboBoxNS_4MN_12 = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_12 = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_12.addItem("")
         self.comboBoxNS_4MN_12.addItem("")
         self.comboBoxNS_4MN_12.addItem("")
@@ -3537,7 +3537,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_12, 26, 2, 1, 2)
 
-        self.comboBoxNS_4MN_346_Ptosis = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_346_Ptosis = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_346_Ptosis.addItem("")
         self.comboBoxNS_4MN_346_Ptosis.addItem("")
         self.comboBoxNS_4MN_346_Ptosis.addItem("")
@@ -3599,7 +3599,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_346_Ptosis, 10, 2, 1, 2)
 
-        self.comboBoxNS_4MN_8_CentralVertigo = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_8_CentralVertigo = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_8_CentralVertigo.addItem("")
         self.comboBoxNS_4MN_8_CentralVertigo.addItem("")
         self.comboBoxNS_4MN_8_CentralVertigo.addItem("")
@@ -3660,7 +3660,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_8_CentralVertigo, 18, 2, 1, 2)
 
-        self.labelNS_4MN_2_Accomodation = QLabel(self.frame_21)
+        self.labelNS_4MN_2_Accomodation = QLabel(self.frame_4mn)
         self.labelNS_4MN_2_Accomodation.setObjectName(u"labelNS_4MN_2_Accomodation")
         palette51 = QPalette()
         palette51.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -3726,7 +3726,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_2_Accomodation, 5, 1, 1, 1)
 
-        self.labelNS_4MN_910_Dysarthria = QLabel(self.frame_21)
+        self.labelNS_4MN_910_Dysarthria = QLabel(self.frame_4mn)
         self.labelNS_4MN_910_Dysarthria.setObjectName(u"labelNS_4MN_910_Dysarthria")
         palette52 = QPalette()
         palette52.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -3792,7 +3792,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_910_Dysarthria, 23, 1, 1, 1)
 
-        self.labelNS_4MN_5_Branches = QLabel(self.frame_21)
+        self.labelNS_4MN_5_Branches = QLabel(self.frame_4mn)
         self.labelNS_4MN_5_Branches.setObjectName(u"labelNS_4MN_5_Branches")
         palette53 = QPalette()
         palette53.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -3858,7 +3858,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_5_Branches, 13, 1, 1, 1)
 
-        self.labelPtNEURO_4MN_12 = QLabel(self.frame_21)
+        self.labelPtNEURO_4MN_12 = QLabel(self.frame_4mn)
         self.labelPtNEURO_4MN_12.setObjectName(u"labelPtNEURO_4MN_12")
         palette54 = QPalette()
         palette54.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -3924,7 +3924,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelPtNEURO_4MN_12, 26, 0, 1, 1)
 
-        self.comboBoxNS_4MN_910_Phonation = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_910_Phonation = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_910_Phonation.addItem("")
         self.comboBoxNS_4MN_910_Phonation.addItem("")
         self.comboBoxNS_4MN_910_Phonation.addItem("")
@@ -3986,7 +3986,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_910_Phonation, 19, 2, 1, 2)
 
-        self.comboBoxNS_4MN_346_EyeballMove = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_346_EyeballMove = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_346_EyeballMove.addItem("")
         self.comboBoxNS_4MN_346_EyeballMove.addItem("")
         self.comboBoxNS_4MN_346_EyeballMove.addItem("")
@@ -4051,7 +4051,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_346_EyeballMove, 8, 2, 1, 2)
 
-        self.labelNS_4MN_910_SoftPalate = QLabel(self.frame_21)
+        self.labelNS_4MN_910_SoftPalate = QLabel(self.frame_4mn)
         self.labelNS_4MN_910_SoftPalate.setObjectName(u"labelNS_4MN_910_SoftPalate")
         palette57 = QPalette()
         palette57.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4117,7 +4117,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_910_SoftPalate, 20, 1, 1, 1)
 
-        self.labelNS_4MN_346_Ptosis = QLabel(self.frame_21)
+        self.labelNS_4MN_346_Ptosis = QLabel(self.frame_4mn)
         self.labelNS_4MN_346_Ptosis.setObjectName(u"labelNS_4MN_346_Ptosis")
         palette58 = QPalette()
         palette58.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4183,7 +4183,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_346_Ptosis, 10, 1, 1, 1)
 
-        self.labelNS_4MN_12 = QLabel(self.frame_21)
+        self.labelNS_4MN_12 = QLabel(self.frame_4mn)
         self.labelNS_4MN_12.setObjectName(u"labelNS_4MN_12")
         palette59 = QPalette()
         palette59.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4249,7 +4249,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_12, 26, 1, 1, 1)
 
-        self.labelPtNEURO_4MN_7 = QLabel(self.frame_21)
+        self.labelPtNEURO_4MN_7 = QLabel(self.frame_4mn)
         self.labelPtNEURO_4MN_7.setObjectName(u"labelPtNEURO_4MN_7")
         palette60 = QPalette()
         palette60.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4315,7 +4315,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelPtNEURO_4MN_7, 15, 0, 1, 1)
 
-        self.labelNS_4MN_2_Convergension = QLabel(self.frame_21)
+        self.labelNS_4MN_2_Convergension = QLabel(self.frame_4mn)
         self.labelNS_4MN_2_Convergension.setObjectName(u"labelNS_4MN_2_Convergension")
         palette61 = QPalette()
         palette61.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4381,7 +4381,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_2_Convergension, 7, 1, 1, 1)
 
-        self.labelPtNEURO_4MN_1_name = QLabel(self.frame_21)
+        self.labelPtNEURO_4MN_1_name = QLabel(self.frame_4mn)
         self.labelPtNEURO_4MN_1_name.setObjectName(u"labelPtNEURO_4MN_1_name")
         palette62 = QPalette()
         palette62.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4447,7 +4447,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelPtNEURO_4MN_1_name, 1, 1, 1, 1)
 
-        self.comboBoxNS_4MN_2_VisualAcuity = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_2_VisualAcuity = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_2_VisualAcuity.addItem("")
         self.comboBoxNS_4MN_2_VisualAcuity.addItem("")
         self.comboBoxNS_4MN_2_VisualAcuity.addItem("")
@@ -4510,7 +4510,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_2_VisualAcuity, 2, 2, 1, 2)
 
-        self.labelPtNEURO_4MN_1 = QLabel(self.frame_21)
+        self.labelPtNEURO_4MN_1 = QLabel(self.frame_4mn)
         self.labelPtNEURO_4MN_1.setObjectName(u"labelPtNEURO_4MN_1")
         palette64 = QPalette()
         palette64.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4576,7 +4576,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelPtNEURO_4MN_1, 1, 0, 1, 1)
 
-        self.labelPtNEURO_4MN_2 = QLabel(self.frame_21)
+        self.labelPtNEURO_4MN_2 = QLabel(self.frame_4mn)
         self.labelPtNEURO_4MN_2.setObjectName(u"labelPtNEURO_4MN_2")
         palette65 = QPalette()
         palette65.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4642,7 +4642,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelPtNEURO_4MN_2, 2, 0, 1, 1)
 
-        self.comboBoxNS_4MN_7_Other = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_7_Other = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_7_Other.addItem("")
         self.comboBoxNS_4MN_7_Other.addItem("")
         self.comboBoxNS_4MN_7_Other.addItem("")
@@ -4704,7 +4704,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_7_Other, 16, 2, 1, 2)
 
-        self.comboBoxNS_4MN_2_Accomodation = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_2_Accomodation = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_2_Accomodation.addItem("")
         self.comboBoxNS_4MN_2_Accomodation.addItem("")
         self.comboBoxNS_4MN_2_Accomodation.addItem("")
@@ -4764,7 +4764,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_2_Accomodation, 5, 2, 1, 2)
 
-        self.labelNS_4MN_346_Nystagmus = QLabel(self.frame_21)
+        self.labelNS_4MN_346_Nystagmus = QLabel(self.frame_4mn)
         self.labelNS_4MN_346_Nystagmus.setObjectName(u"labelNS_4MN_346_Nystagmus")
         palette68 = QPalette()
         palette68.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4830,7 +4830,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_346_Nystagmus, 11, 1, 1, 1)
 
-        self.labelPtNEURO_4MN_9 = QLabel(self.frame_21)
+        self.labelPtNEURO_4MN_9 = QLabel(self.frame_4mn)
         self.labelPtNEURO_4MN_9.setObjectName(u"labelPtNEURO_4MN_9")
         palette69 = QPalette()
         palette69.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4896,7 +4896,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelPtNEURO_4MN_9, 19, 0, 1, 1)
 
-        self.labelNS_4MN_910_Dysarthria_power = QLabel(self.frame_21)
+        self.labelNS_4MN_910_Dysarthria_power = QLabel(self.frame_4mn)
         self.labelNS_4MN_910_Dysarthria_power.setObjectName(u"labelNS_4MN_910_Dysarthria_power")
         palette70 = QPalette()
         palette70.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -4963,7 +4963,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_910_Dysarthria_power, 24, 1, 1, 1)
 
-        self.labelPtNEURO_4MN_8 = QLabel(self.frame_21)
+        self.labelPtNEURO_4MN_8 = QLabel(self.frame_4mn)
         self.labelPtNEURO_4MN_8.setObjectName(u"labelPtNEURO_4MN_8")
         palette71 = QPalette()
         palette71.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -5029,7 +5029,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelPtNEURO_4MN_8, 17, 0, 1, 1)
 
-        self.labelNS_4MN_5_FaceSensitivity = QLabel(self.frame_21)
+        self.labelNS_4MN_5_FaceSensitivity = QLabel(self.frame_4mn)
         self.labelNS_4MN_5_FaceSensitivity.setObjectName(u"labelNS_4MN_5_FaceSensitivity")
         palette72 = QPalette()
         palette72.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -5095,7 +5095,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_5_FaceSensitivity, 12, 1, 1, 1)
 
-        self.comboBoxNS_4MN_910_Dysarthria = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_910_Dysarthria = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_910_Dysarthria.addItem("")
         self.comboBoxNS_4MN_910_Dysarthria.addItem("")
         self.comboBoxNS_4MN_910_Dysarthria.addItem("")
@@ -5160,7 +5160,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_910_Dysarthria, 23, 2, 1, 2)
 
-        self.comboBoxNS_4MN_8_Hearing = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_8_Hearing = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_8_Hearing.addItem("")
         self.comboBoxNS_4MN_8_Hearing.addItem("")
         self.comboBoxNS_4MN_8_Hearing.addItem("")
@@ -5223,7 +5223,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_8_Hearing, 17, 2, 1, 2)
 
-        self.labelNS_4MN_8_CentralVertigo = QLabel(self.frame_21)
+        self.labelNS_4MN_8_CentralVertigo = QLabel(self.frame_4mn)
         self.labelNS_4MN_8_CentralVertigo.setObjectName(u"labelNS_4MN_8_CentralVertigo")
         palette75 = QPalette()
         palette75.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -5289,7 +5289,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_8_CentralVertigo, 18, 1, 1, 1)
 
-        self.labelNS_4MN_346_EyeballParesis = QLabel(self.frame_21)
+        self.labelNS_4MN_346_EyeballParesis = QLabel(self.frame_4mn)
         self.labelNS_4MN_346_EyeballParesis.setObjectName(u"labelNS_4MN_346_EyeballParesis")
         palette76 = QPalette()
         palette76.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -5355,7 +5355,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_346_EyeballParesis, 9, 1, 1, 1)
 
-        self.labelNS_4MN_346_EyeballMove = QLabel(self.frame_21)
+        self.labelNS_4MN_346_EyeballMove = QLabel(self.frame_4mn)
         self.labelNS_4MN_346_EyeballMove.setObjectName(u"labelNS_4MN_346_EyeballMove")
         palette77 = QPalette()
         palette77.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -5421,7 +5421,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_346_EyeballMove, 8, 1, 1, 1)
 
-        self.comboBoxNS_4MN_5_Branches = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_5_Branches = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_5_Branches.addItem("")
         self.comboBoxNS_4MN_5_Branches.addItem("")
         self.comboBoxNS_4MN_5_Branches.setObjectName(u"comboBoxNS_4MN_5_Branches")
@@ -5480,7 +5480,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_5_Branches, 13, 2, 1, 2)
 
-        self.labelNS_4MN_5_Zelder = QLabel(self.frame_21)
+        self.labelNS_4MN_5_Zelder = QLabel(self.frame_4mn)
         self.labelNS_4MN_5_Zelder.setObjectName(u"labelNS_4MN_5_Zelder")
         palette79 = QPalette()
         palette79.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -5546,7 +5546,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_5_Zelder, 14, 1, 1, 1)
 
-        self.labelNS_4MN_2_Photoreaction = QLabel(self.frame_21)
+        self.labelNS_4MN_2_Photoreaction = QLabel(self.frame_4mn)
         self.labelNS_4MN_2_Photoreaction.setObjectName(u"labelNS_4MN_2_Photoreaction")
         palette80 = QPalette()
         palette80.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -5612,7 +5612,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_2_Photoreaction, 6, 1, 1, 1)
 
-        self.comboBoxNS_4MN_7_Symmetry = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_7_Symmetry = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_7_Symmetry.addItem("")
         self.comboBoxNS_4MN_7_Symmetry.addItem("")
         self.comboBoxNS_4MN_7_Symmetry.addItem("")
@@ -5674,7 +5674,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_7_Symmetry, 15, 2, 1, 2)
 
-        self.comboBoxNS_4MN_1_Smell = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_1_Smell = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_1_Smell.addItem("")
         self.comboBoxNS_4MN_1_Smell.addItem("")
         self.comboBoxNS_4MN_1_Smell.addItem("")
@@ -5736,7 +5736,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_1_Smell, 1, 2, 1, 2)
 
-        self.labelNS_4MN_2_Pupils = QLabel(self.frame_21)
+        self.labelNS_4MN_2_Pupils = QLabel(self.frame_4mn)
         self.labelNS_4MN_2_Pupils.setObjectName(u"labelNS_4MN_2_Pupils")
         palette83 = QPalette()
         palette83.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -5802,7 +5802,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_2_Pupils, 4, 1, 1, 1)
 
-        self.labelNS_4MN_7_Other = QLabel(self.frame_21)
+        self.labelNS_4MN_7_Other = QLabel(self.frame_4mn)
         self.labelNS_4MN_7_Other.setObjectName(u"labelNS_4MN_7_Other")
         palette84 = QPalette()
         palette84.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -5868,7 +5868,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_7_Other, 16, 1, 1, 1)
 
-        self.comboBoxNS_4MN_910_Swallowing = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_910_Swallowing = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_910_Swallowing.addItem("")
         self.comboBoxNS_4MN_910_Swallowing.addItem("")
         self.comboBoxNS_4MN_910_Swallowing.addItem("")
@@ -5931,7 +5931,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_910_Swallowing, 21, 2, 1, 2)
 
-        self.labelPtNEURO_4MN_11 = QLabel(self.frame_21)
+        self.labelPtNEURO_4MN_11 = QLabel(self.frame_4mn)
         self.labelPtNEURO_4MN_11.setObjectName(u"labelPtNEURO_4MN_11")
         palette86 = QPalette()
         palette86.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -5997,7 +5997,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelPtNEURO_4MN_11, 25, 0, 1, 1)
 
-        self.comboBoxNS_4MN_346_EyeballParesis = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_346_EyeballParesis = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_346_EyeballParesis.addItem("")
         self.comboBoxNS_4MN_346_EyeballParesis.addItem("")
         self.comboBoxNS_4MN_346_EyeballParesis.setObjectName(u"comboBoxNS_4MN_346_EyeballParesis")
@@ -6056,7 +6056,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_346_EyeballParesis, 9, 2, 1, 2)
 
-        self.comboBoxNS_4MN_11 = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_11 = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_11.addItem("")
         self.comboBoxNS_4MN_11.addItem("")
         self.comboBoxNS_4MN_11.addItem("")
@@ -6117,7 +6117,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_11, 25, 2, 1, 2)
 
-        self.labelNS_4MN_910_Phonation = QLabel(self.frame_21)
+        self.labelNS_4MN_910_Phonation = QLabel(self.frame_4mn)
         self.labelNS_4MN_910_Phonation.setObjectName(u"labelNS_4MN_910_Phonation")
         palette89 = QPalette()
         palette89.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -6183,7 +6183,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_910_Phonation, 19, 1, 1, 1)
 
-        self.comboBoxNS_4MN_5_Zelder = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_5_Zelder = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_5_Zelder.addItem("")
         self.comboBoxNS_4MN_5_Zelder.addItem("")
         self.comboBoxNS_4MN_5_Zelder.addItem("")
@@ -6243,7 +6243,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_5_Zelder, 14, 2, 1, 2)
 
-        self.comboBoxNS_4MN_2_Photoreaction = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_2_Photoreaction = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_2_Photoreaction.addItem("")
         self.comboBoxNS_4MN_2_Photoreaction.addItem("")
         self.comboBoxNS_4MN_2_Photoreaction.addItem("")
@@ -6303,7 +6303,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_2_Photoreaction, 6, 2, 1, 2)
 
-        self.labelNS_4MN_11 = QLabel(self.frame_21)
+        self.labelNS_4MN_11 = QLabel(self.frame_4mn)
         self.labelNS_4MN_11.setObjectName(u"labelNS_4MN_11")
         palette92 = QPalette()
         palette92.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -6369,7 +6369,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_11, 25, 1, 1, 1)
 
-        self.comboBoxNS_4MN_346_Nystagmus = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_346_Nystagmus = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_346_Nystagmus.addItem("")
         self.comboBoxNS_4MN_346_Nystagmus.addItem("")
         self.comboBoxNS_4MN_346_Nystagmus.addItem("")
@@ -6433,7 +6433,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_346_Nystagmus, 11, 2, 1, 2)
 
-        self.comboBoxNS_4MN_2_Pupils = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_2_Pupils = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_2_Pupils.addItem("")
         self.comboBoxNS_4MN_2_Pupils.addItem("")
         self.comboBoxNS_4MN_2_Pupils.addItem("")
@@ -6496,7 +6496,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_2_Pupils, 4, 2, 1, 2)
 
-        self.comboBoxNS_4MN_910_Dysarthria_power = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_910_Dysarthria_power = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_910_Dysarthria_power.addItem("")
         self.comboBoxNS_4MN_910_Dysarthria_power.addItem("")
         self.comboBoxNS_4MN_910_Dysarthria_power.addItem("")
@@ -6558,7 +6558,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_910_Dysarthria_power, 24, 2, 1, 2)
 
-        self.labelNS_4MN_2_VisualAcuity = QLabel(self.frame_21)
+        self.labelNS_4MN_2_VisualAcuity = QLabel(self.frame_4mn)
         self.labelNS_4MN_2_VisualAcuity.setObjectName(u"labelNS_4MN_2_VisualAcuity")
         palette96 = QPalette()
         palette96.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -6624,7 +6624,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_2_VisualAcuity, 2, 1, 1, 1)
 
-        self.labelNS_4MN_8_Hearing = QLabel(self.frame_21)
+        self.labelNS_4MN_8_Hearing = QLabel(self.frame_4mn)
         self.labelNS_4MN_8_Hearing.setObjectName(u"labelNS_4MN_8_Hearing")
         palette97 = QPalette()
         palette97.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -6690,7 +6690,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_8_Hearing, 17, 1, 1, 1)
 
-        self.comboBoxNS_4MN_910_Food = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_910_Food = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_910_Food.addItem("")
         self.comboBoxNS_4MN_910_Food.addItem("")
         self.comboBoxNS_4MN_910_Food.addItem("")
@@ -6750,7 +6750,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_910_Food, 22, 2, 1, 2)
 
-        self.comboBoxNS_4MN_5_FaceSensitivity = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_5_FaceSensitivity = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_5_FaceSensitivity.addItem("")
         self.comboBoxNS_4MN_5_FaceSensitivity.addItem("")
         self.comboBoxNS_4MN_5_FaceSensitivity.addItem("")
@@ -6813,7 +6813,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_5_FaceSensitivity, 12, 2, 1, 2)
 
-        self.labelNS_4MN_910_Food = QLabel(self.frame_21)
+        self.labelNS_4MN_910_Food = QLabel(self.frame_4mn)
         self.labelNS_4MN_910_Food.setObjectName(u"labelNS_4MN_910_Food")
         palette100 = QPalette()
         palette100.setBrush(QPalette.Active, QPalette.WindowText, brush12)
@@ -6879,7 +6879,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.labelNS_4MN_910_Food, 22, 1, 1, 1)
 
-        self.comboBoxNS_4MN_910_SoftPalate = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_910_SoftPalate = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_910_SoftPalate.addItem("")
         self.comboBoxNS_4MN_910_SoftPalate.addItem("")
         self.comboBoxNS_4MN_910_SoftPalate.addItem("")
@@ -6939,7 +6939,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_910_SoftPalate, 20, 2, 1, 2)
 
-        self.comboBoxNS_4MN_2_Convergension = QComboBox(self.frame_21)
+        self.comboBoxNS_4MN_2_Convergension = QComboBox(self.frame_4mn)
         self.comboBoxNS_4MN_2_Convergension.addItem("")
         self.comboBoxNS_4MN_2_Convergension.addItem("")
         self.comboBoxNS_4MN_2_Convergension.addItem("")
@@ -6999,7 +6999,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBoxNS_4MN_2_Convergension, 7, 2, 1, 2)
 
-        self.label_14 = QLabel(self.frame_21)
+        self.label_14 = QLabel(self.frame_4mn)
         self.label_14.setObjectName(u"label_14")
         self.label_14.setMaximumSize(QSize(16777215, 20))
         self.label_14.setStyleSheet(u"color: #326273;\n"
@@ -13251,7 +13251,3 @@ class Ui_MainWindow(object):
 "\u043a\u0430\u0440\u0442\u0443 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430", None))
     # retranslateUi
 
-Error: bta_Neur_status.ui: Warning: The name 'frame' (QFrame) is already in use, defaulting to 'frame1'.
-bta_Neur_status.ui: Warning: The name 'frame_2' (QFrame) is already in use, defaulting to 'frame_21'.
-
-while executing 'C:\Users\Shilov Ilya\AppData\Local\Programs\Python\Python310\Lib\site-packages\PySide6\uic -g python bta_Neur_status.ui'

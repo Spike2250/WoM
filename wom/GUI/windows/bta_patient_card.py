@@ -1,7 +1,8 @@
 from PySide6 import QtWidgets
 import ast
 from wom.GUI.PY import bta_PatientCard
-from wom.app_logic.writing.postprocessing.passport import list_created_docs, update_patient_info  # noqa: E501
+from wom.app_logic.writing.postprocessing.passport import (list_created_docs,
+                                                           update_patient_info)
 from wom.app_logic.create_docs import (creating_documents,
                                        open_folder_with_files)
 from wom.app_logic.worklist_data_processing import refresh_worklist_data
@@ -86,7 +87,7 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
         self.hide()
 
     def open_discharge_details(self):
-        self.w = self.windows['bta']['discharge_details'](self.windows, self.d)
+        self.w = self.windows['bta']['dis_details'](self.windows, self.d)
         self.w.show()
         self.hide()
 
@@ -304,9 +305,7 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
 
     def save_and_close_card(self):
         self.save_history()
-        self.w = self.windows['bta']['main_menu'](self.windows)
-        self.w.show()
-        self.hide()
+        self.close_card()
 
     def close_card(self):
         self.w = self.windows['bta']['main_menu'](self.windows)

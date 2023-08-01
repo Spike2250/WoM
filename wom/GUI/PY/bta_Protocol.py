@@ -103,17 +103,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.label_2)
 
-        self.frame = QFrame(self.centralwidget)
-        self.frame.setObjectName(u"frame")
-        self.frame.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
+        self.frame_medicine_info = QFrame(self.centralwidget)
+        self.frame_medicine_info.setObjectName(u"frame_medicine_info")
+        self.frame_medicine_info.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
 "border: 1px solid  rgba(50, 98, 115, 255);\n"
 "background-color: rgba(50, 98, 115, 40);")
-        self.gridLayout = QGridLayout(self.frame)
+        self.gridLayout = QGridLayout(self.frame_medicine_info)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setHorizontalSpacing(5)
         self.gridLayout.setVerticalSpacing(1)
         self.gridLayout.setContentsMargins(5, 5, 5, 5)
-        self.lineEdit_series = QLineEdit(self.frame)
+        self.lineEdit_series = QLineEdit(self.frame_medicine_info)
         self.lineEdit_series.setObjectName(u"lineEdit_series")
         self.lineEdit_series.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
@@ -124,7 +124,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.lineEdit_series, 3, 1, 1, 1)
 
-        self.label_solvent = QLabel(self.frame)
+        self.label_solvent = QLabel(self.frame_medicine_info)
         self.label_solvent.setObjectName(u"label_solvent")
         self.label_solvent.setMinimumSize(QSize(200, 0))
         palette = QPalette()
@@ -217,7 +217,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_solvent, 6, 0, 1, 1)
 
-        self.lineEdit_when_made = QLineEdit(self.frame)
+        self.lineEdit_when_made = QLineEdit(self.frame_medicine_info)
         self.lineEdit_when_made.setObjectName(u"lineEdit_when_made")
         self.lineEdit_when_made.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
@@ -228,7 +228,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.lineEdit_when_made, 4, 1, 1, 1)
 
-        self.label_best_before = QLabel(self.frame)
+        self.label_best_before = QLabel(self.frame_medicine_info)
         self.label_best_before.setObjectName(u"label_best_before")
         self.label_best_before.setMinimumSize(QSize(200, 0))
         palette1 = QPalette()
@@ -297,7 +297,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_best_before, 5, 0, 1, 1)
 
-        self.lineEdit_best_before = QLineEdit(self.frame)
+        self.lineEdit_best_before = QLineEdit(self.frame_medicine_info)
         self.lineEdit_best_before.setObjectName(u"lineEdit_best_before")
         self.lineEdit_best_before.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
@@ -308,7 +308,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.lineEdit_best_before, 5, 1, 1, 1)
 
-        self.label_bta = QLabel(self.frame)
+        self.label_bta = QLabel(self.frame_medicine_info)
         self.label_bta.setObjectName(u"label_bta")
         self.label_bta.setMinimumSize(QSize(200, 0))
         palette2 = QPalette()
@@ -376,7 +376,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_bta, 2, 0, 1, 1)
 
-        self.comboBox_bta_solvent = QComboBox(self.frame)
+        self.comboBox_bta_solvent = QComboBox(self.frame_medicine_info)
         self.comboBox_bta_solvent.addItem("")
         self.comboBox_bta_solvent.addItem("")
         self.comboBox_bta_solvent.addItem("")
@@ -444,7 +444,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBox_bta_solvent, 6, 1, 1, 1)
 
-        self.label_series = QLabel(self.frame)
+        self.label_series = QLabel(self.frame_medicine_info)
         self.label_series.setObjectName(u"label_series")
         self.label_series.setMinimumSize(QSize(200, 0))
         palette4 = QPalette()
@@ -513,7 +513,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_series, 3, 0, 1, 1)
 
-        self.comboBox_bta_preparat = QComboBox(self.frame)
+        self.comboBox_bta_preparat = QComboBox(self.frame_medicine_info)
         self.comboBox_bta_preparat.addItem("")
         self.comboBox_bta_preparat.addItem("")
         self.comboBox_bta_preparat.addItem("")
@@ -573,7 +573,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.comboBox_bta_preparat, 2, 1, 1, 1)
 
-        self.label_date_from = QLabel(self.frame)
+        self.label_date_from = QLabel(self.frame_medicine_info)
         self.label_date_from.setObjectName(u"label_date_from")
         self.label_date_from.setMinimumSize(QSize(200, 0))
         palette6 = QPalette()
@@ -642,7 +642,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_date_from, 4, 0, 1, 1)
 
-        self.label_3 = QLabel(self.frame)
+        self.label_3 = QLabel(self.frame_medicine_info)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setMaximumSize(QSize(16777215, 25))
         self.label_3.setStyleSheet(u"color: #326273;\n"
@@ -655,18 +655,18 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.label_3, 1, 0, 1, 2)
 
 
-        self.verticalLayout.addWidget(self.frame)
+        self.verticalLayout.addWidget(self.frame_medicine_info)
 
-        self.frame1 = QFrame(self.centralwidget)
-        self.frame1.setObjectName(u"frame1")
-        self.frame1.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
+        self.frame_add_point = QFrame(self.centralwidget)
+        self.frame_add_point.setObjectName(u"frame_add_point")
+        self.frame_add_point.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
 "border: 1px solid  rgba(50, 98, 115, 255);\n"
 "background-color: rgba(50, 98, 115, 40);")
-        self.verticalLayout_2 = QVBoxLayout(self.frame1)
+        self.verticalLayout_2 = QVBoxLayout(self.frame_add_point)
         self.verticalLayout_2.setSpacing(5)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(5, 5, 5, 5)
-        self.label_4 = QLabel(self.frame1)
+        self.label_4 = QLabel(self.frame_add_point)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setMaximumSize(QSize(16777215, 25))
         self.label_4.setStyleSheet(u"color: #326273;\n"
@@ -678,22 +678,22 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.label_4)
 
-        self.frame2 = QFrame(self.frame1)
-        self.frame2.setObjectName(u"frame2")
-        self.gridLayout_2 = QGridLayout(self.frame2)
+        self.frame_point = QFrame(self.frame_add_point)
+        self.frame_point.setObjectName(u"frame_point")
+        self.gridLayout_2 = QGridLayout(self.frame_point)
         self.gridLayout_2.setSpacing(5)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(5, 5, 5, 5)
-        self.frame3 = QFrame(self.frame2)
-        self.frame3.setObjectName(u"frame3")
-        self.frame3.setMaximumSize(QSize(380, 16777215))
-        self.frame3.setStyleSheet(u"background-color: transparent;\n"
+        self.frame_dose = QFrame(self.frame_point)
+        self.frame_dose.setObjectName(u"frame_dose")
+        self.frame_dose.setMaximumSize(QSize(380, 16777215))
+        self.frame_dose.setStyleSheet(u"background-color: transparent;\n"
 "border: none;")
-        self.horizontalLayout_5 = QHBoxLayout(self.frame3)
+        self.horizontalLayout_5 = QHBoxLayout(self.frame_dose)
         self.horizontalLayout_5.setSpacing(5)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.lineEdit_dose = QLineEdit(self.frame3)
+        self.lineEdit_dose = QLineEdit(self.frame_dose)
         self.lineEdit_dose.setObjectName(u"lineEdit_dose")
         self.lineEdit_dose.setMaximumSize(QSize(80, 16777215))
         self.lineEdit_dose.setStyleSheet(u"background-color: #EEEEEE;\n"
@@ -705,7 +705,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5.addWidget(self.lineEdit_dose)
 
-        self.label_6 = QLabel(self.frame3)
+        self.label_6 = QLabel(self.frame_dose)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
@@ -717,9 +717,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.label_6)
 
 
-        self.gridLayout_2.addWidget(self.frame3, 3, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.frame_dose, 3, 1, 1, 1)
 
-        self.label_5 = QLabel(self.frame2)
+        self.label_5 = QLabel(self.frame_point)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
@@ -730,7 +730,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.label_5, 1, 0, 1, 2)
 
-        self.comboBox_muscle = QComboBox(self.frame2)
+        self.comboBox_muscle = QComboBox(self.frame_point)
         self.comboBox_muscle.addItem("")
         self.comboBox_muscle.setObjectName(u"comboBox_muscle")
         self.comboBox_muscle.setMinimumSize(QSize(500, 0))
@@ -789,7 +789,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.comboBox_muscle, 2, 0, 1, 2)
 
-        self.label_7 = QLabel(self.frame2)
+        self.label_7 = QLabel(self.frame_point)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setMaximumSize(QSize(16777215, 25))
         self.label_7.setStyleSheet(u"color: #326273;\n"
@@ -801,15 +801,15 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.label_7, 0, 0, 1, 2)
 
-        self.frame4 = QFrame(self.frame2)
-        self.frame4.setObjectName(u"frame4")
-        self.frame4.setStyleSheet(u"background-color: transparent;\n"
+        self.frame_side = QFrame(self.frame_point)
+        self.frame_side.setObjectName(u"frame_side")
+        self.frame_side.setStyleSheet(u"background-color: transparent;\n"
 "border: none;")
-        self.horizontalLayout_4 = QHBoxLayout(self.frame4)
+        self.horizontalLayout_4 = QHBoxLayout(self.frame_side)
         self.horizontalLayout_4.setSpacing(5)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.label_8 = QLabel(self.frame4)
+        self.label_8 = QLabel(self.frame_side)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
@@ -820,7 +820,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addWidget(self.label_8)
 
-        self.comboBox_side = QComboBox(self.frame4)
+        self.comboBox_side = QComboBox(self.frame_side)
         self.comboBox_side.addItem("")
         self.comboBox_side.addItem("")
         self.comboBox_side.addItem("")
@@ -881,13 +881,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addWidget(self.comboBox_side)
 
 
-        self.gridLayout_2.addWidget(self.frame4, 3, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.frame_side, 3, 0, 1, 1)
 
-        self.frame5 = QFrame(self.frame2)
-        self.frame5.setObjectName(u"frame5")
-        self.frame5.setStyleSheet(u"background-color: transparent;\n"
+        self.frame_add_button = QFrame(self.frame_point)
+        self.frame_add_button.setObjectName(u"frame_add_button")
+        self.frame_add_button.setStyleSheet(u"background-color: transparent;\n"
 "border: none;")
-        self.horizontalLayout_6 = QHBoxLayout(self.frame5)
+        self.horizontalLayout_6 = QHBoxLayout(self.frame_add_button)
         self.horizontalLayout_6.setSpacing(5)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -895,7 +895,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer)
 
-        self.pushButton_add_muscle = QPushButton(self.frame5)
+        self.pushButton_add_muscle = QPushButton(self.frame_add_button)
         self.pushButton_add_muscle.setObjectName(u"pushButton_add_muscle")
         self.pushButton_add_muscle.setEnabled(True)
         palette9 = QPalette()
@@ -1000,12 +1000,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addItem(self.horizontalSpacer_2)
 
 
-        self.gridLayout_2.addWidget(self.frame5, 4, 0, 1, 2)
+        self.gridLayout_2.addWidget(self.frame_add_button, 4, 0, 1, 2)
 
 
-        self.verticalLayout_2.addWidget(self.frame2)
+        self.verticalLayout_2.addWidget(self.frame_point)
 
-        self.tableWidget = QTableWidget(self.frame1)
+        self.tableWidget = QTableWidget(self.frame_add_point)
         if (self.tableWidget.columnCount() < 3):
             self.tableWidget.setColumnCount(3)
         __qtablewidgetitem = QTableWidgetItem()
@@ -1052,7 +1052,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setSpacing(5)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.label_solvent_2 = QLabel(self.frame1)
+        self.label_solvent_2 = QLabel(self.frame_add_point)
         self.label_solvent_2.setObjectName(u"label_solvent_2")
         self.label_solvent_2.setMinimumSize(QSize(200, 0))
         palette10 = QPalette()
@@ -1121,7 +1121,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addWidget(self.label_solvent_2)
 
-        self.label_summary = QLabel(self.frame1)
+        self.label_summary = QLabel(self.frame_add_point)
         self.label_summary.setObjectName(u"label_summary")
         self.label_summary.setMinimumSize(QSize(0, 0))
         self.label_summary.setMaximumSize(QSize(150, 16777215))
@@ -1195,7 +1195,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
 
-        self.verticalLayout.addWidget(self.frame1)
+        self.verticalLayout.addWidget(self.frame_add_point)
 
 
         self.horizontalLayout.addLayout(self.verticalLayout)
@@ -1563,10 +1563,3 @@ class Ui_MainWindow(object):
 "\u043a\u0430\u0440\u0442\u0443 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430", None))
     # retranslateUi
 
-Error: bta_Protocol.ui: Warning: The name 'frame' (QFrame) is already in use, defaulting to 'frame1'.
-bta_Protocol.ui: Warning: The name 'frame' (QFrame) is already in use, defaulting to 'frame2'.
-bta_Protocol.ui: Warning: The name 'frame' (QFrame) is already in use, defaulting to 'frame3'.
-bta_Protocol.ui: Warning: The name 'frame' (QFrame) is already in use, defaulting to 'frame4'.
-bta_Protocol.ui: Warning: The name 'frame' (QFrame) is already in use, defaulting to 'frame5'.
-
-while executing 'C:\Users\Shilov Ilya\AppData\Local\Programs\Python\Python310\Lib\site-packages\PySide6\uic -g python bta_Protocol.ui'

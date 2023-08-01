@@ -177,7 +177,7 @@ border: 1px solid rgba(50, 98, 115, 255);
               <number>5</number>
              </property>
              <item>
-              <widget class="QFrame" name="frame">
+              <widget class="QFrame" name="frame_templates_macro">
                <property name="styleSheet">
                 <string notr="true">background-color: transparent;</string>
                </property>
@@ -1650,7 +1650,7 @@ border: none;</string>
               </widget>
              </item>
              <item>
-              <widget class="QFrame" name="frame_2">
+              <widget class="QFrame" name="frame_brain">
                <property name="styleSheet">
                 <string notr="true">color: rgba(50, 98, 115, 255);
 border: 1px solid  rgba(50, 98, 115, 255);
@@ -18358,7 +18358,7 @@ font-size: 11pt;
            <attribute name="title">
             <string>Черепно-мозговые нервы</string>
            </attribute>
-           <widget class="QFrame" name="frame_2">
+           <widget class="QFrame" name="frame_4mn">
             <property name="geometry">
              <rect>
               <x>160</x>

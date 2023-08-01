@@ -29,7 +29,7 @@ font-family: Roboto;</string>
   <property name="tabShape">
    <enum>QTabWidget::Triangular</enum>
   </property>
-  <widget class="QWidget" name="centralwidget_1">
+  <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true"/>
    </property>
@@ -1491,7 +1491,7 @@ color:  rgba(50, 98, 115, 150);
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="label_111">
            <property name="minimumSize">
             <size>
              <width>200</width>
@@ -1569,7 +1569,7 @@ border: 1px solid rgba(50, 98, 115, 255);
          <attribute name="title">
           <string>Список текущих пациентов</string>
          </attribute>
-         <widget class="QWidget" name="layoutWidget">
+         <widget class="QFrame" name="frame_actual">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -2950,7 +2950,7 @@ background-color: rgba(50, 98, 115, 70);
          <attribute name="title">
           <string>Архив историй болезни</string>
          </attribute>
-         <widget class="QWidget" name="layoutWidget">
+         <widget class="QFrame" name="frame_archive">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -3549,7 +3549,7 @@ color:  rgba(50, 98, 115, 150);
                </widget>
               </item>
               <item row="0" column="1" rowspan="2" colspan="2">
-               <widget class="QGroupBox" name="groupBox_sort_2">
+               <widget class="QGroupBox" name="groupBox_sort_archive">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -3674,7 +3674,7 @@ QRadioButton::indicator:!checked {
                </widget>
               </item>
               <item row="0" column="0">
-               <layout class="QHBoxLayout" name="horizontalLayout">
+               <layout class="QHBoxLayout" name="dates">
                 <item>
                  <widget class="QLabel" name="label_3">
                   <property name="layoutDirection">
@@ -3746,28 +3746,29 @@ font-weight: bold;
                </layout>
               </item>
               <item row="1" column="0" rowspan="3">
-               <layout class="QVBoxLayout" name="verticalLayout_3">
-                <property name="spacing">
-                 <number>1</number>
-                </property>
-                <item>
-                 <widget class="QPushButton" name="pushButton_month">
-                  <property name="minimumSize">
-                   <size>
-                    <width>150</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Roboto</family>
-                    <pointsize>11</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton {
+               <widget class="QFrame" name="change_dates">
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <property name="spacing">
+                  <number>1</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_month">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Roboto</family>
+                     <pointsize>11</pointsize>
+                     <italic>false</italic>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
 background-color: rgba(50, 98, 115, 190);
 font-size: 11pt;
 color: White;
@@ -3783,30 +3784,30 @@ QPushButton::pressed {
 background-color: rgba(92, 158, 173, 255);
 border: 1px solid rgba(255, 255, 255, 255);
 }</string>
-                  </property>
-                  <property name="text">
-                   <string>текущий месяц</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_previous_month">
-                  <property name="minimumSize">
-                   <size>
-                    <width>150</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Roboto</family>
-                    <pointsize>11</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton {
+                   </property>
+                   <property name="text">
+                    <string>текущий месяц</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_previous_month">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Roboto</family>
+                     <pointsize>11</pointsize>
+                     <italic>false</italic>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
 background-color: rgba(50, 98, 115, 190);
 font-size: 11pt;
 color: White;
@@ -3822,30 +3823,30 @@ QPushButton::pressed {
 background-color: rgba(92, 158, 173, 255);
 border: 1px solid rgba(255, 255, 255, 255);
 }</string>
-                  </property>
-                  <property name="text">
-                   <string>предыдущий месяц</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_year">
-                  <property name="minimumSize">
-                   <size>
-                    <width>150</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Roboto</family>
-                    <pointsize>11</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton {
+                   </property>
+                   <property name="text">
+                    <string>предыдущий месяц</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_year">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Roboto</family>
+                     <pointsize>11</pointsize>
+                     <italic>false</italic>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
 background-color: rgba(50, 98, 115, 190);
 font-size: 11pt;
 color: White;
@@ -3861,13 +3862,14 @@ QPushButton::pressed {
 background-color: rgba(92, 158, 173, 255);
 border: 1px solid rgba(255, 255, 255, 255);
 }</string>
-                  </property>
-                  <property name="text">
-                   <string>текущий год</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+                   </property>
+                   <property name="text">
+                    <string>текущий год</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
               </item>
              </layout>
             </widget>

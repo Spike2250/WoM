@@ -511,14 +511,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_5)
 
-        self.label = QLabel(self.left_panel)
-        self.label.setObjectName(u"label")
-        self.label.setMinimumSize(QSize(200, 200))
-        self.label.setMaximumSize(QSize(200, 200))
-        self.label.setScaledContents(True)
-        self.label.setAlignment(Qt.AlignCenter)
+        self.label_111 = QLabel(self.left_panel)
+        self.label_111.setObjectName(u"label_111")
+        self.label_111.setMinimumSize(QSize(200, 200))
+        self.label_111.setMaximumSize(QSize(200, 200))
+        self.label_111.setScaledContents(True)
+        self.label_111.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout.addWidget(self.label)
+        self.verticalLayout.addWidget(self.label_111)
 
 
         self.central_panel.addWidget(self.left_panel)
@@ -554,13 +554,12 @@ class Ui_MainWindow(object):
         self.tabWidget.setIconSize(QSize(28, 28))
         self.actual = QWidget()
         self.actual.setObjectName(u"actual")
-        self.layoutWidget = QWidget(self.actual)
-        self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(0, -1, 891, 581))
-        self.verticalLayout_2 = QVBoxLayout(self.layoutWidget)
+        self.frame_actual = QFrame(self.actual)
+        self.frame_actual.setObjectName(u"frame_actual")
+        self.frame_actual.setGeometry(QRect(0, -1, 891, 581))
+        self.verticalLayout_2 = QVBoxLayout(self.frame_actual)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.refreshing_active_list = QFrame(self.layoutWidget)
+        self.refreshing_active_list = QFrame(self.frame_actual)
         self.refreshing_active_list.setObjectName(u"refreshing_active_list")
         self.refreshing_active_list.setStyleSheet(u"background-color: rgba(50, 98, 115, 40);\n"
 "font-size: 11pt;")
@@ -906,7 +905,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.refreshing_active_list)
 
-        self.tableWidget_db = QTableWidget(self.layoutWidget)
+        self.tableWidget_db = QTableWidget(self.frame_actual)
         if (self.tableWidget_db.columnCount() < 9):
             self.tableWidget_db.setColumnCount(9)
         __qtablewidgetitem = QTableWidgetItem()
@@ -975,13 +974,12 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.actual, icon10, "")
         self.archive = QWidget()
         self.archive.setObjectName(u"archive")
-        self.layoutWidget1 = QWidget(self.archive)
-        self.layoutWidget1.setObjectName(u"layoutWidget1")
-        self.layoutWidget1.setGeometry(QRect(0, 0, 891, 581))
-        self.verticalLayout_4 = QVBoxLayout(self.layoutWidget1)
+        self.frame_archive = QFrame(self.archive)
+        self.frame_archive.setObjectName(u"frame_archive")
+        self.frame_archive.setGeometry(QRect(0, 0, 891, 581))
+        self.verticalLayout_4 = QVBoxLayout(self.frame_archive)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.archive_list = QFrame(self.layoutWidget1)
+        self.archive_list = QFrame(self.frame_archive)
         self.archive_list.setObjectName(u"archive_list")
         self.archive_list.setStyleSheet(u"background-color: rgba(50, 98, 115, 40);\n"
 "font-size: 11pt;")
@@ -1116,18 +1114,18 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.pushButton_report_manager, 0, 3, 2, 1)
 
-        self.groupBox_sort_2 = QGroupBox(self.archive_list)
-        self.groupBox_sort_2.setObjectName(u"groupBox_sort_2")
-        self.groupBox_sort_2.setMinimumSize(QSize(0, 50))
-        self.groupBox_sort_2.setFont(font5)
-        self.groupBox_sort_2.setStyleSheet(u"font-size: 11pt;\n"
+        self.groupBox_sort_archive = QGroupBox(self.archive_list)
+        self.groupBox_sort_archive.setObjectName(u"groupBox_sort_archive")
+        self.groupBox_sort_archive.setMinimumSize(QSize(0, 50))
+        self.groupBox_sort_archive.setFont(font5)
+        self.groupBox_sort_archive.setStyleSheet(u"font-size: 11pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
 "border: 1px solid  rgba(50, 98, 115, 255);")
-        self.gridLayout_6 = QGridLayout(self.groupBox_sort_2)
+        self.gridLayout_6 = QGridLayout(self.groupBox_sort_archive)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
         self.gridLayout_6.setVerticalSpacing(1)
         self.gridLayout_6.setContentsMargins(-1, 1, -1, 1)
-        self.radioButton_discharge = QRadioButton(self.groupBox_sort_2)
+        self.radioButton_discharge = QRadioButton(self.groupBox_sort_archive)
         self.radioButton_discharge.setObjectName(u"radioButton_discharge")
         self.radioButton_discharge.setFont(font5)
         self.radioButton_discharge.setStyleSheet(u"QRadioButton {\n"
@@ -1158,7 +1156,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.radioButton_discharge, 0, 1, 1, 1)
 
-        self.radioButton_admission = QRadioButton(self.groupBox_sort_2)
+        self.radioButton_admission = QRadioButton(self.groupBox_sort_archive)
         self.radioButton_admission.setObjectName(u"radioButton_admission")
         self.radioButton_admission.setFont(font5)
         self.radioButton_admission.setStyleSheet(u"QRadioButton {\n"
@@ -1190,10 +1188,10 @@ class Ui_MainWindow(object):
         self.gridLayout_6.addWidget(self.radioButton_admission, 0, 0, 1, 1)
 
 
-        self.gridLayout_2.addWidget(self.groupBox_sort_2, 0, 1, 2, 2)
+        self.gridLayout_2.addWidget(self.groupBox_sort_archive, 0, 1, 2, 2)
 
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.dates = QHBoxLayout()
+        self.dates.setObjectName(u"dates")
         self.label_3 = QLabel(self.archive_list)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setLayoutDirection(Qt.RightToLeft)
@@ -1201,7 +1199,7 @@ class Ui_MainWindow(object):
 "color: #13242B;\n"
 "")
 
-        self.horizontalLayout.addWidget(self.label_3)
+        self.dates.addWidget(self.label_3)
 
         self.dateEdit_find_1 = QDateEdit(self.archive_list)
         self.dateEdit_find_1.setObjectName(u"dateEdit_find_1")
@@ -1212,7 +1210,7 @@ class Ui_MainWindow(object):
 "font-weight: bold;\n"
 "")
 
-        self.horizontalLayout.addWidget(self.dateEdit_find_1)
+        self.dates.addWidget(self.dateEdit_find_1)
 
         self.label_4 = QLabel(self.archive_list)
         self.label_4.setObjectName(u"label_4")
@@ -1221,7 +1219,7 @@ class Ui_MainWindow(object):
 "color: #13242B;\n"
 "")
 
-        self.horizontalLayout.addWidget(self.label_4)
+        self.dates.addWidget(self.label_4)
 
         self.dateEdit_find_2 = QDateEdit(self.archive_list)
         self.dateEdit_find_2.setObjectName(u"dateEdit_find_2")
@@ -1232,15 +1230,17 @@ class Ui_MainWindow(object):
 "font-weight: bold;\n"
 "")
 
-        self.horizontalLayout.addWidget(self.dateEdit_find_2)
+        self.dates.addWidget(self.dateEdit_find_2)
 
 
-        self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
+        self.gridLayout_2.addLayout(self.dates, 0, 0, 1, 1)
 
-        self.verticalLayout_3 = QVBoxLayout()
+        self.change_dates = QFrame(self.archive_list)
+        self.change_dates.setObjectName(u"change_dates")
+        self.verticalLayout_3 = QVBoxLayout(self.change_dates)
         self.verticalLayout_3.setSpacing(1)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.pushButton_month = QPushButton(self.archive_list)
+        self.pushButton_month = QPushButton(self.change_dates)
         self.pushButton_month.setObjectName(u"pushButton_month")
         self.pushButton_month.setMinimumSize(QSize(150, 20))
         self.pushButton_month.setFont(font5)
@@ -1263,7 +1263,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.pushButton_month)
 
-        self.pushButton_previous_month = QPushButton(self.archive_list)
+        self.pushButton_previous_month = QPushButton(self.change_dates)
         self.pushButton_previous_month.setObjectName(u"pushButton_previous_month")
         self.pushButton_previous_month.setMinimumSize(QSize(150, 20))
         self.pushButton_previous_month.setFont(font5)
@@ -1286,7 +1286,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.pushButton_previous_month)
 
-        self.pushButton_year = QPushButton(self.archive_list)
+        self.pushButton_year = QPushButton(self.change_dates)
         self.pushButton_year.setObjectName(u"pushButton_year")
         self.pushButton_year.setMinimumSize(QSize(150, 20))
         self.pushButton_year.setFont(font5)
@@ -1310,12 +1310,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.pushButton_year)
 
 
-        self.gridLayout_2.addLayout(self.verticalLayout_3, 1, 0, 3, 1)
+        self.gridLayout_2.addWidget(self.change_dates, 1, 0, 3, 1)
 
 
         self.verticalLayout_4.addWidget(self.archive_list)
 
-        self.tableWidget_archive_bd = QTableWidget(self.layoutWidget1)
+        self.tableWidget_archive_bd = QTableWidget(self.frame_archive)
         if (self.tableWidget_archive_bd.columnCount() < 9):
             self.tableWidget_archive_bd.setColumnCount(9)
         __qtablewidgetitem9 = QTableWidgetItem()
@@ -1409,7 +1409,7 @@ class Ui_MainWindow(object):
         self.stadying.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435", None))
         self.partners.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u044b \u043e\u0442\n"
 "\u043f\u0430\u0440\u0442\u043d\u0435\u0440\u043e\u0432", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0434\u0435\u0441\u044c\n"
+        self.label_111.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0434\u0435\u0441\u044c\n"
 "\u043c\u043e\u0433\u043b\u0430 \u0431\u044b\u0442\u044c\n"
 "\u0412\u0430\u0448\u0430 \u0440\u0435\u043a\u043b\u0430\u043c\u0430", None))
         self.groupBox_sort.setTitle(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
@@ -1441,7 +1441,7 @@ class Ui_MainWindow(object):
         self.label_archive_pt.setText("")
         self.pushButton_report_manager.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\n"
 "\u043f\u0435\u0447\u0430\u0442\u0438 \u043e\u0442\u0447\u0435\u0442\u043e\u0432", None))
-        self.groupBox_sort_2.setTitle(QCoreApplication.translate("MainWindow", u"\u043f\u043e\u0438\u0441\u043a", None))
+        self.groupBox_sort_archive.setTitle(QCoreApplication.translate("MainWindow", u"\u043f\u043e\u0438\u0441\u043a", None))
         self.radioButton_discharge.setText(QCoreApplication.translate("MainWindow", u"\u043f\u043e \u0434\u0430\u0442\u0435 \u0432\u044b\u043f\u0438\u0441\u043a\u0438", None))
         self.radioButton_admission.setText(QCoreApplication.translate("MainWindow", u"\u043f\u043e \u0434\u0430\u0442\u0435 \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"right\">\u043e\u0442</p></body></html>", None))
@@ -1468,7 +1468,3 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.archive), QCoreApplication.translate("MainWindow", u"\u0410\u0440\u0445\u0438\u0432 \u0438\u0441\u0442\u043e\u0440\u0438\u0439 \u0431\u043e\u043b\u0435\u0437\u043d\u0438", None))
     # retranslateUi
 
-# Error: bta_MainMenu.ui: Warning: The name 'layoutWidget' (QWidget) is already in use, defaulting to 'layoutWidget1'.
-
-
-# while executing 'C:\Users\Shilov Ilya\AppData\Local\Programs\Python\Python310\Lib\site-packages\PySide6\uic -g python bta_MainMenu.ui'
