@@ -31,12 +31,12 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
 
     def set_connections(self):
         # коннекты для кнопок
-        self.pushButtonOpenPtPassportData.clicked.connect(self.open_passport_data)
+        self.pushButtonOpenPtPassportData.clicked.connect(self.open_passport_data)  # noqa: E501
         self.pushButtonOpenPtObjStatus.clicked.connect(self.open_obj_status)
-        self.pushButtonOpenPtNeuralStatus.clicked.connect(self.open_neural_status)
+        self.pushButtonOpenPtNeuralStatus.clicked.connect(self.open_neural_status)  # noqa: E501
         self.pushButtonOpenPtDiagnosis.clicked.connect(self.open_diagnosis)
-        self.pushButtonOpen_bta_protocol.clicked.connect(self.open_protocol_bta)
-        self.pushButtonOpen_discharge_data.clicked.connect(self.open_discharge_details)
+        self.pushButtonOpen_bta_protocol.clicked.connect(self.open_protocol_bta)  # noqa: E501
+        self.pushButtonOpen_discharge_data.clicked.connect(self.open_discharge_details)  # noqa: E501
         self.pushButtonOpen_recommends.clicked.connect(self.open_recommends)
         self.pushButtonCreateDocument.clicked.connect(self.create_docs)
         self.pushButtonSaveExit.clicked.connect(self.save_and_close_card)

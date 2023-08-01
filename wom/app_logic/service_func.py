@@ -159,3 +159,258 @@ def calc_BMI(height, weight):
         questionDS = True
 
     return result, units, conclusion, questionDS
+
+
+def prepare_data_mrc_ash(d, time_line, i=None):
+    '''
+
+    '''
+    if time_line == 'первичный':
+        x = ''
+    elif time_line == 'выписка':
+        x = '_вып'
+    elif time_line == f'динамика_{i}':
+        x = f'_{i}'
+
+    # Создаем список значений шкал,
+    # где первый (0) вложенный список это MRC,
+    # второй (1) вложенный список это Ashwort,
+    st = [[d[f'MRC_R_A_P{x}'],  # Индекс 0
+           d[f'MRC_R_A_D{x}'],
+           d[f'MRC_R_L_P{x}'],
+           d[f'MRC_R_L_D{x}'],
+           d[f'MRC_L_A_P{x}'],
+           d[f'MRC_L_A_D{x}'],
+           d[f'MRC_L_L_P{x}'],
+           d[f'MRC_L_L_D{x}']],
+          [d[f'Ash_R_A_P{x}'],  # Индекс 1
+           d[f'Ash_R_A_D{x}'],
+           d[f'Ash_R_L_P{x}'],
+           d[f'Ash_R_L_D{x}'],
+           d[f'Ash_L_A_P{x}'],
+           d[f'Ash_L_A_D{x}'],
+           d[f'Ash_L_L_P{x}'],
+           d[f'Ash_L_L_D{x}']]]
+    for j in range(8):
+        if len(st[0][j]) == 1:
+            st[0][j] = int(st[0][j])
+        else:  # Изменяем промежуточные значения MRC
+            if st[0][j] == '0-1':
+                st[0][j] = 0.5
+            elif st[0][j] == '1-2':
+                st[0][j] = 1.5
+            elif st[0][j] == '2-3':
+                st[0][j] = 2.5
+            elif st[0][j] == '3-4':
+                st[0][j] = 3.5
+            elif st[0][j] == '4-5':
+                st[0][j] = 4.5
+        if len(st[1][j]) == 1:
+            st[1][j] = int(st[1][j])
+        else:  # Изменяем промежуточные значения Ashwort
+            st[1][j] = 1.5
+
+    return st
+
+
+def prepare_data_icf(d, time_line, i=None):
+    '''
+
+    '''
+    if time_line == 'первичный':
+        x = ''
+    elif time_line == 'выписка':
+        x = '_вып'
+    elif time_line == f'динамика_{i}':
+        x = f'_{i}'
+    # Создаем список значений шкал,
+    # где первый (0) вложенный список это MRC,
+    # второй (1) вложенный список это Ashwort,
+    st = [prepare_data_mrc_ash(d, time_line, i),
+          d[f'ШРМ{x}'],
+          d[f'mRs{x}'],
+          d[f'IMR{x}'],
+          d[f'хаузер{x}'],
+          d[f'ВАШ{x}'],
+          d['Правша']]
+
+    return st
+
+
+# Определение степени выраженности пареза
+def severity_of_paresis(st):
+    icf_strength = estimate_strength_domen(st)
+    if icf_strength in {'0', '1'}:
+        return 'легко'
+    elif icf_strength in {'2'}:
+        return 'умеренно'
+    elif icf_strength in {'3'}:
+        return 'выраженно'
+    elif icf_strength in {'4'}:
+        return 'грубо'
+
+
+# Функция определения наличия пареза
+def is_there_paresis(d):
+
+    check = []
+
+    for i in range(1, 3):
+
+        if i == 1:
+            st = prepare_data_icf(d, 'первичный')
+        elif i == 2:
+            st = prepare_data_icf(d, 'выписка')
+
+        right_checking = 0
+        left_checking = 0
+        right_arm_checking = 0
+        right_leg_checking = 0
+        left_arm_checking = 0
+        left_leg_checking = 0
+
+        for i in range(8):
+            if st[0][i] != 5:
+                if 0 <= i < 4:
+                    right_checking += 1
+                    if i == 0 or i == 1:
+                        right_arm_checking += 1
+                    else:
+                        right_leg_checking += 1
+                else:
+                    left_checking += 1
+                    if i == 4 or i == 5:
+                        left_arm_checking += 1
+                    else:
+                        left_leg_checking += 1
+
+        if right_checking == left_checking == 0:
+            check.append(False)
+        else:
+            check.append(True)
+
+    if check[0]:
+        if check[1]:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
+# Фукция для интерпретации значения суммарной силы
+def interpretation_mrc_assessment(summary, max_mrc):
+    if 0 <= 100 - (summary * 100 / max_mrc) < 5:
+        return '0'
+    elif 5 <= 100 - (summary * 100 / max_mrc) < 25:
+        return '1'
+    elif 25 <= 100 - (summary * 100 / max_mrc) < 50:
+        return '2'
+    elif 50 <= 100 - (summary * 100 / max_mrc) < 95:
+        return '3'
+    elif 95 <= 100 - (summary * 100 / max_mrc) <= 100:
+        return '4'
+    else:
+        print(summary)
+        print(max_mrc)
+        print(100 - (summary * 100 / max_mrc))
+        return 'Что-то пошло не так'
+
+
+# Функция определения типа пареза (тетра-, геми-, пара-, моно-)
+def what_paresis(patient_status):
+    right_checking = 0
+    left_checking = 0
+    right_arm_checking = 0
+    right_leg_checking = 0
+    left_arm_checking = 0
+    left_leg_checking = 0
+
+    for i in range(8):
+        if patient_status[0][i] != 5:
+            if 0 <= i < 4:
+                right_checking += 1
+                if i == 0 or i == 1:
+                    right_arm_checking += 1
+                else:
+                    right_leg_checking += 1
+            else:
+                left_checking += 1
+                if i == 4 or i == 5:
+                    left_arm_checking += 1
+                else:
+                    left_leg_checking += 1
+
+    if right_checking == left_checking == 0:
+        return 'No paresis'
+    elif right_checking > left_checking and left_checking == 0:
+        if right_arm_checking != 0 and right_leg_checking != 0:
+            return 'Hemiparesis R'
+        elif right_arm_checking != 0 and right_leg_checking == 0:
+            return 'Monoparesis R superior'
+        else:
+            return 'Monoparesis R inferior'
+    elif left_checking > right_checking and right_checking == 0:
+        if left_arm_checking != 0 and left_leg_checking != 0:
+            return 'Hemiparesis L'
+        elif left_arm_checking != 0 and left_leg_checking == 0:
+            return 'Monoparesis L superior'
+        else:
+            return 'Monoparesis L inferior'
+    elif right_checking != 0 and left_checking != 0:
+        if right_arm_checking == left_arm_checking == 0:
+            return 'Paraparesis inferior'
+        elif right_leg_checking == left_leg_checking == 0:
+            return 'Paraparesis superior'
+        else:
+            return 'Tetraparesis'
+    else:
+        return 'Что-то пошло не так'
+
+
+# Оценка силы (b730)
+def estimate_strength_domen(patient_status):
+    paresis = what_paresis(patient_status)
+    summary = 0
+    max_mrc = 1
+
+    if paresis in ('Hemiparesis R', 'Hemiparesis L'):
+        max_mrc = 20
+    elif paresis in ('Paraparesis superior', 'Paraparesis inferior'):
+        max_mrc = 20
+    elif paresis in ('Monoparesis R superior', 'Monoparesis L superior'):
+        max_mrc = 10
+    elif paresis in ('Monoparesis R inferior', 'Monoparesis L inferior'):
+        max_mrc = 10
+    elif paresis == 'Tetraparesis':
+        max_mrc = 40
+    elif paresis == 'No paresis':
+        max_mrc = 1
+
+    if paresis == 'No paresis':
+        return '0'
+    elif paresis == 'Hemiparesis R':
+        for i in range(4):
+            summary += patient_status[0][i]
+    elif paresis == 'Hemiparesis L':
+        for i in range(4, 8):
+            summary += patient_status[0][i]
+    elif paresis == 'Tetraparesis':
+        for i in range(0, 8):
+            summary += patient_status[0][i]
+    elif paresis == 'Paraparesis superior':
+        summary = patient_status[0][0] + patient_status[0][1] + \
+            patient_status[0][4] + patient_status[0][5]
+    elif paresis == 'Paraparesis inferior':
+        summary = patient_status[0][2] + patient_status[0][3] + \
+            patient_status[0][6] + patient_status[0][7]
+    elif paresis == 'Monoparesis R superior':
+        summary = patient_status[0][0] + patient_status[0][1]
+    elif paresis == 'Monoparesis L superior':
+        summary = patient_status[0][4] + patient_status[0][5]
+    elif paresis == 'Monoparesis R inferior':
+        summary = patient_status[0][2] + patient_status[0][3]
+    elif paresis == 'Monoparesis L inferior':
+        summary = patient_status[0][6] + patient_status[0][7]
+
+    return interpretation_mrc_assessment(summary, max_mrc)

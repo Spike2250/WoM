@@ -36,7 +36,7 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
         self.pushButton_today.clicked.connect(self.set_adm_date_today)
         self.pushButton_yesterday.clicked.connect(self.set_adm_date_yesterday)
         #
-        self.checkBoxPtNeedSickList.stateChanged.connect(self.activate_first_ln_box)
+        self.checkBoxPtNeedSickList.stateChanged.connect(self.activate_first_ln_box)  # noqa: E501
 
     def activate_first_ln_box(self):
         if self.checkBoxPtNeedSickList.isChecked():
@@ -358,7 +358,7 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
             self.checkBox_signature_cant.setChecked(False)
 
             # выводим сообщение об отмене добавления истории
-            # style = "QPlainTextEdit {font-family: Roboto;font-size: 15px;background-color:#AF830B;}"
+            # style = "QPlainTextEdit {font-family: Roboto;font-size: 15px;background-color:#AF830B;}"  # noqa: E501
             # self.plainTextEdit_descriptions.setStyleSheet(style)
             self.plainTextEdit_descriptions.setPlainText(f"{uin}\n")
 
