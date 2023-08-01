@@ -1,16 +1,19 @@
-from wom.GUI.windows import (bta_main_menu,
-                             bta_add_new_patient,
-                             bta_patient_card,
-                             bta_passport_data,
-                             bta_obj_status,
-                             bta_neur_status,
-                             bta_diagnosis,
-                             bta_protocol,
-                             bta_discharge_details
-                             )
-
+from wom.GUI.windows.bta import (bta_main_menu,
+                                 bta_add_new_patient,
+                                 bta_patient_card,
+                                 bta_passport_data,
+                                 bta_obj_status,
+                                 bta_neur_status,
+                                 bta_diagnosis,
+                                 bta_protocol,
+                                 # bta_recommends,
+                                 bta_discharge_details)
+from wom.GUI.windows.FramelessWindow import FramelessWindow
+from wom.GUI.windows.test import MainWindow
 
 windows = {
+    'Frameless': FramelessWindow,
+    'test': MainWindow,
     'bta': {
         'main_menu': bta_main_menu.Ui_MainMenu,
         'add_new_patient': bta_add_new_patient.Ui_AddNewPatient,
@@ -20,6 +23,7 @@ windows = {
         'neur_status': bta_neur_status.Ui_Status_neurology,
         'diagnosis': bta_diagnosis.Ui_Diagnosis,
         'protocol': bta_protocol.Ui_Protocol_BTA,
+        # 'recommends': bta_recommends.Ui_Recommends,
         'dis_details': bta_discharge_details.Ui_Discharge_details
     }
 }

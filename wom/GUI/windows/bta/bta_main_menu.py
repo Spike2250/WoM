@@ -15,7 +15,6 @@ from wom.app_logic.db_func.db_bta import (read_d_from_db_bta,
                                           read_db_archive_cases_bta,
                                           read_fullness_db_bta)
 from wom.styles_qss import main_styles
-# from wom.GUI.windows.win_aggregator import windows
 
 
 class Ui_MainMenu(QtWidgets.QMainWindow,
@@ -29,6 +28,10 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
         self.set_connections()
         self.create_tables()
         self.show_active_cases()
+
+    def onButtonMy(self):
+        # self.textEdit.append("Нажата `Своя Кнопка`!")
+        pass
 
     def set_connections(self):
         # коннекты кнопок
