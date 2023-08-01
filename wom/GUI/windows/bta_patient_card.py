@@ -1,13 +1,13 @@
-from PySide6 import QtWidgets, QtCore
+from PySide6 import QtWidgets
 import ast
 from wom.GUI.PY import bta_PatientCard
-from wom.app_logic.postprocessing import list_created_docs, update_patient_info
+from wom.app_logic.writing.postprocessing.passport import list_created_docs, update_patient_info  # noqa: E501
 from wom.app_logic.create_docs import (creating_documents,
                                        open_folder_with_files)
 from wom.app_logic.worklist_data_processing import refresh_worklist_data
 from wom.app_logic.db_func.db_bta import (write_all_data_to_db_bta,
                                           write_fullness_table_bta)
-from wom.app_logic.writing.bta import add_diaries_for_bta
+from wom.app_logic.writing.diaries.bta import add_diaries_for_bta
 from wom.styles_qss.main_styles import bta_style_true_button
 
 

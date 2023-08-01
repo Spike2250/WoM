@@ -6,7 +6,7 @@ import ast
 from wom.app_logic.service_func import json_recording
 
 
-name_db_bta = 'databases/bta_database.db'
+DATABASE = 'databases/bta_database.db'
 
 
 '''============================================================================
@@ -44,7 +44,7 @@ def create_data_base_bta():
     '''
     '''
     try:
-        con = sqlite3.connect(name_db_bta)
+        con = sqlite3.connect(DATABASE)
         cur = con.cursor()
 
         cur.execute('''
@@ -78,7 +78,7 @@ def insert_into_db_bta(d):
     data_to_insert = prepare_data_for_db_bta(d, True)
 
     try:
-        con = sqlite3.connect(name_db_bta)
+        con = sqlite3.connect(DATABASE)
         cur = con.cursor()
 
         cur.execute('''
@@ -147,7 +147,7 @@ def update_case_db_bta(d):
     data_to_update = prepare_data_for_db_bta(d)
 
     try:
-        con = sqlite3.connect(name_db_bta)
+        con = sqlite3.connect(DATABASE)
         cur = con.cursor()
 
         cur.execute('''
@@ -185,7 +185,7 @@ def read_db_active_cases_bta():
     '''
     '''
     try:
-        con = sqlite3.connect(name_db_bta)
+        con = sqlite3.connect(DATABASE)
         cur = con.cursor()
 
         query = '''
@@ -221,7 +221,7 @@ def read_db_archive_cases_bta():
     '''
     '''
     try:
-        con = sqlite3.connect(name_db_bta)
+        con = sqlite3.connect(DATABASE)
         cur = con.cursor()
 
         query = '''
@@ -313,7 +313,7 @@ def create_fullness_db_bta():
     '''
     '''
     try:
-        con = sqlite3.connect(name_db_bta)
+        con = sqlite3.connect(DATABASE)
         cur = con.cursor()
 
         cur.execute('''
@@ -340,7 +340,7 @@ def insert_into_fullness_db_bta(d):
     data_to_insert = prepare_data_for_fullness_db_bta(d, True)
 
     try:
-        con = sqlite3.connect(name_db_bta)
+        con = sqlite3.connect(DATABASE)
         cur = con.cursor()
 
         cur.execute('''
@@ -367,7 +367,7 @@ def update_fullness_db_bta(d):
     data_to_update = prepare_data_for_fullness_db_bta(d)
 
     try:
-        con = sqlite3.connect(name_db_bta)
+        con = sqlite3.connect(DATABASE)
         cur = con.cursor()
 
         cur.execute('''
@@ -391,7 +391,7 @@ def read_fullness_db_bta(uin):
     '''
     '''
     try:
-        con = sqlite3.connect(name_db_bta)
+        con = sqlite3.connect(DATABASE)
         cur = con.cursor()
 
         cur.execute('''

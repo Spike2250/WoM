@@ -111,3 +111,51 @@ def count_age(d):
         age -= 1
 
     return str(age)
+
+
+def calc_BMI(height, weight):
+    ''' Расчет Индекса массы тела по Кеттле, округление до сотых
+
+        функция принимает 2 аргумента:
+        Рост      int  м или см
+        Вес       int  кг
+
+        Возвращает 4 значения:
+        Результат в виде формата Decimal округленного до сотых
+        Единицы измерения ИМТ (кг/м2)
+        Заключение по ИМТ (степень Ожирения)
+        'Флажок' - True, если значение больше
+                   определенной границы (по умолчанию 30 кг/м2)
+                   для запроса на внесение в диагноз
+    '''
+    result = None
+    units = 'кг/м2'
+    questionDS = False
+
+    if height > 3:  # Если рост больше 3, считаем что значение в сантиметрах
+        height /= 100  # Переводим сантиметры в метры
+
+    result = weight / (height ** 2)   # Расчет Индекса массы тела по Кеттле
+
+    result = Decimal(result)  # Преобразование числа в формат Decimal
+    result = result.quantize(Decimal("1.00"))   # Округление до сотых
+
+    # заключение по результату ИМТ
+    if result < 18:
+        conclusion = f'Дефицит массы тела (ИМТ = {result}{units}).'
+    elif 18 <= result < 25:
+        conclusion = f'Нормальная масса тела (ИМТ = {result}{units}).'
+    elif 25 <= result < 30:
+        conclusion = f'Избыточная масса тела (ИМТ = {result}{units}).'
+    elif 30 <= result < 35:
+        conclusion = f'Ожирение I ст. (ИМТ = {result}{units}).'
+    elif 35 <= result < 40:
+        conclusion = f'Ожирение II ст. (ИМТ = {result}{units}).'
+    elif result >= 40:
+        conclusion = f'Ожирение III ст. (ИМТ = {result}{units}).'
+
+    # предложение добавить в диагноз ожирение
+    if result >= 30:
+        questionDS = True
+
+    return result, units, conclusion, questionDS

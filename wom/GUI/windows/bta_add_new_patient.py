@@ -11,7 +11,7 @@ from wom.app_logic.db_func.db_bta import (read_d_from_db_bta,
 from wom.app_logic.create_docs import (creating_documents,
                                        open_folder_with_files)
 from wom.app_logic.parsing import parse_promed
-from wom.app_logic.postprocessing import update_after_passport_data
+from wom.app_logic.writing.postprocessing.passport import update_after_passport_data  # noqa: E501
 
 
 class Ui_AddNewPatient(QtWidgets.QMainWindow,
@@ -81,7 +81,7 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
 
     def change_dis_info(self):
         adm_date = self.dateEdit_adm_date.dateTime().toString('dd.MM.yyyy')
-        dis_date = self.dateEdit_dis_date_plan.dateTime().toString('dd.MM.yyyy')
+        dis_date = self.dateEdit_dis_date_plan.dateTime().toString('dd.MM.yyyy')  # noqa: E501
         typeHosp = self.comboBox_hospit_type.currentText()
 
         if typeHosp in {'Круглосуточный стационар', 'БТ - круглосуточный'}:
@@ -95,7 +95,7 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
 
     def show_uin_label(self):
         # написание UIN
-        uin = f"Клиническому случаю будет присвоен UIN: {self.d['unic_number']}"
+        uin = f"Клиническому случаю будет присвоен UIN: {self.d['unic_number']}"  # noqa: E501
         self.label_unic_number.setText(uin)
 
     def change_nmu(self):
@@ -224,20 +224,20 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
         self.d['тип_стационара'] = self.comboBox_hospit_type.currentText()
         self.d['МКБ'] = self.comboBox_mkb.currentText()
         self.d['услуга'] = self.comboBox_nmu.currentText()
-        self.d['ЛПУ_кто_направил'] = self.comboBox_referring_health_facility.currentText()
+        self.d['ЛПУ_кто_направил'] = self.comboBox_referring_health_facility.currentText()  # noqa: E501
         self.d['пол'] = self.comboBox_gender.currentText()
         self.d['ФИО_врача'] = self.comboBox_therapist.currentText()
         self.d['зав_отделением'] = self.comboBox_department_head.currentText()
         # dateEdit's
-        self.d['дата_поступления'] = self.dateEdit_adm_date.dateTime().toString('dd.MM.yyyy')
-        self.d['дата_выписки_план'] = self.dateEdit_dis_date_plan.dateTime().toString('dd.MM.yyyy')
-        self.d['дата_рождения'] = self.dateEdit_birthday.dateTime().toString('dd.MM.yyyy')
+        self.d['дата_поступления'] = self.dateEdit_adm_date.dateTime().toString('dd.MM.yyyy')  # noqa: E501
+        self.d['дата_выписки_план'] = self.dateEdit_dis_date_plan.dateTime().toString('dd.MM.yyyy')  # noqa: E501
+        self.d['дата_рождения'] = self.dateEdit_birthday.dateTime().toString('dd.MM.yyyy')  # noqa: E501
         # timeEdit's
-        self.d['время_поступления'] = self.timeEdit_adm_time.dateTime().toString('hh:mm')
+        self.d['время_поступления'] = self.timeEdit_adm_time.dateTime().toString('hh:mm')  # noqa: E501
         # checkBox's
         self.d['нужда_в_ЛН'] = self.checkBoxPtNeedSickList.isChecked()
         self.d['нужда_в_ЛН_первич'] = self.checkBoxPtNeedSickList_2.isChecked()
-        self.d['не_может_подписаться'] = self.checkBox_signature_cant.isChecked()
+        self.d['не_может_подписаться'] = self.checkBox_signature_cant.isChecked()  # noqa: E501
 
         # профиль коек
         # НЕЛЬЗЯ ПОТОМ ИЗМЕНИТЬ
@@ -245,9 +245,9 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
 
         # название отделения
         if self.d['тип_стационара'] == 'БТ - круглосуточный':
-            self.d['название_отделения'] = '4102. Неврологическое отделение (Панфилова, 20)'
+            self.d['название_отделения'] = '4102. Неврологическое отделение (Панфилова, 20)'  # noqa: E501
         elif self.d['тип_стационара'] == 'БТ - дневной':
-            self.d['название_отделения'] = '4202. Неврологический дневной стационар'
+            self.d['название_отделения'] = '4202. Неврологический дневной стационар'  # noqa: E501
 
         # добавление надписей, при невозможнссти пациента поставить подпись
         if self.d['не_может_подписаться']:
@@ -379,8 +379,8 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
                 self.surname.setText(promed_data['surname'])
                 self.name.setText(promed_data['name'])
                 self.dadname.setText(promed_data['dadname'])
-                self.dateEdit_birthday.setDate(
-                    QtCore.QDate.fromString(promed_data['birthday'], "dd.MM.yyyy"))
+                self.dateEdit_birthday.setDate(QtCore.QDate.fromString(
+                    promed_data['birthday'], "dd.MM.yyyy"))
                 self.adress.setText(promed_data['adress'])
                 self.phone.setText(promed_data['phone_number'])
                 self.passport.setText(promed_data['passport'])
