@@ -96,7 +96,7 @@ def insert_into_db_bta(d):
                     ?, ?, ?, ?)
             ''', data_to_insert)
         con.commit()
-        print("[italic green4]SQLite:[/] данные успешно добавлены. ")
+        print("SQLite: данные успешно добавлены. ")
         cur.close()
         # делаем из множества / списка / словаря - строку
         # для избежания ошибок записи и чтения
@@ -105,13 +105,13 @@ def insert_into_db_bta(d):
         if 'дневники_табл' in d:
             d['дневники_табл'] = str(d['дневники_табл'])
         json_recording(d, 'BTA')
-        print('    [cyan]Словарь (d) успешно записан в JSON-файл. ')
+        print('    Словарь (d) успешно записан в JSON-файл. ')
     except sqlite3.Error as error:
-        print("[red]Ошибка при работе с SQLite", error)
+        print("Ошибка при работе с SQLite", error)
     finally:
         if con:
             con.close()
-            print("    Соединение с [italic green4]SQLite[/] успешно закрыто.")
+            print("    Соединение с SQLite успешно закрыто.")
 
 
 # чтение словаря по UIN
@@ -124,7 +124,7 @@ def read_d_from_db_bta(case_uin):
     if os.path.exists(file_path_d_json):
         with open(file_path_d_json, 'r') as file:
             d = json.load(file)
-        print('[cyan]Словарь (d) успешно прочитан из JSON-файла. ')
+        print('Словарь (d) успешно прочитан из JSON-файла. ')
         # делаем из строки множество
         if 'созданные_документы' in d:
             d['созданные_документы'] = ast.literal_eval(
@@ -163,7 +163,7 @@ def update_case_db_bta(d):
             WHERE case_id = ?
             ''', data_to_update)
         con.commit()
-        print("[italic green4]SQLite:[/] данные успешно обновлены. ")
+        print("SQLite: данные успешно обновлены. ")
         cur.close()
         # делаем из множества строку для избежания ошибок записи и чтения
         if 'созданные_документы' in d:
@@ -171,13 +171,13 @@ def update_case_db_bta(d):
         if 'дневники_табл' in d:
             d['дневники_табл'] = str(d['дневники_табл'])
         json_recording(d, 'BTA')
-        print('    [cyan]Словарь (d) успешно обновлен и записан в JSON-файл. ')
+        print('    Словарь (d) успешно обновлен и записан в JSON-файл. ')
     except sqlite3.Error as error:
         print("Ошибка при работе с SQLite", error)
     finally:
         if con:
             con.close()
-            print("    Соединение с [italic green4]SQLite[/] успешно закрыто.")
+            print("    Соединение с SQLite успешно закрыто.")
 
 
 # чтение всех активных (находящихся на госпитализации) пациентов
@@ -200,7 +200,7 @@ def read_db_active_cases_bta():
             FROM medical_case WHERE status = 1'''
         cur.execute(query)
         data = cur.fetchall()
-        print('[italic green4]SQLite:[/] чтение данных активных пациентов... [green4]Ok')
+        print('SQLite: чтение данных активных пациентов... Ok')
         cur.close()
 
     except sqlite3.Error as error:
@@ -208,12 +208,25 @@ def read_db_active_cases_bta():
     finally:
         if con:
             con.close()
-            print("    Соединение с [italic green4]SQLite[/] успешно закрыто.")
+            print("    Соединение с SQLite успешно закрыто.")
 
     if data is None:
         return None
     else:
-        return data
+        # распаковываем данные
+        upg_data = []
+        for case in data:
+            upg_data.append({
+                "type_hosp": case[0],
+                "adm_date": case[1],
+                "full_name": case[2],
+                "mkb10_ds": case[3],
+                "doctor_name": case[4],
+                "sicklist_check": case[5],
+                "case_id": case[6],
+                "dis_date": case[7]
+            })
+        return upg_data
 
 
 # чтение всех архивных (выписанных) пациентов
@@ -237,7 +250,7 @@ def read_db_archive_cases_bta():
             WHERE status = 0'''
         cur.execute(query)
         data = cur.fetchall()
-        print('[italic green4]SQLite:[/] чтение данных пациентов из архива... [green4]Ok')
+        print('SQLite: чтение данных пациентов из архива... Ok')
         cur.close()
 
     except sqlite3.Error as error:
@@ -245,12 +258,25 @@ def read_db_archive_cases_bta():
     finally:
         if con:
             con.close()
-            print("    Соединение с [italic green4]SQLite[/] успешно закрыто.")
+            print("    Соединение с SQLite успешно закрыто.")
 
     if data is None:
         return None
     else:
-        return data
+        # распаковываем данные
+        upg_data = []
+        for case in data:
+            upg_data.append({
+                "type_hosp": case[0],
+                "adm_date": case[1],
+                "dis_date": case[2],
+                "full_name": case[3],
+                "mkb10_ds": case[4],
+                "doctor_name": case[5],
+                "sicklist_check": case[6],
+                "case_id": case[7]
+            })
+        return upg_data
 
 
 # запись всех данных словаря в БД
@@ -288,17 +314,6 @@ def prepare_data_for_fullness_db_bta(d, new=False):
     'вид_выбытия'
     'рекомендации_выписка'
     '''
-    # psy_check = False
-    # logo_check = False
-
-    # if 'exam_psy' in d:
-    #     if 'icf_psy' in d:
-    #         psy_check = True
-
-    # if 'exam_logo' in d:
-    #     if 'icf_logo' in d:
-    #         logo_check = True
-
     if new:
         data = (d['unic_number'],
                 d['check_line'])
@@ -350,14 +365,14 @@ def insert_into_fullness_db_bta(d):
             VALUES (?, ?)
             ''', data_to_insert)
         con.commit()
-        print("[italic green4]SQLite:[/] данные успешно добавлены в таблицу наполненности. ")
+        print("SQLite: данные успешно добавлены в таблицу наполненности. ")
         cur.close()
     except sqlite3.Error as error:
-        print("[red]Ошибка при работе с SQLite", error)
+        print("Ошибка при работе с SQLite", error)
     finally:
         if con:
             con.close()
-            print("    Соединение с [italic green4]SQLite[/] успешно закрыто.")
+            print("    Соединение с SQLite успешно закрыто.")
 
 
 # Обновление записи в базе данных
@@ -376,14 +391,14 @@ def update_fullness_db_bta(d):
             WHERE case_id = ?
             ''', data_to_update)
         con.commit()
-        print("[italic green4]SQLite:[/] данные успешно обновлены в таблице наполненности. ")
+        print("SQLite: данные успешно обновлены в таблице наполненности. ")
         cur.close()
     except sqlite3.Error as error:
         print("Ошибка при работе с SQLite", error)
     finally:
         if con:
             con.close()
-            print("    Соединение с [italic green4]SQLite[/] успешно закрыто.")
+            print("    Соединение с SQLite успешно закрыто.")
 
 
 # чтение активных пациентов для списка на выписку

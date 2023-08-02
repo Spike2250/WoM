@@ -184,22 +184,24 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
                 self.plainTextEdit_descriptions.setPlainText(text)
 
     def create_consent(self):
-        '''
-        функция создает и открывает файл (.docx)
-            с различными согласиями пациента
-            с возможностью их редактирования
-            и вывода на печать
-
-        '''
         self.write_to_dictionary()
         creating_documents(self.d, ['Согласия'])
         open_folder_with_files(self.d)
 
     def open_patient_card(self):
-        pass
-        # Создаём объект класса Ui_PatientCard
-        # self.window_card = Ui_PatientCard()
-        # self.window_card.show()  # Показываем окно
+        self.w = self.windows['bta']['patient_card'](self.windows, self.d)
+        self.w.show()
+        self.hide()
+
+    def save_history(self):
+        # записываем словарь в json-файл и обновляем БД
+        write_all_data_to_db_bta(self.d)
+        write_fullness_table_bta(self.d)
+
+    def back_to_main_menu(self):
+        self.w = self.windows['bta']['main_menu'](self.windows)
+        self.w.show()
+        self.hide()
 
     def write_to_dictionary(self):
         self.d['status_act'] = True  # Статус пациента
@@ -274,10 +276,10 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
         fullname = f"{try_d['фамилия']} {try_d['имя']} {try_d['отчество']}"
         birthday = self.dateEdit_birthday.dateTime().toString('dd.MM.yyyy')
 
-        for x in active_data:
-            if x[3] == fullname:
+        for case in active_data:
+            if case['fullname'] == fullname:
                 # получаем uin
-                uin = x[8]
+                uin = case['case_id']
                 # записываем словарь из БД в словарь
                 archive_d = read_d_from_db_bta(uin)
                 if birthday == archive_d['дата_рождения']:
@@ -285,16 +287,14 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
                            f'идентичный пациент! '\
                            f'Добавление истории болезни отменено!'
                     return text
-
-        for x in archive_data:
-            if x[3] == fullname:
+        for case in archive_data:
+            if case['fullname'] == fullname:
                 # получаем uin
-                uin = x[7]
+                uin = case['case_id']
                 # записываем словарь из БД в словарь
                 archive_d = read_d_from_db_bta(uin)
                 if birthday == archive_d['дата_рождения']:
                     return uin  # Для использования истории как новой основы
-
         return True
 
     def create_history(self):
@@ -303,11 +303,9 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
         if uin is True:
             # записываем новые данные в словарь
             self.write_to_dictionary()
-            # загружаем в бакет YandexCloud
             self.save_history()
             # открываем карту пациента
             self.open_patient_card()
-            self.hide()
         # если вернули uin
         # elif len(uin) == 36:
         #     # скачиваем архивную историю
@@ -319,7 +317,6 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
         #     self.hide()
         # если такая история уже есть в активных
         else:
-
             # очищаем все поля
             # lineEdit's
             self.surname.setText('')
@@ -361,16 +358,6 @@ class Ui_AddNewPatient(QtWidgets.QMainWindow,
             # style = "QPlainTextEdit {font-family: Roboto;font-size: 15px;background-color:#AF830B;}"  # noqa: E501
             # self.plainTextEdit_descriptions.setStyleSheet(style)
             self.plainTextEdit_descriptions.setPlainText(f"{uin}\n")
-
-    def save_history(self):
-        # записываем словарь в json-файл и обновляем БД
-        write_all_data_to_db_bta(self.d)
-        write_fullness_table_bta(self.d)
-
-    def back_to_main_menu(self):
-        self.w = self.windows['bta']['main_menu'](self.windows)
-        self.w.show()
-        self.hide()
 
     def parse_promed_data(self):
         if (x := self.plainTextEdit_promed_data.toPlainText()) != '':

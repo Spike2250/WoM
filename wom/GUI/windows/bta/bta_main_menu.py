@@ -124,29 +124,26 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
         self.hide()
 
     def open_patient_card(self):
-        # Fucking magic!!!!! (.sender(), .indexAt())
-        # Определяем из какой строки была кнопка вызвавшая функцию
         button = self.sender()
-        i = self.tableWidget_db.indexAt(button.pos()).row()
-        # получаем uin из таблицы
-        uin = self.tableWidget_db.item(i, 8).text()
-        # записываем словарь из БД в глобальный словарь
-        self.d = read_d_from_db_bta(uin)
-        # открываем окно истории болезни
-        self.w = self.windows['bta']['patient_card'](self.windows, self.d)
-        self.w.show()
-        self.hide()
+        self.open_card(type_='active', button=button)
 
     def open_patient_card_from_archive(self):
-        # Fucking magic!!!!! (.sender(), .indexAt())
-        # Определяем из какой строки была кнопка вызвавшая функцию
         button = self.sender()
-        i = self.tableWidget_archive_bd.indexAt(button.pos()).row()
+        self.open_card(type_='archive', button=button)
+
+    def open_card(self, type_, button):
+        if type_ == 'active':
+            table = self.tableWidget_db
+            uin_pos = 8
+        elif type_ == 'archive':
+            table = self.tableWidget_archive_bd
+            uin_pos = 8
+        # Определяем из какой строки была кнопка вызвавшая функцию
+        index = table.indexAt(button.pos()).row()
         # получаем uin из таблицы
-        uin = self.tableWidget_archive_bd.item(i, 8).text()
-        # записываем словарь из БД в глобальный словарь
+        uin = table.item(index, uin_pos).text()
+        # загружаем данные в словарь
         self.d = read_d_from_db_bta(uin)
-        # открываем окно истории болезни
         self.w = self.windows['bta']['patient_card'](self.windows, self.d)
         self.w.show()
         self.hide()
@@ -156,13 +153,12 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
         find = self.lineEdit_find_active.text().lower()
         # читаем БД и получаем список кортежей активных случаев
         data = read_db_active_cases_bta()
-        # data = read_db_active_cases()
         # проверяем, что данные есть
         if data is not None:
             # сортируем все по алфавиту
             data = sorted(
                 data,
-                key=lambda x: x[3],
+                key=lambda case: case['full_name'],
                 reverse=False
             )
             # по чек-боксам сортируем дополнительно
@@ -170,27 +166,29 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
             if self.radioButton_date.isChecked():
                 data = sorted(
                     data,
-                    key=lambda x: c_date(x[1]),
+                    key=lambda case: c_date(case['adm_date']),
                     reverse=False
                 )
             # по врачу
             elif self.radioButton_doc.isChecked():
                 data.sort(
-                    key=lambda x: x[4],
+                    key=lambda case: case['doctor_name'],
                     reverse=False
                 )
             # собираем новый список кортежей по критериям поиска
             new_data = []
-            for i in data:
-                if find in i[3].lower():
-                    new_data.append(i)
+            for case in data:
+                if find in case['full_name'].lower():
+                    new_data.append(case)
             data = new_data
+
+            table = self.tableWidget_db
             # устанавливаем количество строк в таблице равное
             # количеству найденных случаев
-            self.tableWidget_db.setRowCount(len(data))
+            table.setRowCount(len(data))
             # формируем подпись о полученных данных
-            self.label_act_pt.setText(f'Найдено {len(data)} активных случаев')
-            # формируем "Item"s для каждой клетки таблицы
+            self.label_act_pt.setText(f'Найдено активных случаев: {len(data)}')
+
             for i in range(len(data)):
                 # создаем кнопку
                 button = QPushButton('Открыть')
@@ -204,37 +202,31 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
                 # соединяем кнопку с функцией открытия истории болезни
                 button.clicked.connect(self.open_patient_card)
                 # определяем полноту истории
-                fullness = read_fullness_db_bta(data[i][6])
-                # fullness = read_fullness_db(data[i][8])
+                fullness = read_fullness_db_bta(data[i]['case_id'])
                 percent = calc_percent_fullness(fullness, bta=True)
                 progress = QProgressBar()
                 progress.setValue(percent)
                 progress.setTextVisible(False)
                 progress.setStyleSheet(main_styles.progress)
+
                 # заполняем ячейки
-                # первая колонка - прогресс-бар
-                self.tableWidget_db.setCellWidget(i, 0, progress)
-                # вторая колонка - кнопка
-                self.tableWidget_db.setCellWidget(i, 1, button)
-                # третья колонка - тип госпитализации
-                if data[i][0] == 'БТ - круглосуточный':
-                    self.tableWidget_db.setItem(i, 2, QTW_Item('КС'))
-                elif data[i][0] == 'БТ - дневной':
-                    self.tableWidget_db.setItem(i, 2, QTW_Item('ДС'))
+                table.setCellWidget(i, 0, progress)
+                table.setCellWidget(i, 1, button)
+                if data[i]['type_hosp'] == 'БТ - круглосуточный':
+                    table.setItem(i, 2, QTW_Item('КС'))
+                elif data[i]['type_hosp'] == 'БТ - дневной':
+                    table.setItem(i, 2, QTW_Item('ДС'))
                 else:
-                    self.tableWidget_db.setItem(i, 2, QTW_Item('UN'))
-                # с 4й по 8ю
-                self.tableWidget_db.setItem(i, 3, QTW_Item(data[i][1]))
-                self.tableWidget_db.setItem(i, 4, QTW_Item(data[i][2]))
-                self.tableWidget_db.setItem(i, 5, QTW_Item(data[i][3]))
-                self.tableWidget_db.setItem(i, 6, QTW_Item(data[i][4]))
-                # девятая колонка - нужда в ЛН
-                if data[i][5] == '1':
-                    self.tableWidget_db.setItem(i, 7, QTW_Item('+'))
+                    table.setItem(i, 2, QTW_Item('UN'))
+                table.setItem(i, 3, QTW_Item(data[i]['adm_date']))
+                table.setItem(i, 4, QTW_Item(data[i]['full_name']))
+                table.setItem(i, 5, QTW_Item(data[i]['mkb10_ds']))
+                table.setItem(i, 6, QTW_Item(data[i]['doctor_name']))
+                if data[i]['sicklist_check'] == '1':
+                    table.setItem(i, 7, QTW_Item('+'))
                 else:
-                    self.tableWidget_db.setItem(i, 7, QTW_Item(' '))
-                # 10
-                self.tableWidget_db.setItem(i, 8, QTW_Item(data[i][6]))
+                    table.setItem(i, 7, QTW_Item(' '))
+                table.setItem(i, 8, QTW_Item(data[i]['case_id']))
         else:
             self.label_act_pt.setText('Не найден ни один активный случай')
 
@@ -252,33 +244,35 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
             # сортируем все по алфавиту
             data = sorted(
                 data,
-                key=lambda x: x[3],
+                key=lambda case: case['full_name'],
                 reverse=False)
             # и по дате выписки
             data = sorted(
                 data,
-                key=lambda x: c_date(x[2]),
+                key=lambda case: c_date(case['dis_date']),
                 reverse=False)
+
             # корректируем список кортежей
             new_data = []
             # определяем критерий поиска по датам
             if self.radioButton_admission.isChecked():
-                j = 1  # дата поступления
+                date = 'adm_date'
             elif self.radioButton_discharge.isChecked():
-                j = 2  # дата выписки
-            # собираем новый список кортежей по критериям поиска
-            for i in data:
-                if dates[0] <= c_date(i[j]) <= dates[1]:
-                    if find in i[3].lower():
-                        new_data.append(i)
+                date = 'dis_date'
+            # собираем новый список по критериям поиска
+            for case in data:
+                if dates[0] <= c_date(case[date]) <= dates[1]:
+                    if find in case['full_name'].lower():
+                        new_data.append(case)
             data = new_data
 
+            table = self.tableWidget_archive_bd
             # устанавливаем количество строк в таблице равное
             # количеству найденных случаев
-            self.tableWidget_archive_bd.setRowCount(len(data))
+            table.setRowCount(len(data))
             # формируем подпись о полученных данных
-            self.label_archive_pt.setText(f'Найдено {len(data)} историй болезни')
-            # формируем "Item"s для каждой клетки таблицы
+            self.label_archive_pt.setText(f'Найдено историй болезни: {len(data)}')  # noqa: E501
+
             for i in range(len(data)):
                 # создаем кнопку
                 button = QPushButton('open')
@@ -291,29 +285,25 @@ class Ui_MainMenu(QtWidgets.QMainWindow,
                 button.setStyleSheet(main_styles.button_del)
                 # соединяем кнопку с функцией открытия истории болезни
                 button.clicked.connect(self.open_patient_card_from_archive)
+
                 # заполняем ячейки
-                # первая колонка - кнопка
-                self.tableWidget_archive_bd.setCellWidget(i, 0, button)
-                # вторая колонка - тип госпитализации
-                if data[i][0] == 'БТ - круглосуточный':
-                    self.tableWidget_archive_bd.setItem(i, 1, QTW_Item('КС'))
-                elif data[i][0] == 'БТ - дневной':
-                    self.tableWidget_archive_bd.setItem(i, 1, QTW_Item('ДС'))
+                table.setCellWidget(i, 0, button)
+                if data[i]['type_hosp'] == 'БТ - круглосуточный':
+                    table.setItem(i, 1, QTW_Item('КС'))
+                elif data[i]['type_hosp'] == 'БТ - дневной':
+                    table.setItem(i, 1, QTW_Item('ДС'))
                 else:
-                    self.tableWidget_archive_bd.setItem(i, 1, QTW_Item('UN'))
-                # с 3й по 7ю
-                self.tableWidget_archive_bd.setItem(i, 2, QTW_Item(data[i][1]))
-                self.tableWidget_archive_bd.setItem(i, 3, QTW_Item(data[i][2]))
-                self.tableWidget_archive_bd.setItem(i, 4, QTW_Item(data[i][3]))
-                self.tableWidget_archive_bd.setItem(i, 5, QTW_Item(data[i][4]))
-                self.tableWidget_archive_bd.setItem(i, 6, QTW_Item(data[i][5]))
-                # восьмая колонка - нужда в ЛН
-                if data[i][6] == '1':
-                    self.tableWidget_archive_bd.setItem(i, 7, QTW_Item('+'))
+                    table.setItem(i, 1, QTW_Item('UN'))
+                table.setItem(i, 2, QTW_Item(data[i]['adm_date']))
+                table.setItem(i, 3, QTW_Item(data[i]['dis_date']))
+                table.setItem(i, 4, QTW_Item(data[i]['full_name']))
+                table.setItem(i, 5, QTW_Item(data[i]['mkb10_ds']))
+                table.setItem(i, 6, QTW_Item(data[i]['doctor_name']))
+                if data[i]['sicklist_check'] == '1':
+                    table.setItem(i, 7, QTW_Item('+'))
                 else:
-                    self.tableWidget_archive_bd.setItem(i, 7, QTW_Item(' '))
-                # 9
-                self.tableWidget_archive_bd.setItem(i, 8, QTW_Item(data[i][7]))
+                    table.setItem(i, 7, QTW_Item(' '))
+                table.setItem(i, 8, QTW_Item(data[i]['case_id']))
         else:
             self.label_act_pt.setText('Не найден ни один случай')
 
