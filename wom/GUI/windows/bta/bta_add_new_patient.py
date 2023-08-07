@@ -1,6 +1,6 @@
 from PySide6 import QtWidgets, QtCore
 from datetime import timedelta, datetime
-from wom.GUI.PY import bta_AddNewPatient
+from wom.GUI.PY.bta import bta_AddNewPatient
 from wom.app_logic.service_func import (datedif, convert_date as c_date,
                                         create_mkb_nmu_dict, add_mkb10_nmu)
 from wom.app_logic.db_func.db_bta import (read_d_from_db_bta,

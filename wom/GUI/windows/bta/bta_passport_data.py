@@ -1,5 +1,5 @@
 from PySide6 import QtWidgets, QtCore
-from wom.GUI.PY import bta_PatientPassportData
+from wom.GUI.PY.bta import bta_PatientPassportData
 from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
 
 

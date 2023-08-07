@@ -1,5 +1,5 @@
 from PySide6 import QtWidgets
-from wom.GUI.PY import bta_Diagnosis
+from wom.GUI.PY.bta import bta_Diagnosis
 from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
 from wom.app_logic.writing.postprocessing.diagnosis import update_after_diagnosis  # noqa: E501
 

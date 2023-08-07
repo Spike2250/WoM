@@ -1,5 +1,5 @@
 from PySide6 import QtWidgets
-from wom.GUI.PY import bta_Neur_status
+from wom.GUI.PY.bta import bta_Neur_status
 from wom.app_logic.db_func.db_st_neur_templates import (read_db_neur_template_list,  # noqa: E501
                                                         read_db_neur_template_data,  # noqa: E501
                                                         insert_neur_template_into_db,  # noqa: E501

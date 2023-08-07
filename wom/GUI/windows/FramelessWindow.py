@@ -58,7 +58,7 @@ class TitleBar(QWidget):
 
         # значок окна
         self.iconLabel = QLabel(self)
-        # self.iconLabel.setScaledContents(True)
+        self.iconLabel.setScaledContents(True)
         layout.addWidget(self.iconLabel)
 
         # название окна
@@ -182,7 +182,7 @@ class FramelessWindow(QWidget):
         self.Direction = None
 
         # Фон прозрачный
-        self.setAttribute(Qt.WA_TranslucentBackground, True)
+        # self.setAttribute(Qt.WA_TranslucentBackground, True)
 
         # Нет границы
         self.setWindowFlag(Qt.FramelessWindowHint)
@@ -226,13 +226,14 @@ class FramelessWindow(QWidget):
         self._widget.setAutoFillBackground(True)
         palette = self._widget.palette()
         palette.setColor(palette.ColorRole.Window,
-                         QColor(240, 240, 240))
+                         QColor(0, 0, 0))
         self._widget.setPalette(palette)
         self._widget.installEventFilter(self)
         self.layout().addWidget(self._widget)
 
     def move(self, pos):
-        if self.windowState() == Qt.WindowMaximized or self.windowState() == Qt.WindowFullScreen:
+        if any((self.windowState() == Qt.WindowMaximized,
+                self.windowState() == Qt.WindowFullScreen)):
             # Максимизировать или полноэкранный режим не допускается
             return
         super(FramelessWindow, self).move(pos)

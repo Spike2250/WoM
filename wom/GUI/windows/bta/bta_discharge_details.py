@@ -1,5 +1,5 @@
 from PySide6 import QtWidgets, QtCore
-from wom.GUI.PY import bta_Discharge_details
+from wom.GUI.PY.bta import bta_Discharge_details
 from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
 from wom.app_logic.service_func import create_mkb_nmu_dict, add_mkb10_nmu
 from wom.app_logic.writing.postprocessing.passport import update_patient_info

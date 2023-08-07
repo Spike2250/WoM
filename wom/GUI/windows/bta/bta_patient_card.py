@@ -1,6 +1,6 @@
 from PySide6 import QtWidgets
 import ast
-from wom.GUI.PY import bta_PatientCard
+from wom.GUI.PY.bta import bta_PatientCard
 from wom.app_logic.writing.postprocessing.passport import (list_created_docs,
                                                            update_patient_info)
 from wom.app_logic.create_docs import (creating_documents,

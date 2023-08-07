@@ -1,5 +1,5 @@
 from PySide6 import QtWidgets, QtCore
-from wom.GUI.PY import bta_Obj_status
+from wom.GUI.PY.bta import bta_Obj_status
 from wom.app_logic.db_func.db_st_obj_templates import (read_db_obj_template_list,  # noqa: E501
                                                        read_db_obj_template_data,  # noqa: E501
                                                        insert_obj_template_into_db,  # noqa: E501

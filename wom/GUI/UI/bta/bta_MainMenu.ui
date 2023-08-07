@@ -126,7 +126,7 @@ color:  rgba(50, 98, 115, 150);
           <string>Личный кабинет</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../res_main.qrc">
+          <iconset resource="../res_main.qrc">
            <normaloff>:/icon/icons/manage_accounts_white_36dp.svg</normaloff>:/icon/icons/manage_accounts_white_36dp.svg</iconset>
          </property>
          <property name="iconSize">
@@ -653,7 +653,7 @@ border: 1px solid rgba(50, 98, 115, 255);
           <string>Добавить новый случай</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../res_main.qrc">
+          <iconset resource="../res_main.qrc">
            <normaloff>:/icon/icons/person_add_white_36dp.svg</normaloff>:/icon/icons/person_add_white_36dp.svg</iconset>
          </property>
          <property name="iconSize">
@@ -1187,7 +1187,7 @@ color:  rgba(50, 98, 115, 150);
             <string>HELP</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/info_white_36dp.svg</normaloff>:/icon/icons/info_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -1251,7 +1251,7 @@ color:  rgba(50, 98, 115, 150);
 госпитализаций</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/calendar_month_white_36dp.svg</normaloff>:/icon/icons/calendar_month_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -1315,7 +1315,7 @@ color:  rgba(50, 98, 115, 150);
 документы</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/book_white_36dp.svg</normaloff>:/icon/icons/book_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -1365,7 +1365,7 @@ color:  rgba(50, 98, 115, 150);
             <string>Атлас БТ</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/auto_stories_white_36dp.svg</normaloff>:/icon/icons/auto_stories_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -1415,7 +1415,7 @@ color:  rgba(50, 98, 115, 150);
             <string>Обучение</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/account_box_white_36dp.svg</normaloff>:/icon/icons/account_box_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -1466,7 +1466,7 @@ color:  rgba(50, 98, 115, 150);
 партнеров</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/sticky_note_2_white_36dp.svg</normaloff>:/icon/icons/sticky_note_2_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -1563,7 +1563,7 @@ border: 1px solid rgba(50, 98, 115, 255);
         </property>
         <widget class="QWidget" name="actual">
          <attribute name="icon">
-          <iconset resource="../../../res_main.qrc">
+          <iconset resource="../res_main.qrc">
            <normaloff>:/icon/icons/view_list_white_36dp.svg</normaloff>:/icon/icons/view_list_white_36dp.svg</iconset>
          </attribute>
          <attribute name="title">
@@ -2282,7 +2282,7 @@ border: 1px solid rgba(255, 255, 255, 255);
                  <string>обновить</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="../../../res_main.qrc">
+                 <iconset resource="../res_main.qrc">
                   <normaloff>:/icon/icons/autorenew_white_36dp.svg</normaloff>:/icon/icons/autorenew_white_36dp.svg</iconset>
                 </property>
                 <property name="iconSize">
@@ -2795,7 +2795,7 @@ border: 1px solid rgba(255, 255, 255, 255);
                  <string>найти</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="../../../res_main.qrc">
+                 <iconset resource="../res_main.qrc">
                   <normaloff>:/icon/icons/search_white_36dp.svg</normaloff>:/icon/icons/search_white_36dp.svg</iconset>
                 </property>
                 <property name="iconSize">
@@ -2944,7 +2944,7 @@ background-color: rgba(50, 98, 115, 70);
         </widget>
         <widget class="QWidget" name="archive">
          <attribute name="icon">
-          <iconset resource="../../../res_main.qrc">
+          <iconset resource="../res_main.qrc">
            <normaloff>:/icon/icons/person_search_white_36dp.svg</normaloff>:/icon/icons/person_search_white_36dp.svg</iconset>
          </attribute>
          <attribute name="title">
@@ -3462,7 +3462,7 @@ border: 1px solid rgba(255, 255, 255, 255);
                  <string>Найти</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="../../../res_main.qrc">
+                 <iconset resource="../res_main.qrc">
                   <normaloff>:/icon/icons/search_white_36dp.svg</normaloff>:/icon/icons/search_white_36dp.svg</iconset>
                 </property>
                 <property name="iconSize">
@@ -3976,7 +3976,7 @@ background-color: rgba(50, 98, 115, 70);
   </widget>
  </widget>
  <resources>
-  <include location="../../../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
  </resources>
  <connections/>
 </ui>

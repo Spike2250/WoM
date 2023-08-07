@@ -1,3 +1,6 @@
+from wom.GUI.windows.omr import (omr_main_menu,
+                                 omr_add_new_patient,
+                                 )
 from wom.GUI.windows.bta import (bta_main_menu,
                                  bta_add_new_patient,
                                  bta_patient_card,
@@ -14,6 +17,10 @@ from wom.GUI.windows.test import MainWindow
 windows = {
     'Frameless': FramelessWindow,
     'test': MainWindow,
+    'omr': {
+        'main_menu': omr_main_menu.Ui_MainMenu,
+        'add_new_patient': omr_add_new_patient.Ui_AddNewPatient,
+    },
     'bta': {
         'main_menu': bta_main_menu.Ui_MainMenu,
         'add_new_patient': bta_add_new_patient.Ui_AddNewPatient,
@@ -25,5 +32,8 @@ windows = {
         'protocol': bta_protocol.Ui_Protocol_BTA,
         # 'recommends': bta_recommends.Ui_Recommends,
         'dis_details': bta_discharge_details.Ui_Discharge_details
+    },
+    'common': {
+        'main_menu': ''
     }
 }

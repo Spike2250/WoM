@@ -116,7 +116,7 @@ background-color: rgba(92, 158, 173, 200)
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="../../../res_main.qrc">:/icon/icons/moving_beds_FILL0_wght400_GRAD0_opsz48.svg</pixmap>
+              <pixmap resource="../res_main.qrc">:/icon/icons/moving_beds_FILL0_wght400_GRAD0_opsz48.svg</pixmap>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -13005,7 +13005,7 @@ border: 1px solid rgba(112, 38, 50, 255);
                  <string>Выписать пациента и закрыть историю болезни</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="../../../res_main.qrc">
+                 <iconset resource="../res_main.qrc">
                   <normaloff>:/icon/icons/person_off_white_36dp.svg</normaloff>:/icon/icons/person_off_white_36dp.svg</iconset>
                 </property>
                 <property name="iconSize">
@@ -13626,7 +13626,7 @@ color:  rgba(50, 98, 115, 150);
             <string>Help</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/info_white_36dp.svg</normaloff>:/icon/icons/info_white_36dp.svg</iconset>
            </property>
           </widget>
@@ -14126,7 +14126,7 @@ border: 1px solid rgba(50, 98, 115, 255);
 карту пациента</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/block_white_36dp.svg</normaloff>:/icon/icons/block_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -14617,7 +14617,7 @@ border: 1px solid rgba(50, 98, 115, 255);
 карту пациента</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/save_white_36dp.svg</normaloff>:/icon/icons/save_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -14652,7 +14652,8 @@ border: 1px solid rgba(50, 98, 115, 255);
   <tabstop>pushButtonDischarge_and_close_history</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
   <include location="../../../res_main.qrc"/>
  </resources>
  <connections/>

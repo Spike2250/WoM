@@ -1,7 +1,7 @@
 from PySide6 import QtWidgets, QtGui, QtCore
 from PySide6.QtWidgets import (QAbstractItemView, QPushButton,
                                QTableWidgetItem as QTW_Item)
-from wom.GUI.PY import bta_Protocol
+from wom.GUI.PY.bta import bta_Protocol
 from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
 from wom.app_logic.writing.postprocessing.protocol_bta import update_after_bta_protocol  # noqa: E501
 from wom.settings.bta_muscles import muscles
