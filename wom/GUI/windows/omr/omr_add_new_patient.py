@@ -3,17 +3,13 @@ from datetime import timedelta, datetime
 from wom.GUI.PY.omr import omr_AddNewPatient
 from wom.app_logic.service_func import (datedif, convert_date as c_date,
                                         create_mkb_nmu_dict, add_mkb10_nmu)
-from wom.app_logic.db_func.db_omr import (DATABASE,
-                                          read_d_from_db,
+from wom.app_logic.db_func.db_omr import (read_d_from_db,
                                           read_db_active_cases,
                                           read_db_archive_cases,
                                           write_all_data_to_db,
                                           write_fullness_table,
                                           write_scale_table)
-from wom.app_logic.db_func.bucket_func import (download_db_from_bucket,
-                                               upload_db_to_bucket,
-                                               upload_to_bucket,
-                                               BUCKET_MAIN)
+from wom.app_logic.db_func.bucket_func import upload_history_to_yandex_cloud_bucket  # noqa: E501
 from wom.app_logic.create_docs import (creating_documents,
                                        open_folder_with_files)
 from wom.app_logic.parsing import parse_promed
@@ -484,19 +480,7 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
             self.plainTextEdit_descriptions.setStyleSheet(style)
             self.plainTextEdit_descriptions.setPlainText(f"{uin}\n")
 
-    @staticmethod
-    def _upload_history_to_yandex_cloud_bucket(func):
-        def wrapper(d):
-            # скачиваем актуальную БД из бакета
-            # (для минимизации возможного расхождения с уже скачаной)
-            download_db_from_bucket(BUCKET_MAIN, DATABASE)
-            func(d)
-            # загружаем в бакет
-            upload_db_to_bucket(BUCKET_MAIN, DATABASE)
-            upload_to_bucket(BUCKET_MAIN, f"{d['unic_number']}.json")
-        return wrapper
-
-    @_upload_history_to_yandex_cloud_bucket
+    @upload_history_to_yandex_cloud_bucket
     def save_history(self):
         write_all_data_to_db(self.d)
         write_fullness_table(self.d)

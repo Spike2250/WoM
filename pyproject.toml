@@ -10,6 +10,8 @@ python = "~3.10"
 pyside6 = "^6.5.1.1"
 docxtpl = "^0.16.7"
 prettytable = "^3.8.0"
+numpy = "^1.25.2"
+boto3 = "^1.28.24"
 
 
 [tool.poetry.group.dev.dependencies]

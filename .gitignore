@@ -2,4 +2,4 @@
 __pycache__
 wom/JSON/
 databases/
-.env
+env.py

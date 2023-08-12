@@ -6,6 +6,7 @@ from PySide6.QtWidgets import (QTableWidgetItem as QTW_Item,
                                QAbstractItemView,
                                QPushButton,
                                QProgressBar)
+
 from wom.GUI.PY.omr import omr_MainMenu
 from wom.app_logic.service_func import (convert_date as c_date,
                                         calc_percent_fullness)
@@ -14,7 +15,13 @@ from wom.app_logic.db_func.db_omr import (read_d_from_db,
                                           read_db_archive_cases,
                                           read_db_active_cases_for_discharge,
                                           read_fullness_db)
-from wom.styles_qss import main_styles
+from wom.app_logic.writing.lists import (open_folder_patients_lists,
+                                         create_patients_list,
+                                         create_patients_list_for_discharge,
+                                         create_doc_lists,
+                                         creating_file_pt_list,
+                                         creating_file_doc_lists)
+from wom.app_logic.db_func.bucket_func import download_case_from_yandex_cloud_bucket  # noqa: E501
 
 
 # Окно основного меню
@@ -27,6 +34,8 @@ class Ui_MainMenu(QtWidgets.QWidget,
         self.main_win = main_win
         self.d = {}
 
+        # self.setWindowFlags(QtCore.Qt.FramelessWindowHint)  # окно без рамки
+
         main_win.setWindowTitle('Тестовая строка заголовка')
         objectTitleBar = main_win.titleBar
         objectTitleBar.signalButtonMy.connect(self.onButtonMy)
@@ -37,7 +46,6 @@ class Ui_MainMenu(QtWidgets.QWidget,
         self.set_styles()
 
     def onButtonMy(self):
-        # self.textEdit.append("Нажата `Своя Кнопка`!")
         pass
 
     def set_connections(self):
@@ -149,6 +157,10 @@ class Ui_MainMenu(QtWidgets.QWidget,
         index = table.indexAt(button.pos()).row()
         # получаем uin из таблицы
         uin = table.item(index, uin_pos).text()
+        self.reading_dict_and_open_card(uin)
+
+    @download_case_from_yandex_cloud_bucket('omr')
+    def reading_dict_and_open_card(self, uin):
         # загружаем данные в словарь
         self.d = read_d_from_db(uin)
         self.open_window('patient_card')
@@ -300,36 +312,36 @@ class Ui_MainMenu(QtWidgets.QWidget,
     def print_patients_list(self):
         # читаем БД и получаем список кортежей случаев
         data = read_db_active_cases()
-        # # проверяем, что данные есть
-        # if data is not None:
-        #     d_to_print = {
-        #         'список_пациентов': create_patients_list(data)
-        #     }
-        #     creating_pt_list(d_to_print, 'today_list')
-        #     open_folder_patients_lists()
+        # проверяем, что данные есть
+        if data is not None:
+            d_to_print = {
+                'список_пациентов': create_patients_list(data)
+            }
+            creating_file_pt_list(d_to_print, 'today_list')
+            open_folder_patients_lists()
 
     def print_patients_list_for_discharge(self):
         # читаем БД и получаем список кортежей случаев
         data = read_db_active_cases_for_discharge()
-        # if data is not None:
-        #     table = create_patients_list_for_discharge(data)
-        #     d_to_print = {
-        #         'список_пациентов': table['simple'],
-        #         'список_по_врачам': table['docs']
-        #     }
-        #     creating_pt_list(d_to_print, 'discharge')
-        #     open_folder_patients_lists()
+        if data is not None:
+            table = create_patients_list_for_discharge(data)
+            d_to_print = {
+                'список_пациентов': table['simple'],
+                'список_по_врачам': table['docs']
+            }
+            creating_file_pt_list(d_to_print, 'discharge')
+            open_folder_patients_lists()
 
     def print_docs_lists(self):
         # читаем БД и получаем список кортежей случаев
         data = read_db_active_cases()
-        # # проверяем, что данные есть
-        # if data is not None:
-        #     d_to_print = {
-        #         'списки_для_обхода': create_doc_lists(data)
-        #     }
-        #     creating_doc_lists(d_to_print)
-        #     open_folder_patients_lists()
+        # проверяем, что данные есть
+        if data is not None:
+            d_to_print = {
+                'списки_для_обхода': create_doc_lists(data)
+            }
+            creating_file_doc_lists(d_to_print)
+            open_folder_patients_lists()
 
     def open_window(self, name):
         win = self.windows['Frameless']()
