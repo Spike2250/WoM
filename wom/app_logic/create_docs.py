@@ -8,6 +8,15 @@ from wom.settings.config import (path_db_main_KS, path_db_main_DS,
                                  path_templates, path_templates_bta)
 
 
+def list_created_docs(some_set):
+    n = 0
+    string = ''
+    for value in some_set:
+        n += 1
+        string += f'{n} - {value};\n'
+    return f"{string}  Всего:   {n}"
+
+
 # установка пути к корневой папке
 def path_main_folder_upg(d):
     path = ''
@@ -62,27 +71,26 @@ def creating_documents(d, templates=None):
         templates = ['test']
 
     # перебираем список шаблонов и создаем документы
-    for j in templates:
-        if 'созданные_документы' not in d:
-            d['созданные_документы'] = set()
-            d['созданные_документы'].add(j)
+    for template in templates:
+        key = 'созданные_документы'
+        if key not in d:
+            d[key] = set()
         else:
-            if isinstance(d['созданные_документы'], set):
-                d['созданные_документы'].add(j)
-            elif isinstance(d['созданные_документы'], str):
-                d['созданные_документы'] = ast.literal_eval(
-                    d['созданные_документы'])
-                d['созданные_документы'].add(j)
+            if isinstance(d[key], str):
+                d[key] = ast.literal_eval(d[key])
+        d[key].add(template)
         # создание имени нового файла и пути для его сохранения
-        docName = f"{create_short_name(d['ФИО_пациента'])}, {j}.docx"
+        docName = f"{create_short_name(d['ФИО_пациента'])}, {template}.docx"
         # создаем путь к новому файлу
         path_new_file = generate_path_to_new_file(d)
         # формируем окончательное имя файла
         filepath = Path(Path.cwd(), path_new_file, docName)
 
         # создаем документ на основе шаблона
-        doc = DocxTemplate(
-            Path(Path.cwd(), path_templates_upgrade(d), j + '.docx'))
+        doc = DocxTemplate(Path(
+            Path.cwd(),
+            path_templates_upgrade(d),
+            template + '.docx'))
         # создание файла по шаблону на основе словаря
         doc.render(d)
         # создаем папок на пути к файлу

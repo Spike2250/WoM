@@ -123,7 +123,7 @@ border: none;
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="../../../res_main.qrc">:/icon/icons/screencast_FILL1_wght400_GRAD0_opsz48.svg</pixmap>
+                  <pixmap resource="../res_main.qrc">:/icon/icons/screencast_FILL1_wght400_GRAD0_opsz48.svg</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>false</bool>
@@ -328,7 +328,7 @@ border: none;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../../res_main.qrc">:/icon/icons/create_white_36dp.svg</pixmap>
+                    <pixmap resource="../res_main.qrc">:/icon/icons/create_white_36dp.svg</pixmap>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -830,7 +830,7 @@ border: 1px solid rgba(50, 98, 115, 255);
                   <string>Паспортные данные</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/account_box_white_36dp.svg</normaloff>:/icon/icons/account_box_white_36dp.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -1334,7 +1334,7 @@ border: 1px solid rgba(50, 98, 115, 255);
                   <string>Жалобы, анамнез и объективный статус</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/stethoscope_FILL0_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/stethoscope_FILL0_wght400_GRAD0_opsz48.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -1838,7 +1838,7 @@ border: 1px solid rgba(50, 98, 115, 255);
                   <string>Неврологический статус</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/neurology_FILL0_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/neurology_FILL0_wght400_GRAD0_opsz48.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -2342,7 +2342,7 @@ border: 1px solid rgba(50, 98, 115, 255);
                   <string>Диагноз и шкалы</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/clinical_notes_FILL0_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/clinical_notes_FILL0_wght400_GRAD0_opsz48.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -2858,7 +2858,7 @@ border: 1px solid rgba(50, 98, 115, 255);
                   <string>Протокол ботулинотерапии</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/vaccines_FILL1_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/vaccines_FILL1_wght400_GRAD0_opsz48.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -3362,7 +3362,7 @@ border: 1px solid rgba(50, 98, 115, 255);
                   <string>Данные для выписки</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/moving_beds_FILL0_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/moving_beds_FILL0_wght400_GRAD0_opsz48.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -3866,7 +3866,7 @@ border: 1px solid rgba(50, 98, 115, 255);
                   <string>Рекомендации для выписки</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/list_white_36dp.svg</normaloff>:/icon/icons/list_white_36dp.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -6934,7 +6934,7 @@ border: 1px solid rgba(255, 255, 255, 255);
                   <string>Создать файлы</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/note_add_white_36dp.svg</normaloff>:/icon/icons/note_add_white_36dp.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -12180,7 +12180,7 @@ border: 1px solid rgba(255, 255, 255, 255);
                   <string>Открыть папку с файлами</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/folder_white_36dp.svg</normaloff>:/icon/icons/folder_white_36dp.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -13251,7 +13251,7 @@ color:  rgba(50, 98, 115, 150);
             <string>Help</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/info_white_36dp.svg</normaloff>:/icon/icons/info_white_36dp.svg</iconset>
            </property>
           </widget>
@@ -14225,7 +14225,7 @@ border: 1px solid rgba(50, 98, 115, 255);
 в главное меню</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/block_white_36dp.svg</normaloff>:/icon/icons/block_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -14716,7 +14716,7 @@ border: 1px solid rgba(50, 98, 115, 255);
             <string>Сохранить данные</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/save_white_36dp.svg</normaloff>:/icon/icons/save_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -15206,7 +15206,7 @@ border: 1px solid rgba(50, 98, 115, 255);
 карту пациента</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/save_white_36dp.svg</normaloff>:/icon/icons/save_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -15226,9 +15226,10 @@ border: 1px solid rgba(50, 98, 115, 255);
   </widget>
  </widget>
  <resources>
-  <include location="../../../res_main.qrc"/>
-  <include location="../../../res_main.qrc"/>
-  <include location="../../../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
  </resources>
  <connections/>
 </ui>

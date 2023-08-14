@@ -9,7 +9,7 @@ from wom.app_logic.worklist_data_processing import refresh_worklist_data
 from wom.app_logic.db_func.db_bta import (write_all_data_to_db_bta,
                                           write_fullness_table_bta)
 from wom.app_logic.writing.diaries.bta import add_diaries_for_bta
-from wom.styles_qss.main_styles import bta_style_true_button
+from wom.styles_qss.main_styles import style_true_button
 
 
 class Ui_PatientCard(QtWidgets.QMainWindow,
@@ -329,7 +329,6 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
             'вид_выбытия': self.pushButtonOpen_discharge_data,
             'рекомендации_выписка': self.pushButtonOpen_recommends
         }
-        style = bta_style_true_button
 
         # Собираем чек лист для "галочек" и валидности создания документов
         self.check_list = []
@@ -338,7 +337,7 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
             if key in self.d:
                 # меняем стиль соответствующей кнопки
                 if self.d[key] != '':
-                    buttons_dict[key].setStyleSheet(style)
+                    buttons_dict[key].setStyleSheet(style_true_button)
                     self.check_list.append(True)
                 else:
                     # buttons_dict[key].setStyleSheet(style_False)

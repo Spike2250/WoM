@@ -162,7 +162,7 @@ def read_d_from_db(case_uin):
     # else:
     #     return ast.literal_eval(data[-1])
     json_dict_name = f'{case_uin}.json'
-    file_path_d_json = Path(Path.cwd(), 'JSON', json_dict_name)
+    file_path_d_json = Path(Path.cwd(), 'wom/JSON/OMR', json_dict_name)
     # проверяем наличие такого файла в директории
     if os.path.exists(file_path_d_json):
         with open(file_path_d_json, 'r') as file:
@@ -215,7 +215,7 @@ def update_case_db(d):
             d['созданные_документы'] = str(d['созданные_документы'])
         if 'дневники_табл' in d:
             d['дневники_табл'] = str(d['дневники_табл'])
-        json_recording(d)
+        json_recording(d, 'OMR')
         print('    Словарь (d) успешно обновлен и записан в JSON-файл. ')
     except sqlite3.Error as error:
         print("Ошибка при работе с SQLite", error)

@@ -12525,7 +12525,83 @@ background-color: rgba(50, 98, 115, 40);</string>
               <property name="spacing">
                <number>5</number>
               </property>
-              <item row="3" column="0">
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_dis">
+                <property name="font">
+                 <font>
+                  <family>Roboto</family>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border: none;
+background-color: transparent;</string>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;NB! Данное действие нельзя отменить!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="checkBox_dis">
+                <property name="font">
+                 <font>
+                  <family>Roboto</family>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QCheckBox {
+	color: #326273;
+	border: none;
+	background-color: none;
+}
+
+QCheckBox:checked {
+   color: #702632;
+}
+
+QCheckBox::indicator:checked {
+	border-style:solid;
+	border-width: 1px;
+	border-color: #702632;
+	color: #FFFFFF;
+	background-color: #702632;
+}
+QCheckBox::indicator:!checked {
+	border-style:solid;
+	border-width: 1px;
+	border-color: #702632;
+	color: #FFFFFF;
+	background-color: none;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Подтверждаю выписку</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_2">
+                <property name="styleSheet">
+                 <string notr="true">color: #326273;
+font-weight: bold;
+font-size: 14pt;
+background-color: rgba(50, 98, 115, 40);
+border: none;</string>
+                </property>
+                <property name="text">
+                 <string>Выписка пациента</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" rowspan="2">
                <widget class="QPushButton" name="pushButtonDischarge_and_close_history">
                 <property name="palette">
                  <palette>
@@ -13013,82 +13089,6 @@ border: 1px solid rgba(112, 38, 50, 255);
                   <width>32</width>
                   <height>32</height>
                  </size>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="label_dis">
-                <property name="font">
-                 <font>
-                  <family>Roboto</family>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">border: none;
-background-color: transparent;</string>
-                </property>
-                <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;NB! Данное действие нельзя отменить!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QCheckBox" name="checkBox_dis">
-                <property name="font">
-                 <font>
-                  <family>Roboto</family>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox {
-	color: #326273;
-	border: none;
-	background-color: none;
-}
-
-QCheckBox:checked {
-   color: #702632;
-}
-
-QCheckBox::indicator:checked {
-	border-style:solid;
-	border-width: 1px;
-	border-color: #702632;
-	color: #FFFFFF;
-	background-color: #702632;
-}
-QCheckBox::indicator:!checked {
-	border-style:solid;
-	border-width: 1px;
-	border-color: #702632;
-	color: #FFFFFF;
-	background-color: none;
-}</string>
-                </property>
-                <property name="text">
-                 <string>Подтверждаю выписку</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_2">
-                <property name="styleSheet">
-                 <string notr="true">color: #326273;
-font-weight: bold;
-font-size: 14pt;
-background-color: rgba(50, 98, 115, 40);
-border: none;</string>
-                </property>
-                <property name="text">
-                 <string>Выписка пациента</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -14654,7 +14654,7 @@ border: 1px solid rgba(50, 98, 115, 255);
  <resources>
   <include location="../res_main.qrc"/>
   <include location="../res_main.qrc"/>
-  <include location="../../../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
  </resources>
  <connections/>
 </ui>

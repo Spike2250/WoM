@@ -1,14 +1,30 @@
+import ast
 from PySide6 import QtWidgets
+from PySide6.QtWidgets import QPushButton
 
 from wom.GUI.PY.omr import omr_PatientCard
 from wom.app_logic.writing.postprocessing.passport import update_patient_info
-from won.app_logic.service_func import (open_folder_with_files,
-                                        creating_documents)
+from wom.app_logic.writing.diaries.gen import creating_diaries
+from wom.app_logic.worklist_data_processing import refresh_worklist_data
+from wom.app_logic.create_docs import (list_created_docs,
+                                       open_folder_with_files,
+                                       creating_documents
+                                       )
+from wom.app_logic.db_func.db_omr import (write_all_data_to_db,
+                                          write_fullness_table,
+                                          write_scale_table)
+from wom.app_logic.db_func.bucket_func import upload_history_to_yandex_cloud_bucket  # noqa: E501
+from wom.styles_qss.main_styles import (style_true_button as style_True,
+                                        label_style_diabet,
+                                        label_style_b20,
+                                        label_style_act,
+                                        label_style_dis,
+                                        label_style_ln)
 
 
 # Окно карты пациента
-class Ui_PatientCard(QtWidgets.QMainWindow,
-                     omr_PatientCard.Ui_PatientsCard):
+class Ui_PatientCard(QtWidgets.QWidget,
+                     omr_PatientCard.Ui_omr_patient_card):
     def __init__(self, windows, main_win, dictionary):
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
@@ -42,67 +58,69 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
 
     def set_connections(self):
         # коннекты для кнопок
-        self.pushButtonOpenPtPassportData.clicked.connect(
-            self.open_passport_data_window)
-        self.pushButtonOpenPtNeuralStatusAdm.clicked.connect(
-            self.open_neurology_status_admission)
-        self.pushButtonOpenPtObjStatusAdm.clicked.connect(
-            self.open_objective_status_admission)
-        self.pushButtonOpenPtDiagnosisAdm.clicked.connect(
-            self.open_diagnosis_admission)
-        self.pushButtonOpenPtObjStatusDischarge.clicked.connect(
-            self.open_objective_status_discharge)
-        self.pushButtonOpenPtNeuralStatusDischarge.clicked.connect(
-            self.open_neurology_status_discharge)
-        self.pushButtonOpenPtDiagnosisDischarge.clicked.connect(
-            self.open_diagnosis_discharge)
-        self.pushButtonOpenPtStatisticData.clicked.connect(
-            self.open_discharge_details)
-        self.pushButtonOpenPtAppointments.clicked.connect(
-            self.open_medical_appointments)
-        self.pushButtonOpen_mdrk.clicked.connect(
-            self.open_mdrk)
-        self.pushButtonOpen_icf_dis.clicked.connect(
-            self.open_mdrk_dis)
-        self.pushButton_lecalo.clicked.connect(
-            self.put_a_ticks)
-        self.pushButton_clean_ticks.clicked.connect(
-            self.clean_ticks)
-        self.pushButtonOpenFolder.clicked.connect(
-            self.open_folder)
-        self.pushButtonOpenPtLaboratoryData.clicked.connect(
-            self.open_lab_data)
-        self.pushButtonOpenPtInstrumentalData.clicked.connect(
-            self.open_instr_data)
-        self.pushButtonOpenPtConsultationData.clicked.connect(
-            self.open_consult)
-        self.pushButtonOpenPtDischargeRecommend.clicked.connect(
-            self.open_recommends)
-        self.pushButtonCreateDocument.clicked.connect(
-            self.create_docs)
-        self.pushButtonSaveExit.clicked.connect(
-            self.save_and_close_card)
-        self.pushButtonNotSaveExit.clicked.connect(
-            self.close_card)
-        self.pushButton_create_diaries.clicked.connect(
-            self.create_diaries)
-        self.pushButtonAddEvent.clicked.connect(
-            self.add_new_event)
-        self.pushButton_1.clicked.connect(self.check_data_blocks)
-        self.pushButton_2.clicked.connect(self.print_keys_from_d)
-        self.pushButtonOpenLogs.clicked.connect(self.open_logs)
-        self.pushButtonSave.clicked.connect(self.save_history)
+        self.pushButtonOpenPtPassportData\
+            .clicked.connect(self.open_passport_data_window)
+        self.pushButtonOpenPtNeuralStatusAdm\
+            .clicked.connect(self.open_neurology_status_admission)
+        self.pushButtonOpenPtObjStatusAdm\
+            .clicked.connect(self.open_objective_status_admission)
+        self.pushButtonOpenPtDiagnosisAdm\
+            .clicked.connect(self.open_diagnosis_admission)
+        self.pushButtonOpenPtObjStatusDischarge\
+            .clicked.connect(self.open_objective_status_discharge)
+        self.pushButtonOpenPtNeuralStatusDischarge\
+            .clicked.connect(self.open_neurology_status_discharge)
+        self.pushButtonOpenPtDiagnosisDischarge\
+            .clicked.connect(self.open_diagnosis_discharge)
+        self.pushButtonOpenPtStatisticData\
+            .clicked.connect(self.open_discharge_details)
+        self.pushButtonOpenPtAppointments\
+            .clicked.connect(self.open_medical_appointments)
+        self.pushButtonOpen_mdrk\
+            .clicked.connect(self.open_mdrk)
+        self.pushButtonOpen_icf_dis\
+            .clicked.connect(self.open_mdrk_dis)
+        self.pushButton_lecalo\
+            .clicked.connect(self.put_a_ticks)
+        self.pushButton_clean_ticks\
+            .clicked.connect(self.clean_ticks)
+        self.pushButtonOpenFolder\
+            .clicked.connect(self.open_folder)
+        self.pushButtonOpenPtLaboratoryData\
+            .clicked.connect(self.open_lab_data)
+        self.pushButtonOpenPtInstrumentalData\
+            .clicked.connect(self.open_instr_data)
+        self.pushButtonOpenPtConsultationData\
+            .clicked.connect(self.open_consult)
+        self.pushButtonOpenPtDischargeRecommend\
+            .clicked.connect(self.open_recommends)
+        self.pushButtonCreateDocument\
+            .clicked.connect(self.create_docs)
+        self.pushButtonSaveExit\
+            .clicked.connect(self.save_and_close_card)
+        self.pushButtonNotSaveExit\
+            .clicked.connect(self.close_card)
+        self.pushButton_create_diaries\
+            .clicked.connect(self.create_diaries)
+        self.pushButtonAddEvent\
+            .clicked.connect(self.add_new_event)
+        self.pushButton_2\
+            .clicked.connect(self.print_keys_from_d)
+        self.pushButtonOpenLogs\
+            .clicked.connect(self.open_logs)
+        self.pushButtonSave\
+            .clicked.connect(self.save_history)
         # коннект для "галочек" при выборе общего файла
-        self.checkBox_doc_complex.stateChanged.connect(
-            self.complex_doc_change)
+        self.checkBox_doc_complex\
+            .stateChanged.connect(self.complex_doc_change)
 
     def update_descriptions(self):
         # обновляем "Лого_ИБ" и "patient_info"
         update_patient_info(self.d)
         # меняем подпись истории болезни данными из словаря
-        self.ptFullNameCard.setText(d['Лого_ИБ'])
-        self.label_unic_number.setText(d['unic_number'])
-        self.label_type_hospitalisation.setText(d['тип_стационара'])
+        self.ptFullNameCard.setText(self.d['Лого_ИБ'])
+        self.label_unic_number.setText(self.d['unic_number'])
+        self.label_type_hospitalisation.setText(self.d['тип_стационара'])
 
     def create_diaries_table(self):
         # задаем размеры таблицы для дневников
@@ -114,6 +132,29 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
             windows=self.windows, main_win=win, dictionary=self.d))
         win.show()
         self.main_win.close()
+
+    def open_dairy(self):
+        button = self.sender()
+        i = self.tableWidget_diaries.indexAt(button.pos()).row()
+
+        win = self.windows['Frameless']()
+        win.setWidget(self.windows['omr']['diary'](
+            windows=self.windows,
+            main_win=win,
+            dictionary=self.d,
+            diary_index=i))
+        win.show()
+
+    def close_card(self):
+        win = self.windows['Frameless']()
+        win.setWidget(self.windows['omr']['main_menu'](
+            windows=self.windows, main_win=win))
+        win.show()
+        self.main_win.close()
+
+    def save_and_close_card(self):
+        self.save_history()
+        self.close_card()
 
     def open_passport_data_window(self):
         self.open_window('passport')
@@ -128,7 +169,7 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
         self.open_window('diagnosis_adm')
 
     def open_neurology_status_discharge(self):
-        if 'Неврологический_статус' in d:
+        if 'Неврологический_статус' in self.d:
             self.open_window('neur_status_dis')
         else:
             status_message = f'Сначала введите данные неврологического '\
@@ -138,7 +179,7 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
             self.label_status.setText(status_message)
 
     def open_objective_status_discharge(self):
-        if 'Соматический_статус' in d:
+        if 'Соматический_статус' in self.d:
             self.open_window('obj_status_dis')
         else:
             status_message = f'Сначала введите данные соматического '\
@@ -148,7 +189,7 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
             self.label_status.setText(status_message)
 
     def open_diagnosis_discharge(self):
-        if 'Основной_диагноз' in d:
+        if 'Основной_диагноз' in self.d:
             self.open_window('diagnosis_dis')
         else:
             status_message = f'Сначала введите данные клинического '\
@@ -167,7 +208,7 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
         self.open_window('mdrk_adm')
 
     def open_mdrk_dis(self):
-        if 's_domen_1' in d:
+        if 's_domen_1' in self.d:
             self.open_window('mdrk_dis')
         else:
             status_message = f'Сначала введите данные протокола '\
@@ -180,21 +221,18 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
         self.open_window('lab_data')
 
     def open_recommends(self):
-        pass
         # self.open_window('recommends')
         status_message = f'Раздел "Рекомендации для выписки" '\
                          f'находится в разработке. '
         self.label_status.setText(status_message)
 
     def open_instr_data(self):
-        pass
         # self.open_window('instr_data')
         status_message = f'Раздел "Данные инструментальных '\
                          f'исследований" находится в разработке. '
         self.label_status.setText(status_message)
 
     def open_consult(self):
-        pass
         # self.open_window('consult')
         status_message = f'Раздел "Консультации" '\
                          f'находится в разработке. '
@@ -312,7 +350,7 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
         if all((self.check_list[1],
                 self.check_list[2],
                 self.check_list[3],
-                d['нужда_в_ЛН'])):
+                self.d['нужда_в_ЛН'])):
             self.checkBox_doc_med_commission_1.setEnabled(True)
         else:
             self.checkBox_doc_med_commission_1.setEnabled(False)
@@ -320,7 +358,7 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
         if all((self.check_list[1],
                 self.check_list[10],
                 self.check_list[11],
-                d['нужда_в_ЛН'])):
+                self.d['нужда_в_ЛН'])):
             self.checkBox_doc_med_commission_2.setEnabled(True)
             self.checkBox_doc_med_commission_dis.setEnabled(True)
         else:
@@ -332,7 +370,7 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
         # else:
         #     self.checkBox_doc_med_commission_drugs.setEnabled(False)
         # Дневники и комплексный документ
-        if 'дневники_табл' in d:
+        if 'дневники_табл' in self.d:
             self.checkBox_doc_diaries.setEnabled(True)
             self.checkBox_doc_complex.setEnabled(True)
         else:
@@ -400,13 +438,13 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
 
     #
     def open_folder(self):
-        if 'созданные_документы' not in d:
+        if 'созданные_документы' not in self.d:
             self.textBrowser.setText('Не создано ни одного документа!')
         else:
             self.textBrowser.setText(
-                list_created_docs(d['созданные_документы']))
+                list_created_docs(self.d['созданные_документы']))
             try:
-                open_folder_with_files(d)
+                open_folder_with_files(self.d)
             except FileNotFoundError:
                 status_message = f'Созданные документы не обнаружены. '\
                                  f'Скорее всего они были созданы '\
@@ -477,50 +515,30 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
     def create_docs(self):
         templates = self.create_a_list_of_templates()
 
-        w = ('ВК_продление_ЛН', 'ВК_продление_ЛН_2', 'ВК_продление_ЛН_выписка')
-        for i in w:
-            if i in templates:
-                refresh_worklist_data(d)
+        flags = ('ВК_продление_ЛН',
+                 'ВК_продление_ЛН_2',
+                 'ВК_продление_ЛН_выписка')
+        for template in flags:
+            if template in templates:
+                refresh_worklist_data(self.d)
 
-        creating_documents(d, templates)
+        creating_documents(self.d, templates)
         self.textBrowser.setText(
-            list_created_docs(d['созданные_документы']))
+            list_created_docs(self.d['созданные_документы']))
 
+    @upload_history_to_yandex_cloud_bucket('omr')
     def save_history(self):
-        # скачиваем актуальную БД из бакета
-        # (для минимизации возможного расхождения с уже скачаной)
-        download_db_from_bucket(bucket_main, name_db_online)
         # записываем словарь в json-файл и обновляем БД
-        write_all_data_to_db(d)
-        write_fullness_table(d)
-        write_scale_table(d)
-        # выписываем "направление" к психологу и логопеду
-        # записываются False в обе колонки
-        if 'нужда_логопед_психолог' in d:
-            if d['нужда_логопед_психолог']:
-                write_fullness_table_psylogo(d)
-        # загружаем обновленную БД в бакет
-        upload_db_to_bucket(bucket_main, name_db_online)
-        # загружаем json-файл в бакет
-        upload_to_bucket(bucket_main, f"{d['unic_number']}.json")
+        write_all_data_to_db(self.d)
+        write_fullness_table(self.d)
+        write_scale_table(self.d)
+        # # выписываем "направление" к психологу и логопеду
+        # # записываются False в обе колонки
+        # if self.d['нужда_логопед_психолог']:
+        #     write_fullness_table_psylogo(d)
         # выводим сообщение об успехе сохранения
         text = '\tИстория болезни успешно сохранена на сервере!'
         self.label_status.setText(text)
-
-    def save_and_close_card(self):
-        global d
-        self.save_history()
-        d = {}
-        self.hide()
-        self.window_main_menu = Ui_MainMenu()
-        self.window_main_menu.show()
-
-    def close_card(self):
-        global d
-        d = {}
-        self.hide()
-        self.window_main_menu = Ui_MainMenu()
-        self.window_main_menu.show()
 
     def open_logs(self):
         pass
@@ -543,79 +561,30 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
             'лабораторные_данные': self.pushButtonOpenPtLaboratoryData,
             'инструментальные_данные': self.pushButtonOpenPtInstrumentalData,
             'консультации_данные': self.pushButtonOpenPtConsultationData,
-            'Соматический_статус_выписка': self.pushButtonOpenPtObjStatusDischarge,
-            'Неврологический_статус_вып': self.pushButtonOpenPtNeuralStatusDischarge,
+            'Соматический_статус_выписка': self.pushButtonOpenPtObjStatusDischarge,  # noqa: E501
+            'Неврологический_статус_вып': self.pushButtonOpenPtNeuralStatusDischarge,  # noqa: E501
             'Основной_диагноз_вып': self.pushButtonOpenPtDiagnosisDischarge,
             's_domen_dis_1': self.pushButtonOpen_icf_dis,
             'вид_выбытия': self.pushButtonOpenPtStatisticData,
             'рекомендации_выписка': self.pushButtonOpenPtDischargeRecommend
         }
 
-        doc = d['ФИО_врача']
-        if doc == 'Шилов И.С.':
-            style = button_shilov
-        # elif doc == 'Шадрин А.А.':
-        #     style = button_shadrin
-        # elif doc == 'Тыричев С.В.':
-        #     style = button_tyrichev
-        # elif doc == 'Тимофеев А.П.':
-        #     style = button_timofeev
-        else:
-            style = style_True
-
         # Собираем чек лист для "галочек" и валидности создания документов
         self.check_list = []
         # проверяем наличие блоков данных по соответствующих ключам в словаре d
         for key in buttons_dict:
-            if key in d:
+            if key in self.d:
                 # меняем стиль соответствующей кнопки
-                if d[key] != '':
-                    buttons_dict[key].setStyleSheet(style)
+                if self.d[key] != '':
+                    buttons_dict[key].setStyleSheet(style_True)
                     self.check_list.append(True)
                 else:
-                    buttons_dict[key].setStyleSheet(style_False)
                     self.check_list.append(False)
             else:
-                buttons_dict[key].setStyleSheet(style_False)
                 self.check_list.append(False)
 
         self.create_check_line()
         self.check_data_label()
-
-    def check_data_label(self):
-        if d['тип_стационара'] == 'Круглосуточный стационар':
-            self.label_type_hospitalisation.setStyleSheet(label_style_hosp_1)
-        elif d['тип_стационара'] == 'Дневной стационар':
-            self.label_type_hospitalisation.setStyleSheet(label_style_hosp_2)
-
-        if d['нужда_в_ЛН']:
-            self.label_LN.setText('  =ЛН=')
-            self.label_LN.setStyleSheet(label_style_ln)
-        else:
-            self.label_LN.setText('')\
-
-        # обозначаем в истории, если пациент выписан
-        if d['status_act']:
-            text = f"Активный случай"
-            self.label_dis_check.setText(text)
-            self.label_dis_check.setStyleSheet(label_style_act)
-        else:
-            text = f"Пациент выписан {d['дата_выписки']}. "\
-                   f"История находится в архиве."
-            self.label_dis_check.setText(text)
-            self.label_dis_check.setStyleSheet(label_style_dis)
-
-        if 'ВИЧ_чек' in d and d['ВИЧ_чек']:
-            self.label_b20.setText('         ВИЧ +')
-            self.label_b20.setStyleSheet(label_style_b20)
-
-        if 'ВГС_чек' in d and d['ВГС_чек']:
-            self.label_hvc.setText('      Гепатит С')
-            self.label_hvc.setStyleSheet(label_style_hcv)
-
-        if 'СД_чек' in d and d['СД_чек']:
-            self.label_diabet.setText('     Сах.диабет')
-            self.label_diabet.setStyleSheet(label_style_diabet)
 
     def create_check_line(self):
         check_line = ''
@@ -624,7 +593,36 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
                 check_line += '1'
             else:
                 check_line += '0'
-        d['check_line'] = check_line
+        self.d['check_line'] = check_line
+
+    def check_data_label(self):
+        if self.d['нужда_в_ЛН']:
+            self.label_LN.setText('= ЛН =')
+            self.label_LN.setStyleSheet(label_style_ln)
+        else:
+            self.label_LN.setText('')
+        if 'ВИЧ_чек' in self.d and self.d['ВИЧ_чек']:
+            self.label_b20.setText('ВИЧ +')
+            self.label_b20.setStyleSheet(label_style_b20)
+
+        if 'ВГС_чек' in self.d and self.d['ВГС_чек']:
+            self.label_hvc.setText('Гепатит С')
+            self.label_hvc.setStyleSheet(label_style_b20)
+
+        if 'СД_чек' in self.d and self.d['СД_чек']:
+            self.label_diabet.setText('Сах.диабет')
+            self.label_diabet.setStyleSheet(label_style_diabet)
+
+        # обозначаем в истории, если пациент выписан
+        if self.d['status_act']:
+            text = f"Активный случай"
+            self.label_dis_check.setText(text)
+            self.label_dis_check.setStyleSheet(label_style_act)
+        else:
+            text = f"Пациент выписан {self.d['дата_выписки']}. "\
+                   f"История находится в архиве."
+            self.label_dis_check.setText(text)
+            self.label_dis_check.setStyleSheet(label_style_dis)
 
     def create_diaries(self):
         check_list = ('ФИО_пациента',
@@ -640,17 +638,17 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
 
         success_checking = True
         for key in check_list:
-            if key not in d:
+            if key not in self.d:
                 success_checking = False
 
         # проверяем наличие необходимых данных в словаре
         if success_checking:
             if self.radioButton_everyday.isChecked():
-                creating_diaries(d, 'everyday')
+                creating_diaries(self.d, 'everyday')
             elif self.radioButton_3_times_in_week.isChecked():
-                creating_diaries(d, '3timesWeek')
+                creating_diaries(self.d, '3timesWeek')
             elif self.radioButton_twice_in_day.isChecked():
-                creating_diaries(d, 'twice_everyday')
+                creating_diaries(self.d, 'twice_everyday')
             else:
                 status_message = f'Создание дневников невозможно, '\
                                  f'не выбран ни один из режимов написания.'
@@ -663,31 +661,24 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
 
         self.check_possible()
 
-    def open_dairy(self):
-
-        button = self.sender()
-        i = self.tableWidget_diaries.indexAt(button.pos()).row()
-
-        self.window_diary = Ui_diary(i)
-        self.window_diary.show()
-
     def update_diaries_table(self):
         # проверяем, что данные есть
-        if 'дневники_табл' in d:
+        if 'дневники_табл' in self.d:
             # меняем формат если это строка
-            if isinstance(d['дневники_табл'], str):
-                d['дневники_табл'] = ast.literal_eval(d['дневники_табл'])
+            if isinstance(self.d['дневники_табл'], str):
+                self.d['дневники_табл'] = ast.literal_eval(
+                    self.d['дневники_табл'])
             # устанавливаем количество строк в таблице равное
             # количеству найденных случаев
             self.tableWidget_diaries.setRowCount(
-                rows := len(d['дневники_табл']))
+                rows := len(self.d['дневники_табл']))
             # формируем "Item"s для каждой клетки таблицы
             for i in range(rows):
-                button_name = f"{d['дневники_табл'][i][0]}"\
-                              f" - {d['дневники_табл'][i][1]}"
+                button_name = f"{self.d['дневники_табл'][i][0]}"\
+                              f" - {self.d['дневники_табл'][i][1]}"
                 # создаем кнопку
                 button = QPushButton(button_name)
-                button.setStyleSheet(button_style_3)
+                button.setStyleSheet(style_True)
                 # соединяем кнопку с функцией открытия истории болезни
                 button.clicked.connect(self.open_dairy)
                 # заполняем остальные ячейки данными из БД
@@ -696,12 +687,12 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
             pass
 
     def check_created_docs(self):
-        if 'созданные_документы' in d:
-            if isinstance(d['созданные_документы'], str):
-                d['созданные_документы'] = ast.literal_eval(
-                    d['созданные_документы'])
+        if 'созданные_документы' in self.d:
+            if isinstance(self.d['созданные_документы'], str):
+                self.d['созданные_документы'] = ast.literal_eval(
+                    self.d['созданные_документы'])
             self.textBrowser.setText(
-                list_created_docs(d['созданные_документы']))
+                list_created_docs(self.d['созданные_документы']))
         else:
             self.textBrowser.setText('Пока не создано ни одного документа :(')
 
@@ -711,60 +702,10 @@ class Ui_PatientCard(QtWidgets.QMainWindow,
     def print_keys_from_d(self):
         n = 0
         print('Ключи актуального словаря')
-        for i in d:
+        for i in self.d:
             n += 1
             print(f'{n}) {i}')
         print(f'    Всего: {n}')
 
     def set_styles(self):
-        # pushbuttons
-        self.pushButtonSaveExit.setStyleSheet(style_True)
-        # self.pushButton_lecalo.setStyleSheet(button_style_3)
-        # self.pushButton_clean_ticks.setStyleSheet(button_style_3)
-        self.pushButtonAddEvent.setStyleSheet(button_style_3)
-        # radiobuttons
-        self.radioButton_everyday.setStyleSheet(radiobutton_style_1)
-        self.radioButton_3_times_in_week.setStyleSheet(radiobutton_style_1)
-        self.radioButton_twice_in_day.setStyleSheet(radiobutton_style_1)
-        # table
-        # self.tableWidget_diaries.setStyleSheet(table_style_1)
-        # textBrowser
-        self.textBrowser.setStyleSheet(textBrowser_style_main)
-        # label
-        self.labelCard.setStyleSheet(label_style_logo)
-        self.ptFullNameCard.setStyleSheet(label_style_pt)
-        # groupbox
-        self.groupBox_adm_data.setStyleSheet(groupBox_style_header)
-        self.groupBox_lab_data.setStyleSheet(groupBox_style_header)
-        self.groupBox_dis_data.setStyleSheet(groupBox_style_header)
-        self.groupBox_events.setStyleSheet(groupBox_style_header)
-        self.groupBox_create_diaries.setStyleSheet(groupBox_style_header)
-        self.groupBox_create_docs.setStyleSheet(groupBox_style_header)
-        self.groupBox_diaries.setStyleSheet(groupBox_style_wom)
-        self.groupBox_wom.setStyleSheet(groupBox_style_wom)
-        # меняем стиль лого в зависимости от леч.врача
-        doc = d['ФИО_врача']
-        if doc == 'Шилов И.С.':
-            self.labelCard.setStyleSheet(label_logo_shilov)
-            self.pushButton_create_diaries.setStyleSheet(button_shilov)
-            self.pushButtonCreateDocument.setStyleSheet(button_shilov)
-            self.pushButtonOpenFolder.setStyleSheet(button_shilov)
-            self.pushButtonSaveExit.setStyleSheet(button_shilov)
-        elif doc == 'Шадрин А.А.':
-            self.labelCard.setStyleSheet(label_logo_shadrin)
-            self.pushButton_create_diaries.setStyleSheet(button_shadrin)
-            self.pushButtonCreateDocument.setStyleSheet(button_shadrin)
-            self.pushButtonOpenFolder.setStyleSheet(button_shadrin)
-            self.pushButtonSaveExit.setStyleSheet(button_shadrin)
-        elif doc == 'Тыричев С.В.':
-            self.labelCard.setStyleSheet(label_logo_tyrichev)
-            self.pushButton_create_diaries.setStyleSheet(button_tyrichev)
-            self.pushButtonCreateDocument.setStyleSheet(button_tyrichev)
-            self.pushButtonOpenFolder.setStyleSheet(button_tyrichev)
-            self.pushButtonSaveExit.setStyleSheet(button_tyrichev)
-        elif doc == 'Тимофеев А.П.':
-            self.labelCard.setStyleSheet(label_logo_timofeev)
-            self.pushButton_create_diaries.setStyleSheet(button_timofeev)
-            self.pushButtonCreateDocument.setStyleSheet(button_timofeev)
-            self.pushButtonOpenFolder.setStyleSheet(button_timofeev)
-            self.pushButtonSaveExit.setStyleSheet(button_timofeev)
+        pass
