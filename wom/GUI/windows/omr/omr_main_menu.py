@@ -23,6 +23,8 @@ from wom.app_logic.writing.lists import (open_folder_patients_lists,
                                          creating_file_doc_lists)
 from wom.app_logic.db_func.bucket_func import (download_case_from_yandex_cloud_bucket,  # noqa: E501
                                                download_db_from_yandex_cloud_bucket)  # noqa: E501
+from wom.styles_qss.main_styles import (progress_style_other,
+                                        button_other)
 
 
 # Окно основного меню
@@ -51,23 +53,18 @@ class Ui_MainMenu(QtWidgets.QWidget,
 
     def set_connections(self):
         # коннекты кнопок
-        self.add_new_patient.clicked.connect(
-            self.create_new_case)
-        self.refresh_pt_list.clicked.connect(
-            self.show_active_cases)
-        self.find_patient.clicked.connect(
-            self.show_active_cases)
-        self.pushButtonOpenArchive.clicked.connect(
-            self.show_archive_cases)
-        self.pushButton_month.clicked.connect(
-            self.set_current_month_dates)
-        self.pushButton_previous_month.clicked.connect(
-            self.set_previous_month_dates)
-        self.pushButton_year.clicked.connect(
-            self.set_current_year_dates)
-        self.pushButton_report_manager.clicked.connect(
-            self.open_report_manager)
+        self.add_new_patient.clicked.connect(self.create_new_case)
+        self.refresh_pt_list.clicked.connect(self.show_active_cases)
+        self.find_patient.clicked.connect(self.show_active_cases)
+        self.pushButtonOpenArchive.clicked.connect(self.show_archive_cases)
+        self.pushButton_month.clicked.connect(self.set_current_month_dates)
+        self.pushButton_previous_month.clicked.connect(self.set_previous_month_dates)
+        self.pushButton_year.clicked.connect(self.set_current_year_dates)
+        self.pushButton_report_manager.clicked.connect(self.open_report_manager)
         self.almanac.clicked.connect(self.open_almanac)
+        self.pushButton_print_patient_list.clicked.connect(self.print_patients_list)
+        self.pushButton_print_patient_list_2.clicked.connect(self.print_patients_list_for_discharge)
+        self.pushButton_print_lists.clicked.connect(self.print_docs_lists)
         # HotKeys
         self.refresh_pt_list.setShortcut('Return')
         self.pushButtonOpenArchive.setShortcut('Return')
@@ -210,12 +207,14 @@ class Ui_MainMenu(QtWidgets.QWidget,
                 # создаем кнопку
                 button = QPushButton('open')
                 button.clicked.connect(self.open_patient_card)
+                button.setStyleSheet(button_other)
                 # определяем полноту истории
                 fullness = read_fullness_db(data[i]["case_id"])
                 percent = calc_percent_fullness(fullness)
                 progress = QProgressBar()
                 progress.setValue(percent)
                 progress.setTextVisible(False)
+                progress.setStyleSheet(progress_style_other)
 
                 # заполняем ячейки
                 table.setCellWidget(i, 0, progress)
@@ -288,6 +287,7 @@ class Ui_MainMenu(QtWidgets.QWidget,
                 # создаем кнопку
                 button = QPushButton('open')
                 button.clicked.connect(self.open_patient_card_from_archive)
+                button.setStyleSheet(button_other)
                 # заполняем ячейки
                 table.setCellWidget(i, 0, button)
                 if data[i]["type_hosp"] == 'Круглосуточный стационар':

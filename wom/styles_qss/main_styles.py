@@ -101,3 +101,59 @@ style_true_button = "QPushButton {\
                          background-color: #EEEEEE;\
                          border: 1px solid rgba(50, 98, 115, 255);\
                          }"
+
+
+progress_style_own = "QProgressBar::chunk {\
+                          background-color: rgba(112, 38, 50, 190);\
+                      }"
+
+
+progress_style_other = "QProgressBar::chunk {\
+                            background-color: rgba(50, 98, 115, 190);\
+                        }"
+
+
+button_own = "QPushButton {\
+                  background-color: rgba(112, 38, 50, 190);\
+                  font-size: 9pt;\
+                  color: White;\
+                  border: None;\
+              }\
+              \
+              QPushButton::hover {\
+                  background-color: rgba(112, 38, 50, 255);\
+                  border: 2px solid rgba(145, 47, 64, 255);\
+              }\
+              \
+              QPushButton::pressed {\
+                  background-color: rgba(145, 47, 64, 255);\
+                  border: 1px solid rgba(255, 255, 255, 255);\
+              }\
+              \
+              QPushButton::disabled {\
+                  background-color: #EEEEEE;\
+                  border: 1px solid rgba(112, 38, 50, 255);\
+              }"
+
+
+button_other = "QPushButton {\
+                    background-color: rgba(50, 98, 115, 190);\
+                    font-size: 9pt;\
+                    color: White;\
+                    border: None;\
+                }\
+                \
+                QPushButton::hover {\
+                    background-color: rgba(50, 98, 115, 255);\
+                    border: 2px solid rgba(92, 158, 173, 255);\
+                }\
+                \
+                QPushButton::pressed {\
+                    background-color: rgba(92, 158, 173, 255);\
+                    border: 1px solid rgba(255, 255, 255, 255);\
+                }\
+                \
+                QPushButton::disabled {\
+                    background-color: #EEEEEE;\
+                    border: 1px solid rgba(50, 98, 115, 190);\
+                }"

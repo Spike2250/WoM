@@ -233,9 +233,11 @@ def create_patients_list_for_discharge(data):
             sicklist_check = ''
 
         if type_h == 'КС':
-            bed_days = str(datedif(patient[1], patient[2]) - 1)
+            bed_days = str(
+                datedif(patient['adm_date'], patient['dis_date']) - 1)
         elif type_h == 'ДС':
-            bed_days = str(datedif(patient[1], patient[2]))
+            bed_days = str(
+                datedif(patient['adm_date'], patient['dis_date']))
         else:
             bed_days = ''
 
@@ -535,7 +537,7 @@ def creating_file_pt_list(d, filetype):
     # создание файла по шаблону на основе словаря
     doc.render(d)
     # # создаем папки на пути к файлу
-    os.makedirs(filepath, exist_ok=False)
+    os.makedirs(Path(Path.cwd(), PATH_LISTS), exist_ok=True)
     # сохранение файла по указанному пути, с указанным именем
     doc.save(filepath)
 
@@ -563,6 +565,6 @@ def creating_file_doc_lists(d):
     # создание файла по шаблону на основе словаря
     doc.render(d)
     # # создаем папки на пути к файлу
-    os.makedirs(filepath, exist_ok=False)
+    os.makedirs(Path(Path.cwd(), PATH_LISTS), exist_ok=True)
     # сохранение файла по указанному пути, с указанным именем
     doc.save(filepath)
