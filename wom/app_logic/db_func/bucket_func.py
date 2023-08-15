@@ -1,5 +1,5 @@
 import boto3
-from wom.app_logic.db_func.db_omr import DATABASE
+# from wom.app_logic.db_func.db_omr import DATABASE
 from env import aws_access_key_id, aws_secret_access_key
 
 
@@ -64,6 +64,28 @@ def download_db_from_bucket(bucket_name, db_name):
     print(f'База данных {db_name} успешно скачана из bucket YandexCloud')
 
 
+def define_database(type_):
+    match type_:
+        case 'omr':
+            from wom.app_logic.db_func.db_omr import DATABASE as omr
+            database = omr.split('/')[1]
+        case 'bta':
+            from wom.app_logic.db_func.db_bta import DATABASE as bta
+            database = bta.split('/')[1]
+    return database
+
+
+def download_db_from_yandex_cloud_bucket(type_):
+    def wrapper(func):
+        def inner(*args, **kwargs):
+            DATABASE = define_database(type_)
+            download_db_from_bucket(bucket_name=BUCKET_MAIN,
+                                    db_name=DATABASE)
+            func(*args, **kwargs)
+        return inner
+    return wrapper
+
+
 def download_case_from_yandex_cloud_bucket(type_):
     def wrapper(read_d):
         def inner(*args, **kwargs):
@@ -78,6 +100,7 @@ def download_case_from_yandex_cloud_bucket(type_):
 def upload_history_to_yandex_cloud_bucket(type_):
     def wrapper(save_history):
         def inner(d):
+            DATABASE = define_database(type_)
             # скачиваем актуальную БД из бакета
             # (для минимизации возможного расхождения с уже скачаной)
             download_db_from_bucket(bucket_name=BUCKET_MAIN,

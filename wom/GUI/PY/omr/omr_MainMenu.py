@@ -31,7 +31,9 @@ class Ui_omr_main_menu(object):
         omr_main_menu.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_7 = QVBoxLayout(omr_main_menu)
+        self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(2, 2, 2, 2)
         self.main_frame = QFrame(omr_main_menu)
         self.main_frame.setObjectName(u"main_frame")
         self.verticalLayout_6 = QVBoxLayout(self.main_frame)
@@ -629,9 +631,10 @@ class Ui_omr_main_menu(object):
         self.tabWidget.setIconSize(QSize(28, 28))
         self.actual = QWidget()
         self.actual.setObjectName(u"actual")
+        self.verticalLayout_8 = QVBoxLayout(self.actual)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.frame_actual = QFrame(self.actual)
         self.frame_actual.setObjectName(u"frame_actual")
-        self.frame_actual.setGeometry(QRect(0, 0, 981, 631))
         self.verticalLayout_2 = QVBoxLayout(self.frame_actual)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.refreshing_active_list = QFrame(self.frame_actual)
@@ -1244,14 +1247,18 @@ class Ui_omr_main_menu(object):
 
         self.verticalLayout_2.addWidget(self.refreshing_active_list)
 
+
+        self.verticalLayout_8.addWidget(self.frame_actual)
+
         icon11 = QIcon()
         icon11.addFile(u":/icon/icons/view_list_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.tabWidget.addTab(self.actual, icon11, "")
         self.archive = QWidget()
         self.archive.setObjectName(u"archive")
+        self.verticalLayout_9 = QVBoxLayout(self.archive)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.frame_archive = QFrame(self.archive)
         self.frame_archive.setObjectName(u"frame_archive")
-        self.frame_archive.setGeometry(QRect(0, 0, 981, 631))
         self.verticalLayout_4 = QVBoxLayout(self.frame_archive)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.archive_list = QFrame(self.frame_archive)
@@ -1650,6 +1657,9 @@ class Ui_omr_main_menu(object):
         self.tableWidget_archive_bd.horizontalHeader().setDefaultSectionSize(100)
 
         self.verticalLayout_4.addWidget(self.tableWidget_archive_bd)
+
+
+        self.verticalLayout_9.addWidget(self.frame_archive)
 
         icon12 = QIcon()
         icon12.addFile(u":/icon/icons/person_search_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)

@@ -3519,7 +3519,7 @@ border: 1px solid rgba(50, 98, 115, 255);
               </property>
               <property name="icon">
                <iconset resource="../res_main.qrc">
-                <normaloff>:/icon/icons/personal_injury_FILL1_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/personal_injury_FILL1_wght400_GRAD0_opsz48.svg</iconset>
+                <normaloff>:/icon/icons/wheelchair_pickup_white_36dp.svg</normaloff>:/icon/icons/wheelchair_pickup_white_36dp.svg</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -5597,6 +5597,10 @@ border: 1px solid rgba(50, 98, 115, 255);
               <property name="text">
                <string>Объективный статус</string>
               </property>
+              <property name="icon">
+               <iconset resource="../res_main.qrc">
+                <normaloff>:/icon/icons/stethoscope_FILL0_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/stethoscope_FILL0_wght400_GRAD0_opsz48.svg</iconset>
+              </property>
               <property name="iconSize">
                <size>
                 <width>28</width>
@@ -6099,6 +6103,10 @@ border: 1px solid rgba(50, 98, 115, 255);
               </property>
               <property name="text">
                <string>Неврологический статус</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../res_main.qrc">
+                <normaloff>:/icon/icons/neurology_FILL0_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/neurology_FILL0_wght400_GRAD0_opsz48.svg</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -6603,6 +6611,10 @@ border: 1px solid rgba(50, 98, 115, 255);
               <property name="text">
                <string>Диагноз и шкалы</string>
               </property>
+              <property name="icon">
+               <iconset resource="../res_main.qrc">
+                <normaloff>:/icon/icons/clinical_notes_FILL0_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/clinical_notes_FILL0_wght400_GRAD0_opsz48.svg</iconset>
+              </property>
               <property name="iconSize">
                <size>
                 <width>28</width>
@@ -7105,6 +7117,10 @@ border: 1px solid rgba(50, 98, 115, 255);
               </property>
               <property name="text">
                <string>МДРК (с МКФ)</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../res_main.qrc">
+                <normaloff>:/icon/icons/wheelchair_pickup_white_36dp.svg</normaloff>:/icon/icons/wheelchair_pickup_white_36dp.svg</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -8116,6 +8132,10 @@ border: 1px solid rgba(50, 98, 115, 255);
               <property name="text">
                <string>Рекомендации при выписке</string>
               </property>
+              <property name="icon">
+               <iconset resource="../res_main.qrc">
+                <normaloff>:/icon/icons/list_white_36dp.svg</normaloff>:/icon/icons/list_white_36dp.svg</iconset>
+              </property>
               <property name="iconSize">
                <size>
                 <width>28</width>
@@ -8393,7 +8413,7 @@ QRadioButton::indicator:!checked {
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>25</height>
+                    <height>0</height>
                    </size>
                   </property>
                   <property name="palette">
@@ -8845,6 +8865,9 @@ QRadioButton::indicator:!checked {
                     <bold>false</bold>
                    </font>
                   </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::RightToLeft</enum>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">QPushButton {
 background-color: rgba(50, 98, 115, 190);
@@ -8871,6 +8894,16 @@ color:  rgba(50, 98, 115, 150);
                   </property>
                   <property name="text">
                    <string>Создать дневники</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../res_main.qrc">
+                    <normaloff>:/icon/icons/edit_white_36dp.svg</normaloff>:/icon/icons/edit_white_36dp.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>32</width>
+                    <height>32</height>
+                   </size>
                   </property>
                  </widget>
                 </item>
@@ -9618,6 +9651,16 @@ color:  rgba(50, 98, 115, 150);
                   </property>
                   <property name="text">
                    <string>Создать новое</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../res_main.qrc">
+                    <normaloff>:/icon/icons/add_white_36dp.svg</normaloff>:/icon/icons/add_white_36dp.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>32</width>
+                    <height>32</height>
+                   </size>
                   </property>
                  </widget>
                 </item>
@@ -24155,7 +24198,8 @@ border: none;</string>
           <widget class="QFrame" name="frame_6">
            <property name="styleSheet">
             <string notr="true">background-color: rgba(50, 98, 115, 100);
-color: White</string>
+color: White;
+font-size: 9pt;</string>
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout">
             <property name="spacing">
@@ -24184,7 +24228,7 @@ color: White</string>
               <property name="font">
                <font>
                 <family>Roboto</family>
-                <pointsize>11</pointsize>
+                <pointsize>9</pointsize>
                 <bold>false</bold>
                </font>
               </property>

@@ -21,7 +21,8 @@ from wom.app_logic.writing.lists import (open_folder_patients_lists,
                                          create_doc_lists,
                                          creating_file_pt_list,
                                          creating_file_doc_lists)
-from wom.app_logic.db_func.bucket_func import download_case_from_yandex_cloud_bucket  # noqa: E501
+from wom.app_logic.db_func.bucket_func import (download_case_from_yandex_cloud_bucket,  # noqa: E501
+                                               download_db_from_yandex_cloud_bucket)  # noqa: E501
 
 
 # Окно основного меню
@@ -159,15 +160,14 @@ class Ui_MainMenu(QtWidgets.QWidget,
         uin = table.item(index, uin_pos).text()
         self.reading_dict_and_open_card(uin)
 
-    @download_case_from_yandex_cloud_bucket('omr')
+    # @download_case_from_yandex_cloud_bucket('omr')
     def reading_dict_and_open_card(self, uin):
         # загружаем данные в словарь
         self.d = read_d_from_db(uin)
         self.open_window('patient_card')
 
+    # @download_db_from_yandex_cloud_bucket('omr')
     def show_active_cases(self):
-        # скачиваем БД из бакета
-        # download_db_from_bucket(bucket_main, name_db_online)
         # определяем критерии поиска
         find = self.lineEdit_find_active.text().lower()
         # читаем БД и получаем список кортежей активных случаев
@@ -240,13 +240,13 @@ class Ui_MainMenu(QtWidgets.QWidget,
         else:
             self.label_act_pt.setText('Не найден ни один активный случай')
 
+    @download_db_from_yandex_cloud_bucket('omr')
     def show_archive_cases(self):
-        # скачиваем БД из бакета
-        # download_db_from_bucket(bucket_main, name_db_online)
         # определяем критерии поиска
         dates = (
             c_date(self.dateEdit_find_1.dateTime().toString('dd.MM.yyyy')),
-            c_date(self.dateEdit_find_2.dateTime().toString('dd.MM.yyyy')))
+            c_date(self.dateEdit_find_2.dateTime().toString('dd.MM.yyyy'))
+        )
         find = self.lineEdit.text().lower()
         # читаем БД и получаем список кортежей случаев
         data = read_db_archive_cases()
@@ -265,12 +265,12 @@ class Ui_MainMenu(QtWidgets.QWidget,
             new_data = []
             # определяем критерий поиска по датам
             if self.radioButton_admission.isChecked():
-                j = 1  # дата поступления
+                date = 'adm_date'
             elif self.radioButton_discharge.isChecked():
-                j = 2  # дата выписки
+                date = 'dis_date'
             # собираем новый список кортежей по критериям поиска
             for case in data:
-                if dates[0] <= c_date(case[j]) <= dates[1]:
+                if dates[0] <= c_date(case[date]) <= dates[1]:
                     if find in case["full_name"].lower():
                         new_data.append(case)
             data = new_data

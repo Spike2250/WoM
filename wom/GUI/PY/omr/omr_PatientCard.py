@@ -811,7 +811,7 @@ class Ui_omr_patient_card(object):
 "\n"
 "")
         icon5 = QIcon()
-        icon5.addFile(u":/icon/icons/personal_injury_FILL1_wght400_GRAD0_opsz48.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(u":/icon/icons/wheelchair_pickup_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.pushButtonOpen_mdrk.setIcon(icon5)
         self.pushButtonOpen_mdrk.setIconSize(QSize(28, 28))
 
@@ -1197,6 +1197,7 @@ class Ui_omr_patient_card(object):
 "}\n"
 "\n"
 "")
+        self.pushButtonOpenPtObjStatusDischarge.setIcon(icon1)
         self.pushButtonOpenPtObjStatusDischarge.setIconSize(QSize(28, 28))
 
         self.verticalLayout_2.addWidget(self.pushButtonOpenPtObjStatusDischarge)
@@ -1286,6 +1287,7 @@ class Ui_omr_patient_card(object):
 "}\n"
 "\n"
 "")
+        self.pushButtonOpenPtNeuralStatusDischarge.setIcon(icon2)
         self.pushButtonOpenPtNeuralStatusDischarge.setIconSize(QSize(28, 28))
 
         self.verticalLayout_2.addWidget(self.pushButtonOpenPtNeuralStatusDischarge)
@@ -1375,6 +1377,7 @@ class Ui_omr_patient_card(object):
 "}\n"
 "\n"
 "")
+        self.pushButtonOpenPtDiagnosisDischarge.setIcon(icon3)
         self.pushButtonOpenPtDiagnosisDischarge.setIconSize(QSize(28, 28))
 
         self.verticalLayout_2.addWidget(self.pushButtonOpenPtDiagnosisDischarge)
@@ -1464,6 +1467,7 @@ class Ui_omr_patient_card(object):
 "}\n"
 "\n"
 "")
+        self.pushButtonOpen_icf_dis.setIcon(icon5)
         self.pushButtonOpen_icf_dis.setIconSize(QSize(28, 28))
 
         self.verticalLayout_2.addWidget(self.pushButtonOpen_icf_dis)
@@ -1645,6 +1649,9 @@ class Ui_omr_patient_card(object):
 "}\n"
 "\n"
 "")
+        icon7 = QIcon()
+        icon7.addFile(u":/icon/icons/list_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonOpenPtDischargeRecommend.setIcon(icon7)
         self.pushButtonOpenPtDischargeRecommend.setIconSize(QSize(28, 28))
 
         self.verticalLayout_2.addWidget(self.pushButtonOpenPtDischargeRecommend)
@@ -1811,7 +1818,7 @@ class Ui_omr_patient_card(object):
 
         self.pushButton_create_diaries = QPushButton(self.frame_diaries_main)
         self.pushButton_create_diaries.setObjectName(u"pushButton_create_diaries")
-        self.pushButton_create_diaries.setMinimumSize(QSize(0, 25))
+        self.pushButton_create_diaries.setMinimumSize(QSize(0, 0))
         palette15 = QPalette()
         palette15.setBrush(QPalette.Active, QPalette.WindowText, brush)
         brush12 = QBrush(QColor(50, 98, 115, 190))
@@ -1877,6 +1884,7 @@ class Ui_omr_patient_card(object):
 #endif
         self.pushButton_create_diaries.setPalette(palette15)
         self.pushButton_create_diaries.setFont(font1)
+        self.pushButton_create_diaries.setLayoutDirection(Qt.RightToLeft)
         self.pushButton_create_diaries.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 11pt;\n"
@@ -1899,6 +1907,10 @@ class Ui_omr_patient_card(object):
 "border: 1px solid rgba(50, 98, 115, 150);\n"
 "color:  rgba(50, 98, 115, 150);\n"
 "}")
+        icon8 = QIcon()
+        icon8.addFile(u":/icon/icons/edit_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_create_diaries.setIcon(icon8)
+        self.pushButton_create_diaries.setIconSize(QSize(32, 32))
 
         self.gridLayout_3.addWidget(self.pushButton_create_diaries, 2, 2, 1, 1)
 
@@ -2123,6 +2135,10 @@ class Ui_omr_patient_card(object):
 "border: 1px solid rgba(50, 98, 115, 150);\n"
 "color:  rgba(50, 98, 115, 150);\n"
 "}")
+        icon9 = QIcon()
+        icon9.addFile(u":/icon/icons/add_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonAddEvent.setIcon(icon9)
+        self.pushButtonAddEvent.setIconSize(QSize(32, 32))
 
         self.gridLayout.addWidget(self.pushButtonAddEvent, 2, 2, 1, 1)
 
@@ -2159,9 +2175,9 @@ class Ui_omr_patient_card(object):
 
         self.gridLayout_7.addItem(self.verticalSpacer_11, 2, 0, 1, 1)
 
-        icon7 = QIcon()
-        icon7.addFile(u":/icon/icons/auto_stories_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.tabPtCard.addTab(self.Page_event_diaries, icon7, "")
+        icon10 = QIcon()
+        icon10.addFile(u":/icon/icons/auto_stories_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.tabPtCard.addTab(self.Page_event_diaries, icon10, "")
         self.Page_creating_docs = QWidget()
         self.Page_creating_docs.setObjectName(u"Page_creating_docs")
         self.gridLayout_6 = QGridLayout(self.Page_creating_docs)
@@ -2975,9 +2991,9 @@ class Ui_omr_patient_card(object):
 "background-color: rgba(92, 158, 173, 255);\n"
 "border: 1px solid rgba(255, 255, 255, 255);\n"
 "}")
-        icon8 = QIcon()
-        icon8.addFile(u":/icon/icons/note_add_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonCreateDocument.setIcon(icon8)
+        icon11 = QIcon()
+        icon11.addFile(u":/icon/icons/note_add_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonCreateDocument.setIcon(icon11)
         self.pushButtonCreateDocument.setIconSize(QSize(30, 30))
 
         self.gridLayout_4.addWidget(self.pushButtonCreateDocument, 19, 1, 1, 3)
@@ -6122,9 +6138,9 @@ class Ui_omr_patient_card(object):
 "background-color: rgba(92, 158, 173, 255);\n"
 "border: 1px solid rgba(255, 255, 255, 255);\n"
 "}")
-        icon9 = QIcon()
-        icon9.addFile(u":/icon/icons/folder_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonOpenFolder.setIcon(icon9)
+        icon12 = QIcon()
+        icon12.addFile(u":/icon/icons/folder_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonOpenFolder.setIcon(icon12)
         self.pushButtonOpenFolder.setIconSize(QSize(32, 32))
 
         self.gridLayout_5.addWidget(self.pushButtonOpenFolder, 2, 1, 1, 1)
@@ -6160,16 +6176,17 @@ class Ui_omr_patient_card(object):
 
         self.gridLayout_6.addItem(self.verticalSpacer_7, 4, 0, 1, 1)
 
-        icon10 = QIcon()
-        icon10.addFile(u":/icon/icons/print_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.tabPtCard.addTab(self.Page_creating_docs, icon10, "")
+        icon13 = QIcon()
+        icon13.addFile(u":/icon/icons/print_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.tabPtCard.addTab(self.Page_creating_docs, icon13, "")
 
         self.verticalLayout_6.addWidget(self.tabPtCard)
 
         self.frame_6 = QFrame(self.center)
         self.frame_6.setObjectName(u"frame_6")
         self.frame_6.setStyleSheet(u"background-color: rgba(50, 98, 115, 100);\n"
-"color: White")
+"color: White;\n"
+"font-size: 9pt;")
         self.horizontalLayout = QHBoxLayout(self.frame_6)
         self.horizontalLayout.setSpacing(5)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -6177,7 +6194,11 @@ class Ui_omr_patient_card(object):
         self.label_status = QLabel(self.frame_6)
         self.label_status.setObjectName(u"label_status")
         self.label_status.setMaximumSize(QSize(16777215, 30))
-        self.label_status.setFont(font1)
+        font8 = QFont()
+        font8.setFamilies([u"Roboto"])
+        font8.setPointSize(9)
+        font8.setBold(False)
+        self.label_status.setFont(font8)
 
         self.horizontalLayout.addWidget(self.label_status)
 
@@ -6240,11 +6261,11 @@ class Ui_omr_patient_card(object):
         palette46.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush9)
 #endif
         self.pushButtonOpenLogs.setPalette(palette46)
-        font8 = QFont()
-        font8.setFamilies([u"Roboto"])
-        font8.setPointSize(14)
-        font8.setBold(False)
-        self.pushButtonOpenLogs.setFont(font8)
+        font9 = QFont()
+        font9.setFamilies([u"Roboto"])
+        font9.setPointSize(14)
+        font9.setBold(False)
+        self.pushButtonOpenLogs.setFont(font9)
         self.pushButtonOpenLogs.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 14pt;\n"
@@ -6378,9 +6399,9 @@ class Ui_omr_patient_card(object):
 "border: 1px solid rgba(50, 98, 115, 150);\n"
 "color:  rgba(50, 98, 115, 150);\n"
 "}")
-        icon11 = QIcon()
-        icon11.addFile(u":/icon/icons/info_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonHelp.setIcon(icon11)
+        icon14 = QIcon()
+        icon14.addFile(u":/icon/icons/info_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonHelp.setIcon(icon14)
 
         self.verticalLayout_7.addWidget(self.pushButtonHelp)
 
@@ -6532,7 +6553,7 @@ class Ui_omr_patient_card(object):
         palette49.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush9)
 #endif
         self.pushButtonNotSaveExit.setPalette(palette49)
-        self.pushButtonNotSaveExit.setFont(font8)
+        self.pushButtonNotSaveExit.setFont(font9)
         self.pushButtonNotSaveExit.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 14pt;\n"
@@ -6556,9 +6577,9 @@ class Ui_omr_patient_card(object):
 "}\n"
 "\n"
 "")
-        icon12 = QIcon()
-        icon12.addFile(u":/icon/icons/block_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonNotSaveExit.setIcon(icon12)
+        icon15 = QIcon()
+        icon15.addFile(u":/icon/icons/block_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonNotSaveExit.setIcon(icon15)
         self.pushButtonNotSaveExit.setIconSize(QSize(32, 32))
 
         self.verticalLayout_7.addWidget(self.pushButtonNotSaveExit)
@@ -6621,7 +6642,7 @@ class Ui_omr_patient_card(object):
         palette50.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush9)
 #endif
         self.pushButtonSave.setPalette(palette50)
-        self.pushButtonSave.setFont(font8)
+        self.pushButtonSave.setFont(font9)
         self.pushButtonSave.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 14pt;\n"
@@ -6645,9 +6666,9 @@ class Ui_omr_patient_card(object):
 "}\n"
 "\n"
 "")
-        icon13 = QIcon()
-        icon13.addFile(u":/icon/icons/save_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonSave.setIcon(icon13)
+        icon16 = QIcon()
+        icon16.addFile(u":/icon/icons/save_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonSave.setIcon(icon16)
         self.pushButtonSave.setIconSize(QSize(25, 25))
 
         self.verticalLayout_7.addWidget(self.pushButtonSave)
@@ -6712,7 +6733,7 @@ class Ui_omr_patient_card(object):
         palette51.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush9)
 #endif
         self.pushButtonSaveExit.setPalette(palette51)
-        self.pushButtonSaveExit.setFont(font8)
+        self.pushButtonSaveExit.setFont(font9)
         self.pushButtonSaveExit.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(92, 158, 173, 255);\n"
 "font-size: 14pt;\n"
@@ -6734,7 +6755,7 @@ class Ui_omr_patient_card(object):
 "background-color: #EEEEEE;\n"
 "border: 1px solid rgba(50, 98, 115, 255);\n"
 "}")
-        self.pushButtonSaveExit.setIcon(icon13)
+        self.pushButtonSaveExit.setIcon(icon16)
         self.pushButtonSaveExit.setIconSize(QSize(36, 36))
 
         self.verticalLayout_7.addWidget(self.pushButtonSaveExit)
