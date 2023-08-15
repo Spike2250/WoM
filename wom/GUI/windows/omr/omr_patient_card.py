@@ -15,6 +15,7 @@ from wom.app_logic.db_func.db_omr import (write_all_data_to_db,
                                           write_scale_table)
 from wom.app_logic.db_func.bucket_func import upload_history_to_yandex_cloud_bucket  # noqa: E501
 from wom.styles_qss.main_styles import (style_true_button as style_True,
+                                        button_other,
                                         label_style_diabet,
                                         label_style_b20,
                                         label_style_act,
@@ -34,7 +35,9 @@ class Ui_PatientCard(QtWidgets.QWidget,
 
         # self.setWindowFlags(Qt.FramelessWindowHint)  # окно без рамки
 
-        main_win.setWindowTitle('Тестовая строка заголовка')
+        msg = "World of Medicine - Отделение медицинской \
+               реабилитации - Медицинская карта пациента"
+        main_win.setWindowTitle(msg)
         objectTitleBar = main_win.titleBar
         objectTitleBar.signalButtonMy.connect(self.onButtonMy)
 
@@ -619,7 +622,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
             self.label_dis_check.setText(text)
             self.label_dis_check.setStyleSheet(label_style_act)
         else:
-            text = f"Пациент выписан {self.d['дата_выписки']}. "\
+            text = f"Пациент выписан {self.d['дата_выписки']}.\n"\
                    f"История находится в архиве."
             self.label_dis_check.setText(text)
             self.label_dis_check.setStyleSheet(label_style_dis)
@@ -678,7 +681,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
                               f" - {self.d['дневники_табл'][i][1]}"
                 # создаем кнопку
                 button = QPushButton(button_name)
-                button.setStyleSheet(style_True)
+                button.setStyleSheet(button_other)
                 # соединяем кнопку с функцией открытия истории болезни
                 button.clicked.connect(self.open_dairy)
                 # заполняем остальные ячейки данными из БД

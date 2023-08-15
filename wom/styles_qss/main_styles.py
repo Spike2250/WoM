@@ -72,7 +72,7 @@ label_style_act = "QLabel {\
 
 label_style_ln = "QLabel {\
                       color: #EEEEEE;\
-                      background-color: rgba(112, 38, 50, 255);\
+                      background-color: rgba(92, 158, 173, 200);\
                       border-style:solid;\
                       border-width: 1px;\
                       border-color: rgba(145, 47, 64, 255);\
