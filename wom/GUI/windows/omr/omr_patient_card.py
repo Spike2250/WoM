@@ -35,8 +35,8 @@ class Ui_PatientCard(QtWidgets.QWidget,
 
         # self.setWindowFlags(Qt.FramelessWindowHint)  # окно без рамки
 
-        msg = "World of Medicine - Отделение медицинской \
-               реабилитации - Медицинская карта пациента"
+        msg = "World of Medicine - Отделение медицинской "\
+              "реабилитации - Медицинская карта пациента"
         main_win.setWindowTitle(msg)
         objectTitleBar = main_win.titleBar
         objectTitleBar.signalButtonMy.connect(self.onButtonMy)
