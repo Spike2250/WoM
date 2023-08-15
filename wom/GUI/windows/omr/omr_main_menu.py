@@ -160,7 +160,7 @@ class Ui_MainMenu(QtWidgets.QWidget,
         uin = table.item(index, uin_pos).text()
         self.reading_dict_and_open_card(uin)
 
-    # @download_case_from_yandex_cloud_bucket('omr')
+    @download_case_from_yandex_cloud_bucket('omr')
     def reading_dict_and_open_card(self, uin):
         # загружаем данные в словарь
         self.d = read_d_from_db(uin)
@@ -240,7 +240,7 @@ class Ui_MainMenu(QtWidgets.QWidget,
         else:
             self.label_act_pt.setText('Не найден ни один активный случай')
 
-    @download_db_from_yandex_cloud_bucket('omr')
+    # @download_db_from_yandex_cloud_bucket('omr')
     def show_archive_cases(self):
         # определяем критерии поиска
         dates = (
