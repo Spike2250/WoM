@@ -1,20 +1,24 @@
-from wom.GUI.windows.omr import (omr_main_menu,
-                                 omr_add_new_patient,
-                                 omr_patient_card,
-                                 omr_passport_data,
-                                 # omr_
-                                 )
-from wom.GUI.windows.bta import (bta_main_menu,
-                                 bta_add_new_patient,
-                                 bta_patient_card,
-                                 bta_passport_data,
-                                 bta_obj_status,
-                                 bta_neur_status,
-                                 bta_diagnosis,
-                                 bta_protocol,
-                                 # bta_recommends,
-                                 bta_discharge_details)
 from wom.GUI.windows.FramelessWindow import FramelessWindow
+from wom.GUI.windows\
+    .omr import (omr_main_menu,
+                 omr_add_new_patient,
+                 omr_patient_card,
+                 omr_passport_data,
+                 omr_add_relative,
+                 )
+from wom.GUI.windows\
+    .bta import (bta_main_menu,
+                 bta_add_new_patient,
+                 bta_patient_card,
+                 bta_passport_data,
+                 bta_obj_status,
+                 bta_neur_status,
+                 bta_diagnosis,
+                 bta_protocol,
+                 # bta_recommends,
+                 bta_discharge_details)
+from wom.GUI.windows\
+    .common import (load_arch)
 from wom.GUI.windows.test import MainWindow
 
 windows = {
@@ -24,7 +28,8 @@ windows = {
         'main_menu': omr_main_menu.Ui_MainMenu,
         'add_new_patient': omr_add_new_patient.Ui_AddNewPatient,
         'patient_card': omr_patient_card.Ui_PatientCard,
-        'passport': omr_passport_data.Ui_PatientPassportData
+        'passport': omr_passport_data.Ui_PatientPassportData,
+        'add_relative': omr_add_relative.Ui_AddRelative
     },
     'bta': {
         'main_menu': bta_main_menu.Ui_MainMenu,
@@ -39,6 +44,7 @@ windows = {
         'dis_details': bta_discharge_details.Ui_Discharge_details
     },
     'common': {
-        'main_menu': ''
+        'main_menu': '',
+        'load_arch': load_arch.Ui_load_arch_data,
     }
 }

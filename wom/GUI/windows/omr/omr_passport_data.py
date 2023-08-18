@@ -3,7 +3,7 @@ from PySide6 import QtWidgets, QtCore
 from wom.GUI.PY.omr import omr_PatientPassportData
 from wom.app_logic.create_docs import (creating_documents,
                                        open_folder_with_files)
-from wom.app_logic.db_func.db_omr import (write_all_data_to_db)
+from wom.app_logic.db_func.db_omr import (write_omr_table)
 from wom.app_logic.writing.postprocessing\
     .passport import update_after_passport_data
 
@@ -104,17 +104,22 @@ class Ui_PatientPassportData(QtWidgets.QWidget,
         self.d['дата_рождения'] = self.dateEdit_birthday\
             .dateTime().toString('dd.MM.yyyy')
         self.d['пол'] = self.comboBox_gender.currentText()
-        self.d['не_может_подписаться'] = self.checkBox_signature_cant.isChecked()  # noqa: E501
+        self.d['не_может_подписаться'] = self\
+            .checkBox_signature_cant.isChecked()
 
     def open_window(self, name):
         win = self.windows['Frameless']()
-        win.setWidget(self.windows['omr'][name](
-            windows=self.windows, main_win=win, dictionary=self.d))
+        win.setWidget(
+            self.windows['omr'][name](
+                windows=self.windows,
+                main_win=win,
+                dictionary=self.d))
         win.show()
 
     def add_patient_relative(self):
         self.write_to_dictionary()
         self.open_window('add_relative')
+        self.main_win.close()
 
     def exit(self):
         self.open_window('patient_card')
@@ -122,7 +127,7 @@ class Ui_PatientPassportData(QtWidgets.QWidget,
 
     def exit_and_save(self):
         self.write_to_dictionary()
-        write_all_data_to_db(self.d)
+        write_omr_table(self.d)
         self.exit()
 
     def set_styles(self):

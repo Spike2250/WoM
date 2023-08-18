@@ -345,15 +345,20 @@ class Ui_MainMenu(QtWidgets.QWidget,
 
     def open_window(self, name):
         win = self.windows['Frameless']()
-        win.setWidget(self.windows['omr'][name](
-            windows=self.windows, main_win=win, dictionary=self.d))
+        win.setWidget(
+            self.windows['omr'][name](
+                windows=self.windows,
+                main_win=win,
+                dictionary=self.d))
         win.show()
         self.main_win.close()
 
     def open_almanac(self):
         win = self.windows['Frameless']()
-        win.setWidget(self.windows['common']['drugs_dictionary'](
-            windows=self.windows, main_win=win))
+        win.setWidget(
+            self.windows['common']['drugs_dictionary'](
+                windows=self.windows,
+                main_win=win))
         win.show()
         self.main_win.close()
 

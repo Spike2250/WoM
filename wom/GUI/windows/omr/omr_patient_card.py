@@ -10,9 +10,7 @@ from wom.app_logic.create_docs import (list_created_docs,
                                        open_folder_with_files,
                                        creating_documents
                                        )
-from wom.app_logic.db_func.db_omr import (write_all_data_to_db,
-                                          write_fullness_table,
-                                          write_scale_table)
+from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
 from wom.app_logic.db_func.bucket_func import upload_history_to_yandex_cloud_bucket  # noqa: E501
 from wom.styles_qss.main_styles import (style_true_button as style_True,
                                         button_other,
@@ -131,8 +129,11 @@ class Ui_PatientCard(QtWidgets.QWidget,
 
     def open_window(self, name):
         win = self.windows['Frameless']()
-        win.setWidget(self.windows['omr'][name](
-            windows=self.windows, main_win=win, dictionary=self.d))
+        win.setWidget(
+            self.windows['omr'][name](
+                windows=self.windows,
+                main_win=win,
+                dictionary=self.d))
         win.show()
         self.main_win.close()
 
@@ -141,17 +142,20 @@ class Ui_PatientCard(QtWidgets.QWidget,
         i = self.tableWidget_diaries.indexAt(button.pos()).row()
 
         win = self.windows['Frameless']()
-        win.setWidget(self.windows['omr']['diary'](
-            windows=self.windows,
-            main_win=win,
-            dictionary=self.d,
-            diary_index=i))
+        win.setWidget(
+            self.windows['omr']['diary'](
+                windows=self.windows,
+                main_win=win,
+                dictionary=self.d,
+                diary_index=i))
         win.show()
 
     def close_card(self):
         win = self.windows['Frameless']()
-        win.setWidget(self.windows['omr']['main_menu'](
-            windows=self.windows, main_win=win))
+        win.setWidget(
+            self.windows['omr']['main_menu'](
+                windows=self.windows,
+                main_win=win))
         win.show()
         self.main_win.close()
 
@@ -532,13 +536,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
     @upload_history_to_yandex_cloud_bucket('omr')
     def save_history(self):
         # записываем словарь в json-файл и обновляем БД
-        write_all_data_to_db(self.d)
-        write_fullness_table(self.d)
-        write_scale_table(self.d)
-        # # выписываем "направление" к психологу и логопеду
-        # # записываются False в обе колонки
-        # if self.d['нужда_логопед_психолог']:
-        #     write_fullness_table_psylogo(d)
+        write_all_data_to_db_omr(self.d)
         # выводим сообщение об успехе сохранения
         text = '\tИстория болезни успешно сохранена на сервере!'
         self.label_status.setText(text)

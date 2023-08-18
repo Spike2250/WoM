@@ -9,6 +9,20 @@ from wom.app_logic.service_func import json_recording
 DATABASE = 'databases/bta_database.db'
 
 
+def write_all_data_to_db_bta(d):
+    write_all_data_to_bta_table(d)
+    write_fullness_table_bta(d)
+
+
+def write_dict_to_json(d):
+    if 'созданные_документы' in d:
+        d['созданные_документы'] = str(d['созданные_документы'])
+    if 'дневники_табл' in d:
+        d['дневники_табл'] = str(d['дневники_табл'])
+    json_recording(d, 'BTA')
+    print('    Словарь (d) успешно записан в JSON-файл. ')
+
+
 '''============================================================================
                     Функции для работы с базой данных БТА
 ============================================================================'''
@@ -98,14 +112,7 @@ def insert_into_db_bta(d):
         con.commit()
         print("SQLite: данные успешно добавлены. ")
         cur.close()
-        # делаем из множества / списка / словаря - строку
-        # для избежания ошибок записи и чтения
-        if 'созданные_документы' in d:
-            d['созданные_документы'] = str(d['созданные_документы'])
-        if 'дневники_табл' in d:
-            d['дневники_табл'] = str(d['дневники_табл'])
-        json_recording(d, 'BTA')
-        print('    Словарь (d) успешно записан в JSON-файл. ')
+        write_dict_to_json(d)
     except sqlite3.Error as error:
         print("Ошибка при работе с SQLite", error)
     finally:
@@ -165,13 +172,7 @@ def update_case_db_bta(d):
         con.commit()
         print("SQLite: данные успешно обновлены. ")
         cur.close()
-        # делаем из множества строку для избежания ошибок записи и чтения
-        if 'созданные_документы' in d:
-            d['созданные_документы'] = str(d['созданные_документы'])
-        if 'дневники_табл' in d:
-            d['дневники_табл'] = str(d['дневники_табл'])
-        json_recording(d, 'BTA')
-        print('    Словарь (d) успешно обновлен и записан в JSON-файл. ')
+        write_dict_to_json(d)
     except sqlite3.Error as error:
         print("Ошибка при работе с SQLite", error)
     finally:
@@ -280,7 +281,7 @@ def read_db_archive_cases_bta():
 
 
 # запись всех данных словаря в БД
-def write_all_data_to_db_bta(d):
+def write_all_data_to_bta_table(d):
     '''
     '''
     # проверяем есть ли строка в БД с таким уникальным номером

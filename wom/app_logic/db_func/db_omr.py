@@ -9,6 +9,22 @@ from wom.app_logic.service_func import json_recording
 DATABASE = 'databases/omr_database.db'
 
 
+# запись всех данных словаря в БД
+def write_all_data_to_db_omr(d):
+    write_omr_table(d)
+    write_fullness_table(d)
+    write_scale_table(d)
+
+
+def write_dict_to_json(d):
+    if 'созданные_документы' in d:
+        d['созданные_документы'] = str(d['созданные_документы'])
+    if 'дневники_табл' in d:
+        d['дневники_табл'] = str(d['дневники_табл'])
+    json_recording(d)
+    print('    Словарь (d) успешно записан в JSON-файл. ')
+
+
 '''============================================================================
                     Функции для работы с основной базой данных
 ============================================================================'''
@@ -119,14 +135,7 @@ def insert_into_db(d):
         con.commit()
         print("SQLite: данные успешно добавлены. ")
         cur.close()
-        # делаем из множества / списка / словаря - строку
-        # для избежания ошибок записи и чтения
-        if 'созданные_документы' in d:
-            d['созданные_документы'] = str(d['созданные_документы'])
-        if 'дневники_табл' in d:
-            d['дневники_табл'] = str(d['дневники_табл'])
-        json_recording(d)
-        print('    Словарь (d) успешно записан в JSON-файл. ')
+        write_dict_to_json(d)
     except sqlite3.Error as error:
         print("Ошибка при работе с SQLite", error)
     finally:
@@ -210,13 +219,7 @@ def update_case_db(d):
         con.commit()
         print("SQLite: данные успешно обновлены. ")
         cur.close()
-        # делаем из множества строку для избежания ошибок записи и чтения
-        if 'созданные_документы' in d:
-            d['созданные_документы'] = str(d['созданные_документы'])
-        if 'дневники_табл' in d:
-            d['дневники_табл'] = str(d['дневники_табл'])
-        json_recording(d, 'OMR')
-        print('    Словарь (d) успешно обновлен и записан в JSON-файл. ')
+        write_dict_to_json(d)
     except sqlite3.Error as error:
         print("Ошибка при работе с SQLite", error)
     finally:
@@ -379,7 +382,7 @@ def read_db_archive_cases():
 
 
 # запись всех данных словаря в БД
-def write_all_data_to_db(d):
+def write_omr_table(d):
     '''
     '''
     # проверяем есть ли строка в БД с таким уникальным номером

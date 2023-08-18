@@ -6,9 +6,7 @@ from wom.app_logic.service_func import (datedif, convert_date as c_date,
 from wom.app_logic.db_func.db_omr import (read_d_from_db,
                                           read_db_active_cases,
                                           read_db_archive_cases,
-                                          write_all_data_to_db,
-                                          write_fullness_table,
-                                          write_scale_table)
+                                          write_all_data_to_db_omr)
 from wom.app_logic.db_func.bucket_func import upload_history_to_yandex_cloud_bucket  # noqa: E501
 from wom.app_logic.create_docs import (creating_documents,
                                        open_folder_with_files)
@@ -40,17 +38,45 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
         # self.textEdit.append("Нажата `Своя Кнопка`!")
         pass
 
-    def open_window(self, name):
+    def open_patient_card(self):
         win = self.windows['Frameless']()
-        win.setWidget(self.windows['omr'][name](
-            windows=self.windows, main_win=win, dictionary=self.d))
+        win.setWidget(
+            self.windows['omr']['patient_card'](
+                windows=self.windows,
+                main_win=win,
+                dictionary=self.d))
+        win.show()
+        self.main_win.close()
+
+    def open_add_relative(self):
+        win = self.windows['Frameless']()
+        win.setWidget(
+            self.windows['omr']['add_relative'](
+                windows=self.windows,
+                main_win=win,
+                dictionary=self.d,
+                from_add_patient=True))
         win.show()
         self.main_win.close()
 
     def back_to_main_menu(self):
         win = self.windows['Frameless']()
-        win.setWidget(self.windows['omr']['main_menu'](
-            windows=self.windows, main_win=win))
+        win.setWidget(
+            self.windows['omr']['main_menu'](
+                windows=self.windows,
+                main_win=win))
+        win.show()
+        self.main_win.close()
+
+    def open_load_arch(self, histories, case_type):
+        win = self.windows['Frameless']()
+        win.setWidget(
+            self.windows['common']['load_arch'](
+                windows=self.windows,
+                main_win=win,
+                dictionary=self.d,
+                histories=histories,
+                case_type=case_type))
         win.show()
         self.main_win.close()
 
@@ -100,8 +126,6 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
             self.change_need_psylogo)
         self.comboBoxPtNMU_code.currentTextChanged.connect(
             self.change_nmu_desc)
-        self.comboBoxTherapist.currentTextChanged.connect(
-            self.change_button_color)
         self.dateEditDischargeDate_plan.dateChanged.connect(
             self.change_dis_info)
 
@@ -253,19 +277,6 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
                 text = f'\nНМУ: не определен'
                 self.plainTextEdit_descriptions.setPlainText(text)
 
-    def change_button_color(self):
-        doc = self.comboBoxTherapist.currentText()
-        # if doc == 'Шилов И.С.':
-        #     self.pushButtonCreateHistory.setStyleSheet(button_shilov)
-        # elif doc == 'Шадрин А.А.':
-        #     self.pushButtonCreateHistory.setStyleSheet(button_shadrin)
-        # elif doc == 'Тыричев С.В.':
-        #     self.pushButtonCreateHistory.setStyleSheet(button_tyrichev)
-        # elif doc == 'Тимофеев А.П.':
-        #     self.pushButtonCreateHistory.setStyleSheet(button_timofeev)
-        # else:
-        #     self.pushButtonCreateHistory.setStyleSheet(style_True)
-
     def change_need_psylogo(self):
         mkb10_code = self.comboBoxPtMKB10_main.currentText()
         if mkb10_code in {'I69.0', 'I69.1',
@@ -294,12 +305,7 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
 
         '''
         self.write_to_dictionary()
-        self.open_window('add_relative')
-
-    def open_patient_card(self):
-        self.w = self.windows['omr']['patient_card'](
-            windows=self.windows, main_win=self.main_win, dictionary=self.d)
-        self.w.show()
+        self.open_add_relative()
 
     def write_to_dictionary(self):
         self.d['status_act'] = True
@@ -422,7 +428,7 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
                 # загружаем в бакет YandexCloud
                 self.save_history()
                 # открываем карту пациента
-                self.open_window('patient_card')
+                self.open_patient_card()
             else:
                 text = f'      Данные заполнены не полном объеме!\n'\
                        f'Создание истории болезни отменено!\n'\
@@ -438,7 +444,7 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
                 histories.append(read_d_from_db(i))
             # записываем новые данные в словарь
             self.write_to_dictionary()
-            self.open_window('load_arch')
+            self.open_load_arch(histories, 'omr')
         # если такая история уже есть в активных
         elif isinstance(uin, str):
             # очищаем все поля
@@ -474,17 +480,16 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
 
             # выводим сообщение об отмене добавления истории
             style = "QPlainTextEdit {\
-                        font-family: Roboto;\
-                        font-size: 15px;background-color:#AF830B;\
-                    }"
+                         font-family: Roboto;\
+                         font-size: 15px;\
+                         background-color:#AF830B;\
+                     }"
             self.plainTextEdit_descriptions.setStyleSheet(style)
             self.plainTextEdit_descriptions.setPlainText(f"{uin}\n")
 
-    @upload_history_to_yandex_cloud_bucket
+    @upload_history_to_yandex_cloud_bucket('omr')
     def save_history(self):
-        write_all_data_to_db(self.d)
-        write_fullness_table(self.d)
-        write_scale_table(self.d)
+        write_all_data_to_db_omr(self.d)
 
     def parse_promed_data(self):
         if (promed := self.plainTextEdit_promed_data.toPlainText()) != '':
