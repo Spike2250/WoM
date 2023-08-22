@@ -1,4 +1,5 @@
-from wom.GUI.windows.FramelessWindow import FramelessWindow
+from wom.GUI.windows\
+    .FramelessWindow import FramelessWindow
 from wom.GUI.windows\
     .omr import (omr_main_menu,
                  omr_add_new_patient,
@@ -20,6 +21,7 @@ from wom.GUI.windows\
 from wom.GUI.windows\
     .common import (load_arch)
 from wom.GUI.windows.test import MainWindow
+
 
 windows = {
     'Frameless': FramelessWindow,

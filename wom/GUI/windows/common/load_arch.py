@@ -31,6 +31,10 @@ class Ui_load_arch_data(QtWidgets.QWidget,
         self.checkBox.stateChanged.connect(self.change_buttons)
         self.refresh_table()
 
+    def go_to_patient_card(self):
+        self.save_history()
+        self.open_patient_card()
+
     def open_patient_card(self):
         win = self.windows['Frameless']()
         win.setWidget(
@@ -42,20 +46,15 @@ class Ui_load_arch_data(QtWidgets.QWidget,
         self.main_win.close()
 
     def yes(self):
-        # подгружаем данные из архива
         index = self.is_alone_check_box()[1]
         copy_style = self.define_copy_style()
-        self.d = arch_import(self.d, self.histories[index], copy_style)
-        # загружаем в бакет YandexCloud
-        self.save_history()
-        # открываем карту пациента
-        self.open_patient_card()
+        self.d = arch_import(d=self.d,
+                             d_arch=self.histories[index],
+                             copy_style=copy_style)
+        self.go_to_patient_card()
 
     def no(self):
-        # загружаем в бакет YandexCloud
-        self.save_history()
-        # открываем историю болезни
-        self.open_patient_card()
+        self.go_to_patient_card()
 
     def save_history(self):
         match self.case_type:
