@@ -19,7 +19,8 @@ from wom.GUI.windows\
                  # bta_recommends,
                  bta_discharge_details)
 from wom.GUI.windows\
-    .common import (load_arch)
+    .common import (load_arch,
+                    obj_status_adm)
 from wom.GUI.windows.test import MainWindow
 
 
@@ -48,5 +49,6 @@ windows = {
     'common': {
         'main_menu': '',
         'load_arch': load_arch.Ui_load_arch_data,
+        'obj_status_adm': obj_status_adm.Ui_StPrObjectivus_admission,
     }
 }

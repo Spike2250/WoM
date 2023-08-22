@@ -120,7 +120,7 @@ background-color: rgba(92, 158, 173, 200)
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="../../../res_main.qrc">:/icon/icons/stethoscope_FILL0_wght400_GRAD0_opsz48.svg</pixmap>
+              <pixmap resource="../res_main.qrc">:/icon/icons/stethoscope_FILL0_wght400_GRAD0_opsz48.svg</pixmap>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -176,7 +176,7 @@ border: 1px solid rgba(50, 98, 115, 255);
           </property>
           <widget class="QWidget" name="jaloby_anamnesis_page">
            <attribute name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/message_white_36dp.svg</normaloff>:/icon/icons/message_white_36dp.svg</iconset>
            </attribute>
            <attribute name="title">
@@ -9581,7 +9581,7 @@ QCheckBox::indicator:!checked {
           </widget>
           <widget class="QWidget" name="work_page">
            <attribute name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/personal_injury_FILL1_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/personal_injury_FILL1_wght400_GRAD0_opsz48.svg</iconset>
            </attribute>
            <attribute name="title">
@@ -19200,7 +19200,7 @@ border: none;</string>
           </widget>
           <widget class="QWidget" name="obj_status">
            <attribute name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/stethoscope_FILL0_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/stethoscope_FILL0_wght400_GRAD0_opsz48.svg</iconset>
            </attribute>
            <attribute name="title">
@@ -38572,7 +38572,7 @@ color:  rgba(50, 98, 115, 150);
             <string>Help</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/info_white_36dp.svg</normaloff>:/icon/icons/info_white_36dp.svg</iconset>
            </property>
           </widget>
@@ -39072,7 +39072,7 @@ border: 1px solid rgba(50, 98, 115, 255);
 карту пациента</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/block_white_36dp.svg</normaloff>:/icon/icons/block_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -39563,7 +39563,7 @@ border: 1px solid rgba(50, 98, 115, 255);
 карту пациента</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../res_main.qrc">
+            <iconset resource="../res_main.qrc">
              <normaloff>:/icon/icons/save_white_36dp.svg</normaloff>:/icon/icons/save_white_36dp.svg</iconset>
            </property>
            <property name="iconSize">
@@ -39656,9 +39656,10 @@ border: 1px solid rgba(50, 98, 115, 255);
   <tabstop>comboBoxPtDyspnea_1</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../res_main.qrc"/>
-  <include location="../../../res_main.qrc"/>
-  <include location="../../../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
+  <include location="../res_main.qrc"/>
  </resources>
  <connections/>
 </ui>
