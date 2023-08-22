@@ -1,32 +1,63 @@
 # Копирование элементов архивной истории в новый случай
-def arch_import(d, d_arch, copy_style):
+def arch_import(d, d_arch, copy_style, add_base=True):
     # добавляем данные о базовой истории
+    if add_base:
+        add_base_info(d, d_arch)
+    # перебираем словари и записываем в новый данные из архива
+    match copy_style:
+        case 'full':
+            full_copy(d, d_arch)
+        case 'only_adm':
+            only_admition_data_copy(d, d_arch)
+        case 'dynamic':
+            dynamic_copy(d, d_arch)
+    # возващаем словарь нового случая
+    return d
+
+
+def add_base_info(d, d_arch):
     d['based_history_uic'] = d_arch['unic_number']
     based_history_info = f"{d_arch['ФИО_пациента']}, "\
                          f"{d_arch['МКБ']}, "\
                          f"{d_arch['дата_поступления']}-"\
                          f"{d_arch['дата_выписки']}"
     d['based_history_info'] = based_history_info
-    # перебираем словари и записываем в новый данные из архива
-    match copy_style:
-        case 'full':
-            for list_ in keys:
-                for key in keys[list_]:
-                    try:
-                        d[key] = d_arch[key]
-                    except KeyError:
-                        pass
-        case 'only_adm':
-            pass
-        case 'dynamic':
-            pass
-    # возващаем словарь нового случая
-    return d
 
-    # try:
-    #     d[x] = d_arch[x]
-    # except KeyError:
-    #     pass
+
+def full_copy(d, d_arch):
+    for list_ in keys:
+        for key in keys[list_]:
+            copy_d(d, d_arch, key, key)
+
+
+def only_admition_data_copy(d, d_arch):
+    copy_common_info(d, d_arch)
+    for key in keys['adm']:
+        copy_d(d, d_arch, key, key)
+
+
+def dynamic_copy(d, d_arch):
+    """копирует данные вставляя
+    архивные статус/диагноз при выписке
+    как статус/диагноз при поступлении
+    для плавного ведения пациента от случая к случаю"""
+    copy_common_info(d, d_arch)
+    for index in range(len(keys['dis'])):
+        copy_d(d, d_arch,
+               key_1=keys['adm'][index],
+               key_2=keys['dis'][index])
+
+
+def copy_common_info(d, d_arch):
+    for key in keys['common']:
+        copy_d(d, d_arch, key, key)
+
+
+def copy_d(d, d_arch, key_1, key_2):
+    try:
+        d[key_1] = d_arch[key_2]
+    except KeyError:
+        pass
 
 
 # Список ключей для перезаписи из архива
