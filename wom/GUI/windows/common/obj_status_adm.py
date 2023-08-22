@@ -1,6 +1,20 @@
 from PySide6 import QtWidgets, QtCore
 
 from wom.GUI.PY.common import StObj_admition
+from wom.app_logic.service_func import calc_BMI
+from wom.app_logic.db_func\
+    .db_st_obj_templates import (read_db_obj_template_list,
+                                 read_db_obj_template_data,
+                                 insert_obj_template_into_db,
+                                 update_obj_template_db)
+from wom.app_logic.db_func\
+    .bucket_func import (upload_history_to_yandex_cloud_bucket,
+                         upload_templates_db_from_yandex_cloud_bucket,
+                         download_templates_db_from_yandex_cloud_bucket)
+from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
+from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
+from wom.app_logic.writing.postprocessing.obj_st import update_after_obj_st
+from wom.app_logic.writing.diaries.gen import create_random_set
 
 
 # Окно жалоб и объективного статуса при поступлении
@@ -20,33 +34,74 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         self.set_connections()
         self.set_styles()
 
+    def open_patient_card(self):
+        win = self.windows['Frameless']()
+        win.setWidget(
+            self.windows[self.case_type]['patient_card'](
+                windows=self.windows,
+                main_win=win,
+                dictionary=self.d))
+        win.show()
+        self.main_win.close()
+
+    def exit_and_save(self):
+        self.save_history()
+        self.open_patient_card()
+
+    def exit(self):
+        self.open_patient_card()
+
+    def save_history(self):
+        self.write_to_dictionary()
+        match self.case_type:
+            case 'omr':
+                self.save_history_omr()
+            case 'bta':
+                self.save_history_bta()
+            case _:
+                raise ValueError
+
+    @upload_history_to_yandex_cloud_bucket('omr')
+    def save_history_omr(self):
+        write_all_data_to_db_omr(self.d)
+
+    @upload_history_to_yandex_cloud_bucket('bta')
+    def save_history_bta(self):
+        write_all_data_to_db_bta(self.d)
+
     def set_connections(self):
         # коннекты кнопок
-        self.pushButtonNotSaveExit.clicked\
-            .connect(self.exit)
-        self.pushButtonSaveExit.clicked\
-            .connect(self.exit_and_save)
-        self.pushButtonAddNewTemplateGeneralSt.clicked\
-            .connect(self.add_new_template_obj_st)
-        self.pushButton_push_temp.clicked\
-            .connect(self.push_active_template)
-        self.pushButton_add_to_diag.clicked\
-            .connect(self.add_to_diagnosis)
+        self.pushButtonNotSaveExit\
+            .clicked.connect(self.exit)
+        self.pushButtonSaveExit\
+            .clicked.connect(self.exit_and_save)
+        self.pushButton_add_to_diag\
+            .clicked.connect(self.add_to_diagnosis)
+        self.pushButton_random_values\
+            .clicked.connect(self.set_random_values)
+        self.pushButtonAddNewTemplate_jaloby\
+            .clicked.connect(self.add_new_template_jaloby)
+        self.pushButton_push_temp_jaloby\
+            .clicked.connect(self.push_active_template_jaloby)
+        self.pushButtonAddNewTemplateGeneralSt\
+            .clicked.connect(self.add_new_template_obj_st)
+        self.pushButton_push_temp\
+            .clicked.connect(self.push_active_template)
         # коннекты зависимостей
-        self.lineEditPtGrowth.textChanged\
-            .connect(self.count_imt)
-        self.lineEditPtWeight.textChanged\
-            .connect(self.count_imt)
-        self.textEditPtDrugs.textChanged\
-            .connect(self.change_drugs_combobox)
-        self.textEditPtAnamEpid.textChanged\
-            .connect(self.change_anam_epid_combobox)
-        self.textEditPtAnamAllerg.textChanged\
-            .connect(self.change_anam_aller_combobox)
-        self.checkBoxPtNeedSickList.stateChanged\
-            .connect(self.activate_first_ln_box)
-        self.checkBoxPtNeedSickList_2.stateChanged\
-            .connect(self.form_first_ln_data)
+        self.lineEditPtGrowth\
+            .textChanged.connect(self.count_imt)
+        self.lineEditPtWeight\
+            .textChanged.connect(self.count_imt)
+        self.textEditPtDrugs\
+            .textChanged.connect(self.change_drugs_combobox)
+        self.textEditPtAnamEpid\
+            .textChanged.connect(self.change_anam_epid_combobox)
+        self.textEditPtAnamAllerg\
+            .textChanged.connect(self.change_anam_aller_combobox)
+        self.checkBoxPtNeedSickList\
+            .stateChanged.connect(self.activate_first_ln_box)
+        self.checkBoxPtNeedSickList_2\
+            .stateChanged.connect(self.form_first_ln_data)
 
     def activate_first_ln_box(self):
         if self.checkBoxPtNeedSickList.isChecked():
@@ -110,10 +165,8 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                         "01.01.2000", "dd.MM.yyyy"))
                 self.comboBoxWorkList_prognosis.setCurrentText('')
 
+    @download_templates_db_from_yandex_cloud_bucket('default_templates')
     def set_templates_list(self):
-        # скачиваем БД шаблоном из бакета
-        download_db_from_bucket(bucket_main, name_db_templates)
-        # список шаблонов
         self.templates_list = read_db_obj_template_list()
         self.comboBoxGeneralStTemplate.clear()
         if len(self.templates_list) <= 1:
@@ -121,25 +174,46 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         else:
             self.comboBoxGeneralStTemplate.addItems(self.templates_list)
 
+    def set_templates_list_jaloby(self):
+        self.complaints_templates = read_templates('complaints')
+        if self.complaints_templates is not None:
+            templates_list = sorted(list(self.complaints_templates))
+            self.comboBox_jaloby_templates.clear()
+            self.comboBox_jaloby_templates.addItem('')
+            self.comboBox_jaloby_templates.addItems(templates_list)
+        else:
+            self.complaints_templates = {}
+            self.comboBox_jaloby_templates.clear()
+
     def insert_data_from_dictionary(self):
         # Заполнение всех ячеек данными, если они уже есть
         if 'Соматический_статус' in self.d:
             # Анамнез
             self.textEditPtAnamMorbi.setText(self.d['анамнез'])
-            self.comboBoxPtSocialStatus.setCurrentText(self.d['социальный_статус'])
+            self.comboBoxPtSocialStatus\
+                .setCurrentText(self.d['социальный_статус'])
             self.checkBoxPtNeedSickList.setChecked(self.d['нужда_в_ЛН'])
             if (x := 'нужда_в_ЛН_первич') in self.d:
-                self.checkBoxPtNeedSickList_2.setChecked(d[x])
+                self.checkBoxPtNeedSickList_2.setChecked(self.d[x])
             self.comboBoxWorkListInfo.setCurrentText(self.d['ЛН_инфо_нужда'])
             self.lineEditPtWorkPlace.setText(self.d['место_работы_1'])
             self.lineEditPtWorkPosition.setText(self.d['должность_1'])
             if 'ЛН_выдан_ЛПУ' in self.d:
-                self.lineEditPtWorkListNumber_issued.setText(self.d['ЛН_выдан_ЛПУ'])
-                self.comboBoxWorkList_prognosis.setCurrentText(self.d['трудовой_прогноз'])
-            self.lineEditPtWorkListNumber1_1.setText(self.d['ЛН_номер_1'])
-            self.dateEditPtWorkListDate1_1.setDate(QtCore.QDate.fromString(self.d['С какого числа ЛН на руках'], "dd.MM.yyyy"))
-            self.dateEditPtWorkListDate1_2.setDate(QtCore.QDate.fromString(self.d['По какое число продлен ЛН'], "dd.MM.yyyy"))
-            self.dateEditPtWorkListDateOpening.setDate(QtCore.QDate.fromString(self.d['первичный_лн'], "dd.MM.yyyy"))
+                self.lineEditPtWorkListNumber_issued\
+                    .setText(self.d['ЛН_выдан_ЛПУ'])
+                self.comboBoxWorkList_prognosis\
+                    .setCurrentText(self.d['трудовой_прогноз'])
+            self.lineEditPtWorkListNumber1_1\
+                .setText(self.d['ЛН_номер_1'])
+            self.dateEditPtWorkListDate1_1\
+                .setDate(QtCore.QDate.fromString(
+                    self.d['С какого числа ЛН на руках'], "dd.MM.yyyy"))
+            self.dateEditPtWorkListDate1_2\
+                .setDate(QtCore.QDate.fromString(
+                    self.d['По какое число продлен ЛН'], "dd.MM.yyyy"))
+            self.dateEditPtWorkListDateOpening\
+                .setDate(QtCore.QDate.fromString(
+                    self.d['первичный_лн'], "dd.MM.yyyy"))
             self.comboBoxPtAllergStatus.setCurrentText(self.d['аллергия_чек'])
             self.textEditPtAnamAllerg.setText(self.d['аллергия'])
             self.comboBoxPtAnamEpid.setCurrentText(self.d['эпид_анамнез_чек'])
@@ -160,8 +234,10 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
             self.checkBox_Atherosclerosis_legs.setChecked(self.d['ХАН_чек'])
             self.checkBox_Atherosclerosis_BCA.setChecked(self.d['БЦА_чек'])
             self.checkBox_other.setChecked(self.d['Другие_сопут_чек'])
-            self.textEdit_other_chronic_diseases.setText(self.d['Другие_сопут'])
-            self.comboBoxPtDrugs.setCurrentText(self.d['принимает_медикаменты_чек'])
+            self.textEdit_other_chronic_diseases\
+                .setText(self.d['Другие_сопут'])
+            self.comboBoxPtDrugs\
+                .setCurrentText(self.d['принимает_медикаменты_чек'])
             self.textEditPtDrugs.setText(self.d['принимает_медикаменты'])
             # жалобы и числовые данные
             self.textEditPtComplaints.setText(self.d['жалобы'])
@@ -174,7 +250,8 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
             self.lineEditPtTemperature.setText(str(self.d['Температура']))
             self.lineEditSaturation.setText(str(self.d['Сатурация']))
             # Общий статус
-            self.comboBoxPtGeneralState.setCurrentText(self.d['Общее_состояние'])
+            self.comboBoxPtGeneralState.setCurrentText(
+                self.d['Общее_состояние'])
             self.comboBoxPtSkinState_1.setCurrentText(self.d['кожа'])
             self.comboBoxPtSkinState_2.setCurrentText(self.d['высыпания'])
             self.comboBoxPtLymphnode.setCurrentText(self.d['лимфоузлы'])
@@ -193,7 +270,8 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
             self.comboBoxPtHearthTone_1.setCurrentText(self.d['тоны_сердца_1'])
             self.comboBoxPtHearthTone_2.setCurrentText(self.d['тоны_сердца_2'])
             self.comboBoxPtHearthTone_3.setCurrentText(self.d['тоны_сердца_3'])
-            self.comboBoxPtHearthNoiseChoice.setCurrentText(self.d['шумы_сердца_чек'])
+            self.comboBoxPtHearthNoiseChoice.setCurrentText(
+                self.d['шумы_сердца_чек'])
             self.comboBoxPtHearthNoise.setCurrentText(self.d['шумы_сердца'])
             self.comboBoxPtStomach_1.setCurrentText(self.d['живот_1'])
             self.comboBoxPtStomach_2.setCurrentText(self.d['живот_2'])
@@ -201,9 +279,12 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
             self.comboBoxPtDefecation_1.setCurrentText(self.d['стул_1'])
             self.comboBoxPtDefecation_2.setCurrentText(self.d['стул_2'])
             self.comboBoxPtDefecation_3.setCurrentText(self.d['стул_3'])
-            self.comboBoxPtUrination_1.setCurrentText(self.d['Мочеиспускание_1'])
-            self.comboBoxPtUrination_2.setCurrentText(self.d['Мочеиспускание_2'])
-            self.comboBoxPtUrination_3.setCurrentText(self.d['Мочеиспускание_доп'])
+            self.comboBoxPtUrination_1.setCurrentText(
+                self.d['Мочеиспускание_1'])
+            self.comboBoxPtUrination_2.setCurrentText(
+                self.d['Мочеиспускание_2'])
+            self.comboBoxPtUrination_3.setCurrentText(
+                self.d['Мочеиспускание_доп'])
             self.textEditPtStObjOther.setText(self.d['Общ_статус_дополнение'])
         else:
             if self.d['нужда_в_ЛН']:
@@ -240,10 +321,14 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         self.d['должность_1'] = self.lineEditPtWorkPosition.text()
         self.d['ЛН_выдан_ЛПУ'] = self.lineEditPtWorkListNumber_issued.text()
         self.d['ЛН_номер_1'] = self.lineEditPtWorkListNumber1_1.text()
-        self.d['С какого числа ЛН на руках'] = self.dateEditPtWorkListDate1_1.dateTime().toString('dd.MM.yyyy')
-        self.d['По какое число продлен ЛН'] = self.dateEditPtWorkListDate1_2.dateTime().toString('dd.MM.yyyy')
-        self.d['первичный_лн'] = self.dateEditPtWorkListDateOpening.dateTime().toString('dd.MM.yyyy')
-        self.d['трудовой_прогноз'] = self.comboBoxWorkList_prognosis.currentText()
+        self.d['С какого числа ЛН на руках'] = self.dateEditPtWorkListDate1_1\
+            .dateTime().toString('dd.MM.yyyy')
+        self.d['По какое число продлен ЛН'] = self.dateEditPtWorkListDate1_2\
+            .dateTime().toString('dd.MM.yyyy')
+        self.d['первичный_лн'] = self.dateEditPtWorkListDateOpening\
+            .dateTime().toString('dd.MM.yyyy')
+        self.d['трудовой_прогноз'] = self.comboBoxWorkList_prognosis\
+            .currentText()
         self.d['аллергия_чек'] = self.comboBoxPtAllergStatus.currentText()
         self.d['аллергия'] = self.textEditPtAnamAllerg.toPlainText()
         self.d['эпид_анамнез_чек'] = self.comboBoxPtAnamEpid.currentText()
@@ -264,9 +349,12 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         self.d['ХАН_чек'] = self.checkBox_Atherosclerosis_legs.isChecked()
         self.d['БЦА_чек'] = self.checkBox_Atherosclerosis_BCA.isChecked()
         self.d['Другие_сопут_чек'] = self.checkBox_other.isChecked()
-        self.d['Другие_сопут'] = self.textEdit_other_chronic_diseases.toPlainText()
-        self.d['принимает_медикаменты_чек'] = self.comboBoxPtDrugs.currentText()
-        self.d['принимает_медикаменты'] = self.textEditPtDrugs.toPlainText()
+        self.d['Другие_сопут'] = self.textEdit_other_chronic_diseases\
+            .toPlainText()
+        self.d['принимает_медикаменты_чек'] = self.comboBoxPtDrugs\
+            .currentText()
+        self.d['принимает_медикаменты'] = self.textEditPtDrugs\
+            .toPlainText()
         # жалобы и числовые данные
         self.d['жалобы'] = self.textEditPtComplaints.toPlainText()
         self.d['рост'] = self.lineEditPtGrowth.text()
@@ -297,7 +385,8 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         self.d['тоны_сердца_1'] = self.comboBoxPtHearthTone_1.currentText()
         self.d['тоны_сердца_2'] = self.comboBoxPtHearthTone_2.currentText()
         self.d['тоны_сердца_3'] = self.comboBoxPtHearthTone_3.currentText()
-        self.d['шумы_сердца_чек'] = self.comboBoxPtHearthNoiseChoice.currentText()
+        self.d['шумы_сердца_чек'] = self.comboBoxPtHearthNoiseChoice\
+            .currentText()
         self.d['шумы_сердца'] = self.comboBoxPtHearthNoise.currentText()
         self.d['живот_1'] = self.comboBoxPtStomach_1.currentText()
         self.d['живот_2'] = self.comboBoxPtStomach_2.currentText()
@@ -308,27 +397,10 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         self.d['Мочеиспускание_1'] = self.comboBoxPtUrination_1.currentText()
         self.d['Мочеиспускание_2'] = self.comboBoxPtUrination_2.currentText()
         self.d['Мочеиспускание_доп'] = self.comboBoxPtUrination_3.currentText()
-        self.d['Общ_статус_дополнение'] = self.textEditPtStObjOther.toPlainText()
+        self.d['Общ_статус_дополнение'] = self.textEditPtStObjOther\
+            .toPlainText()
 
-        update_after_objective_status_admission(self.d, 'первичный')
-
-    def exit_and_save(self):
-        self.write_to_dictionary()
-        write_all_data_to_db(self.d)
-        self.open_patient_card()
-
-    def exit(self):
-        self.open_patient_card()
-
-    def open_patient_card(self):
-        win = self.windows['Frameless']()
-        win.setWidget(
-            self.windows[self.case_type]['patient_card'](
-                windows=self.windows,
-                main_win=win,
-                dictionary=self.d))
-        win.show()
-        self.main_win.close()
+        update_after_obj_st(self.d, 'первичный')
 
     def count_imt(self):
         growth = self.lineEditPtGrowth.text()
@@ -336,7 +408,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         if (growth, weight) != '':
             try:
                 growth, weight = int(growth), int(weight)
-                imt, units, conclusion, questionDS = calc_bmi(growth, weight)
+                imt, units, conclusion, questionDS = calc_BMI(growth, weight)
                 self.label_imt.setText(conclusion)
                 if questionDS:
                     self.pushButton_add_to_diag.setEnabled(True)
@@ -358,9 +430,11 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                         self.d['Сопутствующий_диагноз'] += text
                     else:
                         self.d['Сопутствующий_диагноз'] += f" {text}"
-                    self.label_2.setText('Заключение добавлено в сопут. диагноз')
+                    self.label_2.setText(
+                        'Заключение добавлено в сопут. диагноз')
                 else:
-                    self.label_2.setText('Заключение уже было недавно добавлено')
+                    self.label_2.setText(
+                        'Заключение уже было недавно добавлено')
 
     def change_drugs_combobox(self):
         if self.textEditPtDrugs.toPlainText() != '':
@@ -386,6 +460,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
             if self.comboBoxPtAllergStatus.currentText() != 'Отрицает':
                 self.comboBoxPtAllergStatus.setCurrentText('Отрицает')
 
+    @upload_templates_db_from_yandex_cloud_bucket('default_templates')
     def add_new_template_obj_st(self):
         new_template_name = self.lineEdit_new_template_name.text()
         # проверяем не пустое ли имя нового шаблона
@@ -470,7 +545,6 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                 )
                 # обновляем шаблон
                 update_obj_template_db(template_new)
-            upload_db_to_bucket(bucket_main, name_db_templates)
         else:
             # имя шаблона пустое
             pass
@@ -524,6 +598,36 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
             self.comboBoxPtUrination_2.setCurrentText(tpl[28])
             self.comboBoxPtUrination_3.setCurrentText(tpl[29])
             self.textEditPtStObjOther.setText(tpl[30])
+
+    def set_random_values(self):
+        random_set = create_random_set()
+        self.lineEditPtBloodPreasureSist.setText(random_set['bp_sist'])
+        self.lineEditPtBloodPreasureDiast.setText(random_set['bp_diast'])
+        self.lineEditPtPulse.setText(random_set['heart_rate'])
+        self.lineEditPtBreathingSpeed.setText(random_set['breath_rate'])
+        self.lineEditSaturation.setText(random_set['saturation'])
+        self.lineEditPtTemperature.setText(random_set['temperature'])
+
+    def add_new_template_jaloby(self):
+        template = {
+            'name': self.lineEdit_new_template_name_jaloby.text(),
+            'жалобы': self.plainTextEditPtComplaints.toPlainText(),
+        }
+
+        if template['name'] != '':
+            self.complaints_templates[template['name']] = template
+            template_json_recording(templates=self.complaints_templates,
+                                    templates_name='complaints')
+        else:
+            pass
+        # обновляем список шаблонов
+        self.set_templates_list_jaloby()
+
+    def push_active_template_jaloby(self):
+        name = self.comboBox_jaloby_templates.currentText()
+        if name in self.complaints_templates:
+            self.plainTextEditPtComplaints.setPlainText(
+                self.complaints_templates[name]['жалобы'])
 
     def set_styles(self):
         pass

@@ -115,3 +115,32 @@ def upload_history_to_yandex_cloud_bucket(type_):
                              object_name=f"{d['unic_number']}.json")
         return inner
     return wrapper
+
+
+def define_database_templates(type_):
+    if type_ == 'default_templates':
+        from wom.app_logic.db_func.db_st_obj_templates import DATABASE as db
+        database = db.split('/')[1]
+    return database
+
+
+def download_templates_db_from_yandex_cloud_bucket(type_):
+    def wrapper(func):
+        def inner(*args, **kwargs):
+            DATABASE = define_database_templates(type_)
+            download_db_from_bucket(bucket_name=BUCKET_MAIN,
+                                    db_name=DATABASE)
+            func(*args, **kwargs)
+        return inner
+    return wrapper
+
+
+def upload_templates_db_from_yandex_cloud_bucket(type_):
+    def wrapper(func):
+        def inner(*args, **kwargs):
+            func(*args, **kwargs)
+            DATABASE = define_database_templates(type_)
+            upload_db_from_bucket(bucket_name=BUCKET_MAIN,
+                                  db_name=DATABASE)
+        return inner
+    return wrapper

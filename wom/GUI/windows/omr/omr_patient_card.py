@@ -127,13 +127,24 @@ class Ui_PatientCard(QtWidgets.QWidget,
         # задаем размеры таблицы для дневников
         self.tableWidget_diaries.setColumnWidth(0, 235)  # ширина колонок
 
-    def open_window(self, name):
+    def open_omr_window(self, folder, name):
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows['omr'][name](
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d))
+        win.show()
+        self.main_win.close()
+
+    def open_common_window(self, folder, name):
+        win = self.windows['Frameless']()
+        win.setWidget(
+            self.windows['common'][name](
+                windows=self.windows,
+                main_win=win,
+                dictionary=self.d,
+                case_type='omr'))
         win.show()
         self.main_win.close()
 
@@ -164,20 +175,20 @@ class Ui_PatientCard(QtWidgets.QWidget,
         self.close_card()
 
     def open_passport_data_window(self):
-        self.open_window('passport')
+        self.open_omr_window('passport')
 
     def open_neurology_status_admission(self):
-        self.open_window('neur_status_adm')
+        self.open_common_window('neur_status_adm')
 
     def open_objective_status_admission(self):
-        self.open_window('obj_status_adm')
+        self.open_common_window('obj_status_adm')
 
     def open_diagnosis_admission(self):
-        self.open_window('diagnosis_adm')
+        self.open_common_window('diagnosis_adm')
 
     def open_neurology_status_discharge(self):
         if 'Неврологический_статус' in self.d:
-            self.open_window('neur_status_dis')
+            self.open_common_window('neur_status_dis')
         else:
             status_message = f'Сначала введите данные неврологического '\
                              f'статуса при поступлении.\n'\
@@ -187,7 +198,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
 
     def open_objective_status_discharge(self):
         if 'Соматический_статус' in self.d:
-            self.open_window('obj_status_dis')
+            self.open_common_window('obj_status_dis')
         else:
             status_message = f'Сначала введите данные соматического '\
                              f'статуса при поступлении.\n'\
@@ -197,7 +208,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
 
     def open_diagnosis_discharge(self):
         if 'Основной_диагноз' in self.d:
-            self.open_window('diagnosis_dis')
+            self.open_common_window('diagnosis_dis')
         else:
             status_message = f'Сначала введите данные клинического '\
                              f'диагноза при поступлении.\n'\
@@ -206,17 +217,17 @@ class Ui_PatientCard(QtWidgets.QWidget,
             self.label_status.setText(status_message)
 
     def open_discharge_details(self):
-        self.open_window('dis_details')
+        self.open_omr_window('dis_details')
 
     def open_medical_appointments(self):
-        self.open_window('appointments')
+        self.open_omr_window('appointments')
 
     def open_mdrk(self):
-        self.open_window('mdrk_adm')
+        self.open_omr_window('mdrk_adm')
 
     def open_mdrk_dis(self):
         if 's_domen_1' in self.d:
-            self.open_window('mdrk_dis')
+            self.open_omr_window('mdrk_dis')
         else:
             status_message = f'Сначала введите данные протокола '\
                              f'МДРК (с МКФ) при поступлении.\n'\
@@ -225,22 +236,22 @@ class Ui_PatientCard(QtWidgets.QWidget,
             self.label_status.setText(status_message)
 
     def open_lab_data(self):
-        self.open_window('lab_data')
+        self.open_omr_window('lab_data')
 
     def open_recommends(self):
-        # self.open_window('recommends')
+        # self.open_omr_window('recommends')
         status_message = f'Раздел "Рекомендации для выписки" '\
                          f'находится в разработке. '
         self.label_status.setText(status_message)
 
     def open_instr_data(self):
-        # self.open_window('instr_data')
+        # self.open_omr_window('instr_data')
         status_message = f'Раздел "Данные инструментальных '\
                          f'исследований" находится в разработке. '
         self.label_status.setText(status_message)
 
     def open_consult(self):
-        # self.open_window('consult')
+        # self.open_omr_window('consult')
         status_message = f'Раздел "Консультации" '\
                          f'находится в разработке. '
         self.label_status.setText(status_message)

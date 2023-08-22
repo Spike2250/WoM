@@ -17,8 +17,38 @@ from wom.settings.config import (blood_presure_sist_min,
                                  frontier_VAS_2,
                                  frontier)
 from wom.app_logic.service_func import convert_date
-from wom.app_logic.writing.diaries.diary_templates import (tpl_stamp,
-                                                           create_vps_diary)
+from wom.app_logic.writing.diaries\
+    .diary_templates import (tpl_stamp,
+                             create_vps_diary)
+
+
+def create_random_set():
+    blood_presure_sist = str(choice(range(
+        blood_presure_sist_min,
+        blood_presure_sist_max + 1, 5)))
+    blood_presure_diast = str(choice(range(
+        blood_presure_diast_min,
+        blood_presure_diast_max + 1, 5)))
+    heart_rate = str(choice(range(
+        heart_rate_min,
+        heart_rate_max + 1, 2)))
+    breath_rate = str(choice(range(
+        breath_rate_min,
+        breath_rate_max + 1)))
+    body_temperature = "36," + str(choice(range(
+        body_temperature_min,
+        body_temperature_max + 1)))
+    saturation = str(choice(range(
+        saturation_min,
+        saturation_max + 1)))
+    return {
+        'bp_sist': blood_presure_sist,
+        'bp_diast': blood_presure_diast,
+        'heart_rate': heart_rate,
+        'breath_rate': breath_rate,
+        'temperature': body_temperature,
+        'saturation': saturation
+    }
 
 
 #  = = = = Создание дневников = = = =
@@ -38,24 +68,13 @@ def add_random_values(d, n, twice_diaries):
       вечернего времени при написании дневников дважды в день
     '''
     for m in range(1, n + 1):
-        d[f"АД_сист_{m}"] = str(choice(range(
-            blood_presure_sist_min,
-            blood_presure_sist_max + 1, 5)))
-        d[f"АД_диаст_{m}"] = str(choice(range(
-            blood_presure_diast_min,
-            blood_presure_diast_max + 1, 5)))
-        d[f"ЧСС_{m}"] = str(choice(range(
-            heart_rate_min,
-            heart_rate_max + 1, 2)))
-        d[f"ЧДД_{m}"] = str(choice(range(
-            breath_rate_min,
-            breath_rate_max + 1)))
-        d[f"Температура_{m}"] = "36," + str(choice(range(
-            body_temperature_min,
-            body_temperature_max + 1)))
-        d[f"Сатурация_{m}"] = str(choice(range(
-            saturation_min,
-            saturation_max + 1)))
+        random_set = create_random_set()
+        d[f"АД_сист_{m}"] = random_set['bp_sist']
+        d[f"АД_диаст_{m}"] = random_set['bp_diast']
+        d[f"ЧСС_{m}"] = random_set['heart_rate']
+        d[f"ЧДД_{m}"] = random_set['breath_rate']
+        d[f"Температура_{m}"] = random_set['temperature']
+        d[f"Сатурация_{m}"] = random_set['saturation']
         if not twice_diaries:
             d[f'время_доп_{m}'] = f'0{str(choice(range(8, 10)))}:' \
                                   f'{str(choice(range(10, 56, 5)))}'
