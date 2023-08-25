@@ -11,13 +11,15 @@ from wom.app_logic.db_func\
     .bucket_func import (upload_history_to_yandex_cloud_bucket,
                          upload_templates_db_from_yandex_cloud_bucket,
                          download_templates_db_from_yandex_cloud_bucket)
+from wom.app_logic.db_func\
+    .json_templates import (read_templates,
+                            templates_json_recording)
 from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
 from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
 from wom.app_logic.writing.postprocessing.obj_st import update_after_obj_st
 from wom.app_logic.writing.diaries.gen import create_random_set
 
 
-# Окно жалоб и объективного статуса при поступлении
 class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                                   StObj_admition.Ui_StObj):
     def __init__(self, windows, main_win, dictionary, case_type):
@@ -28,11 +30,21 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         self.d = dictionary
         self.case_type = case_type
 
+        msg = "World of Medicine - Отделение медицинской "\
+              "реабилитации - Жалобы, анамнез, данные по ЛН, "\
+              "соматический статус при поступлении"
+        main_win.setWindowTitle(msg)
+        objectTitleBar = main_win.titleBar
+        objectTitleBar.signalButtonMy.connect(self.onButtonMy)
+
         self.set_patient_info()
         self.set_templates_list()
         self.insert_data_from_dictionary()
         self.set_connections()
         self.set_styles()
+
+    def onButtonMy(self):
+        pass
 
     def open_patient_card(self):
         win = self.windows['Frameless']()
@@ -92,11 +104,11 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
             .textChanged.connect(self.count_imt)
         self.lineEditPtWeight\
             .textChanged.connect(self.count_imt)
-        self.textEditPtDrugs\
+        self.plainTextEditPtDrugs\
             .textChanged.connect(self.change_drugs_combobox)
-        self.textEditPtAnamEpid\
+        self.plainTextEditPtAnamEpid\
             .textChanged.connect(self.change_anam_epid_combobox)
-        self.textEditPtAnamAllerg\
+        self.plainTextEditPtAnamAllerg\
             .textChanged.connect(self.change_anam_aller_combobox)
         self.checkBoxPtNeedSickList\
             .stateChanged.connect(self.activate_first_ln_box)
@@ -189,7 +201,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         # Заполнение всех ячеек данными, если они уже есть
         if 'Соматический_статус' in self.d:
             # Анамнез
-            self.textEditPtAnamMorbi.setText(self.d['анамнез'])
+            self.plainTextEditPtAnamMorbi.setPlainText(self.d['анамнез'])
             self.comboBoxPtSocialStatus\
                 .setCurrentText(self.d['социальный_статус'])
             self.checkBoxPtNeedSickList.setChecked(self.d['нужда_в_ЛН'])
@@ -215,9 +227,9 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                 .setDate(QtCore.QDate.fromString(
                     self.d['первичный_лн'], "dd.MM.yyyy"))
             self.comboBoxPtAllergStatus.setCurrentText(self.d['аллергия_чек'])
-            self.textEditPtAnamAllerg.setText(self.d['аллергия'])
+            self.plainTextEditPtAnamAllerg.setPlainText(self.d['аллергия'])
             self.comboBoxPtAnamEpid.setCurrentText(self.d['эпид_анамнез_чек'])
-            self.textEditPtAnamEpid.setText(self.d['эпид_анамнез'])
+            self.plainTextEditPtAnamEpid.setPlainText(self.d['эпид_анамнез'])
             self.checkBox_GB.setChecked(self.d['ГБ_чек'])
             self.checkBox_SD.setChecked(self.d['СД_чек'])
             self.checkBox_NRS.setChecked(self.d['НРС_чек'])
@@ -234,13 +246,14 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
             self.checkBox_Atherosclerosis_legs.setChecked(self.d['ХАН_чек'])
             self.checkBox_Atherosclerosis_BCA.setChecked(self.d['БЦА_чек'])
             self.checkBox_other.setChecked(self.d['Другие_сопут_чек'])
-            self.textEdit_other_chronic_diseases\
-                .setText(self.d['Другие_сопут'])
+            self.plainTextEdit_other_chronic_diseases\
+                .setPlainText(self.d['Другие_сопут'])
             self.comboBoxPtDrugs\
                 .setCurrentText(self.d['принимает_медикаменты_чек'])
-            self.textEditPtDrugs.setText(self.d['принимает_медикаменты'])
+            self.plainTextEditPtDrugs\
+                .setPlainText(self.d['принимает_медикаменты'])
             # жалобы и числовые данные
-            self.textEditPtComplaints.setText(self.d['жалобы'])
+            self.plainTextEditPtComplaints.setPlainText(self.d['жалобы'])
             self.lineEditPtGrowth.setText(str(self.d['рост']))
             self.lineEditPtWeight.setText(str(self.d['вес']))
             self.lineEditPtBreathingSpeed.setText(str(self.d['ЧДД']))
@@ -285,7 +298,8 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                 self.d['Мочеиспускание_2'])
             self.comboBoxPtUrination_3.setCurrentText(
                 self.d['Мочеиспускание_доп'])
-            self.textEditPtStObjOther.setText(self.d['Общ_статус_дополнение'])
+            self.plainTextEditPtStObjOther.setPlainText(
+                self.d['Общ_статус_дополнение'])
         else:
             if self.d['нужда_в_ЛН']:
                 self.checkBoxPtNeedSickList.setChecked(self.d['нужда_в_ЛН'])
@@ -312,7 +326,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         запись в словарь всех значений из виджетов
         '''
         # Анамнез
-        self.d['анамнез'] = self.textEditPtAnamMorbi.toPlainText()
+        self.d['анамнез'] = self.plainTextEditPtAnamMorbi.toPlainText()
         self.d['социальный_статус'] = self.comboBoxPtSocialStatus.currentText()
         self.d['нужда_в_ЛН'] = self.checkBoxPtNeedSickList.isChecked()
         self.d['нужда_в_ЛН_первич'] = self.checkBoxPtNeedSickList_2.isChecked()
@@ -330,9 +344,9 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         self.d['трудовой_прогноз'] = self.comboBoxWorkList_prognosis\
             .currentText()
         self.d['аллергия_чек'] = self.comboBoxPtAllergStatus.currentText()
-        self.d['аллергия'] = self.textEditPtAnamAllerg.toPlainText()
+        self.d['аллергия'] = self.plainTextEditPtAnamAllerg.toPlainText()
         self.d['эпид_анамнез_чек'] = self.comboBoxPtAnamEpid.currentText()
-        self.d['эпид_анамнез'] = self.textEditPtAnamEpid.toPlainText()
+        self.d['эпид_анамнез'] = self.plainTextEditPtAnamEpid.toPlainText()
         self.d['ГБ_чек'] = self.checkBox_GB.isChecked()
         self.d['СД_чек'] = self.checkBox_SD.isChecked()
         self.d['НРС_чек'] = self.checkBox_NRS.isChecked()
@@ -349,14 +363,14 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         self.d['ХАН_чек'] = self.checkBox_Atherosclerosis_legs.isChecked()
         self.d['БЦА_чек'] = self.checkBox_Atherosclerosis_BCA.isChecked()
         self.d['Другие_сопут_чек'] = self.checkBox_other.isChecked()
-        self.d['Другие_сопут'] = self.textEdit_other_chronic_diseases\
+        self.d['Другие_сопут'] = self.plainTextEdit_other_chronic_diseases\
             .toPlainText()
         self.d['принимает_медикаменты_чек'] = self.comboBoxPtDrugs\
             .currentText()
-        self.d['принимает_медикаменты'] = self.textEditPtDrugs\
+        self.d['принимает_медикаменты'] = self.plainTextEditPtDrugs\
             .toPlainText()
         # жалобы и числовые данные
-        self.d['жалобы'] = self.textEditPtComplaints.toPlainText()
+        self.d['жалобы'] = self.plainTextEditPtComplaints.toPlainText()
         self.d['рост'] = self.lineEditPtGrowth.text()
         self.d['вес'] = self.lineEditPtWeight.text()
         self.d['ЧДД'] = self.lineEditPtBreathingSpeed.text()
@@ -397,7 +411,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         self.d['Мочеиспускание_1'] = self.comboBoxPtUrination_1.currentText()
         self.d['Мочеиспускание_2'] = self.comboBoxPtUrination_2.currentText()
         self.d['Мочеиспускание_доп'] = self.comboBoxPtUrination_3.currentText()
-        self.d['Общ_статус_дополнение'] = self.textEditPtStObjOther\
+        self.d['Общ_статус_дополнение'] = self.plainTextEditPtStObjOther\
             .toPlainText()
 
         update_after_obj_st(self.d, 'первичный')
@@ -437,7 +451,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                         'Заключение уже было недавно добавлено')
 
     def change_drugs_combobox(self):
-        if self.textEditPtDrugs.toPlainText() != '':
+        if self.plainTextEditPtDrugs.toPlainText() != '':
             if self.comboBoxPtDrugs.currentText() == 'Не принимает':
                 self.comboBoxPtDrugs.setCurrentText('Постоянно')
         else:
@@ -445,7 +459,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                 self.comboBoxPtDrugs.setCurrentText('Не принимает')
 
     def change_anam_epid_combobox(self):
-        if self.textEditPtAnamEpid.toPlainText() != '':
+        if self.plainTextEditPtAnamEpid.toPlainText() != '':
             if self.comboBoxPtAnamEpid.currentText() == 'Спокойный':
                 self.comboBoxPtAnamEpid.setCurrentText('отягощен')
         else:
@@ -453,7 +467,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                 self.comboBoxPtAnamEpid.setCurrentText('Спокойный')
 
     def change_anam_aller_combobox(self):
-        if self.textEditPtAnamAllerg.toPlainText() != '':
+        if self.plainTextEditPtAnamAllerg.toPlainText() != '':
             if self.comboBoxPtAllergStatus.currentText() == 'Отрицает':
                 self.comboBoxPtAllergStatus.setCurrentText('ЕСТЬ')
         else:
@@ -500,7 +514,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                     self.comboBoxPtUrination_1.currentText(),
                     self.comboBoxPtUrination_2.currentText(),
                     self.comboBoxPtUrination_3.currentText(),
-                    self.textEditPtStObjOther.toPlainText()
+                    self.plainTextEditPtStObjOther.toPlainText()
                 )
                 # записываем новый шаблон
                 insert_obj_template_into_db(template_new)
@@ -540,7 +554,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                     self.comboBoxPtUrination_1.currentText(),
                     self.comboBoxPtUrination_2.currentText(),
                     self.comboBoxPtUrination_3.currentText(),
-                    self.textEditPtStObjOther.toPlainText(),
+                    self.plainTextEditPtStObjOther.toPlainText(),
                     self.lineEdit_new_template_name.text()
                 )
                 # обновляем шаблон
@@ -597,7 +611,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
             self.comboBoxPtUrination_1.setCurrentText(tpl[27])
             self.comboBoxPtUrination_2.setCurrentText(tpl[28])
             self.comboBoxPtUrination_3.setCurrentText(tpl[29])
-            self.textEditPtStObjOther.setText(tpl[30])
+            self.plainTextEditPtStObjOther.setPlainText(tpl[30])
 
     def set_random_values(self):
         random_set = create_random_set()
@@ -616,8 +630,8 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
 
         if template['name'] != '':
             self.complaints_templates[template['name']] = template
-            template_json_recording(templates=self.complaints_templates,
-                                    templates_name='complaints')
+            templates_json_recording(templates=self.complaints_templates,
+                                     templates_name='complaints')
         else:
             pass
         # обновляем список шаблонов

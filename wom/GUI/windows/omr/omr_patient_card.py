@@ -2,6 +2,8 @@ import ast
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QPushButton
 
+from dataclasses import dataclass
+
 from wom.GUI.PY.omr import omr_PatientCard
 from wom.app_logic.writing.postprocessing.passport import update_patient_info
 from wom.app_logic.writing.diaries.gen import creating_diaries
@@ -127,42 +129,44 @@ class Ui_PatientCard(QtWidgets.QWidget,
         # задаем размеры таблицы для дневников
         self.tableWidget_diaries.setColumnWidth(0, 235)  # ширина колонок
 
-    def open_omr_window(self, folder, name):
-        win = self.windows['Frameless']()
-        win.setWidget(
-            self.windows['omr'][name](
-                windows=self.windows,
-                main_win=win,
-                dictionary=self.d))
-        win.show()
-        self.main_win.close()
+    def create_main_window(self):
+        return self.windows['Frameless']()
 
-    def open_common_window(self, folder, name):
-        win = self.windows['Frameless']()
-        win.setWidget(
-            self.windows['common'][name](
-                windows=self.windows,
-                main_win=win,
-                dictionary=self.d,
-                case_type='omr'))
+    def create_window(self, main_win, folder_name, win_name):
+        match folder_name:
+            case 'common':
+                w = self.windows[folder_name][win_name](windows=self.windows,
+                                                        main_win=main_win,
+                                                        dictionary=self.d,
+                                                        case_type='omr')
+            case 'omr':
+                w = self.windows[folder_name][win_name](windows=self.windows,
+                                                        main_win=main_win,
+                                                        dictionary=self.d)
+        return w
+
+    def open_window(self, folder_name, win_name):
+        win = self.create_main_window()
+        win.setWidget(self.create_window(win, folder_name, win_name))
         win.show()
         self.main_win.close()
 
     def open_dairy(self):
+        # определяем индекс дневника
         button = self.sender()
-        i = self.tableWidget_diaries.indexAt(button.pos()).row()
-
-        win = self.windows['Frameless']()
+        index = self.tableWidget_diaries.indexAt(button.pos()).row()
+        # создаем окно
+        win = self.create_main_window()
         win.setWidget(
             self.windows['omr']['diary'](
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d,
-                diary_index=i))
+                diary_index=index))
         win.show()
 
     def close_card(self):
-        win = self.windows['Frameless']()
+        win = self.create_main_window()
         win.setWidget(
             self.windows['omr']['main_menu'](
                 windows=self.windows,
@@ -175,20 +179,25 @@ class Ui_PatientCard(QtWidgets.QWidget,
         self.close_card()
 
     def open_passport_data_window(self):
-        self.open_omr_window('passport')
+        self.open_window(folder_name='omr',
+                         win_name='passport')
 
     def open_neurology_status_admission(self):
-        self.open_common_window('neur_status_adm')
+        self.open_window(folder_name='common',
+                         win_name='neur_status_adm')
 
     def open_objective_status_admission(self):
-        self.open_common_window('obj_status_adm')
+        self.open_window(folder_name='common',
+                         win_name='obj_status_adm')
 
     def open_diagnosis_admission(self):
-        self.open_common_window('diagnosis_adm')
+        self.open_window(folder_name='common',
+                         win_name='diagnosis_adm')
 
     def open_neurology_status_discharge(self):
         if 'Неврологический_статус' in self.d:
-            self.open_common_window('neur_status_dis')
+            self.open_window(folder_name='common',
+                             win_name='neur_status_dis')
         else:
             status_message = f'Сначала введите данные неврологического '\
                              f'статуса при поступлении.\n'\
@@ -198,7 +207,8 @@ class Ui_PatientCard(QtWidgets.QWidget,
 
     def open_objective_status_discharge(self):
         if 'Соматический_статус' in self.d:
-            self.open_common_window('obj_status_dis')
+            self.open_window(folder_name='common',
+                             win_name='obj_status_dis')
         else:
             status_message = f'Сначала введите данные соматического '\
                              f'статуса при поступлении.\n'\
@@ -208,7 +218,8 @@ class Ui_PatientCard(QtWidgets.QWidget,
 
     def open_diagnosis_discharge(self):
         if 'Основной_диагноз' in self.d:
-            self.open_common_window('diagnosis_dis')
+            self.open_window(folder_name='common',
+                             win_name='diagnosis_dis')
         else:
             status_message = f'Сначала введите данные клинического '\
                              f'диагноза при поступлении.\n'\
@@ -217,17 +228,21 @@ class Ui_PatientCard(QtWidgets.QWidget,
             self.label_status.setText(status_message)
 
     def open_discharge_details(self):
-        self.open_omr_window('dis_details')
+        self.open_window(folder_name='omr',
+                         win_name='dis_details')
 
     def open_medical_appointments(self):
-        self.open_omr_window('appointments')
+        self.open_window(folder_name='omr',
+                         win_name='appointments')
 
     def open_mdrk(self):
-        self.open_omr_window('mdrk_adm')
+        self.open_window(folder_name='omr',
+                         win_name='mdrk_adm')
 
     def open_mdrk_dis(self):
         if 's_domen_1' in self.d:
-            self.open_omr_window('mdrk_dis')
+            self.open_window(folder_name='omr',
+                             win_name='mdrk_dis')
         else:
             status_message = f'Сначала введите данные протокола '\
                              f'МДРК (с МКФ) при поступлении.\n'\
@@ -236,22 +251,26 @@ class Ui_PatientCard(QtWidgets.QWidget,
             self.label_status.setText(status_message)
 
     def open_lab_data(self):
-        self.open_omr_window('lab_data')
+        self.open_window(folder_name='omr',
+                         win_name='lab_data')
 
     def open_recommends(self):
-        # self.open_omr_window('recommends')
+        # self.open_window(folder_name='omr',
+        #                  win_name='recommends')
         status_message = f'Раздел "Рекомендации для выписки" '\
                          f'находится в разработке. '
         self.label_status.setText(status_message)
 
     def open_instr_data(self):
-        # self.open_omr_window('instr_data')
+        # self.open_window(folder_name='omr',
+        #                  win_name='instr_data')
         status_message = f'Раздел "Данные инструментальных '\
                          f'исследований" находится в разработке. '
         self.label_status.setText(status_message)
 
     def open_consult(self):
-        # self.open_omr_window('consult')
+        # self.open_window(folder_name='omr',
+        #                  win_name='consult')
         status_message = f'Раздел "Консультации" '\
                          f'находится в разработке. '
         self.label_status.setText(status_message)
@@ -552,9 +571,6 @@ class Ui_PatientCard(QtWidgets.QWidget,
         text = '\tИстория болезни успешно сохранена на сервере!'
         self.label_status.setText(text)
 
-    def open_logs(self):
-        pass
-
     def check_data_blocks(self):
         '''
         проверяет наличие блоков данных в словаре(d)
@@ -720,4 +736,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
         print(f'    Всего: {n}')
 
     def set_styles(self):
+        pass
+
+    def open_logs(self):
         pass
