@@ -4,8 +4,6 @@ from wom.GUI.windows\
     .omr import (omr_main_menu,
                  omr_add_new_patient,
                  omr_patient_card,
-                 omr_passport_data,
-                 omr_add_relative,
                  )
 from wom.GUI.windows\
     .bta import (bta_main_menu,
@@ -20,7 +18,13 @@ from wom.GUI.windows\
                  bta_discharge_details)
 from wom.GUI.windows\
     .common import (load_arch,
-                    obj_status_adm)
+                    passport_data,
+                    add_relative,
+                    obj_status_adm,
+                    obj_status_dis,
+                    neur_status,
+                    diagnosis,
+                    dis_details)
 from wom.GUI.windows.test import MainWindow
 
 
@@ -31,8 +35,6 @@ windows = {
         'main_menu': omr_main_menu.Ui_MainMenu,
         'add_new_patient': omr_add_new_patient.Ui_AddNewPatient,
         'patient_card': omr_patient_card.Ui_PatientCard,
-        'passport': omr_passport_data.Ui_PatientPassportData,
-        'add_relative': omr_add_relative.Ui_AddRelative
     },
     'bta': {
         'main_menu': bta_main_menu.Ui_MainMenu,
@@ -49,6 +51,12 @@ windows = {
     'common': {
         'main_menu': '',
         'load_arch': load_arch.Ui_load_arch_data,
+        'passport': passport_data.Ui_PatientPassportData,
+        'add_relative': add_relative.Ui_AddRelative,
         'obj_status_adm': obj_status_adm.Ui_StPrObjectivus_admission,
+        'obj_status_dis': obj_status_dis.Ui_StPrObjectivus_discharge,
+        'neur_status': neur_status.Ui_StNeurology,
+        'diagnosis': diagnosis.Ui_Diagnosis,
+        'dis_details': dis_details.Ui_Discharge_details,
     }
 }

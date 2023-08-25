@@ -1,22 +1,27 @@
 from PySide6 import QtWidgets
 
-from wom.GUI.PY.omr import omr_AddRelative
+from wom.GUI.PY.common import AddRelative
 from wom.app_logic.create_docs import (open_folder_with_files,
                                        creating_documents)
-from wom.app_logic.db_func.db_omr import write_omr_table
+from wom.app_logic.db_func\
+    .bucket_func import upload_history_to_yandex_cloud_bucket
+from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
+from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
 from wom.app_logic.writing.postprocessing\
     .add_relative import update_after_add_relative
 
 
 # Окно добавления родственников
 class Ui_AddRelative(QtWidgets.QWidget,
-                     omr_AddRelative.Ui_AddRelative):
-    def __init__(self, windows, main_win, dictionary, from_add_patient=False):
+                     AddRelative.Ui_AddRelative):
+    def __init__(self, windows, main_win, dictionary,
+                 case_type, from_add_patient=False):
         super().__init__()
-        self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+        self.setupUi(self)
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
+        self.case_type = case_type
         self.from_add_patient = from_add_patient
 
         self.set_connections()
@@ -121,19 +126,44 @@ class Ui_AddRelative(QtWidgets.QWidget,
 
         update_after_add_relative(self.d)
 
-    def exit_and_save(self):
+    def save_history(self):
         self.write_to_dictionary()
-        write_omr_table(self.d)
+        match self.case_type:
+            case 'omr':
+                self.save_history_omr()
+            case 'bta':
+                self.save_history_bta()
+            case _:
+                raise ValueError
+
+    @upload_history_to_yandex_cloud_bucket('omr')
+    def save_history_omr(self):
+        write_all_data_to_db_omr(self.d)
+
+    @upload_history_to_yandex_cloud_bucket('bta')
+    def save_history_bta(self):
+        write_all_data_to_db_bta(self.d)
+
+    def exit_and_save(self):
+        self.save_history()
         self.exit()
 
-    def exit(self, win_name='passport'):
+    def create_window(self, main_win):
         if self.from_add_patient:
-            win_name = 'add_new_patient'
-        win = self.windows['Frameless']()
-        win.setWidget(
-            self.windows['omr'][win_name](
+            w = self.windows[self.case_type]['add_new_patient'](
                 windows=self.windows,
-                main_win=win,
-                dictionary=self.d))
+                main_win=main_win,
+                dictionary=self.d)
+        else:
+            w = self.windows['common']['passport'](
+                windows=self.windows,
+                main_win=main_win,
+                dictionary=self.d,
+                case_type=self.case_type)
+        return w
+
+    def exit(self):
+        win = self.windows['Frameless']()
+        win.setWidget(self.create_window(win))
         win.show()
         self.main_win.close()

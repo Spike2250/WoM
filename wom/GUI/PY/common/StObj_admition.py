@@ -27,7 +27,7 @@ class Ui_StObj(object):
     def setupUi(self, StObj):
         if not StObj.objectName():
             StObj.setObjectName(u"StObj")
-        StObj.resize(1196, 830)
+        StObj.resize(1196, 831)
         StObj.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout = QVBoxLayout(StObj)
@@ -51,11 +51,12 @@ class Ui_StObj(object):
         font = QFont()
         font.setFamilies([u"Roboto"])
         font.setPointSize(11)
-        font.setBold(False)
+        font.setBold(True)
         self.label_Pt_info.setFont(font)
         self.label_Pt_info.setStyleSheet(u"background-color: rgba(50, 98, 115, 100);\n"
 "color: 13242B;\n"
 "font-size: 11pt;\n"
+"font-weight: bold;\n"
 "border: 1px solid rgba(50, 98, 115, 255);")
 
         self.horizontalLayout_3.addWidget(self.label_Pt_info)
@@ -219,11 +220,7 @@ class Ui_StObj(object):
         palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.plainTextEditPtComplaints.setPalette(palette)
-        font3 = QFont()
-        font3.setFamilies([u"Roboto"])
-        font3.setPointSize(11)
-        font3.setBold(True)
-        self.plainTextEditPtComplaints.setFont(font3)
+        self.plainTextEditPtComplaints.setFont(font)
         self.plainTextEditPtComplaints.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -335,11 +332,11 @@ class Ui_StObj(object):
         palette1.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.label_imt.setPalette(palette1)
-        font4 = QFont()
-        font4.setFamilies([u"Roboto"])
-        font4.setPointSize(10)
-        font4.setBold(True)
-        self.label_imt.setFont(font4)
+        font3 = QFont()
+        font3.setFamilies([u"Roboto"])
+        font3.setPointSize(10)
+        font3.setBold(True)
+        self.label_imt.setFont(font3)
         self.label_imt.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "font-size: 10pt;\n"
@@ -348,111 +345,74 @@ class Ui_StObj(object):
 
         self.gridLayout_11.addWidget(self.label_imt, 8, 1, 1, 6)
 
-        self.pushButton_random_values = QPushButton(self.metric_data)
-        self.pushButton_random_values.setObjectName(u"pushButton_random_values")
-        self.pushButton_random_values.setEnabled(False)
+        self.labelPtGrowth = QLabel(self.metric_data)
+        self.labelPtGrowth.setObjectName(u"labelPtGrowth")
         palette2 = QPalette()
-        palette2.setBrush(QPalette.Active, QPalette.WindowText, brush2)
-        brush13 = QBrush(QColor(50, 98, 115, 190))
-        brush13.setStyle(Qt.SolidPattern)
-        palette2.setBrush(QPalette.Active, QPalette.Button, brush13)
+        palette2.setBrush(QPalette.Active, QPalette.WindowText, brush8)
+        palette2.setBrush(QPalette.Active, QPalette.Button, brush9)
         palette2.setBrush(QPalette.Active, QPalette.Light, brush2)
-        brush14 = QBrush(QColor(236, 236, 236, 255))
-        brush14.setStyle(Qt.SolidPattern)
-        palette2.setBrush(QPalette.Active, QPalette.Midlight, brush14)
-        brush15 = QBrush(QColor(108, 108, 108, 255))
-        brush15.setStyle(Qt.SolidPattern)
-        palette2.setBrush(QPalette.Active, QPalette.Dark, brush15)
-        brush16 = QBrush(QColor(145, 145, 145, 255))
-        brush16.setStyle(Qt.SolidPattern)
-        palette2.setBrush(QPalette.Active, QPalette.Mid, brush16)
-        palette2.setBrush(QPalette.Active, QPalette.Text, brush2)
+        palette2.setBrush(QPalette.Active, QPalette.Midlight, brush3)
+        palette2.setBrush(QPalette.Active, QPalette.Dark, brush4)
+        palette2.setBrush(QPalette.Active, QPalette.Mid, brush5)
+        palette2.setBrush(QPalette.Active, QPalette.Text, brush8)
         palette2.setBrush(QPalette.Active, QPalette.BrightText, brush2)
-        palette2.setBrush(QPalette.Active, QPalette.ButtonText, brush2)
-        palette2.setBrush(QPalette.Active, QPalette.Base, brush13)
-        palette2.setBrush(QPalette.Active, QPalette.Window, brush13)
+        palette2.setBrush(QPalette.Active, QPalette.ButtonText, brush8)
+        palette2.setBrush(QPalette.Active, QPalette.Base, brush9)
+        palette2.setBrush(QPalette.Active, QPalette.Window, brush9)
         palette2.setBrush(QPalette.Active, QPalette.Shadow, brush10)
-        palette2.setBrush(QPalette.Active, QPalette.AlternateBase, brush14)
+        palette2.setBrush(QPalette.Active, QPalette.AlternateBase, brush3)
         palette2.setBrush(QPalette.Active, QPalette.ToolTipBase, brush11)
         palette2.setBrush(QPalette.Active, QPalette.ToolTipText, brush10)
-        brush17 = QBrush(QColor(255, 255, 255, 128))
-        brush17.setStyle(Qt.SolidPattern)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette.Active, QPalette.PlaceholderText, brush17)
+        palette2.setBrush(QPalette.Active, QPalette.PlaceholderText, brush12)
 #endif
-        palette2.setBrush(QPalette.Inactive, QPalette.WindowText, brush2)
-        palette2.setBrush(QPalette.Inactive, QPalette.Button, brush13)
+        palette2.setBrush(QPalette.Inactive, QPalette.WindowText, brush8)
+        palette2.setBrush(QPalette.Inactive, QPalette.Button, brush9)
         palette2.setBrush(QPalette.Inactive, QPalette.Light, brush2)
-        palette2.setBrush(QPalette.Inactive, QPalette.Midlight, brush14)
-        palette2.setBrush(QPalette.Inactive, QPalette.Dark, brush15)
-        palette2.setBrush(QPalette.Inactive, QPalette.Mid, brush16)
-        palette2.setBrush(QPalette.Inactive, QPalette.Text, brush2)
+        palette2.setBrush(QPalette.Inactive, QPalette.Midlight, brush3)
+        palette2.setBrush(QPalette.Inactive, QPalette.Dark, brush4)
+        palette2.setBrush(QPalette.Inactive, QPalette.Mid, brush5)
+        palette2.setBrush(QPalette.Inactive, QPalette.Text, brush8)
         palette2.setBrush(QPalette.Inactive, QPalette.BrightText, brush2)
-        palette2.setBrush(QPalette.Inactive, QPalette.ButtonText, brush2)
-        palette2.setBrush(QPalette.Inactive, QPalette.Base, brush13)
-        palette2.setBrush(QPalette.Inactive, QPalette.Window, brush13)
+        palette2.setBrush(QPalette.Inactive, QPalette.ButtonText, brush8)
+        palette2.setBrush(QPalette.Inactive, QPalette.Base, brush9)
+        palette2.setBrush(QPalette.Inactive, QPalette.Window, brush9)
         palette2.setBrush(QPalette.Inactive, QPalette.Shadow, brush10)
-        palette2.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush14)
+        palette2.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush3)
         palette2.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush11)
         palette2.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush10)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush17)
+        palette2.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush12)
 #endif
-        brush18 = QBrush(QColor(50, 98, 115, 150))
-        brush18.setStyle(Qt.SolidPattern)
-        palette2.setBrush(QPalette.Disabled, QPalette.WindowText, brush18)
-        brush19 = QBrush(QColor(50, 98, 115, 40))
-        brush19.setStyle(Qt.SolidPattern)
-        palette2.setBrush(QPalette.Disabled, QPalette.Button, brush19)
+        palette2.setBrush(QPalette.Disabled, QPalette.WindowText, brush8)
+        palette2.setBrush(QPalette.Disabled, QPalette.Button, brush9)
         palette2.setBrush(QPalette.Disabled, QPalette.Light, brush2)
-        palette2.setBrush(QPalette.Disabled, QPalette.Midlight, brush14)
-        palette2.setBrush(QPalette.Disabled, QPalette.Dark, brush15)
-        palette2.setBrush(QPalette.Disabled, QPalette.Mid, brush16)
-        palette2.setBrush(QPalette.Disabled, QPalette.Text, brush18)
+        palette2.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
+        palette2.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
+        palette2.setBrush(QPalette.Disabled, QPalette.Mid, brush5)
+        palette2.setBrush(QPalette.Disabled, QPalette.Text, brush8)
         palette2.setBrush(QPalette.Disabled, QPalette.BrightText, brush2)
-        palette2.setBrush(QPalette.Disabled, QPalette.ButtonText, brush18)
-        palette2.setBrush(QPalette.Disabled, QPalette.Base, brush19)
-        palette2.setBrush(QPalette.Disabled, QPalette.Window, brush19)
+        palette2.setBrush(QPalette.Disabled, QPalette.ButtonText, brush8)
+        palette2.setBrush(QPalette.Disabled, QPalette.Base, brush9)
+        palette2.setBrush(QPalette.Disabled, QPalette.Window, brush9)
         palette2.setBrush(QPalette.Disabled, QPalette.Shadow, brush10)
-        brush20 = QBrush(QColor(217, 217, 217, 255))
-        brush20.setStyle(Qt.SolidPattern)
-        palette2.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush20)
+        palette2.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush7)
         palette2.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush11)
         palette2.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush10)
-        brush21 = QBrush(QColor(50, 98, 115, 75))
-        brush21.setStyle(Qt.SolidPattern)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush21)
+        palette2.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
-        self.pushButton_random_values.setPalette(palette2)
-        self.pushButton_random_values.setFont(font)
-        self.pushButton_random_values.setStyleSheet(u"QPushButton {\n"
-"background-color: rgba(50, 98, 115, 190);\n"
-"font-size: 11pt;\n"
-"color: White;\n"
-"border: None;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"background-color: rgba(50, 98, 115, 255);\n"
-"border: 2px solid rgba(92, 158, 173, 255);\n"
-"}\n"
-"\n"
-"QPushButton::pressed {\n"
-"background-color: rgba(92, 158, 173, 255);\n"
-"border: 1px solid rgba(255, 255, 255, 255);\n"
-"}\n"
-"\n"
-"QPushButton::disabled {\n"
-"background-color:  rgba(50, 98, 115, 40);\n"
-"border: 1px solid rgba(50, 98, 115, 150);\n"
-"color:  rgba(50, 98, 115, 150);\n"
-"}")
+        self.labelPtGrowth.setPalette(palette2)
+        self.labelPtGrowth.setFont(font)
+        self.labelPtGrowth.setStyleSheet(u"color: #326273;\n"
+"font-weight: bold;\n"
+"background-color: transparent;\n"
+"border: none;")
 
-        self.gridLayout_11.addWidget(self.pushButton_random_values, 1, 7, 1, 1)
+        self.gridLayout_11.addWidget(self.labelPtGrowth, 2, 1, 1, 1)
 
-        self.labelPtGrowth = QLabel(self.metric_data)
-        self.labelPtGrowth.setObjectName(u"labelPtGrowth")
+        self.labelPtSaturation = QLabel(self.metric_data)
+        self.labelPtSaturation.setObjectName(u"labelPtSaturation")
         palette3 = QPalette()
         palette3.setBrush(QPalette.Active, QPalette.WindowText, brush8)
         palette3.setBrush(QPalette.Active, QPalette.Button, brush9)
@@ -508,17 +468,17 @@ class Ui_StObj(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette3.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
-        self.labelPtGrowth.setPalette(palette3)
-        self.labelPtGrowth.setFont(font3)
-        self.labelPtGrowth.setStyleSheet(u"color: #326273;\n"
+        self.labelPtSaturation.setPalette(palette3)
+        self.labelPtSaturation.setFont(font)
+        self.labelPtSaturation.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
 "border: none;")
 
-        self.gridLayout_11.addWidget(self.labelPtGrowth, 2, 1, 1, 1)
+        self.gridLayout_11.addWidget(self.labelPtSaturation, 2, 5, 1, 1)
 
-        self.labelPtSaturation = QLabel(self.metric_data)
-        self.labelPtSaturation.setObjectName(u"labelPtSaturation")
+        self.labelPtPulse = QLabel(self.metric_data)
+        self.labelPtPulse.setObjectName(u"labelPtPulse")
         palette4 = QPalette()
         palette4.setBrush(QPalette.Active, QPalette.WindowText, brush8)
         palette4.setBrush(QPalette.Active, QPalette.Button, brush9)
@@ -574,17 +534,30 @@ class Ui_StObj(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette4.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
-        self.labelPtSaturation.setPalette(palette4)
-        self.labelPtSaturation.setFont(font3)
-        self.labelPtSaturation.setStyleSheet(u"color: #326273;\n"
+        self.labelPtPulse.setPalette(palette4)
+        self.labelPtPulse.setFont(font)
+        self.labelPtPulse.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
 "border: none;")
 
-        self.gridLayout_11.addWidget(self.labelPtSaturation, 2, 5, 1, 1)
+        self.gridLayout_11.addWidget(self.labelPtPulse, 4, 5, 1, 1)
 
-        self.labelPtPulse = QLabel(self.metric_data)
-        self.labelPtPulse.setObjectName(u"labelPtPulse")
+        self.lineEditSaturation = QLineEdit(self.metric_data)
+        self.lineEditSaturation.setObjectName(u"lineEditSaturation")
+        self.lineEditSaturation.setMaximumSize(QSize(110, 16777215))
+        self.lineEditSaturation.setFont(font)
+        self.lineEditSaturation.setStyleSheet(u"background-color: #EEEEEE;\n"
+"color: #13242B;\n"
+"border: 1px solid #326273;\n"
+"font-weight: bold;\n"
+"font-size: 11pt;\n"
+"")
+
+        self.gridLayout_11.addWidget(self.lineEditSaturation, 2, 6, 1, 1)
+
+        self.labelPtTemperatureCelcium = QLabel(self.metric_data)
+        self.labelPtTemperatureCelcium.setObjectName(u"labelPtTemperatureCelcium")
         palette5 = QPalette()
         palette5.setBrush(QPalette.Active, QPalette.WindowText, brush8)
         palette5.setBrush(QPalette.Active, QPalette.Button, brush9)
@@ -640,30 +613,17 @@ class Ui_StObj(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette5.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
-        self.labelPtPulse.setPalette(palette5)
-        self.labelPtPulse.setFont(font3)
-        self.labelPtPulse.setStyleSheet(u"color: #326273;\n"
+        self.labelPtTemperatureCelcium.setPalette(palette5)
+        self.labelPtTemperatureCelcium.setFont(font)
+        self.labelPtTemperatureCelcium.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
 "border: none;")
 
-        self.gridLayout_11.addWidget(self.labelPtPulse, 4, 5, 1, 1)
+        self.gridLayout_11.addWidget(self.labelPtTemperatureCelcium, 3, 5, 1, 1)
 
-        self.lineEditSaturation = QLineEdit(self.metric_data)
-        self.lineEditSaturation.setObjectName(u"lineEditSaturation")
-        self.lineEditSaturation.setMaximumSize(QSize(110, 16777215))
-        self.lineEditSaturation.setFont(font3)
-        self.lineEditSaturation.setStyleSheet(u"background-color: #EEEEEE;\n"
-"color: #13242B;\n"
-"border: 1px solid #326273;\n"
-"font-weight: bold;\n"
-"font-size: 11pt;\n"
-"")
-
-        self.gridLayout_11.addWidget(self.lineEditSaturation, 2, 6, 1, 1)
-
-        self.labelPtTemperatureCelcium = QLabel(self.metric_data)
-        self.labelPtTemperatureCelcium.setObjectName(u"labelPtTemperatureCelcium")
+        self.labelPtWeight = QLabel(self.metric_data)
+        self.labelPtWeight.setObjectName(u"labelPtWeight")
         palette6 = QPalette()
         palette6.setBrush(QPalette.Active, QPalette.WindowText, brush8)
         palette6.setBrush(QPalette.Active, QPalette.Button, brush9)
@@ -719,21 +679,56 @@ class Ui_StObj(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette6.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
-        self.labelPtTemperatureCelcium.setPalette(palette6)
-        self.labelPtTemperatureCelcium.setFont(font3)
-        self.labelPtTemperatureCelcium.setStyleSheet(u"color: #326273;\n"
+        self.labelPtWeight.setPalette(palette6)
+        self.labelPtWeight.setFont(font)
+        self.labelPtWeight.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
 "border: none;")
 
-        self.gridLayout_11.addWidget(self.labelPtTemperatureCelcium, 3, 5, 1, 1)
+        self.gridLayout_11.addWidget(self.labelPtWeight, 1, 1, 1, 1)
 
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.lineEditPtTemperature = QLineEdit(self.metric_data)
+        self.lineEditPtTemperature.setObjectName(u"lineEditPtTemperature")
+        self.lineEditPtTemperature.setMaximumSize(QSize(110, 16777215))
+        self.lineEditPtTemperature.setFont(font)
+        self.lineEditPtTemperature.setStyleSheet(u"background-color: #EEEEEE;\n"
+"color: #13242B;\n"
+"border: 1px solid #326273;\n"
+"font-weight: bold;\n"
+"font-size: 11pt;\n"
+"")
 
-        self.gridLayout_11.addItem(self.horizontalSpacer_4, 2, 7, 1, 1)
+        self.gridLayout_11.addWidget(self.lineEditPtTemperature, 3, 6, 1, 1)
 
-        self.labelPtWeight = QLabel(self.metric_data)
-        self.labelPtWeight.setObjectName(u"labelPtWeight")
+        self.lineEditPtWeight = QLineEdit(self.metric_data)
+        self.lineEditPtWeight.setObjectName(u"lineEditPtWeight")
+        self.lineEditPtWeight.setMaximumSize(QSize(110, 16777215))
+        self.lineEditPtWeight.setFont(font)
+        self.lineEditPtWeight.setStyleSheet(u"background-color: #EEEEEE;\n"
+"color: #13242B;\n"
+"border: 1px solid #326273;\n"
+"font-weight: bold;\n"
+"font-size: 11pt;\n"
+"")
+
+        self.gridLayout_11.addWidget(self.lineEditPtWeight, 1, 2, 1, 3)
+
+        self.lineEditPtBreathingSpeed = QLineEdit(self.metric_data)
+        self.lineEditPtBreathingSpeed.setObjectName(u"lineEditPtBreathingSpeed")
+        self.lineEditPtBreathingSpeed.setMaximumSize(QSize(110, 16777215))
+        self.lineEditPtBreathingSpeed.setFont(font)
+        self.lineEditPtBreathingSpeed.setStyleSheet(u"background-color: #EEEEEE;\n"
+"color: #13242B;\n"
+"border: 1px solid #326273;\n"
+"font-weight: bold;\n"
+"font-size: 11pt;\n"
+"")
+
+        self.gridLayout_11.addWidget(self.lineEditPtBreathingSpeed, 1, 6, 1, 1)
+
+        self.labelPtBreathingSpeed = QLabel(self.metric_data)
+        self.labelPtBreathingSpeed.setObjectName(u"labelPtBreathingSpeed")
         palette7 = QPalette()
         palette7.setBrush(QPalette.Active, QPalette.WindowText, brush8)
         palette7.setBrush(QPalette.Active, QPalette.Button, brush9)
@@ -789,141 +784,122 @@ class Ui_StObj(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette7.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
-        self.labelPtWeight.setPalette(palette7)
-        self.labelPtWeight.setFont(font3)
-        self.labelPtWeight.setStyleSheet(u"color: #326273;\n"
+        self.labelPtBreathingSpeed.setPalette(palette7)
+        self.labelPtBreathingSpeed.setFont(font)
+        self.labelPtBreathingSpeed.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
 "border: none;")
 
-        self.gridLayout_11.addWidget(self.labelPtWeight, 1, 1, 1, 1)
+        self.gridLayout_11.addWidget(self.labelPtBreathingSpeed, 1, 5, 1, 1)
 
-        self.pushButton_add_to_diag = QPushButton(self.metric_data)
-        self.pushButton_add_to_diag.setObjectName(u"pushButton_add_to_diag")
-        self.pushButton_add_to_diag.setEnabled(False)
+        self.label_7 = QLabel(self.metric_data)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setMaximumSize(QSize(16777215, 25))
+        self.label_7.setStyleSheet(u"color: #326273;\n"
+"font-weight: bold;\n"
+"font-size: 12pt;\n"
+"background-color: rgba(50, 98, 115, 40);\n"
+"border: none;")
+        self.label_7.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_11.addWidget(self.label_7, 0, 0, 1, 8)
+
+        self.lineEditPtGrowth = QLineEdit(self.metric_data)
+        self.lineEditPtGrowth.setObjectName(u"lineEditPtGrowth")
+        self.lineEditPtGrowth.setMaximumSize(QSize(110, 16777215))
+        self.lineEditPtGrowth.setFont(font)
+        self.lineEditPtGrowth.setStyleSheet(u"background-color: #EEEEEE;\n"
+"color: #13242B;\n"
+"border: 1px solid #326273;\n"
+"font-weight: bold;\n"
+"font-size: 11pt;\n"
+"")
+
+        self.gridLayout_11.addWidget(self.lineEditPtGrowth, 2, 2, 1, 3)
+
+        self.lineEditPtPulse = QLineEdit(self.metric_data)
+        self.lineEditPtPulse.setObjectName(u"lineEditPtPulse")
+        self.lineEditPtPulse.setMaximumSize(QSize(110, 16777215))
+        self.lineEditPtPulse.setFont(font)
+        self.lineEditPtPulse.setStyleSheet(u"background-color: #EEEEEE;\n"
+"color: #13242B;\n"
+"border: 1px solid #326273;\n"
+"font-weight: bold;\n"
+"font-size: 11pt;\n"
+"")
+
+        self.gridLayout_11.addWidget(self.lineEditPtPulse, 4, 6, 1, 1)
+
+        self.label_2 = QLabel(self.metric_data)
+        self.label_2.setObjectName(u"label_2")
         palette8 = QPalette()
-        palette8.setBrush(QPalette.Active, QPalette.WindowText, brush2)
-        palette8.setBrush(QPalette.Active, QPalette.Button, brush13)
+        palette8.setBrush(QPalette.Active, QPalette.WindowText, brush8)
+        palette8.setBrush(QPalette.Active, QPalette.Button, brush9)
         palette8.setBrush(QPalette.Active, QPalette.Light, brush2)
-        palette8.setBrush(QPalette.Active, QPalette.Midlight, brush14)
-        palette8.setBrush(QPalette.Active, QPalette.Dark, brush15)
-        palette8.setBrush(QPalette.Active, QPalette.Mid, brush16)
-        palette8.setBrush(QPalette.Active, QPalette.Text, brush2)
+        palette8.setBrush(QPalette.Active, QPalette.Midlight, brush3)
+        palette8.setBrush(QPalette.Active, QPalette.Dark, brush4)
+        palette8.setBrush(QPalette.Active, QPalette.Mid, brush5)
+        palette8.setBrush(QPalette.Active, QPalette.Text, brush8)
         palette8.setBrush(QPalette.Active, QPalette.BrightText, brush2)
-        palette8.setBrush(QPalette.Active, QPalette.ButtonText, brush2)
-        palette8.setBrush(QPalette.Active, QPalette.Base, brush13)
-        palette8.setBrush(QPalette.Active, QPalette.Window, brush13)
+        palette8.setBrush(QPalette.Active, QPalette.ButtonText, brush8)
+        palette8.setBrush(QPalette.Active, QPalette.Base, brush9)
+        palette8.setBrush(QPalette.Active, QPalette.Window, brush9)
         palette8.setBrush(QPalette.Active, QPalette.Shadow, brush10)
-        palette8.setBrush(QPalette.Active, QPalette.AlternateBase, brush14)
+        palette8.setBrush(QPalette.Active, QPalette.AlternateBase, brush3)
         palette8.setBrush(QPalette.Active, QPalette.ToolTipBase, brush11)
         palette8.setBrush(QPalette.Active, QPalette.ToolTipText, brush10)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette8.setBrush(QPalette.Active, QPalette.PlaceholderText, brush17)
+        palette8.setBrush(QPalette.Active, QPalette.PlaceholderText, brush12)
 #endif
-        palette8.setBrush(QPalette.Inactive, QPalette.WindowText, brush2)
-        palette8.setBrush(QPalette.Inactive, QPalette.Button, brush13)
+        palette8.setBrush(QPalette.Inactive, QPalette.WindowText, brush8)
+        palette8.setBrush(QPalette.Inactive, QPalette.Button, brush9)
         palette8.setBrush(QPalette.Inactive, QPalette.Light, brush2)
-        palette8.setBrush(QPalette.Inactive, QPalette.Midlight, brush14)
-        palette8.setBrush(QPalette.Inactive, QPalette.Dark, brush15)
-        palette8.setBrush(QPalette.Inactive, QPalette.Mid, brush16)
-        palette8.setBrush(QPalette.Inactive, QPalette.Text, brush2)
+        palette8.setBrush(QPalette.Inactive, QPalette.Midlight, brush3)
+        palette8.setBrush(QPalette.Inactive, QPalette.Dark, brush4)
+        palette8.setBrush(QPalette.Inactive, QPalette.Mid, brush5)
+        palette8.setBrush(QPalette.Inactive, QPalette.Text, brush8)
         palette8.setBrush(QPalette.Inactive, QPalette.BrightText, brush2)
-        palette8.setBrush(QPalette.Inactive, QPalette.ButtonText, brush2)
-        palette8.setBrush(QPalette.Inactive, QPalette.Base, brush13)
-        palette8.setBrush(QPalette.Inactive, QPalette.Window, brush13)
+        palette8.setBrush(QPalette.Inactive, QPalette.ButtonText, brush8)
+        palette8.setBrush(QPalette.Inactive, QPalette.Base, brush9)
+        palette8.setBrush(QPalette.Inactive, QPalette.Window, brush9)
         palette8.setBrush(QPalette.Inactive, QPalette.Shadow, brush10)
-        palette8.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush14)
+        palette8.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush3)
         palette8.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush11)
         palette8.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush10)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette8.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush17)
+        palette8.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush12)
 #endif
-        palette8.setBrush(QPalette.Disabled, QPalette.WindowText, brush18)
-        palette8.setBrush(QPalette.Disabled, QPalette.Button, brush19)
+        palette8.setBrush(QPalette.Disabled, QPalette.WindowText, brush8)
+        palette8.setBrush(QPalette.Disabled, QPalette.Button, brush9)
         palette8.setBrush(QPalette.Disabled, QPalette.Light, brush2)
-        palette8.setBrush(QPalette.Disabled, QPalette.Midlight, brush14)
-        palette8.setBrush(QPalette.Disabled, QPalette.Dark, brush15)
-        palette8.setBrush(QPalette.Disabled, QPalette.Mid, brush16)
-        palette8.setBrush(QPalette.Disabled, QPalette.Text, brush18)
+        palette8.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
+        palette8.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
+        palette8.setBrush(QPalette.Disabled, QPalette.Mid, brush5)
+        palette8.setBrush(QPalette.Disabled, QPalette.Text, brush8)
         palette8.setBrush(QPalette.Disabled, QPalette.BrightText, brush2)
-        palette8.setBrush(QPalette.Disabled, QPalette.ButtonText, brush18)
-        palette8.setBrush(QPalette.Disabled, QPalette.Base, brush19)
-        palette8.setBrush(QPalette.Disabled, QPalette.Window, brush19)
+        palette8.setBrush(QPalette.Disabled, QPalette.ButtonText, brush8)
+        palette8.setBrush(QPalette.Disabled, QPalette.Base, brush9)
+        palette8.setBrush(QPalette.Disabled, QPalette.Window, brush9)
         palette8.setBrush(QPalette.Disabled, QPalette.Shadow, brush10)
-        palette8.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush20)
+        palette8.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush7)
         palette8.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush11)
         palette8.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush10)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette8.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush21)
+        palette8.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
-        self.pushButton_add_to_diag.setPalette(palette8)
-        self.pushButton_add_to_diag.setFont(font)
-        self.pushButton_add_to_diag.setStyleSheet(u"QPushButton {\n"
-"background-color: rgba(50, 98, 115, 190);\n"
-"font-size: 11pt;\n"
-"color: White;\n"
-"border: None;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"background-color: rgba(50, 98, 115, 255);\n"
-"border: 2px solid rgba(92, 158, 173, 255);\n"
-"}\n"
-"\n"
-"QPushButton::pressed {\n"
-"background-color: rgba(92, 158, 173, 255);\n"
-"border: 1px solid rgba(255, 255, 255, 255);\n"
-"}\n"
-"\n"
-"QPushButton::disabled {\n"
-"background-color:  rgba(50, 98, 115, 40);\n"
-"border: 1px solid rgba(50, 98, 115, 150);\n"
-"color:  rgba(50, 98, 115, 150);\n"
-"}")
-
-        self.gridLayout_11.addWidget(self.pushButton_add_to_diag, 9, 3, 1, 3)
-
-        self.lineEditPtTemperature = QLineEdit(self.metric_data)
-        self.lineEditPtTemperature.setObjectName(u"lineEditPtTemperature")
-        self.lineEditPtTemperature.setMaximumSize(QSize(110, 16777215))
-        self.lineEditPtTemperature.setFont(font3)
-        self.lineEditPtTemperature.setStyleSheet(u"background-color: #EEEEEE;\n"
-"color: #13242B;\n"
-"border: 1px solid #326273;\n"
+        self.label_2.setPalette(palette8)
+        self.label_2.setFont(font3)
+        self.label_2.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
-"font-size: 11pt;\n"
-"")
+"font-size: 10pt;\n"
+"background-color: transparent;\n"
+"border: none;")
 
-        self.gridLayout_11.addWidget(self.lineEditPtTemperature, 3, 6, 1, 1)
+        self.gridLayout_11.addWidget(self.label_2, 10, 1, 1, 6)
 
-        self.lineEditPtWeight = QLineEdit(self.metric_data)
-        self.lineEditPtWeight.setObjectName(u"lineEditPtWeight")
-        self.lineEditPtWeight.setMaximumSize(QSize(110, 16777215))
-        self.lineEditPtWeight.setFont(font3)
-        self.lineEditPtWeight.setStyleSheet(u"background-color: #EEEEEE;\n"
-"color: #13242B;\n"
-"border: 1px solid #326273;\n"
-"font-weight: bold;\n"
-"font-size: 11pt;\n"
-"")
-
-        self.gridLayout_11.addWidget(self.lineEditPtWeight, 1, 2, 1, 3)
-
-        self.lineEditPtBreathingSpeed = QLineEdit(self.metric_data)
-        self.lineEditPtBreathingSpeed.setObjectName(u"lineEditPtBreathingSpeed")
-        self.lineEditPtBreathingSpeed.setMaximumSize(QSize(110, 16777215))
-        self.lineEditPtBreathingSpeed.setFont(font3)
-        self.lineEditPtBreathingSpeed.setStyleSheet(u"background-color: #EEEEEE;\n"
-"color: #13242B;\n"
-"border: 1px solid #326273;\n"
-"font-weight: bold;\n"
-"font-size: 11pt;\n"
-"")
-
-        self.gridLayout_11.addWidget(self.lineEditPtBreathingSpeed, 1, 6, 1, 1)
-
-        self.labelPtBreathingSpeed = QLabel(self.metric_data)
-        self.labelPtBreathingSpeed.setObjectName(u"labelPtBreathingSpeed")
+        self.labelPtBloodPreasure = QLabel(self.metric_data)
+        self.labelPtBloodPreasure.setObjectName(u"labelPtBloodPreasure")
         palette9 = QPalette()
         palette9.setBrush(QPalette.Active, QPalette.WindowText, brush8)
         palette9.setBrush(QPalette.Active, QPalette.Button, brush9)
@@ -979,55 +955,18 @@ class Ui_StObj(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette9.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
-        self.labelPtBreathingSpeed.setPalette(palette9)
-        self.labelPtBreathingSpeed.setFont(font3)
-        self.labelPtBreathingSpeed.setStyleSheet(u"color: #326273;\n"
+        self.labelPtBloodPreasure.setPalette(palette9)
+        self.labelPtBloodPreasure.setFont(font)
+        self.labelPtBloodPreasure.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
 "border: none;")
 
-        self.gridLayout_11.addWidget(self.labelPtBreathingSpeed, 1, 5, 1, 1)
+        self.gridLayout_11.addWidget(self.labelPtBloodPreasure, 4, 1, 1, 1)
 
-        self.label_7 = QLabel(self.metric_data)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setMaximumSize(QSize(16777215, 25))
-        self.label_7.setStyleSheet(u"color: #326273;\n"
-"font-weight: bold;\n"
-"font-size: 12pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
-        self.label_7.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_11.addWidget(self.label_7, 0, 0, 1, 8)
-
-        self.lineEditPtGrowth = QLineEdit(self.metric_data)
-        self.lineEditPtGrowth.setObjectName(u"lineEditPtGrowth")
-        self.lineEditPtGrowth.setMaximumSize(QSize(110, 16777215))
-        self.lineEditPtGrowth.setFont(font3)
-        self.lineEditPtGrowth.setStyleSheet(u"background-color: #EEEEEE;\n"
-"color: #13242B;\n"
-"border: 1px solid #326273;\n"
-"font-weight: bold;\n"
-"font-size: 11pt;\n"
-"")
-
-        self.gridLayout_11.addWidget(self.lineEditPtGrowth, 2, 2, 1, 3)
-
-        self.lineEditPtPulse = QLineEdit(self.metric_data)
-        self.lineEditPtPulse.setObjectName(u"lineEditPtPulse")
-        self.lineEditPtPulse.setMaximumSize(QSize(110, 16777215))
-        self.lineEditPtPulse.setFont(font3)
-        self.lineEditPtPulse.setStyleSheet(u"background-color: #EEEEEE;\n"
-"color: #13242B;\n"
-"border: 1px solid #326273;\n"
-"font-weight: bold;\n"
-"font-size: 11pt;\n"
-"")
-
-        self.gridLayout_11.addWidget(self.lineEditPtPulse, 4, 6, 1, 1)
-
-        self.label_2 = QLabel(self.metric_data)
-        self.label_2.setObjectName(u"label_2")
+        self.labelooo = QLabel(self.metric_data)
+        self.labelooo.setObjectName(u"labelooo")
+        self.labelooo.setMinimumSize(QSize(5, 0))
         palette10 = QPalette()
         palette10.setBrush(QPalette.Active, QPalette.WindowText, brush8)
         palette10.setBrush(QPalette.Active, QPalette.Button, brush9)
@@ -1083,142 +1022,8 @@ class Ui_StObj(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette10.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
-        self.label_2.setPalette(palette10)
-        self.label_2.setFont(font4)
-        self.label_2.setStyleSheet(u"color: #326273;\n"
-"font-weight: bold;\n"
-"font-size: 10pt;\n"
-"background-color: transparent;\n"
-"border: none;")
-
-        self.gridLayout_11.addWidget(self.label_2, 10, 1, 1, 6)
-
-        self.labelPtBloodPreasure = QLabel(self.metric_data)
-        self.labelPtBloodPreasure.setObjectName(u"labelPtBloodPreasure")
-        palette11 = QPalette()
-        palette11.setBrush(QPalette.Active, QPalette.WindowText, brush8)
-        palette11.setBrush(QPalette.Active, QPalette.Button, brush9)
-        palette11.setBrush(QPalette.Active, QPalette.Light, brush2)
-        palette11.setBrush(QPalette.Active, QPalette.Midlight, brush3)
-        palette11.setBrush(QPalette.Active, QPalette.Dark, brush4)
-        palette11.setBrush(QPalette.Active, QPalette.Mid, brush5)
-        palette11.setBrush(QPalette.Active, QPalette.Text, brush8)
-        palette11.setBrush(QPalette.Active, QPalette.BrightText, brush2)
-        palette11.setBrush(QPalette.Active, QPalette.ButtonText, brush8)
-        palette11.setBrush(QPalette.Active, QPalette.Base, brush9)
-        palette11.setBrush(QPalette.Active, QPalette.Window, brush9)
-        palette11.setBrush(QPalette.Active, QPalette.Shadow, brush10)
-        palette11.setBrush(QPalette.Active, QPalette.AlternateBase, brush3)
-        palette11.setBrush(QPalette.Active, QPalette.ToolTipBase, brush11)
-        palette11.setBrush(QPalette.Active, QPalette.ToolTipText, brush10)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette11.setBrush(QPalette.Active, QPalette.PlaceholderText, brush12)
-#endif
-        palette11.setBrush(QPalette.Inactive, QPalette.WindowText, brush8)
-        palette11.setBrush(QPalette.Inactive, QPalette.Button, brush9)
-        palette11.setBrush(QPalette.Inactive, QPalette.Light, brush2)
-        palette11.setBrush(QPalette.Inactive, QPalette.Midlight, brush3)
-        palette11.setBrush(QPalette.Inactive, QPalette.Dark, brush4)
-        palette11.setBrush(QPalette.Inactive, QPalette.Mid, brush5)
-        palette11.setBrush(QPalette.Inactive, QPalette.Text, brush8)
-        palette11.setBrush(QPalette.Inactive, QPalette.BrightText, brush2)
-        palette11.setBrush(QPalette.Inactive, QPalette.ButtonText, brush8)
-        palette11.setBrush(QPalette.Inactive, QPalette.Base, brush9)
-        palette11.setBrush(QPalette.Inactive, QPalette.Window, brush9)
-        palette11.setBrush(QPalette.Inactive, QPalette.Shadow, brush10)
-        palette11.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush3)
-        palette11.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush11)
-        palette11.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush10)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette11.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush12)
-#endif
-        palette11.setBrush(QPalette.Disabled, QPalette.WindowText, brush8)
-        palette11.setBrush(QPalette.Disabled, QPalette.Button, brush9)
-        palette11.setBrush(QPalette.Disabled, QPalette.Light, brush2)
-        palette11.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
-        palette11.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
-        palette11.setBrush(QPalette.Disabled, QPalette.Mid, brush5)
-        palette11.setBrush(QPalette.Disabled, QPalette.Text, brush8)
-        palette11.setBrush(QPalette.Disabled, QPalette.BrightText, brush2)
-        palette11.setBrush(QPalette.Disabled, QPalette.ButtonText, brush8)
-        palette11.setBrush(QPalette.Disabled, QPalette.Base, brush9)
-        palette11.setBrush(QPalette.Disabled, QPalette.Window, brush9)
-        palette11.setBrush(QPalette.Disabled, QPalette.Shadow, brush10)
-        palette11.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush7)
-        palette11.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush11)
-        palette11.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush10)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette11.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
-#endif
-        self.labelPtBloodPreasure.setPalette(palette11)
-        self.labelPtBloodPreasure.setFont(font3)
-        self.labelPtBloodPreasure.setStyleSheet(u"color: #326273;\n"
-"font-weight: bold;\n"
-"background-color: transparent;\n"
-"border: none;")
-
-        self.gridLayout_11.addWidget(self.labelPtBloodPreasure, 4, 1, 1, 1)
-
-        self.labelooo = QLabel(self.metric_data)
-        self.labelooo.setObjectName(u"labelooo")
-        self.labelooo.setMinimumSize(QSize(5, 0))
-        palette12 = QPalette()
-        palette12.setBrush(QPalette.Active, QPalette.WindowText, brush8)
-        palette12.setBrush(QPalette.Active, QPalette.Button, brush9)
-        palette12.setBrush(QPalette.Active, QPalette.Light, brush2)
-        palette12.setBrush(QPalette.Active, QPalette.Midlight, brush3)
-        palette12.setBrush(QPalette.Active, QPalette.Dark, brush4)
-        palette12.setBrush(QPalette.Active, QPalette.Mid, brush5)
-        palette12.setBrush(QPalette.Active, QPalette.Text, brush8)
-        palette12.setBrush(QPalette.Active, QPalette.BrightText, brush2)
-        palette12.setBrush(QPalette.Active, QPalette.ButtonText, brush8)
-        palette12.setBrush(QPalette.Active, QPalette.Base, brush9)
-        palette12.setBrush(QPalette.Active, QPalette.Window, brush9)
-        palette12.setBrush(QPalette.Active, QPalette.Shadow, brush10)
-        palette12.setBrush(QPalette.Active, QPalette.AlternateBase, brush3)
-        palette12.setBrush(QPalette.Active, QPalette.ToolTipBase, brush11)
-        palette12.setBrush(QPalette.Active, QPalette.ToolTipText, brush10)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette12.setBrush(QPalette.Active, QPalette.PlaceholderText, brush12)
-#endif
-        palette12.setBrush(QPalette.Inactive, QPalette.WindowText, brush8)
-        palette12.setBrush(QPalette.Inactive, QPalette.Button, brush9)
-        palette12.setBrush(QPalette.Inactive, QPalette.Light, brush2)
-        palette12.setBrush(QPalette.Inactive, QPalette.Midlight, brush3)
-        palette12.setBrush(QPalette.Inactive, QPalette.Dark, brush4)
-        palette12.setBrush(QPalette.Inactive, QPalette.Mid, brush5)
-        palette12.setBrush(QPalette.Inactive, QPalette.Text, brush8)
-        palette12.setBrush(QPalette.Inactive, QPalette.BrightText, brush2)
-        palette12.setBrush(QPalette.Inactive, QPalette.ButtonText, brush8)
-        palette12.setBrush(QPalette.Inactive, QPalette.Base, brush9)
-        palette12.setBrush(QPalette.Inactive, QPalette.Window, brush9)
-        palette12.setBrush(QPalette.Inactive, QPalette.Shadow, brush10)
-        palette12.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush3)
-        palette12.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush11)
-        palette12.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush10)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette12.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush12)
-#endif
-        palette12.setBrush(QPalette.Disabled, QPalette.WindowText, brush8)
-        palette12.setBrush(QPalette.Disabled, QPalette.Button, brush9)
-        palette12.setBrush(QPalette.Disabled, QPalette.Light, brush2)
-        palette12.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
-        palette12.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
-        palette12.setBrush(QPalette.Disabled, QPalette.Mid, brush5)
-        palette12.setBrush(QPalette.Disabled, QPalette.Text, brush8)
-        palette12.setBrush(QPalette.Disabled, QPalette.BrightText, brush2)
-        palette12.setBrush(QPalette.Disabled, QPalette.ButtonText, brush8)
-        palette12.setBrush(QPalette.Disabled, QPalette.Base, brush9)
-        palette12.setBrush(QPalette.Disabled, QPalette.Window, brush9)
-        palette12.setBrush(QPalette.Disabled, QPalette.Shadow, brush10)
-        palette12.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush7)
-        palette12.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush11)
-        palette12.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush10)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette12.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
-#endif
-        self.labelooo.setPalette(palette12)
-        self.labelooo.setFont(font3)
+        self.labelooo.setPalette(palette10)
+        self.labelooo.setFont(font)
         self.labelooo.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -1229,7 +1034,7 @@ class Ui_StObj(object):
         self.lineEditPtBloodPreasureSist = QLineEdit(self.metric_data)
         self.lineEditPtBloodPreasureSist.setObjectName(u"lineEditPtBloodPreasureSist")
         self.lineEditPtBloodPreasureSist.setMaximumSize(QSize(50, 16777215))
-        self.lineEditPtBloodPreasureSist.setFont(font3)
+        self.lineEditPtBloodPreasureSist.setFont(font)
         self.lineEditPtBloodPreasureSist.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -1242,7 +1047,7 @@ class Ui_StObj(object):
         self.lineEditPtBloodPreasureDiast = QLineEdit(self.metric_data)
         self.lineEditPtBloodPreasureDiast.setObjectName(u"lineEditPtBloodPreasureDiast")
         self.lineEditPtBloodPreasureDiast.setMaximumSize(QSize(50, 16777215))
-        self.lineEditPtBloodPreasureDiast.setFont(font3)
+        self.lineEditPtBloodPreasureDiast.setFont(font)
         self.lineEditPtBloodPreasureDiast.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -1251,6 +1056,203 @@ class Ui_StObj(object):
 "")
 
         self.gridLayout_11.addWidget(self.lineEditPtBloodPreasureDiast, 4, 4, 1, 1)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_11.addItem(self.horizontalSpacer_4, 4, 7, 1, 1)
+
+        self.pushButton_random_values = QPushButton(self.metric_data)
+        self.pushButton_random_values.setObjectName(u"pushButton_random_values")
+        self.pushButton_random_values.setEnabled(True)
+        self.pushButton_random_values.setMinimumSize(QSize(0, 30))
+        palette11 = QPalette()
+        palette11.setBrush(QPalette.Active, QPalette.WindowText, brush2)
+        brush13 = QBrush(QColor(50, 98, 115, 190))
+        brush13.setStyle(Qt.SolidPattern)
+        palette11.setBrush(QPalette.Active, QPalette.Button, brush13)
+        palette11.setBrush(QPalette.Active, QPalette.Light, brush2)
+        brush14 = QBrush(QColor(236, 236, 236, 255))
+        brush14.setStyle(Qt.SolidPattern)
+        palette11.setBrush(QPalette.Active, QPalette.Midlight, brush14)
+        brush15 = QBrush(QColor(108, 108, 108, 255))
+        brush15.setStyle(Qt.SolidPattern)
+        palette11.setBrush(QPalette.Active, QPalette.Dark, brush15)
+        brush16 = QBrush(QColor(145, 145, 145, 255))
+        brush16.setStyle(Qt.SolidPattern)
+        palette11.setBrush(QPalette.Active, QPalette.Mid, brush16)
+        palette11.setBrush(QPalette.Active, QPalette.Text, brush2)
+        palette11.setBrush(QPalette.Active, QPalette.BrightText, brush2)
+        palette11.setBrush(QPalette.Active, QPalette.ButtonText, brush2)
+        palette11.setBrush(QPalette.Active, QPalette.Base, brush13)
+        palette11.setBrush(QPalette.Active, QPalette.Window, brush13)
+        palette11.setBrush(QPalette.Active, QPalette.Shadow, brush10)
+        palette11.setBrush(QPalette.Active, QPalette.AlternateBase, brush14)
+        palette11.setBrush(QPalette.Active, QPalette.ToolTipBase, brush11)
+        palette11.setBrush(QPalette.Active, QPalette.ToolTipText, brush10)
+        brush17 = QBrush(QColor(255, 255, 255, 128))
+        brush17.setStyle(Qt.SolidPattern)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette11.setBrush(QPalette.Active, QPalette.PlaceholderText, brush17)
+#endif
+        palette11.setBrush(QPalette.Inactive, QPalette.WindowText, brush2)
+        palette11.setBrush(QPalette.Inactive, QPalette.Button, brush13)
+        palette11.setBrush(QPalette.Inactive, QPalette.Light, brush2)
+        palette11.setBrush(QPalette.Inactive, QPalette.Midlight, brush14)
+        palette11.setBrush(QPalette.Inactive, QPalette.Dark, brush15)
+        palette11.setBrush(QPalette.Inactive, QPalette.Mid, brush16)
+        palette11.setBrush(QPalette.Inactive, QPalette.Text, brush2)
+        palette11.setBrush(QPalette.Inactive, QPalette.BrightText, brush2)
+        palette11.setBrush(QPalette.Inactive, QPalette.ButtonText, brush2)
+        palette11.setBrush(QPalette.Inactive, QPalette.Base, brush13)
+        palette11.setBrush(QPalette.Inactive, QPalette.Window, brush13)
+        palette11.setBrush(QPalette.Inactive, QPalette.Shadow, brush10)
+        palette11.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush14)
+        palette11.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush11)
+        palette11.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush10)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette11.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush17)
+#endif
+        brush18 = QBrush(QColor(50, 98, 115, 150))
+        brush18.setStyle(Qt.SolidPattern)
+        palette11.setBrush(QPalette.Disabled, QPalette.WindowText, brush18)
+        brush19 = QBrush(QColor(50, 98, 115, 40))
+        brush19.setStyle(Qt.SolidPattern)
+        palette11.setBrush(QPalette.Disabled, QPalette.Button, brush19)
+        palette11.setBrush(QPalette.Disabled, QPalette.Light, brush2)
+        palette11.setBrush(QPalette.Disabled, QPalette.Midlight, brush14)
+        palette11.setBrush(QPalette.Disabled, QPalette.Dark, brush15)
+        palette11.setBrush(QPalette.Disabled, QPalette.Mid, brush16)
+        palette11.setBrush(QPalette.Disabled, QPalette.Text, brush18)
+        palette11.setBrush(QPalette.Disabled, QPalette.BrightText, brush2)
+        palette11.setBrush(QPalette.Disabled, QPalette.ButtonText, brush18)
+        palette11.setBrush(QPalette.Disabled, QPalette.Base, brush19)
+        palette11.setBrush(QPalette.Disabled, QPalette.Window, brush19)
+        palette11.setBrush(QPalette.Disabled, QPalette.Shadow, brush10)
+        brush20 = QBrush(QColor(217, 217, 217, 255))
+        brush20.setStyle(Qt.SolidPattern)
+        palette11.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush20)
+        palette11.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush11)
+        palette11.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush10)
+        brush21 = QBrush(QColor(50, 98, 115, 75))
+        brush21.setStyle(Qt.SolidPattern)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette11.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush21)
+#endif
+        self.pushButton_random_values.setPalette(palette11)
+        font4 = QFont()
+        font4.setFamilies([u"Roboto"])
+        font4.setPointSize(11)
+        font4.setBold(False)
+        self.pushButton_random_values.setFont(font4)
+        self.pushButton_random_values.setStyleSheet(u"QPushButton {\n"
+"background-color: rgba(50, 98, 115, 190);\n"
+"font-size: 11pt;\n"
+"color: White;\n"
+"border: None;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"background-color: rgba(50, 98, 115, 255);\n"
+"border: 2px solid rgba(92, 158, 173, 255);\n"
+"}\n"
+"\n"
+"QPushButton::pressed {\n"
+"background-color: rgba(92, 158, 173, 255);\n"
+"border: 1px solid rgba(255, 255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton::disabled {\n"
+"background-color:  rgba(50, 98, 115, 40);\n"
+"border: 1px solid rgba(50, 98, 115, 150);\n"
+"color:  rgba(50, 98, 115, 150);\n"
+"}")
+
+        self.gridLayout_11.addWidget(self.pushButton_random_values, 1, 7, 3, 1)
+
+        self.pushButton_add_to_diag = QPushButton(self.metric_data)
+        self.pushButton_add_to_diag.setObjectName(u"pushButton_add_to_diag")
+        self.pushButton_add_to_diag.setEnabled(False)
+        palette12 = QPalette()
+        palette12.setBrush(QPalette.Active, QPalette.WindowText, brush2)
+        palette12.setBrush(QPalette.Active, QPalette.Button, brush13)
+        palette12.setBrush(QPalette.Active, QPalette.Light, brush2)
+        palette12.setBrush(QPalette.Active, QPalette.Midlight, brush14)
+        palette12.setBrush(QPalette.Active, QPalette.Dark, brush15)
+        palette12.setBrush(QPalette.Active, QPalette.Mid, brush16)
+        palette12.setBrush(QPalette.Active, QPalette.Text, brush2)
+        palette12.setBrush(QPalette.Active, QPalette.BrightText, brush2)
+        palette12.setBrush(QPalette.Active, QPalette.ButtonText, brush2)
+        palette12.setBrush(QPalette.Active, QPalette.Base, brush13)
+        palette12.setBrush(QPalette.Active, QPalette.Window, brush13)
+        palette12.setBrush(QPalette.Active, QPalette.Shadow, brush10)
+        palette12.setBrush(QPalette.Active, QPalette.AlternateBase, brush14)
+        palette12.setBrush(QPalette.Active, QPalette.ToolTipBase, brush11)
+        palette12.setBrush(QPalette.Active, QPalette.ToolTipText, brush10)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette12.setBrush(QPalette.Active, QPalette.PlaceholderText, brush17)
+#endif
+        palette12.setBrush(QPalette.Inactive, QPalette.WindowText, brush2)
+        palette12.setBrush(QPalette.Inactive, QPalette.Button, brush13)
+        palette12.setBrush(QPalette.Inactive, QPalette.Light, brush2)
+        palette12.setBrush(QPalette.Inactive, QPalette.Midlight, brush14)
+        palette12.setBrush(QPalette.Inactive, QPalette.Dark, brush15)
+        palette12.setBrush(QPalette.Inactive, QPalette.Mid, brush16)
+        palette12.setBrush(QPalette.Inactive, QPalette.Text, brush2)
+        palette12.setBrush(QPalette.Inactive, QPalette.BrightText, brush2)
+        palette12.setBrush(QPalette.Inactive, QPalette.ButtonText, brush2)
+        palette12.setBrush(QPalette.Inactive, QPalette.Base, brush13)
+        palette12.setBrush(QPalette.Inactive, QPalette.Window, brush13)
+        palette12.setBrush(QPalette.Inactive, QPalette.Shadow, brush10)
+        palette12.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush14)
+        palette12.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush11)
+        palette12.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush10)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette12.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush17)
+#endif
+        palette12.setBrush(QPalette.Disabled, QPalette.WindowText, brush18)
+        palette12.setBrush(QPalette.Disabled, QPalette.Button, brush19)
+        palette12.setBrush(QPalette.Disabled, QPalette.Light, brush2)
+        palette12.setBrush(QPalette.Disabled, QPalette.Midlight, brush14)
+        palette12.setBrush(QPalette.Disabled, QPalette.Dark, brush15)
+        palette12.setBrush(QPalette.Disabled, QPalette.Mid, brush16)
+        palette12.setBrush(QPalette.Disabled, QPalette.Text, brush18)
+        palette12.setBrush(QPalette.Disabled, QPalette.BrightText, brush2)
+        palette12.setBrush(QPalette.Disabled, QPalette.ButtonText, brush18)
+        palette12.setBrush(QPalette.Disabled, QPalette.Base, brush19)
+        palette12.setBrush(QPalette.Disabled, QPalette.Window, brush19)
+        palette12.setBrush(QPalette.Disabled, QPalette.Shadow, brush10)
+        palette12.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush20)
+        palette12.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush11)
+        palette12.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush10)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette12.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush21)
+#endif
+        self.pushButton_add_to_diag.setPalette(palette12)
+        self.pushButton_add_to_diag.setFont(font4)
+        self.pushButton_add_to_diag.setStyleSheet(u"QPushButton {\n"
+"background-color: rgba(50, 98, 115, 190);\n"
+"font-size: 11pt;\n"
+"color: White;\n"
+"border: None;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"background-color: rgba(50, 98, 115, 255);\n"
+"border: 2px solid rgba(92, 158, 173, 255);\n"
+"}\n"
+"\n"
+"QPushButton::pressed {\n"
+"background-color: rgba(92, 158, 173, 255);\n"
+"border: 1px solid rgba(255, 255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton::disabled {\n"
+"background-color:  rgba(50, 98, 115, 40);\n"
+"border: 1px solid rgba(50, 98, 115, 150);\n"
+"color:  rgba(50, 98, 115, 150);\n"
+"}")
+
+        self.gridLayout_11.addWidget(self.pushButton_add_to_diag, 9, 1, 1, 6)
 
 
         self.gridLayout.addWidget(self.metric_data, 3, 1, 1, 2)
@@ -1272,7 +1274,7 @@ class Ui_StObj(object):
         self.gridLayout_9.setContentsMargins(5, 5, 5, 5)
         self.checkBox_Fat = QCheckBox(self.diseases_block)
         self.checkBox_Fat.setObjectName(u"checkBox_Fat")
-        self.checkBox_Fat.setFont(font)
+        self.checkBox_Fat.setFont(font4)
         self.checkBox_Fat.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1302,7 +1304,7 @@ class Ui_StObj(object):
 
         self.checkBox_Atherosclerosis_legs = QCheckBox(self.diseases_block)
         self.checkBox_Atherosclerosis_legs.setObjectName(u"checkBox_Atherosclerosis_legs")
-        self.checkBox_Atherosclerosis_legs.setFont(font)
+        self.checkBox_Atherosclerosis_legs.setFont(font4)
         self.checkBox_Atherosclerosis_legs.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1332,7 +1334,7 @@ class Ui_StObj(object):
 
         self.checkBox_Stroke = QCheckBox(self.diseases_block)
         self.checkBox_Stroke.setObjectName(u"checkBox_Stroke")
-        self.checkBox_Stroke.setFont(font)
+        self.checkBox_Stroke.setFont(font4)
         self.checkBox_Stroke.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1374,7 +1376,7 @@ class Ui_StObj(object):
 
         self.checkBox_other = QCheckBox(self.diseases_block)
         self.checkBox_other.setObjectName(u"checkBox_other")
-        self.checkBox_other.setFont(font)
+        self.checkBox_other.setFont(font4)
         self.checkBox_other.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1404,7 +1406,7 @@ class Ui_StObj(object):
 
         self.checkBox_Hyperthyreosis = QCheckBox(self.diseases_block)
         self.checkBox_Hyperthyreosis.setObjectName(u"checkBox_Hyperthyreosis")
-        self.checkBox_Hyperthyreosis.setFont(font)
+        self.checkBox_Hyperthyreosis.setFont(font4)
         self.checkBox_Hyperthyreosis.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1434,7 +1436,7 @@ class Ui_StObj(object):
 
         self.checkBox_Hypothyreosis = QCheckBox(self.diseases_block)
         self.checkBox_Hypothyreosis.setObjectName(u"checkBox_Hypothyreosis")
-        self.checkBox_Hypothyreosis.setFont(font)
+        self.checkBox_Hypothyreosis.setFont(font4)
         self.checkBox_Hypothyreosis.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1464,7 +1466,7 @@ class Ui_StObj(object):
 
         self.checkBox_IBS = QCheckBox(self.diseases_block)
         self.checkBox_IBS.setObjectName(u"checkBox_IBS")
-        self.checkBox_IBS.setFont(font)
+        self.checkBox_IBS.setFont(font4)
         self.checkBox_IBS.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1494,7 +1496,7 @@ class Ui_StObj(object):
 
         self.checkBox_Gastro = QCheckBox(self.diseases_block)
         self.checkBox_Gastro.setObjectName(u"checkBox_Gastro")
-        self.checkBox_Gastro.setFont(font)
+        self.checkBox_Gastro.setFont(font4)
         self.checkBox_Gastro.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1524,7 +1526,7 @@ class Ui_StObj(object):
 
         self.checkBox_B20 = QCheckBox(self.diseases_block)
         self.checkBox_B20.setObjectName(u"checkBox_B20")
-        self.checkBox_B20.setFont(font)
+        self.checkBox_B20.setFont(font4)
         self.checkBox_B20.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1554,7 +1556,7 @@ class Ui_StObj(object):
 
         self.checkBox_HBsAg = QCheckBox(self.diseases_block)
         self.checkBox_HBsAg.setObjectName(u"checkBox_HBsAg")
-        self.checkBox_HBsAg.setFont(font)
+        self.checkBox_HBsAg.setFont(font4)
         self.checkBox_HBsAg.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1584,7 +1586,7 @@ class Ui_StObj(object):
 
         self.checkBox_Atherosclerosis_BCA = QCheckBox(self.diseases_block)
         self.checkBox_Atherosclerosis_BCA.setObjectName(u"checkBox_Atherosclerosis_BCA")
-        self.checkBox_Atherosclerosis_BCA.setFont(font)
+        self.checkBox_Atherosclerosis_BCA.setFont(font4)
         self.checkBox_Atherosclerosis_BCA.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1614,7 +1616,7 @@ class Ui_StObj(object):
 
         self.checkBox_Astma = QCheckBox(self.diseases_block)
         self.checkBox_Astma.setObjectName(u"checkBox_Astma")
-        self.checkBox_Astma.setFont(font)
+        self.checkBox_Astma.setFont(font4)
         self.checkBox_Astma.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1644,7 +1646,7 @@ class Ui_StObj(object):
 
         self.checkBox_NRS = QCheckBox(self.diseases_block)
         self.checkBox_NRS.setObjectName(u"checkBox_NRS")
-        self.checkBox_NRS.setFont(font)
+        self.checkBox_NRS.setFont(font4)
         self.checkBox_NRS.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1674,7 +1676,7 @@ class Ui_StObj(object):
 
         self.checkBox_GB = QCheckBox(self.diseases_block)
         self.checkBox_GB.setObjectName(u"checkBox_GB")
-        self.checkBox_GB.setFont(font)
+        self.checkBox_GB.setFont(font4)
         self.checkBox_GB.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1705,7 +1707,7 @@ class Ui_StObj(object):
         self.plainTextEdit_other_chronic_diseases = QPlainTextEdit(self.diseases_block)
         self.plainTextEdit_other_chronic_diseases.setObjectName(u"plainTextEdit_other_chronic_diseases")
         self.plainTextEdit_other_chronic_diseases.setMaximumSize(QSize(16777215, 150))
-        self.plainTextEdit_other_chronic_diseases.setFont(font3)
+        self.plainTextEdit_other_chronic_diseases.setFont(font)
         self.plainTextEdit_other_chronic_diseases.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -1716,7 +1718,7 @@ class Ui_StObj(object):
 
         self.checkBox_SD = QCheckBox(self.diseases_block)
         self.checkBox_SD.setObjectName(u"checkBox_SD")
-        self.checkBox_SD.setFont(font)
+        self.checkBox_SD.setFont(font4)
         self.checkBox_SD.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1746,7 +1748,7 @@ class Ui_StObj(object):
 
         self.checkBox_HCV = QCheckBox(self.diseases_block)
         self.checkBox_HCV.setObjectName(u"checkBox_HCV")
-        self.checkBox_HCV.setFont(font)
+        self.checkBox_HCV.setFont(font4)
         self.checkBox_HCV.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -1846,7 +1848,7 @@ class Ui_StObj(object):
         palette13.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtDrugs.setPalette(palette13)
-        self.comboBoxPtDrugs.setFont(font3)
+        self.comboBoxPtDrugs.setFont(font)
         self.comboBoxPtDrugs.setLayoutDirection(Qt.LeftToRight)
         self.comboBoxPtDrugs.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
@@ -1905,7 +1907,7 @@ class Ui_StObj(object):
         palette14.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.plainTextEditPtDrugs.setPalette(palette14)
-        self.plainTextEditPtDrugs.setFont(font3)
+        self.plainTextEditPtDrugs.setFont(font)
         self.plainTextEditPtDrugs.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -2000,7 +2002,7 @@ class Ui_StObj(object):
         palette15.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBox_jaloby_templates.setPalette(palette15)
-        self.comboBox_jaloby_templates.setFont(font3)
+        self.comboBox_jaloby_templates.setFont(font)
         self.comboBox_jaloby_templates.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -2068,7 +2070,7 @@ class Ui_StObj(object):
         palette16.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush17)
 #endif
         self.pushButtonAddNewTemplate_jaloby.setPalette(palette16)
-        self.pushButtonAddNewTemplate_jaloby.setFont(font)
+        self.pushButtonAddNewTemplate_jaloby.setFont(font4)
         self.pushButtonAddNewTemplate_jaloby.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 11pt;\n"
@@ -2164,7 +2166,7 @@ class Ui_StObj(object):
         palette17.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush17)
 #endif
         self.pushButton_push_temp_jaloby.setPalette(palette17)
-        self.pushButton_push_temp_jaloby.setFont(font)
+        self.pushButton_push_temp_jaloby.setFont(font4)
         self.pushButton_push_temp_jaloby.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 11pt;\n"
@@ -2194,7 +2196,7 @@ class Ui_StObj(object):
         self.lineEdit_new_template_name_jaloby = QLineEdit(self.frame_templates_2)
         self.lineEdit_new_template_name_jaloby.setObjectName(u"lineEdit_new_template_name_jaloby")
         self.lineEdit_new_template_name_jaloby.setMinimumSize(QSize(350, 0))
-        self.lineEdit_new_template_name_jaloby.setFont(font3)
+        self.lineEdit_new_template_name_jaloby.setFont(font)
         self.lineEdit_new_template_name_jaloby.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -2309,7 +2311,7 @@ class Ui_StObj(object):
         palette18.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtAnamEpid.setPalette(palette18)
-        self.comboBoxPtAnamEpid.setFont(font3)
+        self.comboBoxPtAnamEpid.setFont(font)
         self.comboBoxPtAnamEpid.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -2386,7 +2388,7 @@ class Ui_StObj(object):
         palette19.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.plainTextEditPtAnamEpid.setPalette(palette19)
-        self.plainTextEditPtAnamEpid.setFont(font3)
+        self.plainTextEditPtAnamEpid.setFont(font)
         self.plainTextEditPtAnamEpid.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -2468,7 +2470,7 @@ class Ui_StObj(object):
         palette20.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.plainTextEditPtAnamMorbi.setPalette(palette20)
-        self.plainTextEditPtAnamMorbi.setFont(font3)
+        self.plainTextEditPtAnamMorbi.setFont(font)
         self.plainTextEditPtAnamMorbi.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -2554,7 +2556,7 @@ class Ui_StObj(object):
         palette21.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtAllergStatus.setPalette(palette21)
-        self.comboBoxPtAllergStatus.setFont(font3)
+        self.comboBoxPtAllergStatus.setFont(font)
         self.comboBoxPtAllergStatus.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -2616,7 +2618,7 @@ class Ui_StObj(object):
         palette22.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.plainTextEditPtAnamAllerg.setPalette(palette22)
-        self.plainTextEditPtAnamAllerg.setFont(font3)
+        self.plainTextEditPtAnamAllerg.setFont(font)
         self.plainTextEditPtAnamAllerg.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -2704,7 +2706,7 @@ class Ui_StObj(object):
         palette23.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxWorkList_prognosis.setPalette(palette23)
-        self.comboBoxWorkList_prognosis.setFont(font3)
+        self.comboBoxWorkList_prognosis.setFont(font)
         self.comboBoxWorkList_prognosis.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -2772,7 +2774,7 @@ class Ui_StObj(object):
         palette24.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtSickListInfo.setPalette(palette24)
-        self.labelPtSickListInfo.setFont(font3)
+        self.labelPtSickListInfo.setFont(font)
         self.labelPtSickListInfo.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -2839,7 +2841,7 @@ class Ui_StObj(object):
         palette25.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.dateEditPtWorkListDateOpening.setPalette(palette25)
-        self.dateEditPtWorkListDateOpening.setFont(font3)
+        self.dateEditPtWorkListDateOpening.setFont(font)
         self.dateEditPtWorkListDateOpening.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -2908,7 +2910,7 @@ class Ui_StObj(object):
         palette26.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtWorkListDateOpening.setPalette(palette26)
-        self.labelPtWorkListDateOpening.setFont(font3)
+        self.labelPtWorkListDateOpening.setFont(font)
         self.labelPtWorkListDateOpening.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -2975,7 +2977,7 @@ class Ui_StObj(object):
         palette27.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtWorkPlace.setPalette(palette27)
-        self.labelPtWorkPlace.setFont(font3)
+        self.labelPtWorkPlace.setFont(font)
         self.labelPtWorkPlace.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -3043,7 +3045,7 @@ class Ui_StObj(object):
         palette28.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtWorkListNumber_3.setPalette(palette28)
-        self.labelPtWorkListNumber_3.setFont(font3)
+        self.labelPtWorkListNumber_3.setFont(font)
         self.labelPtWorkListNumber_3.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -3108,7 +3110,7 @@ class Ui_StObj(object):
         palette29.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtSocialStatus.setPalette(palette29)
-        self.comboBoxPtSocialStatus.setFont(font3)
+        self.comboBoxPtSocialStatus.setFont(font)
         self.comboBoxPtSocialStatus.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -3177,7 +3179,7 @@ class Ui_StObj(object):
         palette30.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtWorkListDateOpening_2.setPalette(palette30)
-        self.labelPtWorkListDateOpening_2.setFont(font3)
+        self.labelPtWorkListDateOpening_2.setFont(font)
         self.labelPtWorkListDateOpening_2.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -3243,7 +3245,7 @@ class Ui_StObj(object):
         palette31.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtSickListInfo_2.setPalette(palette31)
-        self.labelPtSickListInfo_2.setFont(font3)
+        self.labelPtSickListInfo_2.setFont(font)
         self.labelPtSickListInfo_2.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -3301,7 +3303,7 @@ class Ui_StObj(object):
         palette32.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush22)
 #endif
         self.checkBoxPtNeedSickList_2.setPalette(palette32)
-        self.checkBoxPtNeedSickList_2.setFont(font)
+        self.checkBoxPtNeedSickList_2.setFont(font4)
         self.checkBoxPtNeedSickList_2.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -3388,7 +3390,7 @@ class Ui_StObj(object):
         palette33.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.lineEditPtWorkPlace.setPalette(palette33)
-        self.lineEditPtWorkPlace.setFont(font3)
+        self.lineEditPtWorkPlace.setFont(font)
         self.lineEditPtWorkPlace.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -3456,7 +3458,7 @@ class Ui_StObj(object):
         palette34.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtSocialStatus.setPalette(palette34)
-        self.labelPtSocialStatus.setFont(font3)
+        self.labelPtSocialStatus.setFont(font)
         self.labelPtSocialStatus.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -3511,7 +3513,7 @@ class Ui_StObj(object):
         palette35.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.lineEditPtWorkListNumber_issued.setPalette(palette35)
-        self.lineEditPtWorkListNumber_issued.setFont(font3)
+        self.lineEditPtWorkListNumber_issued.setFont(font)
         self.lineEditPtWorkListNumber_issued.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -3579,7 +3581,7 @@ class Ui_StObj(object):
         palette36.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtWorkListS.setPalette(palette36)
-        self.labelPtWorkListS.setFont(font3)
+        self.labelPtWorkListS.setFont(font)
         self.labelPtWorkListS.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -3634,7 +3636,7 @@ class Ui_StObj(object):
         palette37.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.dateEditPtWorkListDate1_1.setPalette(palette37)
-        self.dateEditPtWorkListDate1_1.setFont(font3)
+        self.dateEditPtWorkListDate1_1.setFont(font)
         self.dateEditPtWorkListDate1_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -3691,7 +3693,7 @@ class Ui_StObj(object):
         palette38.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.lineEditPtWorkPosition.setPalette(palette38)
-        self.lineEditPtWorkPosition.setFont(font3)
+        self.lineEditPtWorkPosition.setFont(font)
         self.lineEditPtWorkPosition.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -3759,7 +3761,7 @@ class Ui_StObj(object):
         palette39.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtWorkListNumber_2.setPalette(palette39)
-        self.labelPtWorkListNumber_2.setFont(font3)
+        self.labelPtWorkListNumber_2.setFont(font)
         self.labelPtWorkListNumber_2.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -3826,7 +3828,7 @@ class Ui_StObj(object):
         palette40.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtWorkPosition.setPalette(palette40)
-        self.labelPtWorkPosition.setFont(font3)
+        self.labelPtWorkPosition.setFont(font)
         self.labelPtWorkPosition.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -3893,7 +3895,7 @@ class Ui_StObj(object):
         palette41.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtWorkListNumber.setPalette(palette41)
-        self.labelPtWorkListNumber.setFont(font3)
+        self.labelPtWorkListNumber.setFont(font)
         self.labelPtWorkListNumber.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -3948,7 +3950,7 @@ class Ui_StObj(object):
         palette42.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush22)
 #endif
         self.checkBoxPtNeedSickList.setPalette(palette42)
-        self.checkBoxPtNeedSickList.setFont(font)
+        self.checkBoxPtNeedSickList.setFont(font4)
         self.checkBoxPtNeedSickList.setLayoutDirection(Qt.LeftToRight)
         self.checkBoxPtNeedSickList.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
@@ -4036,7 +4038,7 @@ class Ui_StObj(object):
         palette43.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.lineEditPtWorkListNumber1_1.setPalette(palette43)
-        self.lineEditPtWorkListNumber1_1.setFont(font3)
+        self.lineEditPtWorkListNumber1_1.setFont(font)
         self.lineEditPtWorkListNumber1_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -4095,7 +4097,7 @@ class Ui_StObj(object):
         palette44.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxWorkListInfo.setPalette(palette44)
-        self.comboBoxWorkListInfo.setFont(font3)
+        self.comboBoxWorkListInfo.setFont(font)
         self.comboBoxWorkListInfo.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -4151,7 +4153,7 @@ class Ui_StObj(object):
         palette45.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.dateEditPtWorkListDate1_2.setPalette(palette45)
-        self.dateEditPtWorkListDate1_2.setFont(font3)
+        self.dateEditPtWorkListDate1_2.setFont(font)
         self.dateEditPtWorkListDate1_2.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -4262,7 +4264,7 @@ class Ui_StObj(object):
         palette46.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtHearthNoise.setPalette(palette46)
-        self.labelPtHearthNoise.setFont(font3)
+        self.labelPtHearthNoise.setFont(font)
         self.labelPtHearthNoise.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -4322,7 +4324,7 @@ class Ui_StObj(object):
         palette47.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtSkinState_1.setPalette(palette47)
-        self.comboBoxPtSkinState_1.setFont(font3)
+        self.comboBoxPtSkinState_1.setFont(font)
         self.comboBoxPtSkinState_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -4392,7 +4394,7 @@ class Ui_StObj(object):
         palette48.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtGeneralState.setPalette(palette48)
-        self.labelPtGeneralState.setFont(font3)
+        self.labelPtGeneralState.setFont(font)
         self.labelPtGeneralState.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -4459,7 +4461,7 @@ class Ui_StObj(object):
         palette49.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtDyspnea.setPalette(palette49)
-        self.labelPtDyspnea.setFont(font3)
+        self.labelPtDyspnea.setFont(font)
         self.labelPtDyspnea.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -4526,7 +4528,7 @@ class Ui_StObj(object):
         palette50.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtWheezing.setPalette(palette50)
-        self.labelPtWheezing.setFont(font3)
+        self.labelPtWheezing.setFont(font)
         self.labelPtWheezing.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -4584,7 +4586,7 @@ class Ui_StObj(object):
         palette51.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtStomach_1.setPalette(palette51)
-        self.comboBoxPtStomach_1.setFont(font3)
+        self.comboBoxPtStomach_1.setFont(font)
         self.comboBoxPtStomach_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -4644,7 +4646,7 @@ class Ui_StObj(object):
         palette52.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtBreathing_3.setPalette(palette52)
-        self.comboBoxPtBreathing_3.setFont(font3)
+        self.comboBoxPtBreathing_3.setFont(font)
         self.comboBoxPtBreathing_3.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -4705,7 +4707,7 @@ class Ui_StObj(object):
         palette53.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtUrination_3.setPalette(palette53)
-        self.comboBoxPtUrination_3.setFont(font3)
+        self.comboBoxPtUrination_3.setFont(font)
         self.comboBoxPtUrination_3.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -4765,7 +4767,7 @@ class Ui_StObj(object):
         palette54.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtBreathing_1.setPalette(palette54)
-        self.comboBoxPtBreathing_1.setFont(font3)
+        self.comboBoxPtBreathing_1.setFont(font)
         self.comboBoxPtBreathing_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -4828,7 +4830,7 @@ class Ui_StObj(object):
         palette55.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtGeneralState.setPalette(palette55)
-        self.comboBoxPtGeneralState.setFont(font3)
+        self.comboBoxPtGeneralState.setFont(font)
         self.comboBoxPtGeneralState.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -4888,7 +4890,7 @@ class Ui_StObj(object):
         palette56.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtHearthTone_3.setPalette(palette56)
-        self.comboBoxPtHearthTone_3.setFont(font3)
+        self.comboBoxPtHearthTone_3.setFont(font)
         self.comboBoxPtHearthTone_3.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -4949,7 +4951,7 @@ class Ui_StObj(object):
         palette57.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtDyspnea_2.setPalette(palette57)
-        self.comboBoxPtDyspnea_2.setFont(font3)
+        self.comboBoxPtDyspnea_2.setFont(font)
         self.comboBoxPtDyspnea_2.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5019,7 +5021,7 @@ class Ui_StObj(object):
         palette58.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtHearthTones.setPalette(palette58)
-        self.labelPtHearthTones.setFont(font3)
+        self.labelPtHearthTones.setFont(font)
         self.labelPtHearthTones.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -5077,7 +5079,7 @@ class Ui_StObj(object):
         palette59.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtDefecation_2.setPalette(palette59)
-        self.comboBoxPtDefecation_2.setFont(font3)
+        self.comboBoxPtDefecation_2.setFont(font)
         self.comboBoxPtDefecation_2.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5147,7 +5149,7 @@ class Ui_StObj(object):
         palette60.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtLymphnode.setPalette(palette60)
-        self.labelPtLymphnode.setFont(font3)
+        self.labelPtLymphnode.setFont(font)
         self.labelPtLymphnode.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -5214,7 +5216,7 @@ class Ui_StObj(object):
         palette61.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtDefecation.setPalette(palette61)
-        self.labelPtDefecation.setFont(font3)
+        self.labelPtDefecation.setFont(font)
         self.labelPtDefecation.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -5271,7 +5273,7 @@ class Ui_StObj(object):
         palette62.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtBreathing_2.setPalette(palette62)
-        self.comboBoxPtBreathing_2.setFont(font3)
+        self.comboBoxPtBreathing_2.setFont(font)
         self.comboBoxPtBreathing_2.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5332,7 +5334,7 @@ class Ui_StObj(object):
         palette63.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtDyspnea_1.setPalette(palette63)
-        self.comboBoxPtDyspnea_1.setFont(font3)
+        self.comboBoxPtDyspnea_1.setFont(font)
         self.comboBoxPtDyspnea_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5402,7 +5404,7 @@ class Ui_StObj(object):
         palette64.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtBreathing.setPalette(palette64)
-        self.labelPtBreathing.setFont(font3)
+        self.labelPtBreathing.setFont(font)
         self.labelPtBreathing.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -5470,7 +5472,7 @@ class Ui_StObj(object):
         palette65.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtUrination_2.setPalette(palette65)
-        self.comboBoxPtUrination_2.setFont(font3)
+        self.comboBoxPtUrination_2.setFont(font)
         self.comboBoxPtUrination_2.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5529,7 +5531,7 @@ class Ui_StObj(object):
         palette66.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtDyspneaChoice.setPalette(palette66)
-        self.comboBoxPtDyspneaChoice.setFont(font3)
+        self.comboBoxPtDyspneaChoice.setFont(font)
         self.comboBoxPtDyspneaChoice.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5588,7 +5590,7 @@ class Ui_StObj(object):
         palette67.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtDefecation_1.setPalette(palette67)
-        self.comboBoxPtDefecation_1.setFont(font3)
+        self.comboBoxPtDefecation_1.setFont(font)
         self.comboBoxPtDefecation_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5647,7 +5649,7 @@ class Ui_StObj(object):
         palette68.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtDyspnea_3.setPalette(palette68)
-        self.comboBoxPtDyspnea_3.setFont(font3)
+        self.comboBoxPtDyspnea_3.setFont(font)
         self.comboBoxPtDyspnea_3.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5710,7 +5712,7 @@ class Ui_StObj(object):
         palette69.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtMucousMembr_1.setPalette(palette69)
-        self.comboBoxPtMucousMembr_1.setFont(font3)
+        self.comboBoxPtMucousMembr_1.setFont(font)
         self.comboBoxPtMucousMembr_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5780,7 +5782,7 @@ class Ui_StObj(object):
         palette70.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtUrination.setPalette(palette70)
-        self.labelPtUrination.setFont(font3)
+        self.labelPtUrination.setFont(font)
         self.labelPtUrination.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -5841,7 +5843,7 @@ class Ui_StObj(object):
         palette71.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtUrination_1.setPalette(palette71)
-        self.comboBoxPtUrination_1.setFont(font3)
+        self.comboBoxPtUrination_1.setFont(font)
         self.comboBoxPtUrination_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5904,7 +5906,7 @@ class Ui_StObj(object):
         palette72.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtDefecation_3.setPalette(palette72)
-        self.comboBoxPtDefecation_3.setFont(font3)
+        self.comboBoxPtDefecation_3.setFont(font)
         self.comboBoxPtDefecation_3.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -5974,7 +5976,7 @@ class Ui_StObj(object):
         palette73.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtSkinState.setPalette(palette73)
-        self.labelPtSkinState.setFont(font3)
+        self.labelPtSkinState.setFont(font)
         self.labelPtSkinState.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -6030,7 +6032,7 @@ class Ui_StObj(object):
         palette74.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtHearthTone_2.setPalette(palette74)
-        self.comboBoxPtHearthTone_2.setFont(font3)
+        self.comboBoxPtHearthTone_2.setFont(font)
         self.comboBoxPtHearthTone_2.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6089,7 +6091,7 @@ class Ui_StObj(object):
         palette75.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtHearthNoiseChoice.setPalette(palette75)
-        self.comboBoxPtHearthNoiseChoice.setFont(font3)
+        self.comboBoxPtHearthNoiseChoice.setFont(font)
         self.comboBoxPtHearthNoiseChoice.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6148,7 +6150,7 @@ class Ui_StObj(object):
         palette76.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtWheezing_1.setPalette(palette76)
-        self.comboBoxPtWheezing_1.setFont(font3)
+        self.comboBoxPtWheezing_1.setFont(font)
         self.comboBoxPtWheezing_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6218,7 +6220,7 @@ class Ui_StObj(object):
         palette77.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtStObjOther.setPalette(palette77)
-        self.labelPtStObjOther.setFont(font3)
+        self.labelPtStObjOther.setFont(font)
         self.labelPtStObjOther.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -6276,7 +6278,7 @@ class Ui_StObj(object):
         palette78.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtWheezing_3.setPalette(palette78)
-        self.comboBoxPtWheezing_3.setFont(font3)
+        self.comboBoxPtWheezing_3.setFont(font)
         self.comboBoxPtWheezing_3.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6336,7 +6338,7 @@ class Ui_StObj(object):
         palette79.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtHearthTone_1.setPalette(palette79)
-        self.comboBoxPtHearthTone_1.setFont(font3)
+        self.comboBoxPtHearthTone_1.setFont(font)
         self.comboBoxPtHearthTone_1.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6395,7 +6397,7 @@ class Ui_StObj(object):
         palette80.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtWheezingChoice.setPalette(palette80)
-        self.comboBoxPtWheezingChoice.setFont(font3)
+        self.comboBoxPtWheezingChoice.setFont(font)
         self.comboBoxPtWheezingChoice.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6453,7 +6455,7 @@ class Ui_StObj(object):
         palette81.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtStomach_3.setPalette(palette81)
-        self.comboBoxPtStomach_3.setFont(font3)
+        self.comboBoxPtStomach_3.setFont(font)
         self.comboBoxPtStomach_3.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6512,7 +6514,7 @@ class Ui_StObj(object):
         palette82.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtSkinState_2.setPalette(palette82)
-        self.comboBoxPtSkinState_2.setFont(font3)
+        self.comboBoxPtSkinState_2.setFont(font)
         self.comboBoxPtSkinState_2.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6582,7 +6584,7 @@ class Ui_StObj(object):
         palette83.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtMucousMembr.setPalette(palette83)
-        self.labelPtMucousMembr.setFont(font3)
+        self.labelPtMucousMembr.setFont(font)
         self.labelPtMucousMembr.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -6640,7 +6642,7 @@ class Ui_StObj(object):
         palette84.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtWheezing_2.setPalette(palette84)
-        self.comboBoxPtWheezing_2.setFont(font3)
+        self.comboBoxPtWheezing_2.setFont(font)
         self.comboBoxPtWheezing_2.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6710,7 +6712,7 @@ class Ui_StObj(object):
         palette85.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush12)
 #endif
         self.labelPtStomach.setPalette(palette85)
-        self.labelPtStomach.setFont(font3)
+        self.labelPtStomach.setFont(font)
         self.labelPtStomach.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
 "background-color: transparent;\n"
@@ -6767,7 +6769,7 @@ class Ui_StObj(object):
         palette86.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtStomach_2.setPalette(palette86)
-        self.comboBoxPtStomach_2.setFont(font3)
+        self.comboBoxPtStomach_2.setFont(font)
         self.comboBoxPtStomach_2.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6827,7 +6829,7 @@ class Ui_StObj(object):
         palette87.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtHearthNoise.setPalette(palette87)
-        self.comboBoxPtHearthNoise.setFont(font3)
+        self.comboBoxPtHearthNoise.setFont(font)
         self.comboBoxPtHearthNoise.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6886,7 +6888,7 @@ class Ui_StObj(object):
         palette88.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxPtLymphnode.setPalette(palette88)
-        self.comboBoxPtLymphnode.setFont(font3)
+        self.comboBoxPtLymphnode.setFont(font)
         self.comboBoxPtLymphnode.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6901,7 +6903,7 @@ class Ui_StObj(object):
         self.plainTextEditPtStObjOther.setObjectName(u"plainTextEditPtStObjOther")
         self.plainTextEditPtStObjOther.setMinimumSize(QSize(0, 60))
         self.plainTextEditPtStObjOther.setMaximumSize(QSize(16777215, 60))
-        self.plainTextEditPtStObjOther.setFont(font3)
+        self.plainTextEditPtStObjOther.setFont(font)
         self.plainTextEditPtStObjOther.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -6983,7 +6985,7 @@ class Ui_StObj(object):
         palette89.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush6)
 #endif
         self.comboBoxGeneralStTemplate.setPalette(palette89)
-        self.comboBoxGeneralStTemplate.setFont(font3)
+        self.comboBoxGeneralStTemplate.setFont(font)
         self.comboBoxGeneralStTemplate.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -7051,7 +7053,7 @@ class Ui_StObj(object):
         palette90.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush17)
 #endif
         self.pushButtonAddNewTemplateGeneralSt.setPalette(palette90)
-        self.pushButtonAddNewTemplateGeneralSt.setFont(font)
+        self.pushButtonAddNewTemplateGeneralSt.setFont(font4)
         self.pushButtonAddNewTemplateGeneralSt.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 11pt;\n"
@@ -7147,7 +7149,7 @@ class Ui_StObj(object):
         palette91.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush17)
 #endif
         self.pushButton_push_temp.setPalette(palette91)
-        self.pushButton_push_temp.setFont(font)
+        self.pushButton_push_temp.setFont(font4)
         self.pushButton_push_temp.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 11pt;\n"
@@ -7177,7 +7179,7 @@ class Ui_StObj(object):
         self.lineEdit_new_template_name = QLineEdit(self.frame_templates)
         self.lineEdit_new_template_name.setObjectName(u"lineEdit_new_template_name")
         self.lineEdit_new_template_name.setMinimumSize(QSize(350, 0))
-        self.lineEdit_new_template_name.setFont(font3)
+        self.lineEdit_new_template_name.setFont(font)
         self.lineEdit_new_template_name.setStyleSheet(u"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
@@ -7303,7 +7305,7 @@ class Ui_StObj(object):
         palette92.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush21)
 #endif
         self.pushButtonHelp.setPalette(palette92)
-        self.pushButtonHelp.setFont(font)
+        self.pushButtonHelp.setFont(font4)
         self.pushButtonHelp.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 11pt;\n"
@@ -7394,7 +7396,7 @@ class Ui_StObj(object):
         palette93.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush17)
 #endif
         self.pushButtonNotSaveExit.setPalette(palette93)
-        self.pushButtonNotSaveExit.setFont(font)
+        self.pushButtonNotSaveExit.setFont(font4)
         self.pushButtonNotSaveExit.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 11pt;\n"
@@ -7485,7 +7487,7 @@ class Ui_StObj(object):
         palette94.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush17)
 #endif
         self.pushButtonSaveExit.setPalette(palette94)
-        self.pushButtonSaveExit.setFont(font)
+        self.pushButtonSaveExit.setFont(font4)
         self.pushButtonSaveExit.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(92, 158, 173, 255);\n"
 "font-size: 11pt;\n"
@@ -7537,18 +7539,18 @@ class Ui_StObj(object):
         self.label_5.setText(QCoreApplication.translate("StObj", u"\u0416\u0430\u043b\u043e\u0431\u044b \u043d\u0430:", None))
         self.plainTextEditPtComplaints.setPlaceholderText(QCoreApplication.translate("StObj", u"\u041d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u0436\u0430\u043b\u043e\u0431\u044b \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430", None))
         self.label_imt.setText("")
-        self.pushButton_random_values.setText(QCoreApplication.translate("StObj", u"\u0417\u0430\u043f\u043e\u043b\u043d\u0438\u0442\u044c", None))
         self.labelPtGrowth.setText(QCoreApplication.translate("StObj", u"\u0420\u043e\u0441\u0442, \u0441\u043c", None))
         self.labelPtSaturation.setText(QCoreApplication.translate("StObj", u"\u0421\u0430\u0442\u0443\u0440\u0430\u0446\u0438\u044f, %", None))
         self.labelPtPulse.setText(QCoreApplication.translate("StObj", u"\u0427\u0421\u0421, \u0432 1 \u043c\u0438\u043d", None))
         self.labelPtTemperatureCelcium.setText(QCoreApplication.translate("StObj", u"<html><head/><body><p>t \u0442\u0435\u043b\u0430, <span style=\" vertical-align:super;\">o</span>\u0421</p></body></html>", None))
         self.labelPtWeight.setText(QCoreApplication.translate("StObj", u"\u0412\u0435\u0441, \u043a\u0433", None))
-        self.pushButton_add_to_diag.setText(QCoreApplication.translate("StObj", u"\u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432 \u0434\u0438\u0430\u0433\u043d\u043e\u0437", None))
         self.labelPtBreathingSpeed.setText(QCoreApplication.translate("StObj", u"\u0427\u0414\u0414, \u0432 1 \u043c\u0438\u043d", None))
         self.label_7.setText(QCoreApplication.translate("StObj", u"\u0410\u043d\u0442\u0440\u043e\u043f\u043e\u043c\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0435", None))
         self.label_2.setText("")
         self.labelPtBloodPreasure.setText(QCoreApplication.translate("StObj", u"\u0410\u0414, \u043c\u043c.\u0440\u0442.\u0441\u0442.", None))
         self.labelooo.setText(QCoreApplication.translate("StObj", u"/", None))
+        self.pushButton_random_values.setText(QCoreApplication.translate("StObj", u"\u0417\u0430\u043f\u043e\u043b\u043d\u0438\u0442\u044c", None))
+        self.pushButton_add_to_diag.setText(QCoreApplication.translate("StObj", u"\u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432 \u0434\u0438\u0430\u0433\u043d\u043e\u0437", None))
         self.checkBox_Fat.setText(QCoreApplication.translate("StObj", u"\u041e\u0436\u0438\u0440\u0435\u043d\u0438\u0435", None))
         self.checkBox_Atherosclerosis_legs.setText(QCoreApplication.translate("StObj", u"\u0410\u0442\u0435\u0440\u043e\u0441\u043a\u043b\u0435\u0440\u043e\u0437 \u0430\u0430 \u043d/\u043a", None))
         self.checkBox_Stroke.setText(QCoreApplication.translate("StObj", u"\u041f\u041e\u041d\u041c\u041a", None))

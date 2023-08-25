@@ -2,8 +2,6 @@ import ast
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QPushButton
 
-from dataclasses import dataclass
-
 from wom.GUI.PY.omr import omr_PatientCard
 from wom.app_logic.writing.postprocessing.passport import update_patient_info
 from wom.app_logic.writing.diaries.gen import creating_diaries
@@ -132,22 +130,39 @@ class Ui_PatientCard(QtWidgets.QWidget,
     def create_main_window(self):
         return self.windows['Frameless']()
 
-    def create_window(self, main_win, folder_name, win_name):
+    def create_window(self, main_win, folder_name, win_name, timeline):
         match folder_name:
             case 'common':
-                w = self.windows[folder_name][win_name](windows=self.windows,
-                                                        main_win=main_win,
-                                                        dictionary=self.d,
-                                                        case_type='omr')
+                if timeline is not None:
+                    w = self.windows[folder_name][win_name](
+                        windows=self.windows,
+                        main_win=main_win,
+                        dictionary=self.d,
+                        case_type='omr',
+                        timeline=timeline)
+                else:
+                    w = self.windows[folder_name][win_name](
+                        windows=self.windows,
+                        main_win=main_win,
+                        dictionary=self.d,
+                        case_type='omr')
             case 'omr':
-                w = self.windows[folder_name][win_name](windows=self.windows,
-                                                        main_win=main_win,
-                                                        dictionary=self.d)
+                if timeline is not None:
+                    w = self.windows[folder_name][win_name](
+                        windows=self.windows,
+                        main_win=main_win,
+                        dictionary=self.d,
+                        timeline=timeline)
+                else:
+                    w = self.windows[folder_name][win_name](
+                        windows=self.windows,
+                        main_win=main_win,
+                        dictionary=self.d)
         return w
 
-    def open_window(self, folder_name, win_name):
+    def open_window(self, folder_name, win_name, timeline=None):
         win = self.create_main_window()
-        win.setWidget(self.create_window(win, folder_name, win_name))
+        win.setWidget(self.create_window(win, folder_name, win_name, timeline))
         win.show()
         self.main_win.close()
 
@@ -179,31 +194,12 @@ class Ui_PatientCard(QtWidgets.QWidget,
         self.close_card()
 
     def open_passport_data_window(self):
-        self.open_window(folder_name='omr',
-                         win_name='passport')
-
-    def open_neurology_status_admission(self):
         self.open_window(folder_name='common',
-                         win_name='neur_status_adm')
+                         win_name='passport')
 
     def open_objective_status_admission(self):
         self.open_window(folder_name='common',
                          win_name='obj_status_adm')
-
-    def open_diagnosis_admission(self):
-        self.open_window(folder_name='common',
-                         win_name='diagnosis_adm')
-
-    def open_neurology_status_discharge(self):
-        if 'Неврологический_статус' in self.d:
-            self.open_window(folder_name='common',
-                             win_name='neur_status_dis')
-        else:
-            status_message = f'Сначала введите данные неврологического '\
-                             f'статуса при поступлении.\n'\
-                             f'Данные для выписки будут доступны после '\
-                             f'выполнения этого действия.'
-            self.label_status.setText(status_message)
 
     def open_objective_status_discharge(self):
         if 'Соматический_статус' in self.d:
@@ -216,10 +212,33 @@ class Ui_PatientCard(QtWidgets.QWidget,
                              f'выполнения этого действия.'
             self.label_status.setText(status_message)
 
+    def open_neurology_status_admission(self):
+        self.open_window(folder_name='common',
+                         win_name='neur_status',
+                         timeline='adm')
+
+    def open_neurology_status_discharge(self):
+        if 'Неврологический_статус' in self.d:
+            self.open_window(folder_name='common',
+                             win_name='neur_status',
+                             timeline='dis')
+        else:
+            status_message = f'Сначала введите данные неврологического '\
+                             f'статуса при поступлении.\n'\
+                             f'Данные для выписки будут доступны после '\
+                             f'выполнения этого действия.'
+            self.label_status.setText(status_message)
+
+    def open_diagnosis_admission(self):
+        self.open_window(folder_name='common',
+                         win_name='diagnosis',
+                         timeline='adm')
+
     def open_diagnosis_discharge(self):
         if 'Основной_диагноз' in self.d:
             self.open_window(folder_name='common',
-                             win_name='diagnosis_dis')
+                             win_name='diagnosis',
+                             timeline='dis')
         else:
             status_message = f'Сначала введите данные клинического '\
                              f'диагноза при поступлении.\n'\
@@ -228,7 +247,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
             self.label_status.setText(status_message)
 
     def open_discharge_details(self):
-        self.open_window(folder_name='omr',
+        self.open_window(folder_name='common',
                          win_name='dis_details')
 
     def open_medical_appointments(self):
@@ -237,12 +256,14 @@ class Ui_PatientCard(QtWidgets.QWidget,
 
     def open_mdrk(self):
         self.open_window(folder_name='omr',
-                         win_name='mdrk_adm')
+                         win_name='mdrk',
+                         timeline='adm')
 
     def open_mdrk_dis(self):
         if 's_domen_1' in self.d:
             self.open_window(folder_name='omr',
-                             win_name='mdrk_dis')
+                             win_name='mdrk',
+                             timeline='dis')
         else:
             status_message = f'Сначала введите данные протокола '\
                              f'МДРК (с МКФ) при поступлении.\n'\
@@ -251,27 +272,27 @@ class Ui_PatientCard(QtWidgets.QWidget,
             self.label_status.setText(status_message)
 
     def open_lab_data(self):
-        self.open_window(folder_name='omr',
+        self.open_window(folder_name='common',
                          win_name='lab_data')
 
-    def open_recommends(self):
-        # self.open_window(folder_name='omr',
-        #                  win_name='recommends')
-        status_message = f'Раздел "Рекомендации для выписки" '\
-                         f'находится в разработке. '
-        self.label_status.setText(status_message)
-
     def open_instr_data(self):
-        # self.open_window(folder_name='omr',
+        # self.open_window(folder_name='common',
         #                  win_name='instr_data')
         status_message = f'Раздел "Данные инструментальных '\
                          f'исследований" находится в разработке. '
         self.label_status.setText(status_message)
 
     def open_consult(self):
-        # self.open_window(folder_name='omr',
+        # self.open_window(folder_name='common',
         #                  win_name='consult')
         status_message = f'Раздел "Консультации" '\
+                         f'находится в разработке. '
+        self.label_status.setText(status_message)
+
+    def open_recommends(self):
+        # self.open_window(folder_name='omr',
+        #                  win_name='recommends')
+        status_message = f'Раздел "Рекомендации для выписки" '\
                          f'находится в разработке. '
         self.label_status.setText(status_message)
 

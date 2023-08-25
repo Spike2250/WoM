@@ -6,9 +6,9 @@ from wom.app_logic.service_func import (prepare_data_mrc_ash,
 def update_after_neur_st(d, time_line, i=None):
     '''
     '''
-    if time_line == 'первичный':
+    if time_line == 'adm':
         x = ''
-    elif time_line == 'выписка':
+    elif time_line == 'dis':
         x = '_вып'
     elif time_line == f'динамика_{i}':
         x = f'_{i}'

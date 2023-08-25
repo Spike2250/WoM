@@ -1,7 +1,6 @@
 from PySide6 import QtWidgets, QtCore
 
 from wom.GUI.PY.common import StObj_admition
-from wom.app_logic.service_func import calc_BMI
 from wom.app_logic.db_func\
     .db_st_obj_templates import (read_db_obj_template_list,
                                  read_db_obj_template_data,
@@ -16,6 +15,7 @@ from wom.app_logic.db_func\
                             templates_json_recording)
 from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
 from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
+from wom.app_logic.service_func import calc_BMI
 from wom.app_logic.writing.postprocessing.obj_st import update_after_obj_st
 from wom.app_logic.writing.diaries.gen import create_random_set
 
@@ -32,7 +32,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
 
         msg = "World of Medicine - Отделение медицинской "\
               "реабилитации - Жалобы, анамнез, данные по ЛН, "\
-              "соматический статус при поступлении"
+              "соматический статус"
         main_win.setWindowTitle(msg)
         objectTitleBar = main_win.titleBar
         objectTitleBar.signalButtonMy.connect(self.onButtonMy)

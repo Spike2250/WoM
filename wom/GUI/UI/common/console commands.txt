@@ -5,4 +5,10 @@ pyside6-uic drugs_dictionary.ui > drugs_dictionary.py
 
 
 pyside6-uic load_arch_data.ui > load_arch_data.py
+pyside6-uic PatientPassportData.ui > PatientPassportData.py
+pyside6-uic AddRelative.ui > AddRelative.py
 pyside6-uic StObj_admition.ui > StObj_admition.py
+pyside6-uic StObj_discharge.ui > StObj_discharge.py
+pyside6-uic St_Neurology.ui > St_Neurology.py
+pyside6-uic Diagnosis.ui > Diagnosis.py
+pyside6-uic Discharge_details.ui > Discharge_details.py

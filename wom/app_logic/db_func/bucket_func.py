@@ -140,7 +140,7 @@ def upload_templates_db_from_yandex_cloud_bucket(type_):
         def inner(*args, **kwargs):
             func(*args, **kwargs)
             DATABASE = define_database_templates(type_)
-            upload_db_from_bucket(bucket_name=BUCKET_MAIN,
-                                  db_name=DATABASE)
+            upload_db_to_bucket(bucket_name=BUCKET_MAIN,
+                                db_name=DATABASE)
         return inner
     return wrapper
