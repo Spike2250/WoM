@@ -4,6 +4,7 @@ from wom.GUI.windows\
     .omr import (omr_main_menu,
                  omr_add_new_patient,
                  omr_patient_card,
+                 omr_appointments_list,
                  )
 from wom.GUI.windows\
     .bta import (bta_main_menu,
@@ -24,7 +25,8 @@ from wom.GUI.windows\
                     obj_status_dis,
                     neur_status,
                     diagnosis,
-                    dis_details)
+                    dis_details,
+                    )
 from wom.GUI.windows.test import MainWindow
 
 
@@ -35,6 +37,7 @@ windows = {
         'main_menu': omr_main_menu.Ui_MainMenu,
         'add_new_patient': omr_add_new_patient.Ui_AddNewPatient,
         'patient_card': omr_patient_card.Ui_PatientCard,
+        'appointments': omr_appointments_list.Ui_Appointments,
     },
     'bta': {
         'main_menu': bta_main_menu.Ui_MainMenu,
