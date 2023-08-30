@@ -3,6 +3,8 @@ from prettytable import PrettyTable
 
 def update_after_appointments(d):
     update_after_drugs_appointments(d)
+    update_after_lfk_appointments(d)
+    update_after_physio_appointments(d)
 
 
 def update_after_drugs_appointments(d):
@@ -81,3 +83,22 @@ def update_after_drugs_appointments(d):
                                f"лекарственные формы:\n{str(peros_table)}"
     d['назначение_все'] = f"{d['назначение_инъекции']}\n\n"\
                           f"{d['назначение_таблетки']}"
+
+
+def update_after_lfk_appointments(d):
+    lfk_summary = ''
+    for app in d['d_lfk']:
+        lfk = f"{app['procedure']} " \
+              f"{app['regimen']}; "
+        lfk_summary += lfk
+    d['лфк'] = lfk_summary
+
+
+def update_after_physio_appointments(d):
+    physio_summary = ''
+    for app in d['d_physio']:
+        physio = f"{app['procedure']} " \
+                 f"{app['place']} " \
+                 f"{app['regimen']}; "
+        physio_summary += physio
+    d['физиотерапия'] = physio_summary

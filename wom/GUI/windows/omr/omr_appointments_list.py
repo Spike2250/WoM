@@ -5,6 +5,7 @@ from PySide6.QtWidgets import (QWidget,
                                QPushButton,
                                QPlainTextEdit)
 from datetime import datetime
+from copy import deepcopy
 
 from wom.GUI.PY.omr import omr_Appointments
 from wom.app_logic.db_func\
@@ -17,6 +18,7 @@ from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
 from wom.app_logic.writing.postprocessing\
     .appointments import update_after_appointments
 from wom.styles_qss.main_styles import button_own
+from wom.settings.config import mdrk_members
 
 
 class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
@@ -31,7 +33,8 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
 
     def initial_func(self):
         self.d_temp = {}
-        self.list_drugs = []
+        self.list_sol = []
+        self.list_tab = []
         self.list_lfk = []
         self.list_physio = []
 
@@ -47,12 +50,20 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         self.set_styles()
         self.read_almanac_json()
         self.set_templates()
+        self.insert_lfk_physio_md_lists()
 
         self.insert_data_from_dictionary()
         self.refresh_all_tables()
 
     def onButtonMy(self):
         pass
+
+    def insert_lfk_physio_md_lists(self):
+        # списки для членов МДРК
+        self.comboBox_lfk_name.clear()
+        self.comboBox_physio_name.clear()
+        self.comboBox_lfk_name.addItems(mdrk_members['lfk'])
+        self.comboBox_physio_name.addItems(mdrk_members['physio'])
 
     def open_patient_card(self):
         win = self.windows['Frameless']()
@@ -81,6 +92,14 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         '''
         self.d['стол'] = self.comboBox_diet.currentText()
         self.d['режим'] = self.comboBox_functional_mode.currentText()
+
+        self.write_drugs_appointments()
+        self.write_lfk_appointments()
+        self.write_physiotherapy_appointments()
+
+        self.d['ФИО_ЛФК'] = self.comboBox_lfk_name.currentText()
+        self.d['ФИО_Физиотерапевт'] = self.comboBox_physio_name.currentText()
+
         update_after_appointments(self.d)
 
     def insert_data_from_dictionary(self):
@@ -89,6 +108,7 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         self.comboBox_functional_mode.setCurrentText(self.d['режим'])
         if 'стол' in self.d:
             self.comboBox_diet.setCurrentText(self.d['стол'])
+        self.insert_drugs_data()
         self.insert_lfk_data()
         self.insert_physio_data()
 
@@ -114,24 +134,24 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
 
         self.tableWidget_sol.setColumnWidth(0, 100)  # ширина колонок
         self.tableWidget_sol.setColumnWidth(1, 200)  # по номеру колонки
-        self.tableWidget_sol.setColumnWidth(2, 85)
-        self.tableWidget_sol.setColumnWidth(3, 435)
+        self.tableWidget_sol.setColumnWidth(2, 80)
+        self.tableWidget_sol.setColumnWidth(3, 250)
         self.tableWidget_sol.setColumnWidth(4, 35)
 
         self.tableWidget_peros.setColumnWidth(0, 100)
         self.tableWidget_peros.setColumnWidth(1, 200)
-        self.tableWidget_peros.setColumnWidth(2, 85)
-        self.tableWidget_peros.setColumnWidth(3, 435)
+        self.tableWidget_peros.setColumnWidth(2, 80)
+        self.tableWidget_peros.setColumnWidth(3, 250)
         self.tableWidget_peros.setColumnWidth(4, 35)
 
-        self.tableWidget_lfk.setColumnWidth(0, 100)
+        self.tableWidget_lfk.setColumnWidth(0, 648)
         self.tableWidget_lfk.setColumnWidth(1, 100)
-        self.tableWidget_lfk.setColumnWidth(2, 100)
+        self.tableWidget_lfk.setColumnWidth(2, 90)
         self.tableWidget_lfk.setColumnWidth(3, 35)
 
-        self.tableWidget_physio.setColumnWidth(0, 100)
-        self.tableWidget_physio.setColumnWidth(1, 100)
-        self.tableWidget_physio.setColumnWidth(2, 100)
+        self.tableWidget_physio.setColumnWidth(0, 374)
+        self.tableWidget_physio.setColumnWidth(1, 374)
+        self.tableWidget_physio.setColumnWidth(2, 90)
         self.tableWidget_physio.setColumnWidth(3, 35)
 
     def set_patient_info(self):
@@ -149,6 +169,12 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
             .clicked.connect(self.exit_and_save)
         self.pushButton_add_and_continue\
             .clicked.connect(self.add_drug_to_appointments)
+        self.pushButton_set_adm_date\
+            .clicked.connect(self.set_adm_date)
+        self.pushButton_set_today_date\
+            .clicked.connect(self.set_today_date)
+        self.pushButton_clean\
+            .clicked.connect(self.clean_forms)
 
         self.pushButton_add_lfk\
             .clicked.connect(self.add_lfk_appointment)
@@ -164,9 +190,22 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         self.pushButton_add_new_template_physio\
             .clicked.connect(self.add_new_template_physio)
 
+        # коннекты чекбоксов
+        self.checkBox_lfk_same.stateChanged.connect(self.set_lfk_md)
+        self.checkBox_physio_same.stateChanged.connect(self.set_physio_md)
+
     """==========================
     Drugs appointments functions
     =========================="""
+
+    def write_drugs_appointments(self):
+        self.d['d_sol'] = deepcopy(self.list_sol)
+        self.d['d_tab'] = deepcopy(self.list_tab)
+
+    def insert_drugs_data(self):
+        if 'd_sol' in self.d and 'd_tab' in self.d:
+            self.list_sol = deepcopy(self.d['d_sol'])
+            self.list_tab = deepcopy(self.d['d_tab'])
 
     def refresh_tables_drugs_appointment(self):
         self.refresh_drugs_table('per_os')
@@ -175,42 +214,46 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
     def define_drugs_key_and_table(self, table_name):
         match table_name:
             case 'per_os':
-                key = 'd_tab'
+                list_ = self.list_tab
                 table = self.tableWidget_peros
                 del_func = self.delete_drug_tab
             case 'sol':
-                key = 'd_sol'
+                list_ = self.list_sol
                 table = self.tableWidget_sol
                 del_func = self.delete_drug_sol
-        return key, table, del_func
+        return list_, table, del_func
 
     def refresh_drugs_table(self, table_name):
-        key, table, del_func = self.define_drugs_key_and_table(table_name)
+        list_, table, del_func = self.define_drugs_key_and_table(table_name)
 
-        if key in self.d and (len_ := len(self.d[key])) != 0:
+        if (len_ := len(list_)) != 0:
             table.setRowCount(len_)
             for i in range(len_):
-                table.setItem(i, 0, QTW_Item(self.d[key][i]['date']))
-                table.setItem(i, 1, QTW_Item(self.d[key][i]['drug']))
-                table.setItem(i, 2, QTW_Item(self.d[key][i]['dose']))
-                table.setItem(i, 3, QTW_Item(self.d[key][i]['DS']))
+                table.setItem(i, 0, QTW_Item(list_[i]['date']))
+                table.setItem(i, 1, QTW_Item(list_[i]['drug']))
+                table.setItem(i, 2, QTW_Item(list_[i]['dose']))
+
+                # pTE = QPlainTextEdit(list_[i]['DS'])
+                # pTE.setStyleSheet(pTE_main)
+                # table.setCellWidget(i, 3, pTE)
+                table.setItem(i, 3, QTW_Item(list_[i]['DS']))
+
                 button_delete = QPushButton('Х')
                 button_delete.setStyleSheet(button_own)
                 button_delete.clicked.connect(del_func)
                 table.setCellWidget(i, 4, button_delete)
         else:
-            self.d[key] = []
             table.setRowCount(0)
             table.setRowCount(1)
             table.setItem(0, 1, QTW_Item('Назначения отсутствуют'))
 
     def delete_drug(self, table_name):
-        key = self.define_drugs_key_and_table(table_name)[0]
+        list_ = self.define_drugs_key_and_table(table_name)[0]
         table = self.define_drugs_key_and_table(table_name)[1]
 
         button = self.sender()
         i = table.indexAt(button.pos()).row()
-        self.d[key].pop(i)
+        list_.pop(i)
 
         self.refresh_drugs_table(table_name)
 
@@ -239,11 +282,7 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
     def start(self):
         table = self.tableWidget_drugs
 
-        self.dateEdit.setDate(
-            QtCore.QDate.fromString('01.01.2000', "dd.MM.yyyy"))
-        self.lineEdit_drug.setText('')
-        self.lineEdit_dose.setText('')
-        self.lineEdit_DS.setText('')
+        self.clean_forms()
 
         table.setColumnCount(0)
         table.setColumnCount(1)
@@ -406,10 +445,10 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         if check_fullness:
             if d_drug['date'] != '01.01.2000':
                 if self.comboBox.currentText() == 'в инъекционный л/н':
-                    self.d['d_sol'].append(d_drug)
+                    self.list_sol.append(d_drug)
                     self.refresh_drugs_table('sol')
                 elif self.comboBox.currentText() == 'в энтеральный л/н':
-                    self.d['d_tab'].append(d_drug)
+                    self.list_tab.append(d_drug)
                     self.refresh_drugs_table('per_os')
                 self.start()
             else:
@@ -417,13 +456,31 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         else:
             self.label_status.setText('Данные препарата не полные!')
 
+    def set_adm_date(self):
+        self.dateEdit.setDate(
+            QtCore.QDate.fromString(self.d['дата_поступления'], "dd.MM.yyyy"))
+
+    def set_today_date(self):
+        today = datetime.now().strftime('%d.%m.%Y')
+        self.dateEdit.setDate(QtCore.QDate.fromString(today, "dd.MM.yyyy"))
+
+    def clean_forms(self):
+        self.dateEdit.setDate(
+            QtCore.QDate.fromString('01.01.2000', "dd.MM.yyyy"))
+        self.lineEdit_drug.setText('')
+        self.lineEdit_dose.setText('')
+        self.lineEdit_DS.setText('')
+
     """==========================
     LFK appointments functions
     =========================="""
 
+    def write_lfk_appointments(self):
+        self.d['d_lfk'] = deepcopy(self.list_lfk)
+
     def insert_lfk_data(self):
         if 'd_lfk' in self.d:
-            self.list_lfk = self.d['d_lfk']
+            self.list_lfk = deepcopy(self.d['d_lfk'])
 
     def refresh_lfk_table(self):
         table = self.tableWidget_lfk
@@ -504,17 +561,33 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
             }
             self.list_lfk.append(lfk)
             self.refresh_lfk_table()
+
+            self.comboBox_lfk.setCurrentText("")
+            self.comboBox_lfk_duration.setCurrentText("")
+            self.comboBox_lfk_ed.setCurrentText("")
         else:
             msg = 'Данные заполнены не в полном объеме!'
             self.label_status_lfk.setText(msg)
+
+    def set_lfk_md(self):
+        if self.checkBox_lfk_same.isChecked():
+            self.lfk_md = self.comboBox_lfk_name.currentText()
+            self.comboBox_lfk_name.setCurrentText(self.d['ФИО_врача'])
+            self.comboBox_lfk_name.setEnabled(False)
+        else:
+            self.comboBox_lfk_name.setCurrentText(self.lfk_md)
+            self.comboBox_lfk_name.setEnabled(True)
 
     """==========================
     Physiotherapy appointments functions
     =========================="""
 
+    def write_physiotherapy_appointments(self):
+        self.d['d_physio'] = deepcopy(self.list_physio)
+
     def insert_physio_data(self):
         if 'd_physio' in self.d:
-            self.list_physio = self.d['d_physio']
+            self.list_physio = deepcopy(self.d['d_physio'])
 
     def refresh_physio_table(self):
         table = self.tableWidget_physio
@@ -586,9 +659,10 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         self.comboBox_template_physio.setCurrentText('')
 
     def add_physio_appointment(self):
-        if self.comboBox_physio.currentText() != '' and \
-                self.comboBox_physio_place.currentText() != '' and \
-                self.comboBox_physio_duration.currentText() != '':
+        if self.comboBox_physio.currentText() != ''\
+                and self.comboBox_physio_place.currentText() != ''\
+                and self.comboBox_physio_duration.currentText() != '':
+
             physio = {
                 'procedure': self.comboBox_physio.currentText(),
                 'place': self.comboBox_physio_place.currentText(),
@@ -596,9 +670,22 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
             }
             self.list_physio.append(physio)
             self.refresh_physio_table()
+
+            self.comboBox_physio.setCurrentText("")
+            self.comboBox_physio_place.setCurrentText("")
+            self.comboBox_physio_duration.setCurrentText("")
         else:
             msg = 'Данные заполнены не в полном объеме!'
             self.label_status_physio.setText(msg)
+
+    def set_physio_md(self):
+        if self.checkBox_physio_same.isChecked():
+            self.physio_md = self.comboBox_physio_name.currentText()
+            self.comboBox_physio_name.setCurrentText(self.d['ФИО_врача'])
+            self.comboBox_physio_name.setEnabled(False)
+        else:
+            self.comboBox_physio_name.setCurrentText(self.physio_md)
+            self.comboBox_physio_name.setEnabled(True)
 
     """==========================
     Other

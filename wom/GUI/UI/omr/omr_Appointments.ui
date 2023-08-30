@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1300</width>
-    <height>718</height>
+    <height>713</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -2280,7 +2280,7 @@ background-color: rgba(50, 98, 115, 70);
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>130</height>
+                <height>0</height>
                </size>
               </property>
               <property name="font">
@@ -6447,6 +6447,9 @@ font-size: 11pt;
          <string>ЛФК</string>
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>5</number>
+         </property>
          <item>
           <widget class="QFrame" name="add_lfk">
            <property name="maximumSize">
@@ -7424,25 +7427,6 @@ font-size: 11pt;
                  </item>
                 </widget>
                </item>
-               <item row="7" column="0">
-                <widget class="QLabel" name="label_status_lfk">
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>24</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: #326273;
-font-weight: bold;
-background-color: transparent;
-border: none;</string>
-                 </property>
-                 <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                 </property>
-                </widget>
-               </item>
                <item row="2" column="0" colspan="4">
                 <widget class="QComboBox" name="comboBox_lfk">
                  <property name="maximumSize">
@@ -7923,6 +7907,25 @@ font-size: 11pt;
                    <string>ЛФК с системой разгрузки Levitas</string>
                   </property>
                  </item>
+                </widget>
+               </item>
+               <item row="7" column="0" colspan="4">
+                <widget class="QLabel" name="label_status_lfk">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>24</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: #326273;
+font-weight: bold;
+background-color: transparent;
+border: none;</string>
+                 </property>
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -9933,12 +9936,19 @@ border: none;</string>
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: #EEEEEE;
+              <string notr="true">QComboBox  {
+background-color: #EEEEEE;
 color: #13242B;
 border: 1px solid #326273;
 font-weight: bold;
 font-size: 11pt;
-</string>
+}
+
+QComboBox::disabled {
+background-color:  rgba(50, 98, 115, 40);
+border: 1px solid rgba(50, 98, 115, 150);
+color:  rgba(50, 98, 115, 150);
+}</string>
              </property>
              <property name="editable">
               <bool>true</bool>
@@ -9998,22 +10008,40 @@ QCheckBox::indicator:!checked {
           </layout>
          </item>
          <item>
-          <widget class="QTableWidget" name="tableWidget_lfk">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>130</height>
-            </size>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <property name="spacing">
+            <number>5</number>
            </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>11</pointsize>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QTableWidget {
+           <item>
+            <spacer name="horizontalSpacer_14">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="tableWidget_lfk">
+             <property name="minimumSize">
+              <size>
+               <width>900</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Roboto</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QTableWidget {
    selection-background-color: rgba(50, 98, 115, 120);
    background-color: rgba(50, 98, 115, 40);
    color: #FFFFFF;
@@ -10043,28 +10071,43 @@ QScrollBar {
 background-color: rgba(50, 98, 115, 70);
 }
 </string>
-           </property>
-           <column>
-            <property name="text">
-             <string>Назначение</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Режим</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Ед.</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string/>
-            </property>
-           </column>
-          </widget>
+             </property>
+             <column>
+              <property name="text">
+               <string>Назначение</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Режим</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Ед.</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string/>
+              </property>
+             </column>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_15">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </item>
         </layout>
        </widget>
@@ -13538,12 +13581,19 @@ border: none;</string>
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: #EEEEEE;
+              <string notr="true">QComboBox  {
+background-color: #EEEEEE;
 color: #13242B;
 border: 1px solid #326273;
 font-weight: bold;
 font-size: 11pt;
-</string>
+}
+
+QComboBox::disabled {
+background-color:  rgba(50, 98, 115, 40);
+border: 1px solid rgba(50, 98, 115, 150);
+color:  rgba(50, 98, 115, 150);
+}</string>
              </property>
              <property name="editable">
               <bool>true</bool>
@@ -13603,22 +13653,40 @@ QCheckBox::indicator:!checked {
           </layout>
          </item>
          <item>
-          <widget class="QTableWidget" name="tableWidget_physio">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>130</height>
-            </size>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <property name="spacing">
+            <number>5</number>
            </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>11</pointsize>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QTableWidget {
+           <item>
+            <spacer name="horizontalSpacer_16">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="tableWidget_physio">
+             <property name="minimumSize">
+              <size>
+               <width>900</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Roboto</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QTableWidget {
    selection-background-color: rgba(50, 98, 115, 120);
    background-color: rgba(50, 98, 115, 40);
    color: #FFFFFF;
@@ -13648,28 +13716,43 @@ QScrollBar {
 background-color: rgba(50, 98, 115, 70);
 }
 </string>
-           </property>
-           <column>
-            <property name="text">
-             <string>Назначение</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Область</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Режим</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string/>
-            </property>
-           </column>
-          </widget>
+             </property>
+             <column>
+              <property name="text">
+               <string>Назначение</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Область</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Режим</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string/>
+              </property>
+             </column>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_17">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </item>
         </layout>
        </widget>
@@ -13717,7 +13800,7 @@ font-size: 14pt;
  </widget>
  <resources>
   <include location="../res_main.qrc"/>
-  <include location="../../../../../../Users/Shilov Ilya/AppData/Local/Programs/Python/Python310/Lib/site-packages/res_main.qrc"/>
+  <include location="../res_main.qrc"/>
  </resources>
  <connections/>
 </ui>

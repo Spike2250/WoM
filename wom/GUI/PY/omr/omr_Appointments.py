@@ -27,7 +27,7 @@ class Ui_Appointments(object):
     def setupUi(self, Appointments):
         if not Appointments.objectName():
             Appointments.setObjectName(u"Appointments")
-        Appointments.resize(1300, 718)
+        Appointments.resize(1300, 713)
         Appointments.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_7 = QVBoxLayout(Appointments)
@@ -590,7 +590,7 @@ class Ui_Appointments(object):
         __qtablewidgetitem9 = QTableWidgetItem()
         self.tableWidget_sol.setHorizontalHeaderItem(4, __qtablewidgetitem9)
         self.tableWidget_sol.setObjectName(u"tableWidget_sol")
-        self.tableWidget_sol.setMinimumSize(QSize(0, 130))
+        self.tableWidget_sol.setMinimumSize(QSize(0, 0))
         self.tableWidget_sol.setFont(font2)
         self.tableWidget_sol.setStyleSheet(u"QTableWidget {\n"
 "   selection-background-color: rgba(50, 98, 115, 120);\n"
@@ -1516,6 +1516,7 @@ class Ui_Appointments(object):
         self.lkf = QWidget()
         self.lkf.setObjectName(u"lkf")
         self.verticalLayout_2 = QVBoxLayout(self.lkf)
+        self.verticalLayout_2.setSpacing(5)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.add_lfk = QFrame(self.lkf)
         self.add_lfk.setObjectName(u"add_lfk")
@@ -1732,16 +1733,6 @@ class Ui_Appointments(object):
 
         self.gridLayout_3.addWidget(self.comboBox_lfk_ed, 3, 3, 1, 1)
 
-        self.label_status_lfk = QLabel(self.frame_3)
-        self.label_status_lfk.setObjectName(u"label_status_lfk")
-        self.label_status_lfk.setMaximumSize(QSize(16777215, 24))
-        self.label_status_lfk.setStyleSheet(u"color: #326273;\n"
-"font-weight: bold;\n"
-"background-color: transparent;\n"
-"border: none;")
-
-        self.gridLayout_3.addWidget(self.label_status_lfk, 7, 0, 1, 1)
-
         self.comboBox_lfk = QComboBox(self.frame_3)
         self.comboBox_lfk.addItem("")
         self.comboBox_lfk.addItem("")
@@ -1823,6 +1814,16 @@ class Ui_Appointments(object):
         self.comboBox_lfk.setEditable(True)
 
         self.gridLayout_3.addWidget(self.comboBox_lfk, 2, 0, 1, 4)
+
+        self.label_status_lfk = QLabel(self.frame_3)
+        self.label_status_lfk.setObjectName(u"label_status_lfk")
+        self.label_status_lfk.setMaximumSize(QSize(16777215, 24))
+        self.label_status_lfk.setStyleSheet(u"color: #326273;\n"
+"font-weight: bold;\n"
+"background-color: transparent;\n"
+"border: none;")
+
+        self.gridLayout_3.addWidget(self.label_status_lfk, 7, 0, 1, 4)
 
 
         self.horizontalLayout_5.addWidget(self.frame_3)
@@ -2218,12 +2219,19 @@ class Ui_Appointments(object):
         self.comboBox_lfk_name.setMinimumSize(QSize(300, 0))
         self.comboBox_lfk_name.setMaximumSize(QSize(16777215, 20))
         self.comboBox_lfk_name.setFont(font)
-        self.comboBox_lfk_name.setStyleSheet(u"background-color: #EEEEEE;\n"
+        self.comboBox_lfk_name.setStyleSheet(u"QComboBox  {\n"
+"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
 "font-weight: bold;\n"
 "font-size: 11pt;\n"
-"")
+"}\n"
+"\n"
+"QComboBox::disabled {\n"
+"background-color:  rgba(50, 98, 115, 40);\n"
+"border: 1px solid rgba(50, 98, 115, 150);\n"
+"color:  rgba(50, 98, 115, 150);\n"
+"}")
         self.comboBox_lfk_name.setEditable(True)
 
         self.horizontalLayout_4.addWidget(self.comboBox_lfk_name)
@@ -2266,6 +2274,13 @@ class Ui_Appointments(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
 
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setSpacing(5)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalSpacer_14 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_14)
+
         self.tableWidget_lfk = QTableWidget(self.lkf)
         if (self.tableWidget_lfk.columnCount() < 4):
             self.tableWidget_lfk.setColumnCount(4)
@@ -2278,7 +2293,7 @@ class Ui_Appointments(object):
         __qtablewidgetitem13 = QTableWidgetItem()
         self.tableWidget_lfk.setHorizontalHeaderItem(3, __qtablewidgetitem13)
         self.tableWidget_lfk.setObjectName(u"tableWidget_lfk")
-        self.tableWidget_lfk.setMinimumSize(QSize(0, 130))
+        self.tableWidget_lfk.setMinimumSize(QSize(900, 0))
         self.tableWidget_lfk.setFont(font2)
         self.tableWidget_lfk.setStyleSheet(u"QTableWidget {\n"
 "   selection-background-color: rgba(50, 98, 115, 120);\n"
@@ -2311,7 +2326,14 @@ class Ui_Appointments(object):
 "}\n"
 "")
 
-        self.verticalLayout_2.addWidget(self.tableWidget_lfk)
+        self.horizontalLayout_8.addWidget(self.tableWidget_lfk)
+
+        self.horizontalSpacer_15 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_15)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_8)
 
         icon5 = QIcon()
         icon5.addFile(u":/icon/icons/conditions_FILL1_wght400_GRAD0_opsz48.svg", QSize(), QIcon.Normal, QIcon.Off)
@@ -3016,12 +3038,19 @@ class Ui_Appointments(object):
         self.comboBox_physio_name.setMinimumSize(QSize(300, 0))
         self.comboBox_physio_name.setMaximumSize(QSize(16777215, 20))
         self.comboBox_physio_name.setFont(font)
-        self.comboBox_physio_name.setStyleSheet(u"background-color: #EEEEEE;\n"
+        self.comboBox_physio_name.setStyleSheet(u"QComboBox  {\n"
+"background-color: #EEEEEE;\n"
 "color: #13242B;\n"
 "border: 1px solid #326273;\n"
 "font-weight: bold;\n"
 "font-size: 11pt;\n"
-"")
+"}\n"
+"\n"
+"QComboBox::disabled {\n"
+"background-color:  rgba(50, 98, 115, 40);\n"
+"border: 1px solid rgba(50, 98, 115, 150);\n"
+"color:  rgba(50, 98, 115, 150);\n"
+"}")
         self.comboBox_physio_name.setEditable(True)
 
         self.horizontalLayout_6.addWidget(self.comboBox_physio_name)
@@ -3064,6 +3093,13 @@ class Ui_Appointments(object):
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_6)
 
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setSpacing(5)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalSpacer_16 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_16)
+
         self.tableWidget_physio = QTableWidget(self.physio)
         if (self.tableWidget_physio.columnCount() < 4):
             self.tableWidget_physio.setColumnCount(4)
@@ -3076,7 +3112,7 @@ class Ui_Appointments(object):
         __qtablewidgetitem17 = QTableWidgetItem()
         self.tableWidget_physio.setHorizontalHeaderItem(3, __qtablewidgetitem17)
         self.tableWidget_physio.setObjectName(u"tableWidget_physio")
-        self.tableWidget_physio.setMinimumSize(QSize(0, 130))
+        self.tableWidget_physio.setMinimumSize(QSize(900, 0))
         self.tableWidget_physio.setFont(font2)
         self.tableWidget_physio.setStyleSheet(u"QTableWidget {\n"
 "   selection-background-color: rgba(50, 98, 115, 120);\n"
@@ -3109,7 +3145,14 @@ class Ui_Appointments(object):
 "}\n"
 "")
 
-        self.verticalLayout_4.addWidget(self.tableWidget_physio)
+        self.horizontalLayout_9.addWidget(self.tableWidget_physio)
+
+        self.horizontalSpacer_17 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_17)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_9)
 
         icon6 = QIcon()
         icon6.addFile(u":/icon/icons/record_voice_over_FILL1.svg", QSize(), QIcon.Normal, QIcon.Off)
@@ -3227,7 +3270,6 @@ class Ui_Appointments(object):
         self.comboBox_lfk_ed.setItemText(6, QCoreApplication.translate("Appointments", u"4,5", None))
         self.comboBox_lfk_ed.setItemText(7, QCoreApplication.translate("Appointments", u"6,0", None))
 
-        self.label_status_lfk.setText(QCoreApplication.translate("Appointments", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
         self.comboBox_lfk.setItemText(0, "")
         self.comboBox_lfk.setItemText(1, QCoreApplication.translate("Appointments", u"\u043f\u043e \u043c\u0430\u043b\u043e\u0433\u0440\u0443\u043f\u043f\u043e\u0432\u043e\u0439 \u043c\u0435\u0442\u043e\u0434\u0438\u043a\u0435", None))
         self.comboBox_lfk.setItemText(2, QCoreApplication.translate("Appointments", u"\u043f\u043e \u0438\u043d\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043b\u044c\u043d\u043e\u0439 \u043c\u0435\u0442\u043e\u0434\u0438\u043a\u0435", None))
@@ -3253,6 +3295,7 @@ class Ui_Appointments(object):
         self.comboBox_lfk.setItemText(22, QCoreApplication.translate("Appointments", u"\u041b\u0424\u041a \u0432 \u0431\u0430\u0441\u0441\u0435\u0439\u043d\u0435", None))
         self.comboBox_lfk.setItemText(23, QCoreApplication.translate("Appointments", u"\u041b\u0424\u041a \u0441 \u0441\u0438\u0441\u0442\u0435\u043c\u043e\u0439 \u0440\u0430\u0437\u0433\u0440\u0443\u0437\u043a\u0438 Levitas", None))
 
+        self.label_status_lfk.setText(QCoreApplication.translate("Appointments", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
         self.comboBox_lfk_template.setItemText(0, "")
 
         self.pushButton_lfk_add_new_template.setText(QCoreApplication.translate("Appointments", u"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u043e\u0432\u044b\u0439 \u0448\u0430\u0431\u043b\u043e\u043d", None))
