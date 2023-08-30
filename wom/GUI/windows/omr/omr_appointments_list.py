@@ -1,4 +1,4 @@
-from PySide6 import QtCore
+from PySide6 import QtCore, QtGui
 from PySide6.QtWidgets import (QWidget,
                                QTableWidgetItem as QTW_Item,
                                QAbstractItemView,
@@ -19,6 +19,7 @@ from wom.app_logic.writing.postprocessing\
     .appointments import update_after_appointments
 from wom.styles_qss.main_styles import button_own
 from wom.settings.config import mdrk_members
+from wom.styles_qss.main_styles import pTE_drugs
 
 
 class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
@@ -132,16 +133,16 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         self.tableWidget_physio\
             .setEditTriggers(QAbstractItemView.NoEditTriggers)
 
-        self.tableWidget_sol.setColumnWidth(0, 100)  # ширина колонок
+        self.tableWidget_sol.setColumnWidth(0, 95)  # ширина колонок
         self.tableWidget_sol.setColumnWidth(1, 200)  # по номеру колонки
         self.tableWidget_sol.setColumnWidth(2, 80)
-        self.tableWidget_sol.setColumnWidth(3, 250)
+        self.tableWidget_sol.setColumnWidth(3, 235)
         self.tableWidget_sol.setColumnWidth(4, 35)
 
-        self.tableWidget_peros.setColumnWidth(0, 100)
+        self.tableWidget_peros.setColumnWidth(0, 95)
         self.tableWidget_peros.setColumnWidth(1, 200)
         self.tableWidget_peros.setColumnWidth(2, 80)
-        self.tableWidget_peros.setColumnWidth(3, 250)
+        self.tableWidget_peros.setColumnWidth(3, 235)
         self.tableWidget_peros.setColumnWidth(4, 35)
 
         self.tableWidget_lfk.setColumnWidth(0, 648)
@@ -199,8 +200,18 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
     =========================="""
 
     def write_drugs_appointments(self):
+        self.rewrite_app_DS(
+            list_=self.list_sol,
+            table=self.tableWidget_sol)
+        self.rewrite_app_DS(
+            list_=self.list_tab,
+            table=self.tableWidget_tab)
         self.d['d_sol'] = deepcopy(self.list_sol)
         self.d['d_tab'] = deepcopy(self.list_tab)
+
+    def rewrite_app_DS(self, list_, table):
+        for index, app in enumerate(list_):
+            app['DS'] = table.cellWidget(index, 3).toPlainText()
 
     def insert_drugs_data(self):
         if 'd_sol' in self.d and 'd_tab' in self.d:
@@ -229,16 +240,25 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         if (len_ := len(list_)) != 0:
             table.setRowCount(len_)
             for i in range(len_):
+                table.setRowHeight(i, 40)
+
                 table.setItem(i, 0, QTW_Item(list_[i]['date']))
                 table.setItem(i, 1, QTW_Item(list_[i]['drug']))
                 table.setItem(i, 2, QTW_Item(list_[i]['dose']))
 
-                # pTE = QPlainTextEdit(list_[i]['DS'])
-                # pTE.setStyleSheet(pTE_main)
-                # table.setCellWidget(i, 3, pTE)
-                table.setItem(i, 3, QTW_Item(list_[i]['DS']))
+                pTE = QPlainTextEdit(list_[i]['DS'])
+                pTE.setStyleSheet(pTE_drugs)
+                table.setCellWidget(i, 3, pTE)
+                # table.setItem(i, 3, QTW_Item(list_[i]['DS']))
 
-                button_delete = QPushButton('Х')
+                button_delete = QPushButton()
+                icon = QtGui.QIcon()
+                icon.addPixmap(
+                    QtGui.QPixmap(":/icon/icons/block_white_36dp.svg"),
+                    QtGui.QIcon.Normal,
+                    QtGui.QIcon.Off)
+                button_delete.setIcon(icon)
+                button_delete.setIconSize(QtCore.QSize(25, 25))
                 button_delete.setStyleSheet(button_own)
                 button_delete.clicked.connect(del_func)
                 table.setCellWidget(i, 4, button_delete)

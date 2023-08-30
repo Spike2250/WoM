@@ -157,3 +157,12 @@ button_other = "QPushButton {\
                     background-color: #EEEEEE;\
                     border: 1px solid rgba(50, 98, 115, 190);\
                 }"
+
+
+pTE_drugs = "QPlainTextEdit {\
+                 background-color: #EEEEEE;\
+                 color: #13242B;\
+                 border: 1px solid #326273;\
+                 font-weight: bold;\
+                 font-size: 9pt;\
+             }"
