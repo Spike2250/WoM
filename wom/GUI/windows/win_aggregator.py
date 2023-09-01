@@ -5,6 +5,7 @@ from wom.GUI.windows\
                  omr_add_new_patient,
                  omr_patient_card,
                  omr_appointments_list,
+                 omr_mdrk,
                  )
 from wom.GUI.windows\
     .bta import (bta_main_menu,
@@ -38,6 +39,7 @@ windows = {
         'add_new_patient': omr_add_new_patient.Ui_AddNewPatient,
         'patient_card': omr_patient_card.Ui_PatientCard,
         'appointments': omr_appointments_list.Ui_Appointments,
+        'mdrk': omr_mdrk.Ui_Mdrk,
     },
     'bta': {
         'main_menu': bta_main_menu.Ui_MainMenu,

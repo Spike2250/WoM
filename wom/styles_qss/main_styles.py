@@ -159,6 +159,15 @@ button_other = "QPushButton {\
                 }"
 
 
+pTE_main = "QPlainTextEdit {\
+                 background-color: #EEEEEE;\
+                 color: #13242B;\
+                 border: 1px solid #326273;\
+                 font-weight: bold;\
+                 font-size: 11pt;\
+             }"
+
+
 pTE_drugs = "QPlainTextEdit {\
                  background-color: #EEEEEE;\
                  color: #13242B;\
@@ -166,3 +175,37 @@ pTE_drugs = "QPlainTextEdit {\
                  font-weight: bold;\
                  font-size: 9pt;\
              }"
+
+
+check_main = "QCheckBox {\
+                  color: White;\
+                  border: none;\
+                  background-color: none;\
+              }\
+              QCheckBox:checked {\
+                  color: #702632;\
+              }\
+              QCheckBox:disabled {\
+                  color: #EEEEEE;\
+              }\
+              QCheckBox::indicator:checked {\
+                  border-style:solid;\
+                  border-width: 1px;\
+                  border-color: #702632;\
+                  color: #FFFFFF;\
+                  background-color: #702632;\
+              }\
+              QCheckBox::indicator:!checked {\
+                  border-style:solid;\
+                  border-width: 1px;\
+                  border-color: #702632;\
+                  color: #FFFFFF;\
+                  background-color: none;\
+              }\
+              QCheckBox::indicator:disabled {\
+                  border-style:solid;\
+                  border-width: 1px;\
+                  border-color: #EEEEEE;\
+                  color: #FFFFFF;\
+                  background-color: transparent;\
+              }"

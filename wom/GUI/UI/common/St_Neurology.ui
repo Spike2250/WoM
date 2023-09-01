@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1203</width>
-    <height>833</height>
+    <height>839</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -80312,7 +80312,7 @@ border: 1px solid rgba(50, 98, 115, 255);
  </widget>
  <resources>
   <include location="../res_main.qrc"/>
-  <include location="../../../../../../Users/Shilov Ilya/AppData/Local/Programs/Python/Python310/Lib/site-packages/res_main.qrc"/>
+  <include location="../res_main.qrc"/>
  </resources>
  <connections/>
 </ui>

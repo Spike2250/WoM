@@ -13,3 +13,4 @@ pyside6-uic St_Neurology.ui > St_Neurology.py
 pyside6-uic Diagnosis.ui > Diagnosis.py
 pyside6-uic Discharge_details.ui > Discharge_details.py
 pyside6-uic Appointments.ui > Appointments.py
+pyside6-uic icf.ui > Icf.py

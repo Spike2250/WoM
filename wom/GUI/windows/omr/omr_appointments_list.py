@@ -17,7 +17,7 @@ from wom.app_logic.db_func.drugs_almanac import read_almanac
 from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
 from wom.app_logic.writing.postprocessing\
     .appointments import update_after_appointments
-from wom.styles_qss.main_styles import button_own
+from wom.styles_qss.main_styles import button_own, button_other
 from wom.settings.config import mdrk_members
 from wom.styles_qss.main_styles import pTE_drugs
 
@@ -306,7 +306,7 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
 
         table.setColumnCount(0)
         table.setColumnCount(1)
-        table.setColumnWidth(0, 350)
+        table.setColumnWidth(0, 360)
         label = 'Выберите дату назначения лек.средства'
         table.setHorizontalHeaderLabels([label])
         table.setRowCount(3)
@@ -314,6 +314,9 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         button_adm_day = QPushButton('Дата поступления')
         button_today = QPushButton('Сегодня')
         button_latter = QPushButton('пропустить')
+        button_adm_day.setStyleSheet(button_other)
+        button_today.setStyleSheet(button_other)
+        button_latter.setStyleSheet(button_other)
         button_adm_day.clicked.connect(self.step_group)
         button_today.clicked.connect(self.step_group)
         button_latter.clicked.connect(self.step_group)
@@ -346,6 +349,7 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         i = 0
         for group in sorted(self.almanac):
             button = QPushButton(group)
+            button.setStyleSheet(button_other)
             button.clicked.connect(self.step_drug)
             table.setCellWidget(i, 0, button)
             i += 1
@@ -367,6 +371,7 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         i = 0
         for drug in sorted(self.almanac[group]):
             button = QPushButton(drug)
+            button.setStyleSheet(button_other)
             button.clicked.connect(self.step_dose)
             table.setCellWidget(i, 0, button)
             i += 1
@@ -391,6 +396,7 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         i = 0
         for dose in doses:
             button = QPushButton(dose)
+            button.setStyleSheet(button_other)
             button.clicked.connect(self.step_DS)
             table.setCellWidget(i, 0, button)
             i += 1
@@ -416,6 +422,7 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         i = 0
         for ds in DS:
             button = QPushButton(ds)
+            button.setStyleSheet(button_other)
             button.clicked.connect(self.step_final)
             table.setCellWidget(i, 0, button)
             i += 1
@@ -511,7 +518,14 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
                 table.setItem(i, 0, QTW_Item(self.list_lfk[i]['procedure']))
                 table.setItem(i, 1, QTW_Item(self.list_lfk[i]['regimen']))
                 table.setItem(i, 2, QTW_Item(self.list_lfk[i]['ed']))
-                button_delete = QPushButton('Х')
+                button_delete = QPushButton()
+                icon = QtGui.QIcon()
+                icon.addPixmap(
+                    QtGui.QPixmap(":/icon/icons/block_white_36dp.svg"),
+                    QtGui.QIcon.Normal,
+                    QtGui.QIcon.Off)
+                button_delete.setIcon(icon)
+                button_delete.setIconSize(QtCore.QSize(25, 25))
                 button_delete.setStyleSheet(button_own)
                 button_delete.clicked.connect(self.delete_lfk)
                 table.setCellWidget(i, 3, button_delete)
@@ -618,7 +632,14 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
                 table.setItem(i, 0, QTW_Item(self.list_physio[i]['procedure']))
                 table.setItem(i, 1, QTW_Item(self.list_physio[i]['place']))
                 table.setItem(i, 2, QTW_Item(self.list_physio[i]['regimen']))
-                button_delete = QPushButton('Х')
+                button_delete = QPushButton()
+                icon = QtGui.QIcon()
+                icon.addPixmap(
+                    QtGui.QPixmap(":/icon/icons/block_white_36dp.svg"),
+                    QtGui.QIcon.Normal,
+                    QtGui.QIcon.Off)
+                button_delete.setIcon(icon)
+                button_delete.setIconSize(QtCore.QSize(25, 25))
                 button_delete.setStyleSheet(button_own)
                 button_delete.clicked.connect(self.delete_physio)
                 table.setCellWidget(i, 3, button_delete)

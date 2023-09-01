@@ -79,8 +79,10 @@ class Ui_PatientCard(QtWidgets.QWidget,
             .clicked.connect(self.open_medical_appointments)
         self.pushButtonOpen_mdrk\
             .clicked.connect(self.open_mdrk)
-        self.pushButtonOpen_icf_dis\
-            .clicked.connect(self.open_mdrk_dis)
+        self.pushButtonOpen_icf\
+            .clicked.connect(self.open_icf)
+        self.pushButtonOpen_dynamic\
+            .clicked.connect(self.open_dynamic)
         self.pushButton_lecalo\
             .clicked.connect(self.put_a_ticks)
         self.pushButton_clean_ticks\
@@ -111,9 +113,11 @@ class Ui_PatientCard(QtWidgets.QWidget,
             .clicked.connect(self.open_logs)
         self.pushButtonSave\
             .clicked.connect(self.save_history)
-        # коннект для "галочек" при выборе общего файла
+
         self.checkBox_doc_complex\
             .stateChanged.connect(self.complex_doc_change)
+        self.checkBox_not_save\
+            .stateChanged.connect(self.activate_button)
 
     def update_descriptions(self):
         # обновляем "Лого_ИБ" и "patient_info"
@@ -179,6 +183,12 @@ class Ui_PatientCard(QtWidgets.QWidget,
                 dictionary=self.d,
                 diary_index=index))
         win.show()
+
+    def activate_button(self):
+        if self.checkBox_not_save.isChecked():
+            self.pushButtonNotSaveExit.setEnabled(True)
+        else:
+            self.pushButtonNotSaveExit.setEnabled(False)
 
     def close_card(self):
         win = self.create_main_window()
@@ -256,20 +266,15 @@ class Ui_PatientCard(QtWidgets.QWidget,
 
     def open_mdrk(self):
         self.open_window(folder_name='omr',
-                         win_name='mdrk',
-                         timeline='adm')
+                         win_name='mdrk')
 
-    def open_mdrk_dis(self):
-        if 's_domen_1' in self.d:
-            self.open_window(folder_name='omr',
-                             win_name='mdrk',
-                             timeline='dis')
-        else:
-            status_message = f'Сначала введите данные протокола '\
-                             f'МДРК (с МКФ) при поступлении.\n'\
-                             f'Данные для выписки будут доступны после '\
-                             f'выполнения этого действия.'
-            self.label_status.setText(status_message)
+    def open_icf(self):
+        self.open_window(folder_name='omr',
+                         win_name='icf')
+
+    def open_dynamic(self):
+        self.open_window(folder_name='omr',
+                         win_name='dynamic')
 
     def open_lab_data(self):
         self.open_window(folder_name='common',
@@ -605,15 +610,16 @@ class Ui_PatientCard(QtWidgets.QWidget,
             'Соматический_статус': self.pushButtonOpenPtObjStatusAdm,
             'Неврологический_статус': self.pushButtonOpenPtNeuralStatusAdm,
             'Основной_диагноз': self.pushButtonOpenPtDiagnosisAdm,
+            'icf': self.pushButtonOpen_icf,
             'лечение_таблетки': self.pushButtonOpenPtAppointments,
-            's_domen_1': self.pushButtonOpen_mdrk,
+            'цели_реабилитации': self.pushButtonOpen_mdrk,
             'лабораторные_данные': self.pushButtonOpenPtLaboratoryData,
             'инструментальные_данные': self.pushButtonOpenPtInstrumentalData,
             'консультации_данные': self.pushButtonOpenPtConsultationData,
             'Соматический_статус_выписка': self.pushButtonOpenPtObjStatusDischarge,  # noqa: E501
             'Неврологический_статус_вып': self.pushButtonOpenPtNeuralStatusDischarge,  # noqa: E501
             'Основной_диагноз_вып': self.pushButtonOpenPtDiagnosisDischarge,
-            's_domen_dis_1': self.pushButtonOpen_icf_dis,
+            'динамика': self.pushButtonOpen_dynamic,
             'вид_выбытия': self.pushButtonOpenPtStatisticData,
             'рекомендации_выписка': self.pushButtonOpenPtDischargeRecommend
         }
