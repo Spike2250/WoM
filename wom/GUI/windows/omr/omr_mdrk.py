@@ -2,10 +2,13 @@ from PySide6 import QtWidgets
 from PySide6.QtWidgets import QAbstractItemView, QCheckBox, QPlainTextEdit
 
 from wom.GUI.PY.omr import omr_MDRK
-from wom.app_logic.handbooks.mdrk_data import (rehab_goals, rehab_limits)
+from wom.app_logic.handbooks.mdrk_data import rehab_goals, rehab_limits
 from wom.app_logic.db_func\
     .bucket_func import upload_history_to_yandex_cloud_bucket
 from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
+from wom.app_logic.db_func\
+    .json_templates import (read_templates,
+                            templates_json_recording)
 from wom.app_logic.writing.postprocessing\
     .mdrk import update_after_mdrk
 from wom.styles_qss.main_styles import check_main, pTE_main
@@ -216,3 +219,33 @@ class Ui_Mdrk(QtWidgets.QWidget, omr_MDRK.Ui_MDRK):
         self.d['ш_прозопареза'] = self.comboBox_logo_proso.currentText()
         self.d['ш_дисфагии'] = self.comboBox_logo_dysphagia.currentText()
         self.d['ФИО_логопед'] = self.comboBox_logo_name.currentText()
+
+    def set_templates_list(self):
+        self.templates = read_templates('rehab_goal')
+        if self.templates is not None:
+            templates_list = sorted(list(self.templates))
+            self.comboBox_template.clear()
+            self.comboBox_template.addItem('')
+            self.comboBox_template.addItems(templates_list)
+        else:
+            self.templates = {}
+            self.comboBox_template.clear()
+
+    def add_new_template(self):
+        name = self.lineEdit_new_template_name.text()
+
+        if name != '':
+            self.templates[name] = self.plainTextEdit_goals.toPlainText()
+            templates_json_recording(templates=self.templates,
+                                     templates_name='rehab_goal')
+        else:
+            pass
+        # обновляем список шаблонов
+        self.lineEdit_new_template_name.setText('')
+        self.set_templates_list()
+
+    def push_active_template(self):
+        name = self.comboBox_lfk_template.currentText()
+        if name in self.templates:
+            self.plainTextEdit_goals.setPlainText(self.templates[name])
+        self.comboBox_template.setCurrentText('')

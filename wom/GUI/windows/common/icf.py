@@ -3,13 +3,23 @@ from PySide6.QtWidgets import (QAbstractItemView,
                                QTableWidgetItem as QTW_Item,
                                QLineEdit,
                                QPushButton)
+from copy import deepcopy
 
 from wom.GUI.PY.common import Icf
-from wom.app_logic.handbooks.icf_dict import multy_domens
+from wom.app_logic.handbooks.icf_dict import multy_domens, psylogo_domen
 from wom.app_logic.handbooks.description_of_domains import domains_desc
+from wom.app_logic.db_func\
+    .bucket_func import upload_history_to_yandex_cloud_bucket
+from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
+from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
+from wom.app_logic.db_func\
+    .json_templates import (read_templates,
+                            templates_json_recording)
+from wom.app_logic.writing.postprocessing.icf import update_after_icf
+from wom.styles_qss.main_styles import button_own, lineEdit_style
 
 
-class Ui_icf_psylogo(QtWidgets.QWidget, Icf.Ui_icf):
+class Ui_icf(QtWidgets.QWidget, Icf.Ui_icf):
     def __init__(self, windows, main_win, dictionary, case_type, timeline):
         super().__init__()
         self.setupUi(self)
@@ -17,7 +27,9 @@ class Ui_icf_psylogo(QtWidgets.QWidget, Icf.Ui_icf):
         self.main_win = main_win
         self.d = dictionary
         self.case_type = case_type
-        self.timeline = timeline
+        self.speciality = timeline
+
+        self.icf_l = []
 
         self.func_for_initial()
         self.refresh_table_icf()
@@ -48,7 +60,14 @@ class Ui_icf_psylogo(QtWidgets.QWidget, Icf.Ui_icf):
 
     def set_items_in_finding_line(self):
         self.comboBox_find_domen.clear()
-        self.comboBox_find_domen.addItems(sorted(multy_domens))
+        match self.speciality:
+            case 'frm':
+                domens = multy_domens
+            case 'psy':
+                domens = psylogo_domen
+            case 'logo':
+                domens = psylogo_domen
+        self.comboBox_find_domen.addItems(sorted(domens))
 
     def push_domen(self):
         if (text := self.comboBox_find_domen.currentText()) != '':
@@ -192,10 +211,7 @@ class Ui_icf_psylogo(QtWidgets.QWidget, Icf.Ui_icf):
 
     def set_templates_list(self):
         # список шаблонов
-        if self.type_icf == 'psy':
-            self.templates_icf = read_icf_psy_templates()
-        elif self.type_icf == 'logo':
-            self.templates_icf = read_icf_logo_templates()
+        self.templates_icf = read_templates(f'icf_{self.speciality}')
 
         if self.templates_icf is not None:
             self.templates_list = list(self.templates_icf)
@@ -213,10 +229,8 @@ class Ui_icf_psylogo(QtWidgets.QWidget, Icf.Ui_icf):
         # проверяем не пустое ли имя нового шаблона
         if new_template_name != '':
             self.templates_icf[new_template_name] = self.icf_l
-            if self.type_icf == 'psy':
-                psy_icf_template_json_recording(self.templates_icf)
-            elif self.type_icf == 'logo':
-                logo_icf_template_json_recording(self.templates_icf)
+            templates_json_recording(templates=self.templates,
+                                     templates_name=f'icf_{self.speciality}')
         else:
             # имя шаблона пустое
             pass
@@ -317,7 +331,7 @@ class Ui_icf_psylogo(QtWidgets.QWidget, Icf.Ui_icf):
                     # создаем кнопку
                     button_del = QPushButton('X')
                     button_del.clicked.connect(self.delete_domen)
-                    button_del.setStyleSheet(bta_style_del_button)
+                    button_del.setStyleSheet(button_own)
 
                     # заполняем таблицу
                     table.setItem(i, 0, QTW_Item(self.icf_l[i]['domen']))
@@ -340,14 +354,12 @@ class Ui_icf_psylogo(QtWidgets.QWidget, Icf.Ui_icf):
         '''
         '''
         # Вставка данных из словаря при их наличии
-        if self.type_icf == 'psy':
-            if 'icf_psy' in d:
-                self.icf_l = d['icf_psy']
-        elif self.type_icf == 'logo':
-            if 'icf_logo' in d:
-                self.icf_l = d['icf_logo']
+        try:
+            self.icf_l = deepcopy(self.d[f'icf_{self.speciality}'])
+        except KeyError:
+            self.icf_l = []
 
-    def all_write_to_dict(self):
+    def write_to_dictionary(self):
         '''
         '''
         table = self.tableWidget
@@ -371,19 +383,36 @@ class Ui_icf_psylogo(QtWidgets.QWidget, Icf.Ui_icf):
                 else:
                     raise ValueError
 
-            d[f'icf_{self.type_icf}'] = new_icf_l
-            update_after_icf_psylogo(d, self.type_icf)
+            self.d[f'icf_{self.speciality}'] = new_icf_l
+            update_after_icf(self.d, self.speciality)
         else:
             # условно рейзим ошибку для понимания что таблица пуста
             raise IndexError
 
+    def set_styles(self):
+        pass
+
+    def open_patient_card(self):
+        match self.speciality:
+            case 'frm':
+                type_ = self.case_type
+            # psy, logo
+            case _:
+                type_ = 'psylogo'
+
+        win = self.windows['Frameless']()
+        win.setWidget(
+            self.windows[type_]['patient_card'](
+                windows=self.windows,
+                main_win=win,
+                dictionary=self.d))
+        win.show()
+        self.main_win.close()
+
     def exit_and_save(self):
         try:
-            self.all_write_to_dict()
-            write_all_data_to_db(d)
-            self.hide()
-            self.window_card = Ui_PatientCard_Psy()
-            self.window_card.show()
+            self.save_history()
+            self.open_patient_card()
         # проверка на валидность не прошла
         except ValueError:
             text = 'Сохранение отменено!\n'\
@@ -395,10 +424,21 @@ class Ui_icf_psylogo(QtWidgets.QWidget, Icf.Ui_icf):
             # закрываем без сохранения
             self.exit_not_save()
 
-    def exit_not_save(self):
-        self.hide()
-        self.window_card = Ui_PatientCard_Psy()
-        self.window_card.show()
+    def exit(self):
+        self.open_patient_card()
 
-    def set_styles(self):
-        pass
+    def save_history(self):
+        self.write_to_dictionary()
+        match self.case_type:
+            case 'omr':
+                self.save_history_omr()
+            case 'bta':
+                self.save_history_bta()
+
+    @upload_history_to_yandex_cloud_bucket('omr')
+    def save_history_omr(self):
+        write_all_data_to_db_omr(self.d)
+
+    @upload_history_to_yandex_cloud_bucket('bta')
+    def save_history_bta(self):
+        write_all_data_to_db_bta(self.d)

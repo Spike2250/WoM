@@ -27,6 +27,7 @@ from wom.GUI.windows\
                     neur_status,
                     diagnosis,
                     dis_details,
+                    icf,
                     )
 from wom.GUI.windows.test import MainWindow
 
@@ -63,5 +64,6 @@ windows = {
         'neur_status': neur_status.Ui_StNeurology,
         'diagnosis': diagnosis.Ui_Diagnosis,
         'dis_details': dis_details.Ui_Discharge_details,
+        'icf': icf.Ui_icf,
     }
 }

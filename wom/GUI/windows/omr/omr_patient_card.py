@@ -269,8 +269,9 @@ class Ui_PatientCard(QtWidgets.QWidget,
                          win_name='mdrk')
 
     def open_icf(self):
-        self.open_window(folder_name='omr',
-                         win_name='icf')
+        self.open_window(folder_name='common',
+                         win_name='icf',
+                         timeline='frm')  # speciality
 
     def open_dynamic(self):
         self.open_window(folder_name='omr',

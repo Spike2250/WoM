@@ -635,6 +635,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         else:
             pass
         # обновляем список шаблонов
+        self.lineEdit_new_template_name_jaloby.setText('')
         self.set_templates_list_jaloby()
 
     def push_active_template_jaloby(self):
@@ -642,6 +643,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         if name in self.complaints_templates:
             self.plainTextEditPtComplaints.setPlainText(
                 self.complaints_templates[name]['жалобы'])
+        self.comboBox_jaloby_templates.setCurrentText('')
 
     def set_styles(self):
         pass
