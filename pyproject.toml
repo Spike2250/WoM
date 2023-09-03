@@ -6,7 +6,7 @@ authors = ["Spike2250 <shilov.spike2250@yandex.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "~3.10"
+python = "^3.10"
 pyside6 = "^6.5.1.1"
 docxtpl = "^0.16.7"
 prettytable = "^3.8.0"
