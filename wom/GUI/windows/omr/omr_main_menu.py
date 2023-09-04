@@ -54,18 +54,30 @@ class Ui_MainMenu(QtWidgets.QWidget,
 
     def set_connections(self):
         # коннекты кнопок
-        self.add_new_patient.clicked.connect(self.create_new_case)
-        self.refresh_pt_list.clicked.connect(self.show_active_cases)
-        self.find_patient.clicked.connect(self.show_active_cases)
-        self.pushButtonOpenArchive.clicked.connect(self.show_archive_cases)
-        self.pushButton_month.clicked.connect(self.set_current_month_dates)
-        self.pushButton_previous_month.clicked.connect(self.set_previous_month_dates)
-        self.pushButton_year.clicked.connect(self.set_current_year_dates)
-        self.pushButton_report_manager.clicked.connect(self.open_report_manager)
-        self.almanac.clicked.connect(self.open_almanac)
-        self.pushButton_print_patient_list.clicked.connect(self.print_patients_list)
-        self.pushButton_print_patient_list_2.clicked.connect(self.print_patients_list_for_discharge)
-        self.pushButton_print_lists.clicked.connect(self.print_docs_lists)
+        self.add_new_patient\
+            .clicked.connect(self.create_new_case)
+        self.refresh_pt_list\
+            .clicked.connect(self.show_active_cases)
+        self.find_patient\
+            .clicked.connect(self.show_active_cases)
+        self.pushButtonOpenArchive\
+            .clicked.connect(self.show_archive_cases)
+        self.pushButton_month\
+            .clicked.connect(self.set_current_month_dates)
+        self.pushButton_previous_month\
+            .clicked.connect(self.set_previous_month_dates)
+        self.pushButton_year\
+            .clicked.connect(self.set_current_year_dates)
+        self.pushButton_report_manager\
+            .clicked.connect(self.open_report_manager)
+        self.almanac\
+            .clicked.connect(self.open_almanac)
+        self.pushButton_print_patient_list\
+            .clicked.connect(self.print_patients_list)
+        self.pushButton_print_patient_list_2\
+            .clicked.connect(self.print_patients_list_for_discharge)
+        self.pushButton_print_lists\
+            .clicked.connect(self.print_docs_lists)
         # HotKeys
         self.refresh_pt_list.setShortcut('Return')
         self.pushButtonOpenArchive.setShortcut('Return')

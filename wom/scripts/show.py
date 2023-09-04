@@ -51,9 +51,10 @@ def show():
     # добавление своего окна в главное (как виджет!)
 
     user_info = {}  # ВРЕМЕННО ДЛЯ ОТКРЫТИЯ БЕЗ АВТОРИЗАЦИИ
-    main_win.setWidget(windows['omr']['main_menu'](
-        user_info=user_info,  # ВРЕМЕННО
-        windows=windows,
-        main_win=main_win))
+    main_win.setWidget(
+        windows['omr']['main_menu'](
+            user_info=user_info,  # ВРЕМЕННО
+            windows=windows,
+            main_win=main_win))
     main_win.show()
     sys.exit(app.exec_())
