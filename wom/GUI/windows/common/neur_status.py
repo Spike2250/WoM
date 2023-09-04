@@ -17,9 +17,11 @@ from wom.app_logic.writing.postprocessing.neur_st import update_after_neur_st
 
 class Ui_StNeurology(QtWidgets.QWidget,
                      St_Neurology.Ui_Neurology_status):
-    def __init__(self, windows, main_win, dictionary, case_type, timeline):
+    def __init__(self, user_info, windows, main_win,
+                 dictionary, case_type, timeline):
         super().__init__()
         self.setupUi(self)
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
@@ -191,6 +193,7 @@ class Ui_StNeurology(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows[self.case_type]['patient_card'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d))

@@ -20,9 +20,11 @@ from wom.styles_qss.main_styles import button_own, lineEdit_style
 
 
 class Ui_icf(QtWidgets.QWidget, Icf.Ui_icf):
-    def __init__(self, windows, main_win, dictionary, case_type, timeline):
+    def __init__(self, user_info, windows, main_win,
+                 dictionary, case_type, timeline):
         super().__init__()
         self.setupUi(self)
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
@@ -406,6 +408,7 @@ class Ui_icf(QtWidgets.QWidget, Icf.Ui_icf):
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows[type_]['patient_card'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d))

@@ -24,9 +24,10 @@ from wom.styles_qss.main_styles import (style_true_button as style_True,
 # Окно карты пациента
 class Ui_PatientCard(QtWidgets.QWidget,
                      omr_PatientCard.Ui_omr_patient_card):
-    def __init__(self, windows, main_win, dictionary):
+    def __init__(self, user_info, windows, main_win, dictionary):
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
@@ -139,6 +140,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
             case 'common':
                 if timeline is not None:
                     w = self.windows[folder_name][win_name](
+                        user_info=self.user_info,
                         windows=self.windows,
                         main_win=main_win,
                         dictionary=self.d,
@@ -146,6 +148,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
                         timeline=timeline)
                 else:
                     w = self.windows[folder_name][win_name](
+                        user_info=self.user_info,
                         windows=self.windows,
                         main_win=main_win,
                         dictionary=self.d,
@@ -153,12 +156,14 @@ class Ui_PatientCard(QtWidgets.QWidget,
             case 'omr':
                 if timeline is not None:
                     w = self.windows[folder_name][win_name](
+                        user_info=self.user_info,
                         windows=self.windows,
                         main_win=main_win,
                         dictionary=self.d,
                         timeline=timeline)
                 else:
                     w = self.windows[folder_name][win_name](
+                        user_info=self.user_info,
                         windows=self.windows,
                         main_win=main_win,
                         dictionary=self.d)
@@ -178,6 +183,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
         win = self.create_main_window()
         win.setWidget(
             self.windows['omr']['diary'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d,
@@ -194,6 +200,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
         win = self.create_main_window()
         win.setWidget(
             self.windows['omr']['main_menu'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win))
         win.show()

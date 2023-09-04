@@ -14,10 +14,11 @@ from wom.app_logic.writing.postprocessing\
 # Окно добавления родственников
 class Ui_AddRelative(QtWidgets.QWidget,
                      AddRelative.Ui_AddRelative):
-    def __init__(self, windows, main_win, dictionary,
-                 case_type, from_add_patient=False):
+    def __init__(self, user_info, windows, main_win,
+                 dictionary, case_type, from_add_patient=False):
         super().__init__()
         self.setupUi(self)
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
@@ -151,11 +152,13 @@ class Ui_AddRelative(QtWidgets.QWidget,
     def create_window(self, main_win):
         if self.from_add_patient:
             w = self.windows[self.case_type]['add_new_patient'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=main_win,
                 dictionary=self.d)
         else:
             w = self.windows['common']['passport'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=main_win,
                 dictionary=self.d,

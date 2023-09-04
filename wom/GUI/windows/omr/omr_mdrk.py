@@ -16,9 +16,10 @@ from wom.settings.config import mdrk_members
 
 
 class Ui_Mdrk(QtWidgets.QWidget, omr_MDRK.Ui_MDRK):
-    def __init__(self, windows, main_win, dictionary):
+    def __init__(self, user_info, windows, main_win, dictionary):
         super().__init__()
         self.setupUi(self)
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
@@ -64,6 +65,7 @@ class Ui_Mdrk(QtWidgets.QWidget, omr_MDRK.Ui_MDRK):
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows['omr']['patient_card'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d))

@@ -22,9 +22,10 @@ from wom.app_logic.writing.diaries.gen import create_random_set
 
 class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
                                   StObj_admition.Ui_StObj):
-    def __init__(self, windows, main_win, dictionary, case_type):
+    def __init__(self, user_info, windows, main_win, dictionary, case_type):
         super().__init__()
         self.setupUi(self)
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
@@ -50,6 +51,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows[self.case_type]['patient_card'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d))

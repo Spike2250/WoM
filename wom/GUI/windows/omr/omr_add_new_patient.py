@@ -17,9 +17,10 @@ from wom.app_logic.writing.postprocessing.passport import update_after_passport_
 # Окно создания новой истории болезни
 class Ui_AddNewPatient(QtWidgets.QWidget,
                        omr_AddNewPatient.Ui_PatientPassportData):
-    def __init__(self, windows, main_win, dictionary):
+    def __init__(self, user_info, windows, main_win, dictionary):
         super().__init__()
-        self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+        self.setupUi(self)
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
@@ -42,6 +43,7 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows['omr']['patient_card'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d))
@@ -52,6 +54,7 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows['omr']['add_relative'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d,
@@ -63,6 +66,7 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows['omr']['main_menu'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win))
         win.show()
@@ -72,6 +76,7 @@ class Ui_AddNewPatient(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows['common']['load_arch'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d,

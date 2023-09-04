@@ -30,9 +30,10 @@ from wom.styles_qss.main_styles import (progress_style_other,
 # Окно основного меню
 class Ui_MainMenu(QtWidgets.QWidget,
                   omr_MainMenu.Ui_omr_main_menu):
-    def __init__(self, windows, main_win):
+    def __init__(self, user_info, windows, main_win):
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = {}
@@ -347,6 +348,7 @@ class Ui_MainMenu(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows['omr'][name](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d))
@@ -357,6 +359,7 @@ class Ui_MainMenu(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows['common']['drugs_dictionary'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win))
         win.show()

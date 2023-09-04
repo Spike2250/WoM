@@ -14,9 +14,10 @@ from wom.app_logic.writing.postprocessing\
 # Окно паспортных данных пациента
 class Ui_PatientPassportData(QtWidgets.QWidget,
                              PatientPassportData.Ui_PatientPassportData):
-    def __init__(self, windows, main_win, dictionary, case_type):
+    def __init__(self, user_info, windows, main_win, dictionary, case_type):
         super().__init__()
-        self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+        self.setupUi(self)
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
@@ -120,6 +121,7 @@ class Ui_PatientPassportData(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows['common'][name](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d,
@@ -135,6 +137,7 @@ class Ui_PatientPassportData(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows[self.case_type]['patient_card'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d))

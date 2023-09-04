@@ -14,10 +14,12 @@ from wom.app_logic.copy_archive_case import arch_import
 # Окно подтверждения
 class Ui_load_arch_data(QtWidgets.QWidget,
                         load_arch_data.Ui_Load_Arch):
-    def __init__(self, windows, main_win, dictionary, histories, case_type):
+    def __init__(self, user_info, windows, main_win,
+                 dictionary, histories, case_type):
 
         super().__init__()
         self.setupUi(self)
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
@@ -39,6 +41,7 @@ class Ui_load_arch_data(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows[self.case_type]['patient_card'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d))

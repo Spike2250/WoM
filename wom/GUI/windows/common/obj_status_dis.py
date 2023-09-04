@@ -9,9 +9,10 @@ from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
 
 class Ui_StPrObjectivus_discharge(QtWidgets.QWidget,
                                   StObj_discharge.Ui_StObj):
-    def __init__(self, windows, main_win, dictionary, case_type):
+    def __init__(self, user_info, windows, main_win, dictionary, case_type):
         super().__init__()
         self.setupUi(self)
+        self.user_info = user_info
         self.windows = windows
         self.main_win = main_win
         self.d = dictionary
@@ -35,6 +36,7 @@ class Ui_StPrObjectivus_discharge(QtWidgets.QWidget,
         win = self.windows['Frameless']()
         win.setWidget(
             self.windows[self.case_type]['patient_card'](
+                user_info=self.user_info,
                 windows=self.windows,
                 main_win=win,
                 dictionary=self.d))
