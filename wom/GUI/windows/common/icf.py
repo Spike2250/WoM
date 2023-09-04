@@ -250,7 +250,7 @@ class Ui_icf(QtWidgets.QWidget, Icf.Ui_icf):
 
     def set_connections(self):
         # коннекты кнопок
-        self.pushButtonNotSaveExit.clicked.connect(self.exit_not_save)
+        self.pushButtonNotSaveExit.clicked.connect(self.exit)
         self.pushButtonSaveExit.clicked.connect(self.exit_and_save)
         self.pushButtonAddNewTemplate.clicked.connect(
             self.add_new_template)
@@ -287,10 +287,13 @@ class Ui_icf(QtWidgets.QWidget, Icf.Ui_icf):
         else:
             self.label_Pt_info.setText('Ошибка! Нет "patient_info" в словаре!')
 
-        if self.type_icf == 'psy':
-            self.label_who_call.setText('Клинический психолог')
-        elif self.type_icf == 'logo':
-            self.label_who_call.setText('Логопед-афазиолог')
+        match self.speciality:
+            case 'frm':
+                self.label_who_call.setText('Врач-ФРМ')
+            case 'psy':
+                self.label_who_call.setText('Клинический психолог')
+            case 'logo':
+                self.label_who_call.setText('Логопед-афазиолог')
 
     def add_domen_to_list(self):
 

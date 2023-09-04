@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QTableWidget, QTableWidgetItem, QTextBrowser, QVBoxLayout,
     QWidget)
 
-from widgets.my_pushButton import PushButton
+from wom.GUI.widgets.my_pushButton import PushButton
 import res_main_rc
 import res_main_rc
 

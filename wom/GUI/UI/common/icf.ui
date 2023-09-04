@@ -9235,7 +9235,7 @@ border: 1px solid rgba(50, 98, 115, 255);
   <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>
-   <header location="global">widgets.my_pushButton</header>
+   <header location="global">wom.GUI.widgets.my_pushButton</header>
   </customwidget>
  </customwidgets>
  <resources>
