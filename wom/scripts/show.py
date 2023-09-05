@@ -49,7 +49,7 @@ def show():
     main_win = windows['Frameless']()
     # main_win.setWindowIcon(QIcon('Qt.ico'))\
 
-    # добавление своего окна в главное (как виджет!)
+    # добавление своего окна в главное (через FramelessWindow.setWidget)
     user_info = {}  # ВРЕМЕННО ДЛЯ ОТКРЫТИЯ БЕЗ АВТОРИЗАЦИИ
     main_win.setWidget(
         windows['omr']['main_menu'](

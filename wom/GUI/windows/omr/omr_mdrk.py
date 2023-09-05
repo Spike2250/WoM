@@ -60,6 +60,10 @@ class Ui_Mdrk(QtWidgets.QWidget, omr_MDRK.Ui_MDRK):
             .clicked.connect(self.exit)
         self.pushButtonSaveExit\
             .clicked.connect(self.exit_and_save)
+        self.pushButton_push_temp\
+            .clicked.connect(self.push_active_template)
+        self.pushButtonAddNewTemplate\
+            .clicked.connect(self.add_new_template)
 
     def open_patient_card(self):
         win = self.windows['Frameless']()
@@ -240,11 +244,9 @@ class Ui_Mdrk(QtWidgets.QWidget, omr_MDRK.Ui_MDRK):
             self.templates[name] = self.plainTextEdit_goals.toPlainText()
             templates_json_recording(templates=self.templates,
                                      templates_name='rehab_goal')
-        else:
-            pass
-        # обновляем список шаблонов
-        self.lineEdit_new_template_name.setText('')
-        self.set_templates_list()
+            # обновляем список шаблонов
+            self.lineEdit_new_template_name.setText('')
+            self.set_templates_list()
 
     def push_active_template(self):
         name = self.comboBox_lfk_template.currentText()

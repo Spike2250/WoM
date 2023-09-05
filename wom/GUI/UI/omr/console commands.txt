@@ -4,3 +4,4 @@ pyside6-uic omr_PatientCard.ui > omr_PatientCard.py
 pyside6-uic omr_AddNewPatient.ui > omr_AddNewPatient.py
 pyside6-uic omr_Appointments.ui > omr_Appointments.py
 pyside6-uic omr_MDRK.ui > omr_MDRK.py
+pyside6-uic omr_Dynamic.ui > omr_Dynamic.py

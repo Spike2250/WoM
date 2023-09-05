@@ -16,17 +16,17 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QGridLayout,
-    QHBoxLayout, QHeaderView, QLabel, QPushButton,
-    QRadioButton, QSizePolicy, QSpacerItem, QTabWidget,
-    QTableWidget, QTableWidgetItem, QTextBrowser, QVBoxLayout,
-    QWidget)
+    QHBoxLayout, QHeaderView, QLabel, QPlainTextEdit,
+    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
+    QTabWidget, QTableWidget, QTableWidgetItem, QTextBrowser,
+    QVBoxLayout, QWidget)
 import res_main_rc
 
 class Ui_omr_patient_card(object):
     def setupUi(self, omr_patient_card):
         if not omr_patient_card.objectName():
             omr_patient_card.setObjectName(u"omr_patient_card")
-        omr_patient_card.resize(1298, 767)
+        omr_patient_card.resize(1365, 739)
         omr_patient_card.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_3 = QVBoxLayout(omr_patient_card)
@@ -1804,27 +1804,13 @@ class Ui_omr_patient_card(object):
 "border: 1px solid rgba(50, 98, 115, 255);\n"
 "}")
         self.tabPtCard.setIconSize(QSize(32, 32))
-        self.Page_event_diaries = QWidget()
-        self.Page_event_diaries.setObjectName(u"Page_event_diaries")
-        self.gridLayout_7 = QGridLayout(self.Page_event_diaries)
+        self.Page_events = QWidget()
+        self.Page_events.setObjectName(u"Page_events")
+        self.gridLayout_7 = QGridLayout(self.Page_events)
+        self.gridLayout_7.setSpacing(5)
         self.gridLayout_7.setObjectName(u"gridLayout_7")
-        self.verticalSpacer_5 = QSpacerItem(20, 121, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_7.addItem(self.verticalSpacer_5, 0, 1, 1, 1)
-
-        self.verticalSpacer_6 = QSpacerItem(20, 120, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_7.addItem(self.verticalSpacer_6, 4, 1, 1, 1)
-
-        self.horizontalSpacer_10 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_7.addItem(self.horizontalSpacer_10, 1, 0, 1, 1)
-
-        self.verticalSpacer_11 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_7.addItem(self.verticalSpacer_11, 2, 1, 1, 1)
-
-        self.frame_events = QFrame(self.Page_event_diaries)
+        self.gridLayout_7.setContentsMargins(2, 2, 2, 2)
+        self.frame_events = QFrame(self.Page_events)
         self.frame_events.setObjectName(u"frame_events")
         self.frame_events.setStyleSheet(u"font-size: 11pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -2001,9 +1987,153 @@ class Ui_omr_patient_card(object):
         self.gridLayout.addWidget(self.label_events, 0, 0, 1, 4)
 
 
-        self.gridLayout_7.addWidget(self.frame_events, 1, 1, 1, 1)
+        self.gridLayout_7.addWidget(self.frame_events, 0, 1, 1, 1)
 
-        self.frame_diaries_main = QFrame(self.Page_event_diaries)
+        self.horizontalSpacer_10 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_7.addItem(self.horizontalSpacer_10, 0, 0, 1, 1)
+
+        self.verticalSpacer_11 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout_7.addItem(self.verticalSpacer_11, 1, 1, 1, 1)
+
+        self.verticalSpacer_6 = QSpacerItem(20, 120, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout_7.addItem(self.verticalSpacer_6, 3, 1, 1, 1)
+
+        self.horizontalSpacer_11 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_7.addItem(self.horizontalSpacer_11, 0, 2, 1, 1)
+
+        self.label_sorry = QLabel(self.Page_events)
+        self.label_sorry.setObjectName(u"label_sorry")
+        self.label_sorry.setMaximumSize(QSize(16777215, 16777215))
+        self.label_sorry.setStyleSheet(u"color: #326273;\n"
+"font-weight: bold;\n"
+"background-color: transparent;\n"
+"border: none;\n"
+"font-size: 14pt;\n"
+"")
+        self.label_sorry.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_7.addWidget(self.label_sorry, 2, 1, 1, 1)
+
+        icon14 = QIcon()
+        icon14.addFile(u":/icon/icons/library_add_FILL1.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.tabPtCard.addTab(self.Page_events, icon14, "")
+        self.Page_diaries = QWidget()
+        self.Page_diaries.setObjectName(u"Page_diaries")
+        self.gridLayout_8 = QGridLayout(self.Page_diaries)
+        self.gridLayout_8.setSpacing(5)
+        self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.gridLayout_8.setContentsMargins(2, 2, 2, 2)
+        self.pushButton_save_diary = QPushButton(self.Page_diaries)
+        self.pushButton_save_diary.setObjectName(u"pushButton_save_diary")
+        self.pushButton_save_diary.setEnabled(False)
+        self.pushButton_save_diary.setMinimumSize(QSize(0, 0))
+        palette17 = QPalette()
+        palette17.setBrush(QPalette.Active, QPalette.WindowText, brush)
+        palette17.setBrush(QPalette.Active, QPalette.Button, brush12)
+        palette17.setBrush(QPalette.Active, QPalette.Light, brush2)
+        palette17.setBrush(QPalette.Active, QPalette.Midlight, brush3)
+        palette17.setBrush(QPalette.Active, QPalette.Dark, brush4)
+        palette17.setBrush(QPalette.Active, QPalette.Mid, brush5)
+        palette17.setBrush(QPalette.Active, QPalette.Text, brush)
+        palette17.setBrush(QPalette.Active, QPalette.BrightText, brush)
+        palette17.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette17.setBrush(QPalette.Active, QPalette.Base, brush12)
+        palette17.setBrush(QPalette.Active, QPalette.Window, brush12)
+        palette17.setBrush(QPalette.Active, QPalette.Shadow, brush6)
+        palette17.setBrush(QPalette.Active, QPalette.AlternateBase, brush7)
+        palette17.setBrush(QPalette.Active, QPalette.ToolTipBase, brush8)
+        palette17.setBrush(QPalette.Active, QPalette.ToolTipText, brush6)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette17.setBrush(QPalette.Active, QPalette.PlaceholderText, brush9)
+#endif
+        palette17.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
+        palette17.setBrush(QPalette.Inactive, QPalette.Button, brush12)
+        palette17.setBrush(QPalette.Inactive, QPalette.Light, brush2)
+        palette17.setBrush(QPalette.Inactive, QPalette.Midlight, brush3)
+        palette17.setBrush(QPalette.Inactive, QPalette.Dark, brush4)
+        palette17.setBrush(QPalette.Inactive, QPalette.Mid, brush5)
+        palette17.setBrush(QPalette.Inactive, QPalette.Text, brush)
+        palette17.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
+        palette17.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette17.setBrush(QPalette.Inactive, QPalette.Base, brush12)
+        palette17.setBrush(QPalette.Inactive, QPalette.Window, brush12)
+        palette17.setBrush(QPalette.Inactive, QPalette.Shadow, brush6)
+        palette17.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush7)
+        palette17.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush8)
+        palette17.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush6)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette17.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
+#endif
+        palette17.setBrush(QPalette.Disabled, QPalette.WindowText, brush13)
+        palette17.setBrush(QPalette.Disabled, QPalette.Button, brush14)
+        palette17.setBrush(QPalette.Disabled, QPalette.Light, brush2)
+        palette17.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
+        palette17.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
+        palette17.setBrush(QPalette.Disabled, QPalette.Mid, brush5)
+        palette17.setBrush(QPalette.Disabled, QPalette.Text, brush13)
+        palette17.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
+        palette17.setBrush(QPalette.Disabled, QPalette.ButtonText, brush13)
+        palette17.setBrush(QPalette.Disabled, QPalette.Base, brush14)
+        palette17.setBrush(QPalette.Disabled, QPalette.Window, brush14)
+        palette17.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
+        palette17.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush11)
+        palette17.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
+        palette17.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette17.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
+#endif
+        self.pushButton_save_diary.setPalette(palette17)
+        self.pushButton_save_diary.setFont(font1)
+        self.pushButton_save_diary.setLayoutDirection(Qt.LeftToRight)
+        self.pushButton_save_diary.setStyleSheet(u"QPushButton {\n"
+"background-color: rgba(50, 98, 115, 190);\n"
+"font-size: 11pt;\n"
+"color: White;\n"
+"border: None;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"background-color: rgba(50, 98, 115, 255);\n"
+"border: 2px solid rgba(92, 158, 173, 255);\n"
+"}\n"
+"\n"
+"QPushButton::pressed {\n"
+"background-color: rgba(92, 158, 173, 255);\n"
+"border: 1px solid rgba(255, 255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton::disabled {\n"
+"background-color:  rgba(50, 98, 115, 40);\n"
+"border: 1px solid rgba(50, 98, 115, 150);\n"
+"color:  rgba(50, 98, 115, 150);\n"
+"}")
+        icon15 = QIcon()
+        icon15.addFile(u":/icon/icons/save_as_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_save_diary.setIcon(icon15)
+        self.pushButton_save_diary.setIconSize(QSize(32, 32))
+
+        self.gridLayout_8.addWidget(self.pushButton_save_diary, 2, 2, 1, 1)
+
+        self.horizontalSpacer = QSpacerItem(145, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_8.addItem(self.horizontalSpacer, 2, 1, 1, 1)
+
+        self.plainTextEdit_diary = QPlainTextEdit(self.Page_diaries)
+        self.plainTextEdit_diary.setObjectName(u"plainTextEdit_diary")
+        self.plainTextEdit_diary.setStyleSheet(u"background-color: rgba(50, 98, 115, 100);\n"
+"color: #13242B;\n"
+"border: 1px solid #326273;\n"
+"font-weight: bold;\n"
+"font-size: 8pt;\n"
+"")
+
+        self.gridLayout_8.addWidget(self.plainTextEdit_diary, 1, 1, 1, 2)
+
+        self.frame_diaries_main = QFrame(self.Page_diaries)
         self.frame_diaries_main.setObjectName(u"frame_diaries_main")
         self.frame_diaries_main.setStyleSheet(u"font-size: 11pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -2015,6 +2145,7 @@ class Ui_omr_patient_card(object):
         self.gridLayout_3.setContentsMargins(5, 5, 5, 5)
         self.frame_diaries = QFrame(self.frame_diaries_main)
         self.frame_diaries.setObjectName(u"frame_diaries")
+        self.frame_diaries.setMaximumSize(QSize(16777215, 80))
         self.frame_diaries.setFont(font3)
         self.frame_diaries.setStyleSheet(u"font-size: 11pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -2116,212 +2247,12 @@ class Ui_omr_patient_card(object):
         self.gridLayout_2.addWidget(self.radioButton_twice_in_day, 2, 0, 1, 1)
 
 
-        self.gridLayout_3.addWidget(self.frame_diaries, 1, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.frame_diaries, 1, 1, 1, 1)
 
         self.pushButton_create_diaries = QPushButton(self.frame_diaries_main)
         self.pushButton_create_diaries.setObjectName(u"pushButton_create_diaries")
+        self.pushButton_create_diaries.setEnabled(False)
         self.pushButton_create_diaries.setMinimumSize(QSize(0, 0))
-        palette17 = QPalette()
-        palette17.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        palette17.setBrush(QPalette.Active, QPalette.Button, brush12)
-        palette17.setBrush(QPalette.Active, QPalette.Light, brush2)
-        palette17.setBrush(QPalette.Active, QPalette.Midlight, brush3)
-        palette17.setBrush(QPalette.Active, QPalette.Dark, brush4)
-        palette17.setBrush(QPalette.Active, QPalette.Mid, brush5)
-        palette17.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette17.setBrush(QPalette.Active, QPalette.BrightText, brush)
-        palette17.setBrush(QPalette.Active, QPalette.ButtonText, brush)
-        palette17.setBrush(QPalette.Active, QPalette.Base, brush12)
-        palette17.setBrush(QPalette.Active, QPalette.Window, brush12)
-        palette17.setBrush(QPalette.Active, QPalette.Shadow, brush6)
-        palette17.setBrush(QPalette.Active, QPalette.AlternateBase, brush7)
-        palette17.setBrush(QPalette.Active, QPalette.ToolTipBase, brush8)
-        palette17.setBrush(QPalette.Active, QPalette.ToolTipText, brush6)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette17.setBrush(QPalette.Active, QPalette.PlaceholderText, brush9)
-#endif
-        palette17.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette17.setBrush(QPalette.Inactive, QPalette.Button, brush12)
-        palette17.setBrush(QPalette.Inactive, QPalette.Light, brush2)
-        palette17.setBrush(QPalette.Inactive, QPalette.Midlight, brush3)
-        palette17.setBrush(QPalette.Inactive, QPalette.Dark, brush4)
-        palette17.setBrush(QPalette.Inactive, QPalette.Mid, brush5)
-        palette17.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette17.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
-        palette17.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
-        palette17.setBrush(QPalette.Inactive, QPalette.Base, brush12)
-        palette17.setBrush(QPalette.Inactive, QPalette.Window, brush12)
-        palette17.setBrush(QPalette.Inactive, QPalette.Shadow, brush6)
-        palette17.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush7)
-        palette17.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush8)
-        palette17.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush6)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette17.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
-#endif
-        palette17.setBrush(QPalette.Disabled, QPalette.WindowText, brush13)
-        palette17.setBrush(QPalette.Disabled, QPalette.Button, brush14)
-        palette17.setBrush(QPalette.Disabled, QPalette.Light, brush2)
-        palette17.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
-        palette17.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
-        palette17.setBrush(QPalette.Disabled, QPalette.Mid, brush5)
-        palette17.setBrush(QPalette.Disabled, QPalette.Text, brush13)
-        palette17.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
-        palette17.setBrush(QPalette.Disabled, QPalette.ButtonText, brush13)
-        palette17.setBrush(QPalette.Disabled, QPalette.Base, brush14)
-        palette17.setBrush(QPalette.Disabled, QPalette.Window, brush14)
-        palette17.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
-        palette17.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush11)
-        palette17.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
-        palette17.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette17.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
-#endif
-        self.pushButton_create_diaries.setPalette(palette17)
-        self.pushButton_create_diaries.setFont(font1)
-        self.pushButton_create_diaries.setLayoutDirection(Qt.RightToLeft)
-        self.pushButton_create_diaries.setStyleSheet(u"QPushButton {\n"
-"background-color: rgba(50, 98, 115, 190);\n"
-"font-size: 11pt;\n"
-"color: White;\n"
-"border: None;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"background-color: rgba(50, 98, 115, 255);\n"
-"border: 2px solid rgba(92, 158, 173, 255);\n"
-"}\n"
-"\n"
-"QPushButton::pressed {\n"
-"background-color: rgba(92, 158, 173, 255);\n"
-"border: 1px solid rgba(255, 255, 255, 255);\n"
-"}\n"
-"\n"
-"QPushButton::disabled {\n"
-"background-color:  rgba(50, 98, 115, 40);\n"
-"border: 1px solid rgba(50, 98, 115, 150);\n"
-"color:  rgba(50, 98, 115, 150);\n"
-"}")
-        icon14 = QIcon()
-        icon14.addFile(u":/icon/icons/edit_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_create_diaries.setIcon(icon14)
-        self.pushButton_create_diaries.setIconSize(QSize(32, 32))
-
-        self.gridLayout_3.addWidget(self.pushButton_create_diaries, 2, 2, 1, 1)
-
-        self.tableWidget_diaries = QTableWidget(self.frame_diaries_main)
-        if (self.tableWidget_diaries.columnCount() < 1):
-            self.tableWidget_diaries.setColumnCount(1)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.tableWidget_diaries.setHorizontalHeaderItem(0, __qtablewidgetitem5)
-        self.tableWidget_diaries.setObjectName(u"tableWidget_diaries")
-        self.tableWidget_diaries.setMinimumSize(QSize(350, 0))
-        self.tableWidget_diaries.setMaximumSize(QSize(16777215, 16777215))
-        self.tableWidget_diaries.setFont(font1)
-        self.tableWidget_diaries.setStyleSheet(u"QTableWidget {\n"
-"   selection-background-color: rgba(50, 98, 115, 120);\n"
-"   background-color: rgba(50, 98, 115, 40);\n"
-"   color: #FFFFFF;\n"
-"   font-weight: Normal;\n"
-"   border-color: rgba(50, 98, 115, 255);\n"
-"}\n"
-"\n"
-"QHeaderView::section {\n"
-"   background-color: rgba(50, 98, 115, 220);\n"
-"   color: #FFFFFF;\n"
-"   font-family: Roboto;\n"
-"   font-size: 15px;\n"
-"   font-weight: Normal;\n"
-"}\n"
-"\n"
-"QTableWidget::item {\n"
-"   selection-background-color: rgba(50, 98, 115, 120);\n"
-"   background-color: rgba(50, 98, 115, 40);\n"
-"   color: #13242B;\n"
-"   font-size: 15px;\n"
-"   font-weight: Normal;\n"
-"   border-style: none;\n"
-"   border-bottom: #13242B;\n"
-"}\n"
-"\n"
-"QScrollBar {\n"
-"background-color: rgba(50, 98, 115, 70);\n"
-"}\n"
-"")
-
-        self.gridLayout_3.addWidget(self.tableWidget_diaries, 1, 1, 3, 1)
-
-        self.label_diaries = QLabel(self.frame_diaries_main)
-        self.label_diaries.setObjectName(u"label_diaries")
-        self.label_diaries.setMaximumSize(QSize(16777215, 30))
-        self.label_diaries.setFont(font4)
-        self.label_diaries.setStyleSheet(u"color: White;\n"
-"font-weight: bold;\n"
-"font-size: 16pt;\n"
-"background-color: rgba(112, 38, 50, 150);\n"
-"border: none;\n"
-"")
-        self.label_diaries.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_3.addWidget(self.label_diaries, 0, 0, 1, 4)
-
-        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_3.addItem(self.verticalSpacer_4, 3, 2, 1, 1)
-
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_3.addItem(self.horizontalSpacer_3, 1, 3, 1, 1)
-
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_3.addItem(self.horizontalSpacer, 1, 0, 1, 1)
-
-
-        self.gridLayout_7.addWidget(self.frame_diaries_main, 3, 1, 1, 1)
-
-        self.horizontalSpacer_11 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_7.addItem(self.horizontalSpacer_11, 1, 2, 1, 1)
-
-        icon15 = QIcon()
-        icon15.addFile(u":/icon/icons/auto_stories_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.tabPtCard.addTab(self.Page_event_diaries, icon15, "")
-        self.Page_creating_docs = QWidget()
-        self.Page_creating_docs.setObjectName(u"Page_creating_docs")
-        self.gridLayout_6 = QGridLayout(self.Page_creating_docs)
-        self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_6.addItem(self.verticalSpacer_9, 2, 1, 1, 1)
-
-        self.frame_created_docs = QFrame(self.Page_creating_docs)
-        self.frame_created_docs.setObjectName(u"frame_created_docs")
-        self.frame_created_docs.setStyleSheet(u"font-size: 15pt;\n"
-"color: rgba(50, 98, 115, 255);\n"
-"border: 1px solid  rgba(50, 98, 115, 255);\n"
-"background-color: rgba(50, 98, 115, 40);")
-        self.gridLayout_5 = QGridLayout(self.frame_created_docs)
-        self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.gridLayout_5.setContentsMargins(5, 5, 5, 5)
-        self.textBrowser = QTextBrowser(self.frame_created_docs)
-        self.textBrowser.setObjectName(u"textBrowser")
-        self.textBrowser.setMinimumSize(QSize(450, 0))
-        font6 = QFont()
-        font6.setFamilies([u"Roboto"])
-        font6.setPointSize(10)
-        font6.setBold(True)
-        self.textBrowser.setFont(font6)
-        self.textBrowser.setStyleSheet(u"background-color: rgba(50, 98, 115, 100);\n"
-"color: #13242B;\n"
-"border: 1px solid #326273;\n"
-"font-weight: bold;\n"
-"font-size: 10pt;\n"
-"")
-
-        self.gridLayout_5.addWidget(self.textBrowser, 1, 1, 1, 1)
-
-        self.pushButtonOpenFolder = QPushButton(self.frame_created_docs)
-        self.pushButtonOpenFolder.setObjectName(u"pushButtonOpenFolder")
         palette18 = QPalette()
         palette18.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette18.setBrush(QPalette.Active, QPalette.Button, brush12)
@@ -2359,27 +2290,28 @@ class Ui_omr_patient_card(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette18.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
 #endif
-        palette18.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
-        palette18.setBrush(QPalette.Disabled, QPalette.Button, brush12)
+        palette18.setBrush(QPalette.Disabled, QPalette.WindowText, brush13)
+        palette18.setBrush(QPalette.Disabled, QPalette.Button, brush14)
         palette18.setBrush(QPalette.Disabled, QPalette.Light, brush2)
         palette18.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
         palette18.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
         palette18.setBrush(QPalette.Disabled, QPalette.Mid, brush5)
-        palette18.setBrush(QPalette.Disabled, QPalette.Text, brush)
+        palette18.setBrush(QPalette.Disabled, QPalette.Text, brush13)
         palette18.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
-        palette18.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
-        palette18.setBrush(QPalette.Disabled, QPalette.Base, brush12)
-        palette18.setBrush(QPalette.Disabled, QPalette.Window, brush12)
+        palette18.setBrush(QPalette.Disabled, QPalette.ButtonText, brush13)
+        palette18.setBrush(QPalette.Disabled, QPalette.Base, brush14)
+        palette18.setBrush(QPalette.Disabled, QPalette.Window, brush14)
         palette18.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
         palette18.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush11)
         palette18.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
         palette18.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette18.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush9)
+        palette18.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
 #endif
-        self.pushButtonOpenFolder.setPalette(palette18)
-        self.pushButtonOpenFolder.setFont(font1)
-        self.pushButtonOpenFolder.setStyleSheet(u"QPushButton {\n"
+        self.pushButton_create_diaries.setPalette(palette18)
+        self.pushButton_create_diaries.setFont(font1)
+        self.pushButton_create_diaries.setLayoutDirection(Qt.RightToLeft)
+        self.pushButton_create_diaries.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 11pt;\n"
 "color: White;\n"
@@ -2394,53 +2326,116 @@ class Ui_omr_patient_card(object):
 "QPushButton::pressed {\n"
 "background-color: rgba(92, 158, 173, 255);\n"
 "border: 1px solid rgba(255, 255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton::disabled {\n"
+"background-color:  rgba(50, 98, 115, 40);\n"
+"border: 1px solid rgba(50, 98, 115, 150);\n"
+"color:  rgba(50, 98, 115, 150);\n"
 "}")
         icon16 = QIcon()
-        icon16.addFile(u":/icon/icons/folder_open_FILL1_wght400_GRAD0_opsz48_w.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonOpenFolder.setIcon(icon16)
-        self.pushButtonOpenFolder.setIconSize(QSize(32, 32))
+        icon16.addFile(u":/icon/icons/edit_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_create_diaries.setIcon(icon16)
+        self.pushButton_create_diaries.setIconSize(QSize(32, 32))
 
-        self.gridLayout_5.addWidget(self.pushButtonOpenFolder, 2, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.pushButton_create_diaries, 2, 1, 1, 1)
 
-        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.tableWidget_diaries = QTableWidget(self.frame_diaries_main)
+        if (self.tableWidget_diaries.columnCount() < 1):
+            self.tableWidget_diaries.setColumnCount(1)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tableWidget_diaries.setHorizontalHeaderItem(0, __qtablewidgetitem5)
+        self.tableWidget_diaries.setObjectName(u"tableWidget_diaries")
+        self.tableWidget_diaries.setMinimumSize(QSize(300, 0))
+        self.tableWidget_diaries.setMaximumSize(QSize(16777215, 16777215))
+        self.tableWidget_diaries.setFont(font1)
+        self.tableWidget_diaries.setStyleSheet(u"QTableWidget {\n"
+"   selection-background-color: rgba(50, 98, 115, 120);\n"
+"   background-color: rgba(50, 98, 115, 40);\n"
+"   color: #FFFFFF;\n"
+"   font-weight: Normal;\n"
+"   border-color: rgba(50, 98, 115, 255);\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"   background-color: rgba(50, 98, 115, 220);\n"
+"   color: #FFFFFF;\n"
+"   font-family: Roboto;\n"
+"   font-size: 15px;\n"
+"   font-weight: Normal;\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"   selection-background-color: rgba(50, 98, 115, 120);\n"
+"   background-color: rgba(50, 98, 115, 40);\n"
+"   color: #13242B;\n"
+"   font-size: 15px;\n"
+"   font-weight: Normal;\n"
+"   border-style: none;\n"
+"   border-bottom: #13242B;\n"
+"}\n"
+"\n"
+"QScrollBar {\n"
+"background-color: rgba(50, 98, 115, 70);\n"
+"}\n"
+"")
 
-        self.gridLayout_5.addItem(self.horizontalSpacer_6, 1, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.tableWidget_diaries, 3, 1, 3, 1)
 
-        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_5.addItem(self.horizontalSpacer_7, 1, 2, 1, 1)
-
-        self.label_status_2 = QLabel(self.frame_created_docs)
-        self.label_status_2.setObjectName(u"label_status_2")
-        self.label_status_2.setMaximumSize(QSize(16777215, 30))
-        font7 = QFont()
-        font7.setFamilies([u"Roboto"])
-        font7.setPointSize(16)
-        font7.setBold(True)
-        self.label_status_2.setFont(font7)
-        self.label_status_2.setStyleSheet(u"color: White;\n"
+        self.label_diaries = QLabel(self.frame_diaries_main)
+        self.label_diaries.setObjectName(u"label_diaries")
+        self.label_diaries.setMinimumSize(QSize(0, 0))
+        self.label_diaries.setMaximumSize(QSize(16777215, 50))
+        self.label_diaries.setFont(font4)
+        self.label_diaries.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 16pt;\n"
 "background-color: rgba(112, 38, 50, 150);\n"
 "border: none;\n"
 "")
+        self.label_diaries.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_5.addWidget(self.label_status_2, 0, 0, 1, 3)
+        self.gridLayout_3.addWidget(self.label_diaries, 0, 0, 1, 3)
 
 
-        self.gridLayout_6.addWidget(self.frame_created_docs, 3, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.frame_diaries_main, 0, 0, 3, 1)
+
+        self.label_diaries_2 = QLabel(self.Page_diaries)
+        self.label_diaries_2.setObjectName(u"label_diaries_2")
+        self.label_diaries_2.setMinimumSize(QSize(0, 0))
+        self.label_diaries_2.setMaximumSize(QSize(16777215, 50))
+        font6 = QFont()
+        font6.setFamilies([u"Roboto"])
+        font6.setPointSize(12)
+        font6.setBold(True)
+        font6.setItalic(False)
+        self.label_diaries_2.setFont(font6)
+        self.label_diaries_2.setStyleSheet(u"color: White;\n"
+"font-weight: bold;\n"
+"font-size: 12pt;\n"
+"background-color: rgba(50, 98, 115, 120);\n"
+"border: none;\n"
+"")
+        self.label_diaries_2.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_8.addWidget(self.label_diaries_2, 0, 1, 1, 2)
+
+        icon17 = QIcon()
+        icon17.addFile(u":/icon/icons/auto_stories_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.tabPtCard.addTab(self.Page_diaries, icon17, "")
+        self.Page_creating_docs = QWidget()
+        self.Page_creating_docs.setObjectName(u"Page_creating_docs")
+        self.gridLayout_6 = QGridLayout(self.Page_creating_docs)
+        self.gridLayout_6.setSpacing(5)
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.gridLayout_6.setContentsMargins(2, 2, 2, 2)
+        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_8, 0, 0, 1, 1)
 
         self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout_6.addItem(self.verticalSpacer_7, 4, 1, 1, 1)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_6.addItem(self.verticalSpacer, 0, 1, 1, 1)
-
-        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_6.addItem(self.horizontalSpacer_8, 1, 0, 1, 1)
+        self.gridLayout_6.addItem(self.verticalSpacer_7, 3, 1, 1, 1)
 
         self.frame_creating_docs = QFrame(self.Page_creating_docs)
         self.frame_creating_docs.setObjectName(u"frame_creating_docs")
@@ -3247,9 +3242,9 @@ class Ui_omr_patient_card(object):
 "background-color: rgba(92, 158, 173, 255);\n"
 "border: 1px solid rgba(255, 255, 255, 255);\n"
 "}")
-        icon17 = QIcon()
-        icon17.addFile(u":/icon/icons/note_add_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonCreateDocument.setIcon(icon17)
+        icon18 = QIcon()
+        icon18.addFile(u":/icon/icons/note_add_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonCreateDocument.setIcon(icon18)
         self.pushButtonCreateDocument.setIconSize(QSize(30, 30))
 
         self.gridLayout_4.addWidget(self.pushButtonCreateDocument, 19, 1, 1, 3)
@@ -6279,41 +6274,40 @@ class Ui_omr_patient_card(object):
         self.gridLayout_4.addWidget(self.checkBox_doc_complex, 9, 2, 2, 2)
 
 
-        self.gridLayout_6.addWidget(self.frame_creating_docs, 1, 1, 1, 1)
+        self.gridLayout_6.addWidget(self.frame_creating_docs, 0, 1, 1, 1)
 
-        self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_9, 1, 2, 1, 1)
+        self.gridLayout_6.addItem(self.verticalSpacer_9, 1, 1, 1, 1)
 
-        icon18 = QIcon()
-        icon18.addFile(u":/icon/icons/print_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.tabPtCard.addTab(self.Page_creating_docs, icon18, "")
+        self.frame_created_docs = QFrame(self.Page_creating_docs)
+        self.frame_created_docs.setObjectName(u"frame_created_docs")
+        self.frame_created_docs.setStyleSheet(u"font-size: 15pt;\n"
+"color: rgba(50, 98, 115, 255);\n"
+"border: 1px solid  rgba(50, 98, 115, 255);\n"
+"background-color: rgba(50, 98, 115, 40);")
+        self.gridLayout_5 = QGridLayout(self.frame_created_docs)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.gridLayout_5.setContentsMargins(5, 5, 5, 5)
+        self.textBrowser = QTextBrowser(self.frame_created_docs)
+        self.textBrowser.setObjectName(u"textBrowser")
+        self.textBrowser.setMinimumSize(QSize(450, 0))
+        font7 = QFont()
+        font7.setFamilies([u"Roboto"])
+        font7.setPointSize(10)
+        font7.setBold(True)
+        self.textBrowser.setFont(font7)
+        self.textBrowser.setStyleSheet(u"background-color: rgba(50, 98, 115, 100);\n"
+"color: #13242B;\n"
+"border: 1px solid #326273;\n"
+"font-weight: bold;\n"
+"font-size: 10pt;\n"
+"")
 
-        self.verticalLayout_6.addWidget(self.tabPtCard)
+        self.gridLayout_5.addWidget(self.textBrowser, 1, 1, 1, 1)
 
-        self.frame_6 = QFrame(self.center)
-        self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setStyleSheet(u"background-color: rgba(50, 98, 115, 100);\n"
-"color: White;\n"
-"font-size: 9pt;")
-        self.horizontalLayout = QHBoxLayout(self.frame_6)
-        self.horizontalLayout.setSpacing(5)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(2, 2, 2, 2)
-        self.label_status = QLabel(self.frame_6)
-        self.label_status.setObjectName(u"label_status")
-        self.label_status.setMaximumSize(QSize(16777215, 30))
-        font8 = QFont()
-        font8.setFamilies([u"Roboto"])
-        font8.setPointSize(9)
-        font8.setBold(False)
-        self.label_status.setFont(font8)
-
-        self.horizontalLayout.addWidget(self.label_status)
-
-        self.pushButtonOpenLogs = QPushButton(self.frame_6)
-        self.pushButtonOpenLogs.setObjectName(u"pushButtonOpenLogs")
-        self.pushButtonOpenLogs.setMaximumSize(QSize(50, 30))
+        self.pushButtonOpenFolder = QPushButton(self.frame_created_docs)
+        self.pushButtonOpenFolder.setObjectName(u"pushButtonOpenFolder")
         palette47 = QPalette()
         palette47.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette47.setBrush(QPalette.Active, QPalette.Button, brush12)
@@ -6352,7 +6346,7 @@ class Ui_omr_patient_card(object):
         palette47.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
 #endif
         palette47.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
-        palette47.setBrush(QPalette.Disabled, QPalette.Button, brush10)
+        palette47.setBrush(QPalette.Disabled, QPalette.Button, brush12)
         palette47.setBrush(QPalette.Disabled, QPalette.Light, brush2)
         palette47.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
         palette47.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
@@ -6360,8 +6354,8 @@ class Ui_omr_patient_card(object):
         palette47.setBrush(QPalette.Disabled, QPalette.Text, brush)
         palette47.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
         palette47.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
-        palette47.setBrush(QPalette.Disabled, QPalette.Base, brush10)
-        palette47.setBrush(QPalette.Disabled, QPalette.Window, brush10)
+        palette47.setBrush(QPalette.Disabled, QPalette.Base, brush12)
+        palette47.setBrush(QPalette.Disabled, QPalette.Window, brush12)
         palette47.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
         palette47.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush11)
         palette47.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
@@ -6369,12 +6363,153 @@ class Ui_omr_patient_card(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette47.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush9)
 #endif
-        self.pushButtonOpenLogs.setPalette(palette47)
+        self.pushButtonOpenFolder.setPalette(palette47)
+        self.pushButtonOpenFolder.setFont(font1)
+        self.pushButtonOpenFolder.setStyleSheet(u"QPushButton {\n"
+"background-color: rgba(50, 98, 115, 190);\n"
+"font-size: 11pt;\n"
+"color: White;\n"
+"border: None;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"background-color: rgba(50, 98, 115, 255);\n"
+"border: 2px solid rgba(92, 158, 173, 255);\n"
+"}\n"
+"\n"
+"QPushButton::pressed {\n"
+"background-color: rgba(92, 158, 173, 255);\n"
+"border: 1px solid rgba(255, 255, 255, 255);\n"
+"}")
+        icon19 = QIcon()
+        icon19.addFile(u":/icon/icons/folder_open_FILL1_wght400_GRAD0_opsz48_w.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonOpenFolder.setIcon(icon19)
+        self.pushButtonOpenFolder.setIconSize(QSize(32, 32))
+
+        self.gridLayout_5.addWidget(self.pushButtonOpenFolder, 2, 1, 1, 1)
+
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_5.addItem(self.horizontalSpacer_6, 1, 0, 1, 1)
+
+        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_5.addItem(self.horizontalSpacer_7, 1, 2, 1, 1)
+
+        self.label_status_2 = QLabel(self.frame_created_docs)
+        self.label_status_2.setObjectName(u"label_status_2")
+        self.label_status_2.setMaximumSize(QSize(16777215, 30))
+        font8 = QFont()
+        font8.setFamilies([u"Roboto"])
+        font8.setPointSize(16)
+        font8.setBold(True)
+        self.label_status_2.setFont(font8)
+        self.label_status_2.setStyleSheet(u"color: White;\n"
+"font-weight: bold;\n"
+"font-size: 16pt;\n"
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
+
+        self.gridLayout_5.addWidget(self.label_status_2, 0, 0, 1, 3)
+
+
+        self.gridLayout_6.addWidget(self.frame_created_docs, 2, 1, 1, 1)
+
+        self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_9, 0, 2, 1, 1)
+
+        icon20 = QIcon()
+        icon20.addFile(u":/icon/icons/print_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.tabPtCard.addTab(self.Page_creating_docs, icon20, "")
+
+        self.verticalLayout_6.addWidget(self.tabPtCard)
+
+        self.frame_6 = QFrame(self.center)
+        self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setStyleSheet(u"background-color: rgba(50, 98, 115, 100);\n"
+"color: White;\n"
+"font-size: 9pt;")
+        self.horizontalLayout = QHBoxLayout(self.frame_6)
+        self.horizontalLayout.setSpacing(5)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(2, 2, 2, 2)
+        self.label_status = QLabel(self.frame_6)
+        self.label_status.setObjectName(u"label_status")
+        self.label_status.setMaximumSize(QSize(16777215, 30))
         font9 = QFont()
         font9.setFamilies([u"Roboto"])
-        font9.setPointSize(14)
+        font9.setPointSize(9)
         font9.setBold(False)
-        self.pushButtonOpenLogs.setFont(font9)
+        self.label_status.setFont(font9)
+
+        self.horizontalLayout.addWidget(self.label_status)
+
+        self.pushButtonOpenLogs = QPushButton(self.frame_6)
+        self.pushButtonOpenLogs.setObjectName(u"pushButtonOpenLogs")
+        self.pushButtonOpenLogs.setMaximumSize(QSize(50, 30))
+        palette48 = QPalette()
+        palette48.setBrush(QPalette.Active, QPalette.WindowText, brush)
+        palette48.setBrush(QPalette.Active, QPalette.Button, brush12)
+        palette48.setBrush(QPalette.Active, QPalette.Light, brush2)
+        palette48.setBrush(QPalette.Active, QPalette.Midlight, brush3)
+        palette48.setBrush(QPalette.Active, QPalette.Dark, brush4)
+        palette48.setBrush(QPalette.Active, QPalette.Mid, brush5)
+        palette48.setBrush(QPalette.Active, QPalette.Text, brush)
+        palette48.setBrush(QPalette.Active, QPalette.BrightText, brush)
+        palette48.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette48.setBrush(QPalette.Active, QPalette.Base, brush12)
+        palette48.setBrush(QPalette.Active, QPalette.Window, brush12)
+        palette48.setBrush(QPalette.Active, QPalette.Shadow, brush6)
+        palette48.setBrush(QPalette.Active, QPalette.AlternateBase, brush7)
+        palette48.setBrush(QPalette.Active, QPalette.ToolTipBase, brush8)
+        palette48.setBrush(QPalette.Active, QPalette.ToolTipText, brush6)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette48.setBrush(QPalette.Active, QPalette.PlaceholderText, brush9)
+#endif
+        palette48.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
+        palette48.setBrush(QPalette.Inactive, QPalette.Button, brush12)
+        palette48.setBrush(QPalette.Inactive, QPalette.Light, brush2)
+        palette48.setBrush(QPalette.Inactive, QPalette.Midlight, brush3)
+        palette48.setBrush(QPalette.Inactive, QPalette.Dark, brush4)
+        palette48.setBrush(QPalette.Inactive, QPalette.Mid, brush5)
+        palette48.setBrush(QPalette.Inactive, QPalette.Text, brush)
+        palette48.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
+        palette48.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette48.setBrush(QPalette.Inactive, QPalette.Base, brush12)
+        palette48.setBrush(QPalette.Inactive, QPalette.Window, brush12)
+        palette48.setBrush(QPalette.Inactive, QPalette.Shadow, brush6)
+        palette48.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush7)
+        palette48.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush8)
+        palette48.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush6)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette48.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
+#endif
+        palette48.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
+        palette48.setBrush(QPalette.Disabled, QPalette.Button, brush10)
+        palette48.setBrush(QPalette.Disabled, QPalette.Light, brush2)
+        palette48.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
+        palette48.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
+        palette48.setBrush(QPalette.Disabled, QPalette.Mid, brush5)
+        palette48.setBrush(QPalette.Disabled, QPalette.Text, brush)
+        palette48.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
+        palette48.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
+        palette48.setBrush(QPalette.Disabled, QPalette.Base, brush10)
+        palette48.setBrush(QPalette.Disabled, QPalette.Window, brush10)
+        palette48.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
+        palette48.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush11)
+        palette48.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
+        palette48.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette48.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush9)
+#endif
+        self.pushButtonOpenLogs.setPalette(palette48)
+        font10 = QFont()
+        font10.setFamilies([u"Roboto"])
+        font10.setPointSize(14)
+        font10.setBold(False)
+        self.pushButtonOpenLogs.setFont(font10)
         self.pushButtonOpenLogs.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 14pt;\n"
@@ -6429,62 +6564,62 @@ class Ui_omr_patient_card(object):
         self.pushButtonHelp = QPushButton(self.frame_right)
         self.pushButtonHelp.setObjectName(u"pushButtonHelp")
         self.pushButtonHelp.setEnabled(False)
-        palette48 = QPalette()
-        palette48.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        palette48.setBrush(QPalette.Active, QPalette.Button, brush12)
-        palette48.setBrush(QPalette.Active, QPalette.Light, brush)
-        palette48.setBrush(QPalette.Active, QPalette.Midlight, brush18)
-        palette48.setBrush(QPalette.Active, QPalette.Dark, brush19)
-        palette48.setBrush(QPalette.Active, QPalette.Mid, brush20)
-        palette48.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette48.setBrush(QPalette.Active, QPalette.BrightText, brush)
-        palette48.setBrush(QPalette.Active, QPalette.ButtonText, brush)
-        palette48.setBrush(QPalette.Active, QPalette.Base, brush12)
-        palette48.setBrush(QPalette.Active, QPalette.Window, brush12)
-        palette48.setBrush(QPalette.Active, QPalette.Shadow, brush6)
-        palette48.setBrush(QPalette.Active, QPalette.AlternateBase, brush18)
-        palette48.setBrush(QPalette.Active, QPalette.ToolTipBase, brush8)
-        palette48.setBrush(QPalette.Active, QPalette.ToolTipText, brush6)
+        palette49 = QPalette()
+        palette49.setBrush(QPalette.Active, QPalette.WindowText, brush)
+        palette49.setBrush(QPalette.Active, QPalette.Button, brush12)
+        palette49.setBrush(QPalette.Active, QPalette.Light, brush)
+        palette49.setBrush(QPalette.Active, QPalette.Midlight, brush18)
+        palette49.setBrush(QPalette.Active, QPalette.Dark, brush19)
+        palette49.setBrush(QPalette.Active, QPalette.Mid, brush20)
+        palette49.setBrush(QPalette.Active, QPalette.Text, brush)
+        palette49.setBrush(QPalette.Active, QPalette.BrightText, brush)
+        palette49.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette49.setBrush(QPalette.Active, QPalette.Base, brush12)
+        palette49.setBrush(QPalette.Active, QPalette.Window, brush12)
+        palette49.setBrush(QPalette.Active, QPalette.Shadow, brush6)
+        palette49.setBrush(QPalette.Active, QPalette.AlternateBase, brush18)
+        palette49.setBrush(QPalette.Active, QPalette.ToolTipBase, brush8)
+        palette49.setBrush(QPalette.Active, QPalette.ToolTipText, brush6)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette48.setBrush(QPalette.Active, QPalette.PlaceholderText, brush9)
+        palette49.setBrush(QPalette.Active, QPalette.PlaceholderText, brush9)
 #endif
-        palette48.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette48.setBrush(QPalette.Inactive, QPalette.Button, brush12)
-        palette48.setBrush(QPalette.Inactive, QPalette.Light, brush)
-        palette48.setBrush(QPalette.Inactive, QPalette.Midlight, brush18)
-        palette48.setBrush(QPalette.Inactive, QPalette.Dark, brush19)
-        palette48.setBrush(QPalette.Inactive, QPalette.Mid, brush20)
-        palette48.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette48.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
-        palette48.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
-        palette48.setBrush(QPalette.Inactive, QPalette.Base, brush12)
-        palette48.setBrush(QPalette.Inactive, QPalette.Window, brush12)
-        palette48.setBrush(QPalette.Inactive, QPalette.Shadow, brush6)
-        palette48.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush18)
-        palette48.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush8)
-        palette48.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush6)
+        palette49.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
+        palette49.setBrush(QPalette.Inactive, QPalette.Button, brush12)
+        palette49.setBrush(QPalette.Inactive, QPalette.Light, brush)
+        palette49.setBrush(QPalette.Inactive, QPalette.Midlight, brush18)
+        palette49.setBrush(QPalette.Inactive, QPalette.Dark, brush19)
+        palette49.setBrush(QPalette.Inactive, QPalette.Mid, brush20)
+        palette49.setBrush(QPalette.Inactive, QPalette.Text, brush)
+        palette49.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
+        palette49.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette49.setBrush(QPalette.Inactive, QPalette.Base, brush12)
+        palette49.setBrush(QPalette.Inactive, QPalette.Window, brush12)
+        palette49.setBrush(QPalette.Inactive, QPalette.Shadow, brush6)
+        palette49.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush18)
+        palette49.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush8)
+        palette49.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush6)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette48.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
+        palette49.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
 #endif
-        palette48.setBrush(QPalette.Disabled, QPalette.WindowText, brush13)
-        palette48.setBrush(QPalette.Disabled, QPalette.Button, brush14)
-        palette48.setBrush(QPalette.Disabled, QPalette.Light, brush)
-        palette48.setBrush(QPalette.Disabled, QPalette.Midlight, brush18)
-        palette48.setBrush(QPalette.Disabled, QPalette.Dark, brush19)
-        palette48.setBrush(QPalette.Disabled, QPalette.Mid, brush20)
-        palette48.setBrush(QPalette.Disabled, QPalette.Text, brush13)
-        palette48.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
-        palette48.setBrush(QPalette.Disabled, QPalette.ButtonText, brush13)
-        palette48.setBrush(QPalette.Disabled, QPalette.Base, brush14)
-        palette48.setBrush(QPalette.Disabled, QPalette.Window, brush14)
-        palette48.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
-        palette48.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush30)
-        palette48.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
-        palette48.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
+        palette49.setBrush(QPalette.Disabled, QPalette.WindowText, brush13)
+        palette49.setBrush(QPalette.Disabled, QPalette.Button, brush14)
+        palette49.setBrush(QPalette.Disabled, QPalette.Light, brush)
+        palette49.setBrush(QPalette.Disabled, QPalette.Midlight, brush18)
+        palette49.setBrush(QPalette.Disabled, QPalette.Dark, brush19)
+        palette49.setBrush(QPalette.Disabled, QPalette.Mid, brush20)
+        palette49.setBrush(QPalette.Disabled, QPalette.Text, brush13)
+        palette49.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
+        palette49.setBrush(QPalette.Disabled, QPalette.ButtonText, brush13)
+        palette49.setBrush(QPalette.Disabled, QPalette.Base, brush14)
+        palette49.setBrush(QPalette.Disabled, QPalette.Window, brush14)
+        palette49.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
+        palette49.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush30)
+        palette49.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
+        palette49.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette48.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
+        palette49.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
 #endif
-        self.pushButtonHelp.setPalette(palette48)
+        self.pushButtonHelp.setPalette(palette49)
         self.pushButtonHelp.setFont(font1)
         self.pushButtonHelp.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
@@ -6508,70 +6643,70 @@ class Ui_omr_patient_card(object):
 "border: 1px solid rgba(50, 98, 115, 150);\n"
 "color:  rgba(50, 98, 115, 150);\n"
 "}")
-        icon19 = QIcon()
-        icon19.addFile(u":/icon/icons/info_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonHelp.setIcon(icon19)
+        icon21 = QIcon()
+        icon21.addFile(u":/icon/icons/info_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonHelp.setIcon(icon21)
 
         self.verticalLayout_7.addWidget(self.pushButtonHelp)
 
         self.pushButton_2 = QPushButton(self.frame_right)
         self.pushButton_2.setObjectName(u"pushButton_2")
-        palette49 = QPalette()
-        palette49.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        palette49.setBrush(QPalette.Active, QPalette.Button, brush12)
-        palette49.setBrush(QPalette.Active, QPalette.Light, brush2)
-        palette49.setBrush(QPalette.Active, QPalette.Midlight, brush3)
-        palette49.setBrush(QPalette.Active, QPalette.Dark, brush4)
-        palette49.setBrush(QPalette.Active, QPalette.Mid, brush5)
-        palette49.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette49.setBrush(QPalette.Active, QPalette.BrightText, brush)
-        palette49.setBrush(QPalette.Active, QPalette.ButtonText, brush)
-        palette49.setBrush(QPalette.Active, QPalette.Base, brush12)
-        palette49.setBrush(QPalette.Active, QPalette.Window, brush12)
-        palette49.setBrush(QPalette.Active, QPalette.Shadow, brush6)
-        palette49.setBrush(QPalette.Active, QPalette.AlternateBase, brush7)
-        palette49.setBrush(QPalette.Active, QPalette.ToolTipBase, brush8)
-        palette49.setBrush(QPalette.Active, QPalette.ToolTipText, brush6)
+        palette50 = QPalette()
+        palette50.setBrush(QPalette.Active, QPalette.WindowText, brush)
+        palette50.setBrush(QPalette.Active, QPalette.Button, brush12)
+        palette50.setBrush(QPalette.Active, QPalette.Light, brush2)
+        palette50.setBrush(QPalette.Active, QPalette.Midlight, brush3)
+        palette50.setBrush(QPalette.Active, QPalette.Dark, brush4)
+        palette50.setBrush(QPalette.Active, QPalette.Mid, brush5)
+        palette50.setBrush(QPalette.Active, QPalette.Text, brush)
+        palette50.setBrush(QPalette.Active, QPalette.BrightText, brush)
+        palette50.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette50.setBrush(QPalette.Active, QPalette.Base, brush12)
+        palette50.setBrush(QPalette.Active, QPalette.Window, brush12)
+        palette50.setBrush(QPalette.Active, QPalette.Shadow, brush6)
+        palette50.setBrush(QPalette.Active, QPalette.AlternateBase, brush7)
+        palette50.setBrush(QPalette.Active, QPalette.ToolTipBase, brush8)
+        palette50.setBrush(QPalette.Active, QPalette.ToolTipText, brush6)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette49.setBrush(QPalette.Active, QPalette.PlaceholderText, brush9)
+        palette50.setBrush(QPalette.Active, QPalette.PlaceholderText, brush9)
 #endif
-        palette49.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette49.setBrush(QPalette.Inactive, QPalette.Button, brush12)
-        palette49.setBrush(QPalette.Inactive, QPalette.Light, brush2)
-        palette49.setBrush(QPalette.Inactive, QPalette.Midlight, brush3)
-        palette49.setBrush(QPalette.Inactive, QPalette.Dark, brush4)
-        palette49.setBrush(QPalette.Inactive, QPalette.Mid, brush5)
-        palette49.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette49.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
-        palette49.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
-        palette49.setBrush(QPalette.Inactive, QPalette.Base, brush12)
-        palette49.setBrush(QPalette.Inactive, QPalette.Window, brush12)
-        palette49.setBrush(QPalette.Inactive, QPalette.Shadow, brush6)
-        palette49.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush7)
-        palette49.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush8)
-        palette49.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush6)
+        palette50.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
+        palette50.setBrush(QPalette.Inactive, QPalette.Button, brush12)
+        palette50.setBrush(QPalette.Inactive, QPalette.Light, brush2)
+        palette50.setBrush(QPalette.Inactive, QPalette.Midlight, brush3)
+        palette50.setBrush(QPalette.Inactive, QPalette.Dark, brush4)
+        palette50.setBrush(QPalette.Inactive, QPalette.Mid, brush5)
+        palette50.setBrush(QPalette.Inactive, QPalette.Text, brush)
+        palette50.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
+        palette50.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette50.setBrush(QPalette.Inactive, QPalette.Base, brush12)
+        palette50.setBrush(QPalette.Inactive, QPalette.Window, brush12)
+        palette50.setBrush(QPalette.Inactive, QPalette.Shadow, brush6)
+        palette50.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush7)
+        palette50.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush8)
+        palette50.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush6)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette49.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
+        palette50.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
 #endif
-        palette49.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
-        palette49.setBrush(QPalette.Disabled, QPalette.Button, brush12)
-        palette49.setBrush(QPalette.Disabled, QPalette.Light, brush2)
-        palette49.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
-        palette49.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
-        palette49.setBrush(QPalette.Disabled, QPalette.Mid, brush5)
-        palette49.setBrush(QPalette.Disabled, QPalette.Text, brush)
-        palette49.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
-        palette49.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
-        palette49.setBrush(QPalette.Disabled, QPalette.Base, brush12)
-        palette49.setBrush(QPalette.Disabled, QPalette.Window, brush12)
-        palette49.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
-        palette49.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush11)
-        palette49.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
-        palette49.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
+        palette50.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
+        palette50.setBrush(QPalette.Disabled, QPalette.Button, brush12)
+        palette50.setBrush(QPalette.Disabled, QPalette.Light, brush2)
+        palette50.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
+        palette50.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
+        palette50.setBrush(QPalette.Disabled, QPalette.Mid, brush5)
+        palette50.setBrush(QPalette.Disabled, QPalette.Text, brush)
+        palette50.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
+        palette50.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
+        palette50.setBrush(QPalette.Disabled, QPalette.Base, brush12)
+        palette50.setBrush(QPalette.Disabled, QPalette.Window, brush12)
+        palette50.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
+        palette50.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush11)
+        palette50.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
+        palette50.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette49.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush9)
+        palette50.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush9)
 #endif
-        self.pushButton_2.setPalette(palette49)
+        self.pushButton_2.setPalette(palette50)
         self.pushButton_2.setFont(font1)
         self.pushButton_2.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
@@ -6598,110 +6733,110 @@ class Ui_omr_patient_card(object):
 
         self.checkBox_not_save = QCheckBox(self.frame_right)
         self.checkBox_not_save.setObjectName(u"checkBox_not_save")
-        palette50 = QPalette()
-        palette50.setBrush(QPalette.Active, QPalette.WindowText, brush16)
+        palette51 = QPalette()
+        palette51.setBrush(QPalette.Active, QPalette.WindowText, brush16)
         gradient225 = QLinearGradient(0, 0, 1, 0)
         gradient225.setSpread(QGradient.PadSpread)
         gradient225.setCoordinateMode(QGradient.ObjectBoundingMode)
         gradient225.setColorAt(0, QColor(238, 238, 238, 255))
         gradient225.setColorAt(1, QColor(190, 190, 190, 255))
         brush248 = QBrush(gradient225)
-        palette50.setBrush(QPalette.Active, QPalette.Button, brush248)
-        palette50.setBrush(QPalette.Active, QPalette.Light, brush)
-        palette50.setBrush(QPalette.Active, QPalette.Midlight, brush18)
-        palette50.setBrush(QPalette.Active, QPalette.Dark, brush19)
-        palette50.setBrush(QPalette.Active, QPalette.Mid, brush20)
-        palette50.setBrush(QPalette.Active, QPalette.Text, brush16)
-        palette50.setBrush(QPalette.Active, QPalette.ButtonText, brush16)
+        palette51.setBrush(QPalette.Active, QPalette.Button, brush248)
+        palette51.setBrush(QPalette.Active, QPalette.Light, brush)
+        palette51.setBrush(QPalette.Active, QPalette.Midlight, brush18)
+        palette51.setBrush(QPalette.Active, QPalette.Dark, brush19)
+        palette51.setBrush(QPalette.Active, QPalette.Mid, brush20)
+        palette51.setBrush(QPalette.Active, QPalette.Text, brush16)
+        palette51.setBrush(QPalette.Active, QPalette.ButtonText, brush16)
         gradient226 = QLinearGradient(0, 0, 1, 0)
         gradient226.setSpread(QGradient.PadSpread)
         gradient226.setCoordinateMode(QGradient.ObjectBoundingMode)
         gradient226.setColorAt(0, QColor(238, 238, 238, 255))
         gradient226.setColorAt(1, QColor(190, 190, 190, 255))
         brush249 = QBrush(gradient226)
-        palette50.setBrush(QPalette.Active, QPalette.Base, brush249)
+        palette51.setBrush(QPalette.Active, QPalette.Base, brush249)
         gradient227 = QLinearGradient(0, 0, 1, 0)
         gradient227.setSpread(QGradient.PadSpread)
         gradient227.setCoordinateMode(QGradient.ObjectBoundingMode)
         gradient227.setColorAt(0, QColor(238, 238, 238, 255))
         gradient227.setColorAt(1, QColor(190, 190, 190, 255))
         brush250 = QBrush(gradient227)
-        palette50.setBrush(QPalette.Active, QPalette.Window, brush250)
-        palette50.setBrush(QPalette.Active, QPalette.AlternateBase, brush18)
+        palette51.setBrush(QPalette.Active, QPalette.Window, brush250)
+        palette51.setBrush(QPalette.Active, QPalette.AlternateBase, brush18)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette50.setBrush(QPalette.Active, QPalette.PlaceholderText, brush23)
+        palette51.setBrush(QPalette.Active, QPalette.PlaceholderText, brush23)
 #endif
-        palette50.setBrush(QPalette.Inactive, QPalette.WindowText, brush16)
+        palette51.setBrush(QPalette.Inactive, QPalette.WindowText, brush16)
         gradient228 = QLinearGradient(0, 0, 1, 0)
         gradient228.setSpread(QGradient.PadSpread)
         gradient228.setCoordinateMode(QGradient.ObjectBoundingMode)
         gradient228.setColorAt(0, QColor(238, 238, 238, 255))
         gradient228.setColorAt(1, QColor(190, 190, 190, 255))
         brush251 = QBrush(gradient228)
-        palette50.setBrush(QPalette.Inactive, QPalette.Button, brush251)
-        palette50.setBrush(QPalette.Inactive, QPalette.Light, brush)
-        palette50.setBrush(QPalette.Inactive, QPalette.Midlight, brush18)
-        palette50.setBrush(QPalette.Inactive, QPalette.Dark, brush19)
-        palette50.setBrush(QPalette.Inactive, QPalette.Mid, brush20)
-        palette50.setBrush(QPalette.Inactive, QPalette.Text, brush16)
-        palette50.setBrush(QPalette.Inactive, QPalette.ButtonText, brush16)
+        palette51.setBrush(QPalette.Inactive, QPalette.Button, brush251)
+        palette51.setBrush(QPalette.Inactive, QPalette.Light, brush)
+        palette51.setBrush(QPalette.Inactive, QPalette.Midlight, brush18)
+        palette51.setBrush(QPalette.Inactive, QPalette.Dark, brush19)
+        palette51.setBrush(QPalette.Inactive, QPalette.Mid, brush20)
+        palette51.setBrush(QPalette.Inactive, QPalette.Text, brush16)
+        palette51.setBrush(QPalette.Inactive, QPalette.ButtonText, brush16)
         gradient229 = QLinearGradient(0, 0, 1, 0)
         gradient229.setSpread(QGradient.PadSpread)
         gradient229.setCoordinateMode(QGradient.ObjectBoundingMode)
         gradient229.setColorAt(0, QColor(238, 238, 238, 255))
         gradient229.setColorAt(1, QColor(190, 190, 190, 255))
         brush252 = QBrush(gradient229)
-        palette50.setBrush(QPalette.Inactive, QPalette.Base, brush252)
+        palette51.setBrush(QPalette.Inactive, QPalette.Base, brush252)
         gradient230 = QLinearGradient(0, 0, 1, 0)
         gradient230.setSpread(QGradient.PadSpread)
         gradient230.setCoordinateMode(QGradient.ObjectBoundingMode)
         gradient230.setColorAt(0, QColor(238, 238, 238, 255))
         gradient230.setColorAt(1, QColor(190, 190, 190, 255))
         brush253 = QBrush(gradient230)
-        palette50.setBrush(QPalette.Inactive, QPalette.Window, brush253)
-        palette50.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush18)
+        palette51.setBrush(QPalette.Inactive, QPalette.Window, brush253)
+        palette51.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush18)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette50.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush23)
+        palette51.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush23)
 #endif
-        palette50.setBrush(QPalette.Disabled, QPalette.WindowText, brush10)
+        palette51.setBrush(QPalette.Disabled, QPalette.WindowText, brush10)
         gradient231 = QLinearGradient(0, 0, 1, 0)
         gradient231.setSpread(QGradient.PadSpread)
         gradient231.setCoordinateMode(QGradient.ObjectBoundingMode)
         gradient231.setColorAt(0, QColor(238, 238, 238, 255))
         gradient231.setColorAt(1, QColor(190, 190, 190, 255))
         brush254 = QBrush(gradient231)
-        palette50.setBrush(QPalette.Disabled, QPalette.Button, brush254)
-        palette50.setBrush(QPalette.Disabled, QPalette.Light, brush)
-        palette50.setBrush(QPalette.Disabled, QPalette.Midlight, brush18)
-        palette50.setBrush(QPalette.Disabled, QPalette.Dark, brush19)
-        palette50.setBrush(QPalette.Disabled, QPalette.Mid, brush20)
-        palette50.setBrush(QPalette.Disabled, QPalette.Text, brush10)
-        palette50.setBrush(QPalette.Disabled, QPalette.ButtonText, brush10)
+        palette51.setBrush(QPalette.Disabled, QPalette.Button, brush254)
+        palette51.setBrush(QPalette.Disabled, QPalette.Light, brush)
+        palette51.setBrush(QPalette.Disabled, QPalette.Midlight, brush18)
+        palette51.setBrush(QPalette.Disabled, QPalette.Dark, brush19)
+        palette51.setBrush(QPalette.Disabled, QPalette.Mid, brush20)
+        palette51.setBrush(QPalette.Disabled, QPalette.Text, brush10)
+        palette51.setBrush(QPalette.Disabled, QPalette.ButtonText, brush10)
         gradient232 = QLinearGradient(0, 0, 1, 0)
         gradient232.setSpread(QGradient.PadSpread)
         gradient232.setCoordinateMode(QGradient.ObjectBoundingMode)
         gradient232.setColorAt(0, QColor(238, 238, 238, 255))
         gradient232.setColorAt(1, QColor(190, 190, 190, 255))
         brush255 = QBrush(gradient232)
-        palette50.setBrush(QPalette.Disabled, QPalette.Base, brush255)
+        palette51.setBrush(QPalette.Disabled, QPalette.Base, brush255)
         gradient233 = QLinearGradient(0, 0, 1, 0)
         gradient233.setSpread(QGradient.PadSpread)
         gradient233.setCoordinateMode(QGradient.ObjectBoundingMode)
         gradient233.setColorAt(0, QColor(238, 238, 238, 255))
         gradient233.setColorAt(1, QColor(190, 190, 190, 255))
         brush256 = QBrush(gradient233)
-        palette50.setBrush(QPalette.Disabled, QPalette.Window, brush256)
-        palette50.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush30)
+        palette51.setBrush(QPalette.Disabled, QPalette.Window, brush256)
+        palette51.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush30)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette50.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush31)
+        palette51.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush31)
 #endif
-        self.checkBox_not_save.setPalette(palette50)
-        font10 = QFont()
-        font10.setFamilies([u"Roboto"])
-        font10.setPointSize(9)
-        font10.setBold(False)
-        font10.setItalic(False)
-        self.checkBox_not_save.setFont(font10)
+        self.checkBox_not_save.setPalette(palette51)
+        font11 = QFont()
+        font11.setFamilies([u"Roboto"])
+        font11.setPointSize(9)
+        font11.setBold(False)
+        font11.setItalic(False)
+        self.checkBox_not_save.setFont(font11)
         self.checkBox_not_save.setStyleSheet(u"QCheckBox {\n"
 "	color: #326273;\n"
 "	border: none;\n"
@@ -6745,112 +6880,18 @@ class Ui_omr_patient_card(object):
         self.pushButtonNotSaveExit = QPushButton(self.frame_right)
         self.pushButtonNotSaveExit.setObjectName(u"pushButtonNotSaveExit")
         self.pushButtonNotSaveExit.setEnabled(False)
-        palette51 = QPalette()
-        palette51.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        palette51.setBrush(QPalette.Active, QPalette.Button, brush12)
-        palette51.setBrush(QPalette.Active, QPalette.Light, brush)
-        brush257 = QBrush(QColor(237, 237, 237, 255))
-        brush257.setStyle(Qt.SolidPattern)
-        palette51.setBrush(QPalette.Active, QPalette.Midlight, brush257)
-        brush258 = QBrush(QColor(110, 110, 110, 255))
-        brush258.setStyle(Qt.SolidPattern)
-        palette51.setBrush(QPalette.Active, QPalette.Dark, brush258)
-        brush259 = QBrush(QColor(147, 147, 147, 255))
-        brush259.setStyle(Qt.SolidPattern)
-        palette51.setBrush(QPalette.Active, QPalette.Mid, brush259)
-        palette51.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette51.setBrush(QPalette.Active, QPalette.BrightText, brush)
-        palette51.setBrush(QPalette.Active, QPalette.ButtonText, brush)
-        palette51.setBrush(QPalette.Active, QPalette.Base, brush12)
-        palette51.setBrush(QPalette.Active, QPalette.Window, brush12)
-        palette51.setBrush(QPalette.Active, QPalette.Shadow, brush6)
-        palette51.setBrush(QPalette.Active, QPalette.AlternateBase, brush257)
-        palette51.setBrush(QPalette.Active, QPalette.ToolTipBase, brush8)
-        palette51.setBrush(QPalette.Active, QPalette.ToolTipText, brush6)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette51.setBrush(QPalette.Active, QPalette.PlaceholderText, brush9)
-#endif
-        palette51.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette51.setBrush(QPalette.Inactive, QPalette.Button, brush12)
-        palette51.setBrush(QPalette.Inactive, QPalette.Light, brush)
-        palette51.setBrush(QPalette.Inactive, QPalette.Midlight, brush257)
-        palette51.setBrush(QPalette.Inactive, QPalette.Dark, brush258)
-        palette51.setBrush(QPalette.Inactive, QPalette.Mid, brush259)
-        palette51.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette51.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
-        palette51.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
-        palette51.setBrush(QPalette.Inactive, QPalette.Base, brush12)
-        palette51.setBrush(QPalette.Inactive, QPalette.Window, brush12)
-        palette51.setBrush(QPalette.Inactive, QPalette.Shadow, brush6)
-        palette51.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush257)
-        palette51.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush8)
-        palette51.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush6)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette51.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
-#endif
-        palette51.setBrush(QPalette.Disabled, QPalette.WindowText, brush13)
-        palette51.setBrush(QPalette.Disabled, QPalette.Button, brush14)
-        palette51.setBrush(QPalette.Disabled, QPalette.Light, brush)
-        palette51.setBrush(QPalette.Disabled, QPalette.Midlight, brush257)
-        palette51.setBrush(QPalette.Disabled, QPalette.Dark, brush258)
-        palette51.setBrush(QPalette.Disabled, QPalette.Mid, brush259)
-        palette51.setBrush(QPalette.Disabled, QPalette.Text, brush13)
-        palette51.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
-        palette51.setBrush(QPalette.Disabled, QPalette.ButtonText, brush13)
-        palette51.setBrush(QPalette.Disabled, QPalette.Base, brush14)
-        palette51.setBrush(QPalette.Disabled, QPalette.Window, brush14)
-        palette51.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
-        brush260 = QBrush(QColor(220, 220, 220, 255))
-        brush260.setStyle(Qt.SolidPattern)
-        palette51.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush260)
-        palette51.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
-        palette51.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette51.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
-#endif
-        self.pushButtonNotSaveExit.setPalette(palette51)
-        font11 = QFont()
-        font11.setFamilies([u"Roboto"])
-        font11.setPointSize(12)
-        font11.setBold(False)
-        self.pushButtonNotSaveExit.setFont(font11)
-        self.pushButtonNotSaveExit.setStyleSheet(u"QPushButton {\n"
-"background-color: rgba(50, 98, 115, 190);\n"
-"font-size: 12pt;\n"
-"color: White;\n"
-"border: None;\n"
-"}\n"
-"\n"
-"QPushButton::hover {\n"
-"background-color: rgba(50, 98, 115, 255);\n"
-"border: 2px solid rgba(92, 158, 173, 255);\n"
-"}\n"
-"\n"
-"QPushButton::pressed {\n"
-"background-color: rgba(92, 158, 173, 255);\n"
-"border: 1px solid rgba(255, 255, 255, 255);\n"
-"}\n"
-"\n"
-"QPushButton::disabled {\n"
-"background-color:  rgba(50, 98, 115, 40);\n"
-"border: 1px solid rgba(50, 98, 115, 150);\n"
-"color:  rgba(50, 98, 115, 150);\n"
-"}")
-        icon20 = QIcon()
-        icon20.addFile(u":/icon/icons/west_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonNotSaveExit.setIcon(icon20)
-        self.pushButtonNotSaveExit.setIconSize(QSize(32, 32))
-
-        self.verticalLayout_7.addWidget(self.pushButtonNotSaveExit)
-
-        self.pushButtonSave = QPushButton(self.frame_right)
-        self.pushButtonSave.setObjectName(u"pushButtonSave")
         palette52 = QPalette()
         palette52.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette52.setBrush(QPalette.Active, QPalette.Button, brush12)
         palette52.setBrush(QPalette.Active, QPalette.Light, brush)
+        brush257 = QBrush(QColor(237, 237, 237, 255))
+        brush257.setStyle(Qt.SolidPattern)
         palette52.setBrush(QPalette.Active, QPalette.Midlight, brush257)
+        brush258 = QBrush(QColor(110, 110, 110, 255))
+        brush258.setStyle(Qt.SolidPattern)
         palette52.setBrush(QPalette.Active, QPalette.Dark, brush258)
+        brush259 = QBrush(QColor(147, 147, 147, 255))
+        brush259.setStyle(Qt.SolidPattern)
         palette52.setBrush(QPalette.Active, QPalette.Mid, brush259)
         palette52.setBrush(QPalette.Active, QPalette.Text, brush)
         palette52.setBrush(QPalette.Active, QPalette.BrightText, brush)
@@ -6894,15 +6935,21 @@ class Ui_omr_patient_card(object):
         palette52.setBrush(QPalette.Disabled, QPalette.Base, brush14)
         palette52.setBrush(QPalette.Disabled, QPalette.Window, brush14)
         palette52.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
+        brush260 = QBrush(QColor(220, 220, 220, 255))
+        brush260.setStyle(Qt.SolidPattern)
         palette52.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush260)
         palette52.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
         palette52.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette52.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
 #endif
-        self.pushButtonSave.setPalette(palette52)
-        self.pushButtonSave.setFont(font11)
-        self.pushButtonSave.setStyleSheet(u"QPushButton {\n"
+        self.pushButtonNotSaveExit.setPalette(palette52)
+        font12 = QFont()
+        font12.setFamilies([u"Roboto"])
+        font12.setPointSize(12)
+        font12.setBold(False)
+        self.pushButtonNotSaveExit.setFont(font12)
+        self.pushButtonNotSaveExit.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 12pt;\n"
 "color: White;\n"
@@ -6924,20 +6971,18 @@ class Ui_omr_patient_card(object):
 "border: 1px solid rgba(50, 98, 115, 150);\n"
 "color:  rgba(50, 98, 115, 150);\n"
 "}")
-        icon21 = QIcon()
-        icon21.addFile(u":/icon/icons/save_as_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonSave.setIcon(icon21)
-        self.pushButtonSave.setIconSize(QSize(25, 25))
+        icon22 = QIcon()
+        icon22.addFile(u":/icon/icons/west_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonNotSaveExit.setIcon(icon22)
+        self.pushButtonNotSaveExit.setIconSize(QSize(32, 32))
 
-        self.verticalLayout_7.addWidget(self.pushButtonSave)
+        self.verticalLayout_7.addWidget(self.pushButtonNotSaveExit)
 
-        self.pushButtonSaveExit = QPushButton(self.frame_right)
-        self.pushButtonSaveExit.setObjectName(u"pushButtonSaveExit")
+        self.pushButtonSave = QPushButton(self.frame_right)
+        self.pushButtonSave.setObjectName(u"pushButtonSave")
         palette53 = QPalette()
         palette53.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        brush261 = QBrush(QColor(92, 158, 173, 255))
-        brush261.setStyle(Qt.SolidPattern)
-        palette53.setBrush(QPalette.Active, QPalette.Button, brush261)
+        palette53.setBrush(QPalette.Active, QPalette.Button, brush12)
         palette53.setBrush(QPalette.Active, QPalette.Light, brush)
         palette53.setBrush(QPalette.Active, QPalette.Midlight, brush257)
         palette53.setBrush(QPalette.Active, QPalette.Dark, brush258)
@@ -6945,8 +6990,8 @@ class Ui_omr_patient_card(object):
         palette53.setBrush(QPalette.Active, QPalette.Text, brush)
         palette53.setBrush(QPalette.Active, QPalette.BrightText, brush)
         palette53.setBrush(QPalette.Active, QPalette.ButtonText, brush)
-        palette53.setBrush(QPalette.Active, QPalette.Base, brush261)
-        palette53.setBrush(QPalette.Active, QPalette.Window, brush261)
+        palette53.setBrush(QPalette.Active, QPalette.Base, brush12)
+        palette53.setBrush(QPalette.Active, QPalette.Window, brush12)
         palette53.setBrush(QPalette.Active, QPalette.Shadow, brush6)
         palette53.setBrush(QPalette.Active, QPalette.AlternateBase, brush257)
         palette53.setBrush(QPalette.Active, QPalette.ToolTipBase, brush8)
@@ -6955,7 +7000,7 @@ class Ui_omr_patient_card(object):
         palette53.setBrush(QPalette.Active, QPalette.PlaceholderText, brush9)
 #endif
         palette53.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette53.setBrush(QPalette.Inactive, QPalette.Button, brush261)
+        palette53.setBrush(QPalette.Inactive, QPalette.Button, brush12)
         palette53.setBrush(QPalette.Inactive, QPalette.Light, brush)
         palette53.setBrush(QPalette.Inactive, QPalette.Midlight, brush257)
         palette53.setBrush(QPalette.Inactive, QPalette.Dark, brush258)
@@ -6963,8 +7008,8 @@ class Ui_omr_patient_card(object):
         palette53.setBrush(QPalette.Inactive, QPalette.Text, brush)
         palette53.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
         palette53.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
-        palette53.setBrush(QPalette.Inactive, QPalette.Base, brush261)
-        palette53.setBrush(QPalette.Inactive, QPalette.Window, brush261)
+        palette53.setBrush(QPalette.Inactive, QPalette.Base, brush12)
+        palette53.setBrush(QPalette.Inactive, QPalette.Window, brush12)
         palette53.setBrush(QPalette.Inactive, QPalette.Shadow, brush6)
         palette53.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush257)
         palette53.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush8)
@@ -6990,8 +7035,96 @@ class Ui_omr_patient_card(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette53.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
 #endif
-        self.pushButtonSaveExit.setPalette(palette53)
-        self.pushButtonSaveExit.setFont(font11)
+        self.pushButtonSave.setPalette(palette53)
+        self.pushButtonSave.setFont(font12)
+        self.pushButtonSave.setStyleSheet(u"QPushButton {\n"
+"background-color: rgba(50, 98, 115, 190);\n"
+"font-size: 12pt;\n"
+"color: White;\n"
+"border: None;\n"
+"}\n"
+"\n"
+"QPushButton::hover {\n"
+"background-color: rgba(50, 98, 115, 255);\n"
+"border: 2px solid rgba(92, 158, 173, 255);\n"
+"}\n"
+"\n"
+"QPushButton::pressed {\n"
+"background-color: rgba(92, 158, 173, 255);\n"
+"border: 1px solid rgba(255, 255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton::disabled {\n"
+"background-color:  rgba(50, 98, 115, 40);\n"
+"border: 1px solid rgba(50, 98, 115, 150);\n"
+"color:  rgba(50, 98, 115, 150);\n"
+"}")
+        self.pushButtonSave.setIcon(icon15)
+        self.pushButtonSave.setIconSize(QSize(25, 25))
+
+        self.verticalLayout_7.addWidget(self.pushButtonSave)
+
+        self.pushButtonSaveExit = QPushButton(self.frame_right)
+        self.pushButtonSaveExit.setObjectName(u"pushButtonSaveExit")
+        palette54 = QPalette()
+        palette54.setBrush(QPalette.Active, QPalette.WindowText, brush)
+        brush261 = QBrush(QColor(92, 158, 173, 255))
+        brush261.setStyle(Qt.SolidPattern)
+        palette54.setBrush(QPalette.Active, QPalette.Button, brush261)
+        palette54.setBrush(QPalette.Active, QPalette.Light, brush)
+        palette54.setBrush(QPalette.Active, QPalette.Midlight, brush257)
+        palette54.setBrush(QPalette.Active, QPalette.Dark, brush258)
+        palette54.setBrush(QPalette.Active, QPalette.Mid, brush259)
+        palette54.setBrush(QPalette.Active, QPalette.Text, brush)
+        palette54.setBrush(QPalette.Active, QPalette.BrightText, brush)
+        palette54.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette54.setBrush(QPalette.Active, QPalette.Base, brush261)
+        palette54.setBrush(QPalette.Active, QPalette.Window, brush261)
+        palette54.setBrush(QPalette.Active, QPalette.Shadow, brush6)
+        palette54.setBrush(QPalette.Active, QPalette.AlternateBase, brush257)
+        palette54.setBrush(QPalette.Active, QPalette.ToolTipBase, brush8)
+        palette54.setBrush(QPalette.Active, QPalette.ToolTipText, brush6)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette54.setBrush(QPalette.Active, QPalette.PlaceholderText, brush9)
+#endif
+        palette54.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
+        palette54.setBrush(QPalette.Inactive, QPalette.Button, brush261)
+        palette54.setBrush(QPalette.Inactive, QPalette.Light, brush)
+        palette54.setBrush(QPalette.Inactive, QPalette.Midlight, brush257)
+        palette54.setBrush(QPalette.Inactive, QPalette.Dark, brush258)
+        palette54.setBrush(QPalette.Inactive, QPalette.Mid, brush259)
+        palette54.setBrush(QPalette.Inactive, QPalette.Text, brush)
+        palette54.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
+        palette54.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette54.setBrush(QPalette.Inactive, QPalette.Base, brush261)
+        palette54.setBrush(QPalette.Inactive, QPalette.Window, brush261)
+        palette54.setBrush(QPalette.Inactive, QPalette.Shadow, brush6)
+        palette54.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush257)
+        palette54.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush8)
+        palette54.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush6)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette54.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush9)
+#endif
+        palette54.setBrush(QPalette.Disabled, QPalette.WindowText, brush13)
+        palette54.setBrush(QPalette.Disabled, QPalette.Button, brush14)
+        palette54.setBrush(QPalette.Disabled, QPalette.Light, brush)
+        palette54.setBrush(QPalette.Disabled, QPalette.Midlight, brush257)
+        palette54.setBrush(QPalette.Disabled, QPalette.Dark, brush258)
+        palette54.setBrush(QPalette.Disabled, QPalette.Mid, brush259)
+        palette54.setBrush(QPalette.Disabled, QPalette.Text, brush13)
+        palette54.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
+        palette54.setBrush(QPalette.Disabled, QPalette.ButtonText, brush13)
+        palette54.setBrush(QPalette.Disabled, QPalette.Base, brush14)
+        palette54.setBrush(QPalette.Disabled, QPalette.Window, brush14)
+        palette54.setBrush(QPalette.Disabled, QPalette.Shadow, brush6)
+        palette54.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush260)
+        palette54.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush8)
+        palette54.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush6)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette54.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
+#endif
+        self.pushButtonSaveExit.setPalette(palette54)
+        self.pushButtonSaveExit.setFont(font12)
         self.pushButtonSaveExit.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(92, 158, 173, 255);\n"
 "font-size: 12pt;\n"
@@ -7014,9 +7147,9 @@ class Ui_omr_patient_card(object):
 "border: 1px solid rgba(50, 98, 115, 150);\n"
 "color:  rgba(50, 98, 115, 150);\n"
 "}")
-        icon22 = QIcon()
-        icon22.addFile(u":/icon/icons/save_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonSaveExit.setIcon(icon22)
+        icon23 = QIcon()
+        icon23.addFile(u":/icon/icons/save_white_36dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButtonSaveExit.setIcon(icon23)
         self.pushButtonSaveExit.setIconSize(QSize(36, 36))
 
         self.verticalLayout_7.addWidget(self.pushButtonSaveExit)
@@ -7030,7 +7163,7 @@ class Ui_omr_patient_card(object):
 
         self.retranslateUi(omr_patient_card)
 
-        self.tabPtCard.setCurrentIndex(0)
+        self.tabPtCard.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(omr_patient_card)
@@ -7076,16 +7209,20 @@ class Ui_omr_patient_card(object):
         ___qtablewidgetitem2.setText(QCoreApplication.translate("omr_patient_card", u"\u0414\u0438\u043d\u0430\u043c\u0438\u043a\u0430", None));
         self.pushButtonAddEvent.setText(QCoreApplication.translate("omr_patient_card", u"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u043e\u0432\u043e\u0435", None))
         self.label_events.setText(QCoreApplication.translate("omr_patient_card", u"\u0421\u043e\u0431\u044b\u0442\u0438\u044f", None))
+        self.label_sorry.setText(QCoreApplication.translate("omr_patient_card", u"\u0420\u0430\u0437\u0434\u0435\u043b \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0435\n"
+"\u043f\u0440\u0438\u043d\u043e\u0441\u0438\u043c \u0438\u0437\u0432\u0438\u043d\u0435\u043d\u0438\u044f \u0437\u0430 \u043d\u0435\u0443\u0434\u043e\u0431\u0441\u0442\u0432\u0430", None))
+        self.tabPtCard.setTabText(self.tabPtCard.indexOf(self.Page_events), QCoreApplication.translate("omr_patient_card", u"\u0421\u043e\u0431\u044b\u0442\u0438\u044f", None))
+        self.pushButton_save_diary.setText(QCoreApplication.translate("omr_patient_card", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0434\u043d\u0435\u0432\u043d\u0438\u043a\u0430", None))
         self.radioButton_everyday.setText(QCoreApplication.translate("omr_patient_card", u"\u0415\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u043e", None))
         self.radioButton_3_times_in_week.setText(QCoreApplication.translate("omr_patient_card", u"3 \u0440\u0430\u0437\u0430 \u0432 \u043d\u0435\u0434\u0435\u043b\u044e", None))
         self.radioButton_twice_in_day.setText(QCoreApplication.translate("omr_patient_card", u"\u0414\u0432\u0430\u0436\u0434\u044b \u0432 \u0441\u0443\u0442\u043a\u0438", None))
         self.pushButton_create_diaries.setText(QCoreApplication.translate("omr_patient_card", u"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u0434\u043d\u0435\u0432\u043d\u0438\u043a\u0438", None))
         ___qtablewidgetitem3 = self.tableWidget_diaries.horizontalHeaderItem(0)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("omr_patient_card", u"\u0417\u0430\u043f\u0438\u0441\u044c", None));
-        self.label_diaries.setText(QCoreApplication.translate("omr_patient_card", u"\u0421\u043e\u0437\u0434\u0430\u043d\u0438\u0435 \u0434\u043d\u0435\u0432\u043d\u0438\u043a\u043e\u0432\u044b\u0445 \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
-        self.tabPtCard.setTabText(self.tabPtCard.indexOf(self.Page_event_diaries), QCoreApplication.translate("omr_patient_card", u"\u0421\u043e\u0431\u044b\u0442\u0438\u044f, \u0434\u043d\u0435\u0432\u043d\u0438\u043a\u043e\u0432\u044b\u0435 \u0437\u0430\u043f\u0438\u0441\u0438", None))
-        self.pushButtonOpenFolder.setText(QCoreApplication.translate("omr_patient_card", u"\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043f\u0430\u043f\u043a\u0443 \u0441 \u0444\u0430\u0439\u043b\u0430\u043c\u0438", None))
-        self.label_status_2.setText(QCoreApplication.translate("omr_patient_card", u"<html><head/><body><p align=\"center\">\u0421\u043e\u0437\u0434\u0430\u043d\u043d\u044b\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b</p></body></html>", None))
+        self.label_diaries.setText(QCoreApplication.translate("omr_patient_card", u"\u0421\u043e\u0437\u0434\u0430\u043d\u0438\u0435\n"
+"\u0434\u043d\u0435\u0432\u043d\u0438\u043a\u043e\u0432\u044b\u0445 \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
+        self.label_diaries_2.setText(QCoreApplication.translate("omr_patient_card", u"\u041f\u0440\u043e\u0441\u043c\u043e\u0442\u0440 \u0434\u043d\u0435\u0432\u043d\u0438\u043a\u0430", None))
+        self.tabPtCard.setTabText(self.tabPtCard.indexOf(self.Page_diaries), QCoreApplication.translate("omr_patient_card", u"\u0414\u043d\u0435\u0432\u043d\u0438\u043a\u043e\u0432\u044b\u0435 \u0437\u0430\u043f\u0438\u0441\u0438", None))
         self.checkBox_doc_diaries.setText(QCoreApplication.translate("omr_patient_card", u"\u0414\u043d\u0435\u0432\u043d\u0438\u043a\u0438", None))
         self.checkBox_doc_med_commission_2.setText(QCoreApplication.translate("omr_patient_card", u"\u0412\u041a \u043f\u043e \u041b\u041d # 2", None))
         self.checkBox_doc_appointments.setText(QCoreApplication.translate("omr_patient_card", u"\u041b\u0438\u0441\u0442 \u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439", None))
@@ -7115,6 +7252,8 @@ class Ui_omr_patient_card(object):
         self.checkBox_doc_full_history.setText(QCoreApplication.translate("omr_patient_card", u"\u0412\u0441\u044f \u0438\u0441\u0442\u043e\u0440\u0438\u044f \u0431\u043e\u043b\u0435\u0437\u043d\u0438 \u043e\u0434\u043d\u0438\u043c \u0444\u0430\u0439\u043b\u043e\u043c", None))
         self.label_creating_docs.setText(QCoreApplication.translate("omr_patient_card", u"\u0421\u043e\u0437\u0434\u0430\u043d\u0438\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u043e\u0432 (.docx)", None))
         self.checkBox_doc_complex.setText(QCoreApplication.translate("omr_patient_card", u"\u0441\u043e\u0432\u043c\u0435\u0441\u0442\u0438\u0442\u044c \u0432 \u043e\u0434\u043d\u043e\u043c \u0444\u0430\u0439\u043b\u0435", None))
+        self.pushButtonOpenFolder.setText(QCoreApplication.translate("omr_patient_card", u"\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043f\u0430\u043f\u043a\u0443 \u0441 \u0444\u0430\u0439\u043b\u0430\u043c\u0438", None))
+        self.label_status_2.setText(QCoreApplication.translate("omr_patient_card", u"<html><head/><body><p align=\"center\">\u0421\u043e\u0437\u0434\u0430\u043d\u043d\u044b\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b</p></body></html>", None))
         self.tabPtCard.setTabText(self.tabPtCard.indexOf(self.Page_creating_docs), QCoreApplication.translate("omr_patient_card", u"\u0421\u043e\u0437\u0434\u0430\u043d\u0438\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u043e\u0432", None))
         self.label_status.setText(QCoreApplication.translate("omr_patient_card", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
         self.pushButtonOpenLogs.setText(QCoreApplication.translate("omr_patient_card", u"...\n"
