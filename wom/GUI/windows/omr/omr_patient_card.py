@@ -114,6 +114,10 @@ class Ui_PatientCard(QtWidgets.QWidget,
             .clicked.connect(self.open_logs)
         self.pushButtonSave\
             .clicked.connect(self.save_history)
+        self.pushButton_save_diary\
+            .clicked.connect(self.save_diary)
+        self.pushButton_close_diary\
+            .clicked.connect(self.close_diary)
 
         self.checkBox_doc_complex\
             .stateChanged.connect(self.complex_doc_change)
@@ -129,8 +133,8 @@ class Ui_PatientCard(QtWidgets.QWidget,
         self.label_type_hospitalisation.setText(self.d['тип_стационара'])
 
     def create_diaries_table(self):
-        # задаем размеры таблицы для дневников
-        self.tableWidget_diaries.setColumnWidth(0, 235)  # ширина колонок
+        self.tableWidget_diaries.verticalHeader().hide()
+        self.tableWidget_diaries.setColumnWidth(0, 300)  # ширина колонок
 
     def create_main_window(self):
         return self.windows['Frameless']()
@@ -175,20 +179,65 @@ class Ui_PatientCard(QtWidgets.QWidget,
         win.show()
         self.main_win.close()
 
-    def open_dairy(self):
+    def show_dairy(self):
         # определяем индекс дневника
         button = self.sender()
         index = self.tableWidget_diaries.indexAt(button.pos()).row()
-        # создаем окно
-        win = self.create_main_window()
-        win.setWidget(
-            self.windows['omr']['diary'](
-                user_info=self.user_info,
-                windows=self.windows,
-                main_win=win,
-                dictionary=self.d,
-                diary_index=index))
-        win.show()
+
+        self.label_diary_index.setText(str(index + 1))
+
+        self.plainTextEdit_diary.setEnabled(True)
+        self.pushButton_save_diary.setEnabled(True)
+        self.pushButton_close_diary.setEnabled(True)
+
+        # если список дневников строка (после чтения json)
+        if isinstance(self.d['дневники_табл'], str):
+            # делаем из строки - список кортежей обратно
+            self.d['дневники_табл'] = ast.literal_eval(self.d['дневники_табл'])
+        # если это список ВАШ
+        if self.d['дневники_табл'][index][1] == 'Динамика ВАШ':
+            self.plainTextEdit_diary.setPlainText(self.d['ВАШ_список'])
+        else:
+            # заполняем текст дневника
+            self.plainTextEdit_diary.setPlainText(
+                self.d[f'дневник_текст_{index + 1}'])
+
+    def save_diary(self):
+        index = int(self.label_diary_index.text())
+
+        if self.d['наличие_боли']:
+            # если обновлен список ВАШ
+            if index == len(self.d['дневники_табл']):
+                self.d['ВАШ_список'] = self.plainTextEdit_diary.toPlainText()
+            else:  # если дневниковая запись
+                self.d[f'дневник_текст_{index}'] =\
+                    self.plainTextEdit_diary.toPlainText()
+
+            diaries_text = ''
+            for j in range(len(self.d['дневники_табл']) - 1):  # !важные "-1"
+                diaries_text += self.d[f'дневник_текст_{j + 1}']
+            diaries_text += self.d['ВАШ_список']
+        else:
+            self.d[f'дневник_текст_{index}'] =\
+                self.plainTextEdit_diary.toPlainText()
+            diaries_text = ''
+            for j in range(len(self.d['дневники_табл'])):
+                diaries_text += self.d[f'дневник_текст_{j + 1}']
+        self.d['дневник_текст_все'] = diaries_text[2:]
+
+        self.close_diary()
+
+        msg = f'"{self.d["дневники_табл"][index - 1][0]} - '\
+              f'{self.d["дневники_табл"][index - 1][1]}" - '\
+              f'успешно пересохранен'
+        self.label_status.setText(msg)
+
+    def close_diary(self):
+        self.plainTextEdit_diary.setPlainText('')
+        self.label_diary_index.setText('')
+        self.plainTextEdit_diary.setEnabled(False)
+        self.pushButton_save_diary.setEnabled(False)
+        self.pushButton_close_diary.setEnabled(False)
 
     def activate_button(self):
         if self.checkBox_not_save.isChecked():
@@ -618,7 +667,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
             'Соматический_статус': self.pushButtonOpenPtObjStatusAdm,
             'Неврологический_статус': self.pushButtonOpenPtNeuralStatusAdm,
             'Основной_диагноз': self.pushButtonOpenPtDiagnosisAdm,
-            'icf': self.pushButtonOpen_icf,
+            'icf_all': self.pushButtonOpen_icf,
             'лечение_таблетки': self.pushButtonOpenPtAppointments,
             'цели_реабилитации': self.pushButtonOpen_mdrk,
             'лабораторные_данные': self.pushButtonOpenPtLaboratoryData,
@@ -627,7 +676,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
             'Соматический_статус_выписка': self.pushButtonOpenPtObjStatusDischarge,  # noqa: E501
             'Неврологический_статус_вып': self.pushButtonOpenPtNeuralStatusDischarge,  # noqa: E501
             'Основной_диагноз_вып': self.pushButtonOpenPtDiagnosisDischarge,
-            'динамика': self.pushButtonOpen_dynamic,
+            'динамика_вып': self.pushButtonOpen_dynamic,
             'вид_выбытия': self.pushButtonOpenPtStatisticData,
             'рекомендации_выписка': self.pushButtonOpenPtDischargeRecommend
         }
@@ -647,6 +696,7 @@ class Ui_PatientCard(QtWidgets.QWidget,
                 self.check_list.append(False)
 
         self.create_check_line()
+        self.check_diaries_create_possible()
         self.check_data_label()
 
     def create_check_line(self):
@@ -687,40 +737,39 @@ class Ui_PatientCard(QtWidgets.QWidget,
             self.label_dis_check.setText(text)
             self.label_dis_check.setStyleSheet(label_style_dis)
 
-    def create_diaries(self):
+    def check_diaries_create_possible(self):
         check_list = ('ФИО_пациента',
                       'Соматический_статус',
                       'Неврологический_статус',
                       'Основной_диагноз',
                       'лечение_таблетки',
-                      's_domen_1',
+                      'icf_all',
                       'Соматический_статус_выписка',
                       'Неврологический_статус_вып',
                       'Основной_диагноз_вып',
-                      's_domen_dis_1')
+                      'динамика_вып',
+                      'цели_реабилитации')
 
         success_checking = True
         for key in check_list:
             if key not in self.d:
                 success_checking = False
 
-        # проверяем наличие необходимых данных в словаре
         if success_checking:
-            if self.radioButton_everyday.isChecked():
-                creating_diaries(self.d, 'everyday')
-            elif self.radioButton_3_times_in_week.isChecked():
-                creating_diaries(self.d, '3timesWeek')
-            elif self.radioButton_twice_in_day.isChecked():
-                creating_diaries(self.d, 'twice_everyday')
-            else:
-                status_message = f'Создание дневников невозможно, '\
-                                 f'не выбран ни один из режимов написания.'
-                self.label_status.setText(status_message)
-            self.update_diaries_table()
+            self.pushButton_create_diaries.setEnabled(True)
+
+    def create_diaries(self):
+        if self.radioButton_everyday.isChecked():
+            creating_diaries(self.d, 'everyday')
+        elif self.radioButton_3_times_in_week.isChecked():
+            creating_diaries(self.d, '3timesWeek')
+        elif self.radioButton_twice_in_day.isChecked():
+            creating_diaries(self.d, 'twice_everyday')
         else:
             status_message = f'Создание дневников невозможно, '\
-                             f'недостаточно данных в словаре.'
+                             f'не выбран ни один из режимов написания.'
             self.label_status.setText(status_message)
+        self.update_diaries_table()
 
         self.check_possible()
 
@@ -739,15 +788,10 @@ class Ui_PatientCard(QtWidgets.QWidget,
             for i in range(rows):
                 button_name = f"{self.d['дневники_табл'][i][0]}"\
                               f" - {self.d['дневники_табл'][i][1]}"
-                # создаем кнопку
                 button = QPushButton(button_name)
                 button.setStyleSheet(button_other)
-                # соединяем кнопку с функцией открытия истории болезни
-                button.clicked.connect(self.open_dairy)
-                # заполняем остальные ячейки данными из БД
+                button.clicked.connect(self.show_dairy)
                 self.tableWidget_diaries.setCellWidget(i, 0, button)
-        else:
-            pass
 
     def check_created_docs(self):
         if 'созданные_документы' in self.d:
