@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1230</width>
-    <height>769</height>
+    <height>755</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -28,16 +28,16 @@ font-family: Roboto;</string>
     <number>0</number>
    </property>
    <property name="leftMargin">
-    <number>2</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
-    <number>2</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>2</number>
+    <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>2</number>
+    <number>0</number>
    </property>
    <item>
     <widget class="QFrame" name="main_frame">

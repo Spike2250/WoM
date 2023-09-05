@@ -25,18 +25,19 @@ class Ui_PatientPassportData(object):
     def setupUi(self, PatientPassportData):
         if not PatientPassportData.objectName():
             PatientPassportData.setObjectName(u"PatientPassportData")
-        PatientPassportData.resize(1266, 769)
+        PatientPassportData.resize(1266, 788)
         PatientPassportData.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_3 = QVBoxLayout(PatientPassportData)
-        self.verticalLayout_3.setSpacing(5)
+        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(5, 5, 5, 5)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.frame_common = QFrame(PatientPassportData)
         self.frame_common.setObjectName(u"frame_common")
         self.horizontalLayout = QHBoxLayout(self.frame_common)
         self.horizontalLayout.setSpacing(15)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.promed_frame = QFrame(self.frame_common)
         self.promed_frame.setObjectName(u"promed_frame")
         self.promed_frame.setMaximumSize(QSize(320, 16777215))
@@ -3855,8 +3856,8 @@ class Ui_PatientPassportData(object):
         self.labelNewPatient.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 16pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
-"border: None;\n"
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
 "")
         self.labelNewPatient.setAlignment(Qt.AlignCenter)
 
@@ -4295,6 +4296,43 @@ class Ui_PatientPassportData(object):
 
         self.verticalLayout_3.addWidget(self.frame_common)
 
+        QWidget.setTabOrder(self.plainTextEdit_promed_data, self.pushButton_add_from_promed)
+        QWidget.setTabOrder(self.pushButton_add_from_promed, self.lineEdit_history_number)
+        QWidget.setTabOrder(self.lineEdit_history_number, self.comboBoxPtRoomNumber)
+        QWidget.setTabOrder(self.comboBoxPtRoomNumber, self.comboBoxPtHoptitalisationType)
+        QWidget.setTabOrder(self.comboBoxPtHoptitalisationType, self.comboBoxPtMKB10_main)
+        QWidget.setTabOrder(self.comboBoxPtMKB10_main, self.comboBoxPtNMU_code)
+        QWidget.setTabOrder(self.comboBoxPtNMU_code, self.comboBox_bedprofile)
+        QWidget.setTabOrder(self.comboBox_bedprofile, self.checkBox_need_psylogo)
+        QWidget.setTabOrder(self.checkBox_need_psylogo, self.pushButton_today)
+        QWidget.setTabOrder(self.pushButton_today, self.pushButton_yesterday)
+        QWidget.setTabOrder(self.pushButton_yesterday, self.dateEditPtAdmissionDay)
+        QWidget.setTabOrder(self.dateEditPtAdmissionDay, self.timeEditPtAdmissionTime)
+        QWidget.setTabOrder(self.timeEditPtAdmissionTime, self.dateEditDischargeDate_plan)
+        QWidget.setTabOrder(self.dateEditDischargeDate_plan, self.comboBox_referring_health_facility)
+        QWidget.setTabOrder(self.comboBox_referring_health_facility, self.plainTextEdit_descriptions)
+        QWidget.setTabOrder(self.plainTextEdit_descriptions, self.plainTextEdit_descriptions_promed)
+        QWidget.setTabOrder(self.plainTextEdit_descriptions_promed, self.lineEditPtSurName)
+        QWidget.setTabOrder(self.lineEditPtSurName, self.lineEditPtName)
+        QWidget.setTabOrder(self.lineEditPtName, self.lineEditPtDadName)
+        QWidget.setTabOrder(self.lineEditPtDadName, self.dateEditPtBirthDay)
+        QWidget.setTabOrder(self.dateEditPtBirthDay, self.lineEditPtAdress)
+        QWidget.setTabOrder(self.lineEditPtAdress, self.comboBoxGender)
+        QWidget.setTabOrder(self.comboBoxGender, self.checkBoxPtLeftHanded)
+        QWidget.setTabOrder(self.checkBoxPtLeftHanded, self.checkBoxPtNeedSickList)
+        QWidget.setTabOrder(self.checkBoxPtNeedSickList, self.checkBoxPtNeedSickList_2)
+        QWidget.setTabOrder(self.checkBoxPtNeedSickList_2, self.lineEditPtPhone)
+        QWidget.setTabOrder(self.lineEditPtPhone, self.lineEditPtEmail)
+        QWidget.setTabOrder(self.lineEditPtEmail, self.lineEditPtPassportNumber)
+        QWidget.setTabOrder(self.lineEditPtPassportNumber, self.lineEditPtOmsNumber)
+        QWidget.setTabOrder(self.lineEditPtOmsNumber, self.lineEditPtSNILS)
+        QWidget.setTabOrder(self.lineEditPtSNILS, self.comboBoxTherapist)
+        QWidget.setTabOrder(self.comboBoxTherapist, self.comboBox_department_head)
+        QWidget.setTabOrder(self.comboBox_department_head, self.pushButtonCreateHistory)
+        QWidget.setTabOrder(self.pushButtonCreateHistory, self.pushButtonAddRelative)
+        QWidget.setTabOrder(self.pushButtonAddRelative, self.pushButtonPrintConsent)
+        QWidget.setTabOrder(self.pushButtonPrintConsent, self.help_page)
+        QWidget.setTabOrder(self.help_page, self.pushButtonBackToMenu)
 
         self.retranslateUi(PatientPassportData)
 

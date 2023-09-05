@@ -6,7 +6,7 @@ from wom.GUI.windows.win_aggregator import windows
 StyleSheet = """
 /* Панель заголовка */
                 TitleBar {
-                    background-color: rgba(50, 98, 115, 190);
+                    background-color: rgb(50, 98, 115);
                     font-family: Roboto;
                     font-size: 11pt;
                     color: white;
@@ -24,7 +24,7 @@ StyleSheet = """
                 #buttonMaximum:hover,
                 #buttonMy:hover {
                     color: white;
-                    background-color: rgba(50, 98, 115, 190);
+                    background-color: rgb(92, 158, 173);
                 }
                 #buttonClose:hover {
                     color: white;
@@ -34,7 +34,7 @@ StyleSheet = """
                 #buttonMinimum:pressed,
                 #buttonMaximum:pressed,
                 #buttonMy:pressed {
-                    background-color: rgba(92, 158, 173, 255);
+                    background-color: rgb(220, 220, 220);
                 }
                 #buttonClose:pressed {
                     color: white;
@@ -47,9 +47,9 @@ def show():
     app = QtWidgets.QApplication(sys.argv)
     app.setStyleSheet(StyleSheet)
     main_win = windows['Frameless']()
-    # main_win.setWindowIcon(QIcon('Qt.ico'))
-    # добавление своего окна в главное (как виджет!)
+    # main_win.setWindowIcon(QIcon('Qt.ico'))\
 
+    # добавление своего окна в главное (как виджет!)
     user_info = {}  # ВРЕМЕННО ДЛЯ ОТКРЫТИЯ БЕЗ АВТОРИЗАЦИИ
     main_win.setWidget(
         windows['omr']['main_menu'](

@@ -1,14 +1,6 @@
 pyside6-uic omr_MainMenu.ui > omr_MainMenu.py
-pyside6-uic omr_AddNewPatient.ui > omr_AddNewPatient.py
 pyside6-uic omr_PatientCard.ui > omr_PatientCard.py
-pyside6-uic omr_PatientPassportData.ui > omr_PatientPassportData.py
-pyside6-uic omr_AddRelative.ui > omr_AddRelative.py
-pyside6-uic omr_MDRK.ui > omr_MDRK.py
-pyside6-uic omr_MDRK_dis.ui > omr_MDRK_dis.py
-pyside6-uic omr_StDischarge_details.ui > omr_StDischarge_details.py
+
+pyside6-uic omr_AddNewPatient.ui > omr_AddNewPatient.py
 pyside6-uic omr_Appointments.ui > omr_Appointments.py
-pyside6-uic omr_Laboratory_data.ui > omr_Laboratory_data.py
-pyside6-uic omr_diary.ui > omr_diary.py
-pyside6-uic omr_error_save_icf.ui > omr_error_save_icf.py
-pyside6-uic omr_save_error_icf.ui > omr_save_error_icf.py
-pyside6-uic omr_add_drug_app.ui > omr_add_drug_app.py
+pyside6-uic omr_MDRK.ui > omr_MDRK.py

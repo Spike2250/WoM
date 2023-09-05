@@ -18,6 +18,21 @@
 font-family: Roboto;</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QFrame" name="main">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -25,16 +40,16 @@ font-family: Roboto;</string>
        <number>5</number>
       </property>
       <property name="leftMargin">
-       <number>5</number>
+       <number>0</number>
       </property>
       <property name="topMargin">
-       <number>5</number>
+       <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>5</number>
+       <number>0</number>
       </property>
       <property name="bottomMargin">
-       <number>5</number>
+       <number>0</number>
       </property>
       <item>
        <widget class="QFrame" name="left">
@@ -473,7 +488,7 @@ background-color: rgba(50, 98, 115, 40);</string>
                <string notr="true">color: White;
 font-weight: bold;
 font-size: 16pt;
-background-color: rgba(92, 158, 173, 200);
+background-color: rgba(112, 38, 50, 150);
 border: none;
 </string>
               </property>
@@ -4054,7 +4069,7 @@ border: 1px solid rgba(50, 98, 115, 255);
                <string notr="true">color: White;
 font-weight: bold;
 font-size: 16pt;
-background-color: rgba(92, 158, 173, 200);
+background-color: rgba(112, 38, 50, 150);
 border: none;
 </string>
               </property>
@@ -5607,7 +5622,7 @@ border: 1px solid rgba(50, 98, 115, 255);
                <string notr="true">color: White;
 font-weight: bold;
 font-size: 16pt;
-background-color: rgba(92, 158, 173, 200);
+background-color: rgba(112, 38, 50, 150);
 border: none;
 </string>
               </property>
@@ -9427,7 +9442,7 @@ color:  rgba(50, 98, 115, 150);
                    <string notr="true">color: White;
 font-weight: bold;
 font-size: 16pt;
-background-color: rgba(92, 158, 173, 200);
+background-color: rgba(112, 38, 50, 150);
 border: none;
 </string>
                   </property>
@@ -10204,7 +10219,7 @@ background-color: rgba(50, 98, 115, 70);
                    <string notr="true">color: White;
 font-weight: bold;
 font-size: 16pt;
-background-color: rgba(92, 158, 173, 200);
+background-color: rgba(112, 38, 50, 150);
 border: none;
 </string>
                   </property>
@@ -10862,16 +10877,17 @@ border: 1px solid rgba(255, 255, 255, 255);
                   <property name="font">
                    <font>
                     <family>Roboto</family>
-                    <pointsize>14</pointsize>
+                    <pointsize>16</pointsize>
                     <bold>true</bold>
                    </font>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">color: White;
 font-weight: bold;
-font-size: 14pt;
-background-color: rgba(92, 158, 173, 200);
-border: none;</string>
+font-size: 16pt;
+background-color: rgba(112, 38, 50, 150);
+border: none;
+</string>
                   </property>
                   <property name="text">
                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Созданные документы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -24198,7 +24214,7 @@ QCheckBox::indicator:disabled {
                    <string notr="true">color: White;
 font-weight: bold;
 font-size: 16pt;
-background-color: rgba(92, 158, 173, 200);
+background-color: rgba(112, 38, 50, 150);
 border: none;
 </string>
                   </property>

@@ -30,13 +30,15 @@ class Ui_omr_patient_card(object):
         omr_patient_card.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_3 = QVBoxLayout(omr_patient_card)
+        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.main = QFrame(omr_patient_card)
         self.main.setObjectName(u"main")
         self.horizontalLayout_2 = QHBoxLayout(self.main)
         self.horizontalLayout_2.setSpacing(5)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(5, 5, 5, 5)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.left = QFrame(self.main)
         self.left.setObjectName(u"left")
         self.verticalLayout_5 = QVBoxLayout(self.left)
@@ -231,7 +233,7 @@ class Ui_omr_patient_card(object):
         self.label_adm_data.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 16pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
+"background-color: rgba(112, 38, 50, 150);\n"
 "border: none;\n"
 "")
         self.label_adm_data.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -918,7 +920,7 @@ class Ui_omr_patient_card(object):
         self.label_instr_data.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 16pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
+"background-color: rgba(112, 38, 50, 150);\n"
 "border: none;\n"
 "")
         self.label_instr_data.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1208,7 +1210,7 @@ class Ui_omr_patient_card(object):
         self.label_dis_data.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 16pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
+"background-color: rgba(112, 38, 50, 150);\n"
 "border: none;\n"
 "")
         self.label_dis_data.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1991,7 +1993,7 @@ class Ui_omr_patient_card(object):
         self.label_events.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 16pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
+"background-color: rgba(112, 38, 50, 150);\n"
 "border: none;\n"
 "")
         self.label_events.setAlignment(Qt.AlignCenter)
@@ -2255,7 +2257,7 @@ class Ui_omr_patient_card(object):
         self.label_diaries.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 16pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
+"background-color: rgba(112, 38, 50, 150);\n"
 "border: none;\n"
 "")
         self.label_diaries.setAlignment(Qt.AlignCenter)
@@ -2413,14 +2415,15 @@ class Ui_omr_patient_card(object):
         self.label_status_2.setMaximumSize(QSize(16777215, 30))
         font7 = QFont()
         font7.setFamilies([u"Roboto"])
-        font7.setPointSize(14)
+        font7.setPointSize(16)
         font7.setBold(True)
         self.label_status_2.setFont(font7)
         self.label_status_2.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
-"font-size: 14pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
-"border: none;")
+"font-size: 16pt;\n"
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
 
         self.gridLayout_5.addWidget(self.label_status_2, 0, 0, 1, 3)
 
@@ -6127,7 +6130,7 @@ class Ui_omr_patient_card(object):
         self.label_creating_docs.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 16pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
+"background-color: rgba(112, 38, 50, 150);\n"
 "border: none;\n"
 "")
         self.label_creating_docs.setAlignment(Qt.AlignCenter)

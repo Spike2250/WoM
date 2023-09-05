@@ -6,6 +6,7 @@ from PySide6.QtGui import QFont, QEnterEvent, QPainter, QColor, QPen
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                QSpacerItem, QSizePolicy, QPushButton)
 
+from wom.styles_qss.main_styles import title_label
 
 # Created on 2018年4月30日
 # author: Irony
@@ -46,10 +47,11 @@ class TitleBar(QWidget):
         # Установите цвет фона по умолчанию,
         #       иначе он будет прозрачным
         # из-за влияния родительского окна
+
         self.setAutoFillBackground(True)
         palette = self.palette()
         palette.setColor(palette.ColorRole.Window,
-                         QColor(240, 240, 240))
+                         QColor(240, 240, 240, 255))
         self.setPalette(palette)
 
         # макет
@@ -64,6 +66,7 @@ class TitleBar(QWidget):
         # название окна
         self.titleLabel = QLabel(self)
         self.titleLabel.setMargin(2)
+        self.titleLabel.setStyleSheet(title_label)
         layout.addWidget(self.titleLabel)
 
         # Средний телескопический бар
@@ -115,7 +118,7 @@ class TitleBar(QWidget):
             self.buttonMaximum.setText('1')
             self.windowNormaled.emit()
 
-    def setHeight(self, height=38):
+    def setHeight(self, height=30):
         """ Установка высоты строки заголовка """
         self.setMinimumHeight(height)
         self.setMaximumHeight(height)
@@ -182,7 +185,7 @@ class FramelessWindow(QWidget):
         self.Direction = None
 
         # Фон прозрачный
-        # self.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.setAttribute(Qt.WA_TranslucentBackground, True)
 
         # Нет границы
         self.setWindowFlag(Qt.FramelessWindowHint)
@@ -220,9 +223,11 @@ class FramelessWindow(QWidget):
         if hasattr(self, '_widget'):
             return
         self._widget = widget
+
         # Установите цвет фона по умолчанию,
         #       иначе он будет прозрачным
         # из-за влияния родительского окна
+
         self._widget.setAutoFillBackground(True)
         palette = self._widget.palette()
         palette.setColor(palette.ColorRole.Window,

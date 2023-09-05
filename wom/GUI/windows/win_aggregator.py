@@ -28,6 +28,7 @@ from wom.GUI.windows\
                     diagnosis,
                     dis_details,
                     icf,
+                    lab_data,
                     )
 from wom.GUI.windows.test import MainWindow
 
@@ -65,5 +66,6 @@ windows = {
         'diagnosis': diagnosis.Ui_Diagnosis,
         'dis_details': dis_details.Ui_Discharge_details,
         'icf': icf.Ui_icf,
+        'lab_data': lab_data.Ui_Laboratory_data,
     }
 }

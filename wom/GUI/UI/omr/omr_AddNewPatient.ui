@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1266</width>
-    <height>769</height>
+    <height>788</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,25 +19,37 @@ font-family: Roboto;</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
-    <number>5</number>
+    <number>0</number>
    </property>
    <property name="leftMargin">
-    <number>5</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
-    <number>5</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>5</number>
+    <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>5</number>
+    <number>0</number>
    </property>
    <item>
     <widget class="QFrame" name="frame_common">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
        <number>15</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
       </property>
       <item>
        <widget class="QFrame" name="promed_frame">
@@ -23507,8 +23519,8 @@ font-size: 11pt;
                <string notr="true">color: White;
 font-weight: bold;
 font-size: 16pt;
-background-color: rgba(92, 158, 173, 200);
-border: None;
+background-color: rgba(112, 38, 50, 150);
+border: none;
 </string>
               </property>
               <property name="text">
@@ -25630,6 +25642,46 @@ border: 1px solid rgba(50, 98, 115, 255);
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>plainTextEdit_promed_data</tabstop>
+  <tabstop>pushButton_add_from_promed</tabstop>
+  <tabstop>lineEdit_history_number</tabstop>
+  <tabstop>comboBoxPtRoomNumber</tabstop>
+  <tabstop>comboBoxPtHoptitalisationType</tabstop>
+  <tabstop>comboBoxPtMKB10_main</tabstop>
+  <tabstop>comboBoxPtNMU_code</tabstop>
+  <tabstop>comboBox_bedprofile</tabstop>
+  <tabstop>checkBox_need_psylogo</tabstop>
+  <tabstop>pushButton_today</tabstop>
+  <tabstop>pushButton_yesterday</tabstop>
+  <tabstop>dateEditPtAdmissionDay</tabstop>
+  <tabstop>timeEditPtAdmissionTime</tabstop>
+  <tabstop>dateEditDischargeDate_plan</tabstop>
+  <tabstop>comboBox_referring_health_facility</tabstop>
+  <tabstop>plainTextEdit_descriptions</tabstop>
+  <tabstop>plainTextEdit_descriptions_promed</tabstop>
+  <tabstop>lineEditPtSurName</tabstop>
+  <tabstop>lineEditPtName</tabstop>
+  <tabstop>lineEditPtDadName</tabstop>
+  <tabstop>dateEditPtBirthDay</tabstop>
+  <tabstop>lineEditPtAdress</tabstop>
+  <tabstop>comboBoxGender</tabstop>
+  <tabstop>checkBoxPtLeftHanded</tabstop>
+  <tabstop>checkBoxPtNeedSickList</tabstop>
+  <tabstop>checkBoxPtNeedSickList_2</tabstop>
+  <tabstop>lineEditPtPhone</tabstop>
+  <tabstop>lineEditPtEmail</tabstop>
+  <tabstop>lineEditPtPassportNumber</tabstop>
+  <tabstop>lineEditPtOmsNumber</tabstop>
+  <tabstop>lineEditPtSNILS</tabstop>
+  <tabstop>comboBoxTherapist</tabstop>
+  <tabstop>comboBox_department_head</tabstop>
+  <tabstop>pushButtonCreateHistory</tabstop>
+  <tabstop>pushButtonAddRelative</tabstop>
+  <tabstop>pushButtonPrintConsent</tabstop>
+  <tabstop>help_page</tabstop>
+  <tabstop>pushButtonBackToMenu</tabstop>
+ </tabstops>
  <resources>
   <include location="../res_main.qrc"/>
  </resources>

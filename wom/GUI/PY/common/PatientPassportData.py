@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'omr_PatientPassportData.ui'
+## Form generated from reading UI file 'PatientPassportData.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.2
 ##
@@ -26,15 +26,20 @@ class Ui_PatientPassportData(object):
     def setupUi(self, PatientPassportData):
         if not PatientPassportData.objectName():
             PatientPassportData.setObjectName(u"PatientPassportData")
-        PatientPassportData.resize(1142, 436)
+        PatientPassportData.resize(1107, 406)
         PatientPassportData.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout = QVBoxLayout(PatientPassportData)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.gridLayout_2 = QGridLayout()
-        self.gridLayout_2.setSpacing(5)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.main = QFrame(PatientPassportData)
+        self.main.setObjectName(u"main")
+        self.gridLayout_2 = QGridLayout(self.main)
+        self.gridLayout_2.setSpacing(0)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.passport_data = QFrame(PatientPassportData)
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.passport_data = QFrame(self.main)
         self.passport_data.setObjectName(u"passport_data")
         self.passport_data.setMinimumSize(QSize(950, 0))
         self.passport_data.setStyleSheet(u"background-color: rgba(50, 98, 115, 40);\n"
@@ -1661,7 +1666,7 @@ class Ui_PatientPassportData(object):
 
         self.gridLayout_2.addWidget(self.passport_data, 1, 1, 1, 1)
 
-        self.groupBox_wom = QGroupBox(PatientPassportData)
+        self.groupBox_wom = QGroupBox(self.main)
         self.groupBox_wom.setObjectName(u"groupBox_wom")
         self.groupBox_wom.setStyleSheet(u"font-size: 9pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -2143,7 +2148,7 @@ class Ui_PatientPassportData(object):
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setSpacing(2)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.labelPassportData_2 = QLabel(PatientPassportData)
+        self.labelPassportData_2 = QLabel(self.main)
         self.labelPassportData_2.setObjectName(u"labelPassportData_2")
         self.labelPassportData_2.setMaximumSize(QSize(50, 50))
         palette29 = QPalette()
@@ -2220,13 +2225,15 @@ class Ui_PatientPassportData(object):
 
         self.horizontalLayout.addWidget(self.labelPassportData_2)
 
-        self.labelPassportData = QLabel(PatientPassportData)
+        self.labelPassportData = QLabel(self.main)
         self.labelPassportData.setObjectName(u"labelPassportData")
         self.labelPassportData.setMinimumSize(QSize(650, 0))
         self.labelPassportData.setMaximumSize(QSize(16777215, 50))
         palette30 = QPalette()
         palette30.setBrush(QPalette.Active, QPalette.WindowText, brush2)
-        palette30.setBrush(QPalette.Active, QPalette.Button, brush33)
+        brush34 = QBrush(QColor(112, 38, 50, 150))
+        brush34.setStyle(Qt.SolidPattern)
+        palette30.setBrush(QPalette.Active, QPalette.Button, brush34)
         palette30.setBrush(QPalette.Active, QPalette.Light, brush2)
         palette30.setBrush(QPalette.Active, QPalette.Midlight, brush3)
         palette30.setBrush(QPalette.Active, QPalette.Dark, brush4)
@@ -2234,8 +2241,8 @@ class Ui_PatientPassportData(object):
         palette30.setBrush(QPalette.Active, QPalette.Text, brush2)
         palette30.setBrush(QPalette.Active, QPalette.BrightText, brush2)
         palette30.setBrush(QPalette.Active, QPalette.ButtonText, brush2)
-        palette30.setBrush(QPalette.Active, QPalette.Base, brush33)
-        palette30.setBrush(QPalette.Active, QPalette.Window, brush33)
+        palette30.setBrush(QPalette.Active, QPalette.Base, brush34)
+        palette30.setBrush(QPalette.Active, QPalette.Window, brush34)
         palette30.setBrush(QPalette.Active, QPalette.Shadow, brush10)
         palette30.setBrush(QPalette.Active, QPalette.AlternateBase, brush3)
         palette30.setBrush(QPalette.Active, QPalette.ToolTipBase, brush11)
@@ -2244,7 +2251,7 @@ class Ui_PatientPassportData(object):
         palette30.setBrush(QPalette.Active, QPalette.PlaceholderText, brush28)
 #endif
         palette30.setBrush(QPalette.Inactive, QPalette.WindowText, brush2)
-        palette30.setBrush(QPalette.Inactive, QPalette.Button, brush33)
+        palette30.setBrush(QPalette.Inactive, QPalette.Button, brush34)
         palette30.setBrush(QPalette.Inactive, QPalette.Light, brush2)
         palette30.setBrush(QPalette.Inactive, QPalette.Midlight, brush3)
         palette30.setBrush(QPalette.Inactive, QPalette.Dark, brush4)
@@ -2252,8 +2259,8 @@ class Ui_PatientPassportData(object):
         palette30.setBrush(QPalette.Inactive, QPalette.Text, brush2)
         palette30.setBrush(QPalette.Inactive, QPalette.BrightText, brush2)
         palette30.setBrush(QPalette.Inactive, QPalette.ButtonText, brush2)
-        palette30.setBrush(QPalette.Inactive, QPalette.Base, brush33)
-        palette30.setBrush(QPalette.Inactive, QPalette.Window, brush33)
+        palette30.setBrush(QPalette.Inactive, QPalette.Base, brush34)
+        palette30.setBrush(QPalette.Inactive, QPalette.Window, brush34)
         palette30.setBrush(QPalette.Inactive, QPalette.Shadow, brush10)
         palette30.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush3)
         palette30.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush11)
@@ -2262,7 +2269,7 @@ class Ui_PatientPassportData(object):
         palette30.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush28)
 #endif
         palette30.setBrush(QPalette.Disabled, QPalette.WindowText, brush2)
-        palette30.setBrush(QPalette.Disabled, QPalette.Button, brush33)
+        palette30.setBrush(QPalette.Disabled, QPalette.Button, brush34)
         palette30.setBrush(QPalette.Disabled, QPalette.Light, brush2)
         palette30.setBrush(QPalette.Disabled, QPalette.Midlight, brush3)
         palette30.setBrush(QPalette.Disabled, QPalette.Dark, brush4)
@@ -2270,8 +2277,8 @@ class Ui_PatientPassportData(object):
         palette30.setBrush(QPalette.Disabled, QPalette.Text, brush2)
         palette30.setBrush(QPalette.Disabled, QPalette.BrightText, brush2)
         palette30.setBrush(QPalette.Disabled, QPalette.ButtonText, brush2)
-        palette30.setBrush(QPalette.Disabled, QPalette.Base, brush33)
-        palette30.setBrush(QPalette.Disabled, QPalette.Window, brush33)
+        palette30.setBrush(QPalette.Disabled, QPalette.Base, brush34)
+        palette30.setBrush(QPalette.Disabled, QPalette.Window, brush34)
         palette30.setBrush(QPalette.Disabled, QPalette.Shadow, brush10)
         palette30.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush7)
         palette30.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush11)
@@ -2280,12 +2287,17 @@ class Ui_PatientPassportData(object):
         palette30.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush28)
 #endif
         self.labelPassportData.setPalette(palette30)
-        self.labelPassportData.setFont(font3)
+        font4 = QFont()
+        font4.setFamilies([u"Roboto"])
+        font4.setPointSize(14)
+        font4.setBold(True)
+        self.labelPassportData.setFont(font4)
         self.labelPassportData.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
-"font-size: 16pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
-"border: none;")
+"font-size: 14pt;\n"
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.labelPassportData.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout.addWidget(self.labelPassportData)
@@ -2294,8 +2306,25 @@ class Ui_PatientPassportData(object):
         self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 3)
 
 
-        self.verticalLayout.addLayout(self.gridLayout_2)
+        self.verticalLayout.addWidget(self.main)
 
+        QWidget.setTabOrder(self.surname, self.name)
+        QWidget.setTabOrder(self.name, self.dadname)
+        QWidget.setTabOrder(self.dadname, self.dateEdit_birthday)
+        QWidget.setTabOrder(self.dateEdit_birthday, self.adress)
+        QWidget.setTabOrder(self.adress, self.comboBox_gender)
+        QWidget.setTabOrder(self.comboBox_gender, self.checkBoxPtLeftHanded)
+        QWidget.setTabOrder(self.checkBoxPtLeftHanded, self.checkBox_signature_cant)
+        QWidget.setTabOrder(self.checkBox_signature_cant, self.phone)
+        QWidget.setTabOrder(self.phone, self.email)
+        QWidget.setTabOrder(self.email, self.passport)
+        QWidget.setTabOrder(self.passport, self.polis_oms)
+        QWidget.setTabOrder(self.polis_oms, self.snils)
+        QWidget.setTabOrder(self.snils, self.pushButtonPrintConsent)
+        QWidget.setTabOrder(self.pushButtonPrintConsent, self.pushButtonAddRelative)
+        QWidget.setTabOrder(self.pushButtonAddRelative, self.pushButtonSaveExit)
+        QWidget.setTabOrder(self.pushButtonSaveExit, self.pushButtonNotSaveExit)
+        QWidget.setTabOrder(self.pushButtonNotSaveExit, self.pushButtonHelp)
 
         self.retranslateUi(PatientPassportData)
 

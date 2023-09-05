@@ -1,3 +1,7 @@
+title_label = "color: White;"\
+              "font-size: 12pt;"\
+              "font-family: Roboto;"
+
 
 button_del = "QPushButton {\
                   background-color: rgba(112, 38, 50, 190);\

@@ -25,7 +25,7 @@ class Ui_Load_Arch(object):
         if not Load_Arch.objectName():
             Load_Arch.setObjectName(u"Load_Arch")
         Load_Arch.setEnabled(True)
-        Load_Arch.resize(695, 563)
+        Load_Arch.resize(736, 564)
         Load_Arch.setMinimumSize(QSize(0, 0))
         Load_Arch.setMaximumSize(QSize(10000, 10000))
         font = QFont()
@@ -34,13 +34,15 @@ class Ui_Load_Arch(object):
         Load_Arch.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout = QVBoxLayout(Load_Arch)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.frame = QFrame(Load_Arch)
-        self.frame.setObjectName(u"frame")
-        self.frame.setStyleSheet(u"background-color: rgba(50, 98, 115, 40);\n"
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.main = QFrame(Load_Arch)
+        self.main.setObjectName(u"main")
+        self.main.setStyleSheet(u"background-color: rgba(50, 98, 115, 40);\n"
 "font-size: 11pt;\n"
 "border: 1px solid rgba(50, 98, 115, 255);")
-        self.gridLayout = QGridLayout(self.frame)
+        self.gridLayout = QGridLayout(self.main)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setHorizontalSpacing(5)
         self.gridLayout.setVerticalSpacing(2)
@@ -49,7 +51,7 @@ class Ui_Load_Arch(object):
 
         self.gridLayout.addItem(self.verticalSpacer_2, 5, 2, 1, 2)
 
-        self.label_status = QLabel(self.frame)
+        self.label_status = QLabel(self.main)
         self.label_status.setObjectName(u"label_status")
         self.label_status.setMinimumSize(QSize(0, 50))
         self.label_status.setMaximumSize(QSize(16777215, 16777215))
@@ -68,7 +70,7 @@ class Ui_Load_Arch(object):
 
         self.gridLayout.addWidget(self.label_status, 6, 0, 1, 4)
 
-        self.pushButton_yes = QPushButton(self.frame)
+        self.pushButton_yes = QPushButton(self.main)
         self.pushButton_yes.setObjectName(u"pushButton_yes")
         self.pushButton_yes.setMinimumSize(QSize(0, 70))
         font2 = QFont()
@@ -101,7 +103,7 @@ class Ui_Load_Arch(object):
 
         self.gridLayout.addWidget(self.pushButton_yes, 3, 3, 2, 1)
 
-        self.checkBox = QCheckBox(self.frame)
+        self.checkBox = QCheckBox(self.main)
         self.checkBox.setObjectName(u"checkBox")
         font3 = QFont()
         font3.setFamilies([u"Roboto"])
@@ -147,7 +149,7 @@ class Ui_Load_Arch(object):
 
         self.gridLayout.addWidget(self.checkBox, 3, 2, 1, 1)
 
-        self.label = QLabel(self.frame)
+        self.label = QLabel(self.main)
         self.label.setObjectName(u"label")
         font4 = QFont()
         font4.setFamilies([u"Roboto"])
@@ -161,7 +163,7 @@ class Ui_Load_Arch(object):
 
         self.gridLayout.addWidget(self.label, 0, 0, 1, 4)
 
-        self.copy_frame = QFrame(self.frame)
+        self.copy_frame = QFrame(self.main)
         self.copy_frame.setObjectName(u"copy_frame")
         self.copy_frame.setStyleSheet(u"border: none;\n"
 "background-color: transparent;")
@@ -271,7 +273,7 @@ class Ui_Load_Arch(object):
 
         self.gridLayout.addWidget(self.copy_frame, 2, 0, 4, 1)
 
-        self.tableWidget = QTableWidget(self.frame)
+        self.tableWidget = QTableWidget(self.main)
         if (self.tableWidget.columnCount() < 5):
             self.tableWidget.setColumnCount(5)
         __qtablewidgetitem = QTableWidgetItem()
@@ -318,7 +320,7 @@ class Ui_Load_Arch(object):
 
         self.gridLayout.addWidget(self.tableWidget, 1, 0, 1, 4)
 
-        self.label_2 = QLabel(self.frame)
+        self.label_2 = QLabel(self.main)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setStyleSheet(u"color: #326273;\n"
 "font-weight: bold;\n"
@@ -327,7 +329,7 @@ class Ui_Load_Arch(object):
 
         self.gridLayout.addWidget(self.label_2, 2, 2, 1, 2)
 
-        self.pushButton_no = QPushButton(self.frame)
+        self.pushButton_no = QPushButton(self.main)
         self.pushButton_no.setObjectName(u"pushButton_no")
         self.pushButton_no.setMinimumSize(QSize(0, 30))
         self.pushButton_no.setFont(font2)
@@ -362,7 +364,7 @@ class Ui_Load_Arch(object):
         self.gridLayout.addItem(self.horizontalSpacer, 3, 1, 1, 1)
 
 
-        self.verticalLayout.addWidget(self.frame)
+        self.verticalLayout.addWidget(self.main)
 
 
         self.retranslateUi(Load_Arch)

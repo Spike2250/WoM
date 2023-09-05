@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>695</width>
-    <height>563</height>
+    <width>736</width>
+    <height>564</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -38,8 +38,23 @@
 font-family: Roboto;</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
-    <widget class="QFrame" name="frame">
+    <widget class="QFrame" name="main">
      <property name="styleSheet">
       <string notr="true">background-color: rgba(50, 98, 115, 40);
 font-size: 11pt;

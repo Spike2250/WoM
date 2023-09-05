@@ -26,18 +26,23 @@ class Ui_Dis_details(object):
     def setupUi(self, Dis_details):
         if not Dis_details.objectName():
             Dis_details.setObjectName(u"Dis_details")
-        Dis_details.resize(994, 648)
+        Dis_details.resize(1013, 628)
         Dis_details.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout = QVBoxLayout(Dis_details)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.horizontalLayout_2 = QHBoxLayout()
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.main = QFrame(Dis_details)
+        self.main.setObjectName(u"main")
+        self.horizontalLayout_2 = QHBoxLayout(self.main)
         self.horizontalLayout_2.setSpacing(5)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_3 = QGridLayout()
         self.gridLayout_3.setSpacing(5)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.discharge = QFrame(Dis_details)
+        self.discharge = QFrame(self.main)
         self.discharge.setObjectName(u"discharge")
         self.discharge.setStyleSheet(u"background-color: transparent;")
         self.horizontalLayout = QHBoxLayout(self.discharge)
@@ -231,7 +236,7 @@ class Ui_Dis_details(object):
 
         self.gridLayout_3.addWidget(self.discharge, 2, 1, 1, 1)
 
-        self.frame_discharge_details = QFrame(Dis_details)
+        self.frame_discharge_details = QFrame(self.main)
         self.frame_discharge_details.setObjectName(u"frame_discharge_details")
         self.frame_discharge_details.setMinimumSize(QSize(800, 0))
         self.frame_discharge_details.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
@@ -1965,11 +1970,12 @@ class Ui_Dis_details(object):
 
         self.label = QLabel(self.frame_discharge_details)
         self.label.setObjectName(u"label")
-        self.label.setStyleSheet(u"color: #326273;\n"
+        self.label.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 14pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout.addWidget(self.label, 0, 0, 1, 5)
@@ -2057,7 +2063,7 @@ class Ui_Dis_details(object):
 
         self.gridLayout_3.addItem(self.horizontalSpacer_4, 2, 2, 1, 1)
 
-        self.pt_info_block = QFrame(Dis_details)
+        self.pt_info_block = QFrame(self.main)
         self.pt_info_block.setObjectName(u"pt_info_block")
         self.pt_info_block.setMaximumSize(QSize(16777215, 50))
         self.pt_info_block.setStyleSheet(u"background-color: transparent;")
@@ -2106,7 +2112,7 @@ class Ui_Dis_details(object):
 
         self.horizontalLayout_2.addLayout(self.gridLayout_3)
 
-        self.groupBox_wom = QGroupBox(Dis_details)
+        self.groupBox_wom = QGroupBox(self.main)
         self.groupBox_wom.setObjectName(u"groupBox_wom")
         self.groupBox_wom.setStyleSheet(u"font-size: 9pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -2400,8 +2406,28 @@ class Ui_Dis_details(object):
         self.horizontalLayout_2.addWidget(self.groupBox_wom)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_2)
+        self.verticalLayout.addWidget(self.main)
 
+        QWidget.setTabOrder(self.lineEdit_history_number, self.lineEdit_room_number)
+        QWidget.setTabOrder(self.lineEdit_room_number, self.comboBoxPtHoptitalisationType)
+        QWidget.setTabOrder(self.comboBoxPtHoptitalisationType, self.comboBox_referring_health_facility)
+        QWidget.setTabOrder(self.comboBox_referring_health_facility, self.dateEditPtAdmissionDay)
+        QWidget.setTabOrder(self.dateEditPtAdmissionDay, self.timeEditPtAdmissionTime)
+        QWidget.setTabOrder(self.timeEditPtAdmissionTime, self.dateEditDischargeDate_plan)
+        QWidget.setTabOrder(self.dateEditDischargeDate_plan, self.dateEditDischargeDate)
+        QWidget.setTabOrder(self.dateEditDischargeDate, self.timeEditDischargeTime)
+        QWidget.setTabOrder(self.timeEditDischargeTime, self.comboBoxPtMKB10_main)
+        QWidget.setTabOrder(self.comboBoxPtMKB10_main, self.comboBoxPtNMU_code)
+        QWidget.setTabOrder(self.comboBoxPtNMU_code, self.comboBoxDischargeData_1)
+        QWidget.setTabOrder(self.comboBoxDischargeData_1, self.comboBoxDischargeData_2)
+        QWidget.setTabOrder(self.comboBoxDischargeData_2, self.comboBoxDischargeData_3)
+        QWidget.setTabOrder(self.comboBoxDischargeData_3, self.comboBox_department_head)
+        QWidget.setTabOrder(self.comboBox_department_head, self.comboBoxTherapist)
+        QWidget.setTabOrder(self.comboBoxTherapist, self.pushButtonSaveExit)
+        QWidget.setTabOrder(self.pushButtonSaveExit, self.pushButtonNotSaveExit)
+        QWidget.setTabOrder(self.pushButtonNotSaveExit, self.checkBox_dis)
+        QWidget.setTabOrder(self.checkBox_dis, self.pushButtonDischarge_and_close_history)
+        QWidget.setTabOrder(self.pushButtonDischarge_and_close_history, self.pushButtonHelp)
 
         self.retranslateUi(Dis_details)
 

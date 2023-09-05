@@ -27,17 +27,23 @@ class Ui_StObj(object):
     def setupUi(self, StObj):
         if not StObj.objectName():
             StObj.setObjectName(u"StObj")
-        StObj.resize(1196, 831)
+        StObj.resize(1119, 808)
         StObj.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout = QVBoxLayout(StObj)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.horizontalLayout_4 = QHBoxLayout()
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.main = QFrame(StObj)
+        self.main.setObjectName(u"main")
+        self.horizontalLayout_4 = QHBoxLayout(self.main)
+        self.horizontalLayout_4.setSpacing(5)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_4 = QVBoxLayout()
-        self.verticalLayout_4.setSpacing(2)
+        self.verticalLayout_4.setSpacing(5)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.pt_info_block = QFrame(StObj)
+        self.pt_info_block = QFrame(self.main)
         self.pt_info_block.setObjectName(u"pt_info_block")
         self.pt_info_block.setStyleSheet(u"background-color: transparent;")
         self.pt_info_block.setFrameShape(QFrame.NoFrame)
@@ -83,7 +89,7 @@ class Ui_StObj(object):
 
         self.verticalLayout_4.addWidget(self.pt_info_block)
 
-        self.tabWidget = QTabWidget(StObj)
+        self.tabWidget = QTabWidget(self.main)
         self.tabWidget.setObjectName(u"tabWidget")
         font2 = QFont()
         font2.setFamilies([u"Roboto"])
@@ -147,11 +153,12 @@ class Ui_StObj(object):
         self.label_5 = QLabel(self.jaloby)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setMaximumSize(QSize(16777215, 25))
-        self.label_5.setStyleSheet(u"color: #326273;\n"
+        self.label_5.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_5.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.verticalLayout_3.addWidget(self.label_5)
@@ -796,11 +803,12 @@ class Ui_StObj(object):
         self.label_7 = QLabel(self.metric_data)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setMaximumSize(QSize(16777215, 25))
-        self.label_7.setStyleSheet(u"color: #326273;\n"
+        self.label_7.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_7.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_11.addWidget(self.label_7, 0, 0, 1, 8)
@@ -1365,11 +1373,12 @@ class Ui_StObj(object):
         self.label_11 = QLabel(self.diseases_block)
         self.label_11.setObjectName(u"label_11")
         self.label_11.setMaximumSize(QSize(16777215, 25))
-        self.label_11.setStyleSheet(u"color: #326273;\n"
+        self.label_11.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_11.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_9.addWidget(self.label_11, 0, 0, 1, 2)
@@ -1924,11 +1933,12 @@ class Ui_StObj(object):
         self.label_8 = QLabel(self.drugs_block)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setMaximumSize(QSize(16777215, 25))
-        self.label_8.setStyleSheet(u"color: #326273;\n"
+        self.label_8.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_8.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_5.addWidget(self.label_8, 0, 0, 1, 4)
@@ -2331,11 +2341,12 @@ class Ui_StObj(object):
 
         self.label_10 = QLabel(self.epid_block)
         self.label_10.setObjectName(u"label_10")
-        self.label_10.setStyleSheet(u"color: #326273;\n"
+        self.label_10.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_10.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_8.addWidget(self.label_10, 0, 0, 1, 3)
@@ -2415,11 +2426,12 @@ class Ui_StObj(object):
         self.label_6 = QLabel(self.anamnesis_morbi)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setMaximumSize(QSize(16777215, 25))
-        self.label_6.setStyleSheet(u"color: #326273;\n"
+        self.label_6.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_6.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_5.addWidget(self.label_6)
@@ -2495,11 +2507,12 @@ class Ui_StObj(object):
         self.gridLayout_4.setVerticalSpacing(1)
         self.label_9 = QLabel(self.allergo_block)
         self.label_9.setObjectName(u"label_9")
-        self.label_9.setStyleSheet(u"color: #326273;\n"
+        self.label_9.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_9.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_4.addWidget(self.label_9, 0, 0, 1, 3)
@@ -2786,11 +2799,12 @@ class Ui_StObj(object):
         self.label_13 = QLabel(self.work_block)
         self.label_13.setObjectName(u"label_13")
         self.label_13.setMaximumSize(QSize(16777215, 25))
-        self.label_13.setStyleSheet(u"color: #326273;\n"
+        self.label_13.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_13.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_6.addWidget(self.label_13, 0, 1, 1, 4)
@@ -5414,11 +5428,12 @@ class Ui_StObj(object):
 
         self.label_12 = QLabel(self.frame)
         self.label_12.setObjectName(u"label_12")
-        self.label_12.setStyleSheet(u"color: #326273;\n"
+        self.label_12.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 14pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_12.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_2.addWidget(self.label_12, 0, 0, 1, 3)
@@ -7234,7 +7249,7 @@ class Ui_StObj(object):
 
         self.horizontalLayout_4.addLayout(self.verticalLayout_4)
 
-        self.groupBox_wom = QGroupBox(StObj)
+        self.groupBox_wom = QGroupBox(self.main)
         self.groupBox_wom.setObjectName(u"groupBox_wom")
         self.groupBox_wom.setStyleSheet(u"font-size: 9pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -7520,8 +7535,97 @@ class Ui_StObj(object):
         self.horizontalLayout_4.addWidget(self.groupBox_wom)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_4)
+        self.verticalLayout.addWidget(self.main)
 
+        QWidget.setTabOrder(self.comboBox_jaloby_templates, self.pushButton_push_temp_jaloby)
+        QWidget.setTabOrder(self.pushButton_push_temp_jaloby, self.lineEdit_new_template_name_jaloby)
+        QWidget.setTabOrder(self.lineEdit_new_template_name_jaloby, self.pushButtonAddNewTemplate_jaloby)
+        QWidget.setTabOrder(self.pushButtonAddNewTemplate_jaloby, self.plainTextEditPtComplaints)
+        QWidget.setTabOrder(self.plainTextEditPtComplaints, self.lineEditPtWeight)
+        QWidget.setTabOrder(self.lineEditPtWeight, self.lineEditPtGrowth)
+        QWidget.setTabOrder(self.lineEditPtGrowth, self.lineEditPtBloodPreasureSist)
+        QWidget.setTabOrder(self.lineEditPtBloodPreasureSist, self.lineEditPtBloodPreasureDiast)
+        QWidget.setTabOrder(self.lineEditPtBloodPreasureDiast, self.lineEditPtBreathingSpeed)
+        QWidget.setTabOrder(self.lineEditPtBreathingSpeed, self.lineEditSaturation)
+        QWidget.setTabOrder(self.lineEditSaturation, self.lineEditPtTemperature)
+        QWidget.setTabOrder(self.lineEditPtTemperature, self.lineEditPtPulse)
+        QWidget.setTabOrder(self.lineEditPtPulse, self.pushButton_random_values)
+        QWidget.setTabOrder(self.pushButton_random_values, self.pushButton_add_to_diag)
+        QWidget.setTabOrder(self.pushButton_add_to_diag, self.comboBoxPtDrugs)
+        QWidget.setTabOrder(self.comboBoxPtDrugs, self.plainTextEditPtDrugs)
+        QWidget.setTabOrder(self.plainTextEditPtDrugs, self.checkBox_GB)
+        QWidget.setTabOrder(self.checkBox_GB, self.checkBox_Hyperthyreosis)
+        QWidget.setTabOrder(self.checkBox_Hyperthyreosis, self.checkBox_SD)
+        QWidget.setTabOrder(self.checkBox_SD, self.checkBox_NRS)
+        QWidget.setTabOrder(self.checkBox_NRS, self.checkBox_IBS)
+        QWidget.setTabOrder(self.checkBox_IBS, self.checkBox_Stroke)
+        QWidget.setTabOrder(self.checkBox_Stroke, self.checkBox_B20)
+        QWidget.setTabOrder(self.checkBox_B20, self.checkBox_Fat)
+        QWidget.setTabOrder(self.checkBox_Fat, self.checkBox_other)
+        QWidget.setTabOrder(self.checkBox_other, self.checkBox_Astma)
+        QWidget.setTabOrder(self.checkBox_Astma, self.checkBox_Gastro)
+        QWidget.setTabOrder(self.checkBox_Gastro, self.checkBox_HCV)
+        QWidget.setTabOrder(self.checkBox_HCV, self.plainTextEdit_other_chronic_diseases)
+        QWidget.setTabOrder(self.plainTextEdit_other_chronic_diseases, self.checkBox_Hypothyreosis)
+        QWidget.setTabOrder(self.checkBox_Hypothyreosis, self.checkBox_Atherosclerosis_BCA)
+        QWidget.setTabOrder(self.checkBox_Atherosclerosis_BCA, self.checkBox_Atherosclerosis_legs)
+        QWidget.setTabOrder(self.checkBox_Atherosclerosis_legs, self.checkBox_HBsAg)
+        QWidget.setTabOrder(self.checkBox_HBsAg, self.plainTextEditPtAnamMorbi)
+        QWidget.setTabOrder(self.plainTextEditPtAnamMorbi, self.comboBoxPtAllergStatus)
+        QWidget.setTabOrder(self.comboBoxPtAllergStatus, self.plainTextEditPtAnamAllerg)
+        QWidget.setTabOrder(self.plainTextEditPtAnamAllerg, self.comboBoxPtAnamEpid)
+        QWidget.setTabOrder(self.comboBoxPtAnamEpid, self.plainTextEditPtAnamEpid)
+        QWidget.setTabOrder(self.plainTextEditPtAnamEpid, self.comboBoxPtSocialStatus)
+        QWidget.setTabOrder(self.comboBoxPtSocialStatus, self.checkBoxPtNeedSickList)
+        QWidget.setTabOrder(self.checkBoxPtNeedSickList, self.checkBoxPtNeedSickList_2)
+        QWidget.setTabOrder(self.checkBoxPtNeedSickList_2, self.comboBoxWorkListInfo)
+        QWidget.setTabOrder(self.comboBoxWorkListInfo, self.lineEditPtWorkPlace)
+        QWidget.setTabOrder(self.lineEditPtWorkPlace, self.lineEditPtWorkPosition)
+        QWidget.setTabOrder(self.lineEditPtWorkPosition, self.lineEditPtWorkListNumber1_1)
+        QWidget.setTabOrder(self.lineEditPtWorkListNumber1_1, self.lineEditPtWorkListNumber_issued)
+        QWidget.setTabOrder(self.lineEditPtWorkListNumber_issued, self.dateEditPtWorkListDate1_1)
+        QWidget.setTabOrder(self.dateEditPtWorkListDate1_1, self.dateEditPtWorkListDate1_2)
+        QWidget.setTabOrder(self.dateEditPtWorkListDate1_2, self.dateEditPtWorkListDateOpening)
+        QWidget.setTabOrder(self.dateEditPtWorkListDateOpening, self.comboBoxWorkList_prognosis)
+        QWidget.setTabOrder(self.comboBoxWorkList_prognosis, self.comboBoxGeneralStTemplate)
+        QWidget.setTabOrder(self.comboBoxGeneralStTemplate, self.pushButton_push_temp)
+        QWidget.setTabOrder(self.pushButton_push_temp, self.lineEdit_new_template_name)
+        QWidget.setTabOrder(self.lineEdit_new_template_name, self.pushButtonAddNewTemplateGeneralSt)
+        QWidget.setTabOrder(self.pushButtonAddNewTemplateGeneralSt, self.comboBoxPtGeneralState)
+        QWidget.setTabOrder(self.comboBoxPtGeneralState, self.comboBoxPtSkinState_1)
+        QWidget.setTabOrder(self.comboBoxPtSkinState_1, self.comboBoxPtSkinState_2)
+        QWidget.setTabOrder(self.comboBoxPtSkinState_2, self.comboBoxPtLymphnode)
+        QWidget.setTabOrder(self.comboBoxPtLymphnode, self.comboBoxPtMucousMembr_1)
+        QWidget.setTabOrder(self.comboBoxPtMucousMembr_1, self.comboBoxPtBreathing_1)
+        QWidget.setTabOrder(self.comboBoxPtBreathing_1, self.comboBoxPtBreathing_2)
+        QWidget.setTabOrder(self.comboBoxPtBreathing_2, self.comboBoxPtBreathing_3)
+        QWidget.setTabOrder(self.comboBoxPtBreathing_3, self.comboBoxPtWheezingChoice)
+        QWidget.setTabOrder(self.comboBoxPtWheezingChoice, self.comboBoxPtWheezing_1)
+        QWidget.setTabOrder(self.comboBoxPtWheezing_1, self.comboBoxPtWheezing_2)
+        QWidget.setTabOrder(self.comboBoxPtWheezing_2, self.comboBoxPtWheezing_3)
+        QWidget.setTabOrder(self.comboBoxPtWheezing_3, self.comboBoxPtDyspneaChoice)
+        QWidget.setTabOrder(self.comboBoxPtDyspneaChoice, self.comboBoxPtDyspnea_1)
+        QWidget.setTabOrder(self.comboBoxPtDyspnea_1, self.comboBoxPtDyspnea_2)
+        QWidget.setTabOrder(self.comboBoxPtDyspnea_2, self.comboBoxPtDyspnea_3)
+        QWidget.setTabOrder(self.comboBoxPtDyspnea_3, self.comboBoxPtHearthTone_1)
+        QWidget.setTabOrder(self.comboBoxPtHearthTone_1, self.comboBoxPtHearthTone_2)
+        QWidget.setTabOrder(self.comboBoxPtHearthTone_2, self.comboBoxPtHearthTone_3)
+        QWidget.setTabOrder(self.comboBoxPtHearthTone_3, self.comboBoxPtHearthNoiseChoice)
+        QWidget.setTabOrder(self.comboBoxPtHearthNoiseChoice, self.comboBoxPtHearthNoise)
+        QWidget.setTabOrder(self.comboBoxPtHearthNoise, self.comboBoxPtStomach_1)
+        QWidget.setTabOrder(self.comboBoxPtStomach_1, self.comboBoxPtStomach_2)
+        QWidget.setTabOrder(self.comboBoxPtStomach_2, self.comboBoxPtStomach_3)
+        QWidget.setTabOrder(self.comboBoxPtStomach_3, self.comboBoxPtDefecation_1)
+        QWidget.setTabOrder(self.comboBoxPtDefecation_1, self.comboBoxPtDefecation_2)
+        QWidget.setTabOrder(self.comboBoxPtDefecation_2, self.comboBoxPtDefecation_3)
+        QWidget.setTabOrder(self.comboBoxPtDefecation_3, self.comboBoxPtUrination_1)
+        QWidget.setTabOrder(self.comboBoxPtUrination_1, self.comboBoxPtUrination_2)
+        QWidget.setTabOrder(self.comboBoxPtUrination_2, self.comboBoxPtUrination_3)
+        QWidget.setTabOrder(self.comboBoxPtUrination_3, self.plainTextEditPtStObjOther)
+        QWidget.setTabOrder(self.plainTextEditPtStObjOther, self.pushButtonHelp)
+        QWidget.setTabOrder(self.pushButtonHelp, self.tabWidget)
+        QWidget.setTabOrder(self.tabWidget, self.pushButtonSaveExit)
+        QWidget.setTabOrder(self.pushButtonSaveExit, self.pushButtonNotSaveExit)
 
         self.retranslateUi(StObj)
 

@@ -26,14 +26,14 @@ class Ui_omr_main_menu(object):
     def setupUi(self, omr_main_menu):
         if not omr_main_menu.objectName():
             omr_main_menu.setObjectName(u"omr_main_menu")
-        omr_main_menu.resize(1230, 769)
+        omr_main_menu.resize(1230, 755)
         omr_main_menu.setMinimumSize(QSize(1230, 700))
         omr_main_menu.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_7 = QVBoxLayout(omr_main_menu)
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(2, 2, 2, 2)
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.main_frame = QFrame(omr_main_menu)
         self.main_frame.setObjectName(u"main_frame")
         self.verticalLayout_6 = QVBoxLayout(self.main_frame)

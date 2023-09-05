@@ -27,15 +27,20 @@ class Ui_Appointments(object):
     def setupUi(self, Appointments):
         if not Appointments.objectName():
             Appointments.setObjectName(u"Appointments")
-        Appointments.resize(1300, 713)
+        Appointments.resize(1282, 691)
         Appointments.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_7 = QVBoxLayout(Appointments)
+        self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.gridLayout_2 = QGridLayout()
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.main = QFrame(Appointments)
+        self.main.setObjectName(u"main")
+        self.gridLayout_2 = QGridLayout(self.main)
         self.gridLayout_2.setSpacing(5)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.pt_info_block = QFrame(Appointments)
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.pt_info_block = QFrame(self.main)
         self.pt_info_block.setObjectName(u"pt_info_block")
         self.pt_info_block.setStyleSheet(u"background-color: transparent;")
         self.pt_info_block.setFrameShape(QFrame.NoFrame)
@@ -81,7 +86,7 @@ class Ui_Appointments(object):
 
         self.gridLayout_2.addWidget(self.pt_info_block, 0, 0, 1, 1)
 
-        self.groupBox_wom = QGroupBox(Appointments)
+        self.groupBox_wom = QGroupBox(self.main)
         self.groupBox_wom.setObjectName(u"groupBox_wom")
         self.groupBox_wom.setStyleSheet(u"font-size: 9pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -404,7 +409,7 @@ class Ui_Appointments(object):
 
         self.gridLayout_2.addWidget(self.groupBox_wom, 0, 1, 3, 1)
 
-        self.tabWidget = QTabWidget(Appointments)
+        self.tabWidget = QTabWidget(self.main)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setEnabled(True)
         self.tabWidget.setFont(font)
@@ -830,7 +835,7 @@ class Ui_Appointments(object):
         self.label_Injections.setObjectName(u"label_Injections")
         palette7 = QPalette()
         palette7.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        brush23 = QBrush(QColor(92, 158, 173, 200))
+        brush23 = QBrush(QColor(112, 38, 50, 150))
         brush23.setStyle(Qt.SolidPattern)
         palette7.setBrush(QPalette.Active, QPalette.Button, brush23)
         palette7.setBrush(QPalette.Active, QPalette.Light, brush)
@@ -894,8 +899,9 @@ class Ui_Appointments(object):
         self.label_Injections.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_Injections.setTextFormat(Qt.AutoText)
 
         self.gridLayout_5.addWidget(self.label_Injections, 2, 0, 1, 5)
@@ -962,8 +968,9 @@ class Ui_Appointments(object):
         self.label_PerOs.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(92, 158, 173, 200);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
 
         self.gridLayout_5.addWidget(self.label_PerOs, 5, 0, 1, 5)
 
@@ -3181,8 +3188,49 @@ class Ui_Appointments(object):
         self.gridLayout_2.addWidget(self.tabWidget, 1, 0, 1, 1)
 
 
-        self.verticalLayout_7.addLayout(self.gridLayout_2)
+        self.verticalLayout_7.addWidget(self.main)
 
+        QWidget.setTabOrder(self.pushButton_set_adm_date, self.pushButton_set_today_date)
+        QWidget.setTabOrder(self.pushButton_set_today_date, self.pushButton_clean)
+        QWidget.setTabOrder(self.pushButton_clean, self.dateEdit)
+        QWidget.setTabOrder(self.dateEdit, self.lineEdit_drug)
+        QWidget.setTabOrder(self.lineEdit_drug, self.lineEdit_dose)
+        QWidget.setTabOrder(self.lineEdit_dose, self.lineEdit_DS)
+        QWidget.setTabOrder(self.lineEdit_DS, self.pushButton_add_and_continue)
+        QWidget.setTabOrder(self.pushButton_add_and_continue, self.comboBox_lfk)
+        QWidget.setTabOrder(self.comboBox_lfk, self.comboBox_lfk_duration)
+        QWidget.setTabOrder(self.comboBox_lfk_duration, self.comboBox_lfk_ed)
+        QWidget.setTabOrder(self.comboBox_lfk_ed, self.pushButton_add_lfk)
+        QWidget.setTabOrder(self.pushButton_add_lfk, self.comboBox_physio)
+        QWidget.setTabOrder(self.comboBox_physio, self.comboBox_physio_place)
+        QWidget.setTabOrder(self.comboBox_physio_place, self.comboBox_physio_duration)
+        QWidget.setTabOrder(self.comboBox_physio_duration, self.pushButton_add_physio)
+        QWidget.setTabOrder(self.pushButton_add_physio, self.pushButton_restart)
+        QWidget.setTabOrder(self.pushButton_restart, self.pushButtonSaveExit)
+        QWidget.setTabOrder(self.pushButtonSaveExit, self.comboBox_diet)
+        QWidget.setTabOrder(self.comboBox_diet, self.comboBox)
+        QWidget.setTabOrder(self.comboBox, self.tableWidget_sol)
+        QWidget.setTabOrder(self.tableWidget_sol, self.pushButtonHelp)
+        QWidget.setTabOrder(self.pushButtonHelp, self.tabWidget)
+        QWidget.setTabOrder(self.tabWidget, self.comboBox_functional_mode)
+        QWidget.setTabOrder(self.comboBox_functional_mode, self.comboBox_lfk_template)
+        QWidget.setTabOrder(self.comboBox_lfk_template, self.pushButton_lfk_add_new_template)
+        QWidget.setTabOrder(self.pushButton_lfk_add_new_template, self.pushButton_lfk_push_temp)
+        QWidget.setTabOrder(self.pushButton_lfk_push_temp, self.lineEdit_lfk_new_template_name)
+        QWidget.setTabOrder(self.lineEdit_lfk_new_template_name, self.comboBox_lfk_name)
+        QWidget.setTabOrder(self.comboBox_lfk_name, self.checkBox_lfk_same)
+        QWidget.setTabOrder(self.checkBox_lfk_same, self.tableWidget_lfk)
+        QWidget.setTabOrder(self.tableWidget_lfk, self.tableWidget_drugs)
+        QWidget.setTabOrder(self.tableWidget_drugs, self.checkBox)
+        QWidget.setTabOrder(self.checkBox, self.pushButtonNotSaveExit)
+        QWidget.setTabOrder(self.pushButtonNotSaveExit, self.tableWidget_peros)
+        QWidget.setTabOrder(self.tableWidget_peros, self.comboBox_template_physio)
+        QWidget.setTabOrder(self.comboBox_template_physio, self.pushButton_add_new_template_physio)
+        QWidget.setTabOrder(self.pushButton_add_new_template_physio, self.pushButton_push_temp_physio)
+        QWidget.setTabOrder(self.pushButton_push_temp_physio, self.lineEdit_new_template_name_physio)
+        QWidget.setTabOrder(self.lineEdit_new_template_name_physio, self.comboBox_physio_name)
+        QWidget.setTabOrder(self.comboBox_physio_name, self.checkBox_physio_same)
+        QWidget.setTabOrder(self.checkBox_physio_same, self.tableWidget_physio)
 
         self.retranslateUi(Appointments)
 

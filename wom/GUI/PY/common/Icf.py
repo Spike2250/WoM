@@ -29,18 +29,23 @@ class Ui_icf(object):
     def setupUi(self, icf):
         if not icf.objectName():
             icf.setObjectName(u"icf")
-        icf.resize(1301, 812)
+        icf.resize(1281, 792)
         icf.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_3 = QVBoxLayout(icf)
+        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.horizontalLayout_4 = QHBoxLayout()
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.main = QFrame(icf)
+        self.main.setObjectName(u"main")
+        self.horizontalLayout_4 = QHBoxLayout(self.main)
         self.horizontalLayout_4.setSpacing(5)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setSpacing(2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.info_frame = QFrame(icf)
+        self.info_frame = QFrame(self.main)
         self.info_frame.setObjectName(u"info_frame")
         self.info_frame.setMinimumSize(QSize(0, 40))
         self.info_frame.setMaximumSize(QSize(16777215, 40))
@@ -103,14 +108,14 @@ class Ui_icf(object):
 
         self.verticalLayout_2.addWidget(self.info_frame)
 
-        self.labelZZZPtStNeur = QLabel(icf)
+        self.labelZZZPtStNeur = QLabel(self.main)
         self.labelZZZPtStNeur.setObjectName(u"labelZZZPtStNeur")
         self.labelZZZPtStNeur.setMaximumSize(QSize(16777215, 26))
         palette = QPalette()
         brush = QBrush(QColor(255, 255, 255, 255))
         brush.setStyle(Qt.SolidPattern)
         palette.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        brush1 = QBrush(QColor(112, 38, 50, 200))
+        brush1 = QBrush(QColor(112, 38, 50, 150))
         brush1.setStyle(Qt.SolidPattern)
         palette.setBrush(QPalette.Active, QPalette.Button, brush1)
         palette.setBrush(QPalette.Active, QPalette.Light, brush)
@@ -188,12 +193,13 @@ class Ui_icf(object):
         self.labelZZZPtStNeur.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 16pt;\n"
-"background-color: rgba(112, 38, 50, 200)\n"
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
 "")
 
         self.verticalLayout_2.addWidget(self.labelZZZPtStNeur)
 
-        self.frame = QFrame(icf)
+        self.frame = QFrame(self.main)
         self.frame.setObjectName(u"frame")
         self.frame.setStyleSheet(u"background-color: transparent")
         self.horizontalLayout = QHBoxLayout(self.frame)
@@ -574,7 +580,7 @@ class Ui_icf(object):
 
         self.verticalLayout_2.addWidget(self.frame)
 
-        self.add_new_domain = QFrame(icf)
+        self.add_new_domain = QFrame(self.main)
         self.add_new_domain.setObjectName(u"add_new_domain")
         self.add_new_domain.setMaximumSize(QSize(16777215, 160))
         self.add_new_domain.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
@@ -1396,7 +1402,7 @@ class Ui_icf(object):
 
         self.verticalLayout_2.addWidget(self.add_new_domain)
 
-        self.table_frame = QFrame(icf)
+        self.table_frame = QFrame(self.main)
         self.table_frame.setObjectName(u"table_frame")
         self.table_frame.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
 "border: 1px solid  rgba(50, 98, 115, 255);\n"
@@ -1614,7 +1620,7 @@ class Ui_icf(object):
 
         self.verticalLayout_2.addWidget(self.table_frame)
 
-        self.logs_frame = QFrame(icf)
+        self.logs_frame = QFrame(self.main)
         self.logs_frame.setObjectName(u"logs_frame")
         self.logs_frame.setStyleSheet(u"font-size: 9pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -1649,7 +1655,7 @@ class Ui_icf(object):
 
         self.horizontalLayout_4.addLayout(self.verticalLayout_2)
 
-        self.groupBox_wom = QGroupBox(icf)
+        self.groupBox_wom = QGroupBox(self.main)
         self.groupBox_wom.setObjectName(u"groupBox_wom")
         self.groupBox_wom.setStyleSheet(u"font-size: 9pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -1847,8 +1853,22 @@ class Ui_icf(object):
         self.horizontalLayout_4.addWidget(self.groupBox_wom)
 
 
-        self.verticalLayout_3.addLayout(self.horizontalLayout_4)
+        self.verticalLayout_3.addWidget(self.main)
 
+        QWidget.setTabOrder(self.comboBox_template, self.pushButton_push_temp)
+        QWidget.setTabOrder(self.pushButton_push_temp, self.lineEdit_new_template_name)
+        QWidget.setTabOrder(self.lineEdit_new_template_name, self.pushButtonAddNewTemplate)
+        QWidget.setTabOrder(self.pushButtonAddNewTemplate, self.comboBox_find_domen)
+        QWidget.setTabOrder(self.comboBox_find_domen, self.pushButton_push_domen)
+        QWidget.setTabOrder(self.pushButton_push_domen, self.lineEdit_new_domen_numbers)
+        QWidget.setTabOrder(self.lineEdit_new_domen_numbers, self.lineEdit_new_domen_numbers_dynamic)
+        QWidget.setTabOrder(self.lineEdit_new_domen_numbers_dynamic, self.pushButton_add_domen)
+        QWidget.setTabOrder(self.pushButton_add_domen, self.pushButton_push_domen_2)
+        QWidget.setTabOrder(self.pushButton_push_domen_2, self.pushButtonNotSaveExit)
+        QWidget.setTabOrder(self.pushButtonNotSaveExit, self.pushButtonSaveExit)
+        QWidget.setTabOrder(self.pushButtonSaveExit, self.plainTextEdit_new_domen)
+        QWidget.setTabOrder(self.plainTextEdit_new_domen, self.textBrowser_description)
+        QWidget.setTabOrder(self.textBrowser_description, self.tableWidget)
 
         self.retranslateUi(icf)
 

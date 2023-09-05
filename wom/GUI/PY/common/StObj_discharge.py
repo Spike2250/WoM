@@ -25,20 +25,24 @@ class Ui_StObj(object):
     def setupUi(self, StObj):
         if not StObj.objectName():
             StObj.setObjectName(u"StObj")
-        StObj.resize(997, 557)
+        StObj.resize(985, 557)
         StObj.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_2 = QVBoxLayout(StObj)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.gridLayout = QGridLayout()
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.main = QFrame(StObj)
+        self.main.setObjectName(u"main")
+        self.gridLayout = QGridLayout(self.main)
+        self.gridLayout.setSpacing(5)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.gridLayout.setHorizontalSpacing(5)
-        self.gridLayout.setVerticalSpacing(2)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer_2, 1, 2, 1, 1)
 
-        self.pt_info_block = QFrame(StObj)
+        self.pt_info_block = QFrame(self.main)
         self.pt_info_block.setObjectName(u"pt_info_block")
         self.pt_info_block.setStyleSheet(u"background-color: transparent;")
         self.pt_info_block.setFrameShape(QFrame.NoFrame)
@@ -84,7 +88,7 @@ class Ui_StObj(object):
 
         self.gridLayout.addWidget(self.pt_info_block, 0, 0, 1, 3)
 
-        self.frame_main = QFrame(StObj)
+        self.frame_main = QFrame(self.main)
         self.frame_main.setObjectName(u"frame_main")
         self.frame_main.setStyleSheet(u"font-size: 15pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -97,11 +101,12 @@ class Ui_StObj(object):
         self.label_6 = QLabel(self.frame_main)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setMaximumSize(QSize(16777215, 25))
-        self.label_6.setStyleSheet(u"color: #326273;\n"
+        self.label_6.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 12pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_6.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout.addWidget(self.label_6)
@@ -126,7 +131,7 @@ class Ui_StObj(object):
 
         self.gridLayout.addItem(self.horizontalSpacer, 1, 0, 1, 1)
 
-        self.groupBox_wom = QGroupBox(StObj)
+        self.groupBox_wom = QGroupBox(self.main)
         self.groupBox_wom.setObjectName(u"groupBox_wom")
         self.groupBox_wom.setStyleSheet(u"font-size: 9pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -450,7 +455,7 @@ class Ui_StObj(object):
         self.gridLayout.addWidget(self.groupBox_wom, 0, 3, 3, 1)
 
 
-        self.verticalLayout_2.addLayout(self.gridLayout)
+        self.verticalLayout_2.addWidget(self.main)
 
 
         self.retranslateUi(StObj)

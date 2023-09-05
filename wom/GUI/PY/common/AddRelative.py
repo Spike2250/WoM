@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'omr_AddRelative.ui'
+## Form generated from reading UI file 'AddRelative.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.2
 ##
@@ -24,20 +24,23 @@ class Ui_AddRelative(object):
     def setupUi(self, AddRelative):
         if not AddRelative.objectName():
             AddRelative.setObjectName(u"AddRelative")
-        AddRelative.resize(736, 661)
+        AddRelative.resize(736, 625)
         AddRelative.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_2 = QVBoxLayout(AddRelative)
-        self.verticalLayout_2.setSpacing(5)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(5, 5, 5, 5)
-        self.horizontalLayout = QHBoxLayout()
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.main = QFrame(AddRelative)
+        self.main.setObjectName(u"main")
+        self.horizontalLayout = QHBoxLayout(self.main)
         self.horizontalLayout.setSpacing(5)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setSpacing(5)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.labelPassportData = QLabel(AddRelative)
+        self.labelPassportData = QLabel(self.main)
         self.labelPassportData.setObjectName(u"labelPassportData")
         palette = QPalette()
         brush = QBrush(QColor(50, 98, 115, 255))
@@ -133,7 +136,7 @@ class Ui_AddRelative(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_3)
 
-        self.frame_relative_1 = QFrame(AddRelative)
+        self.frame_relative_1 = QFrame(self.main)
         self.frame_relative_1.setObjectName(u"frame_relative_1")
         self.frame_relative_1.setStyleSheet(u"background-color: rgba(50, 98, 115, 40);\n"
 "font-size: 11pt;\n"
@@ -707,7 +710,7 @@ class Ui_AddRelative(object):
 
         self.verticalLayout.addWidget(self.frame_relative_1)
 
-        self.frame_relative_2 = QFrame(AddRelative)
+        self.frame_relative_2 = QFrame(self.main)
         self.frame_relative_2.setObjectName(u"frame_relative_2")
         self.frame_relative_2.setStyleSheet(u"background-color: rgba(50, 98, 115, 40);\n"
 "font-size: 11pt;\n"
@@ -1273,7 +1276,7 @@ class Ui_AddRelative(object):
 
         self.verticalLayout.addWidget(self.frame_relative_2)
 
-        self.frame_relative_3 = QFrame(AddRelative)
+        self.frame_relative_3 = QFrame(self.main)
         self.frame_relative_3.setObjectName(u"frame_relative_3")
         self.frame_relative_3.setStyleSheet(u"background-color: rgba(50, 98, 115, 40);\n"
 "font-size: 11pt;\n"
@@ -1839,7 +1842,7 @@ class Ui_AddRelative(object):
 
         self.verticalLayout.addWidget(self.frame_relative_3)
 
-        self.frame_relative_4 = QFrame(AddRelative)
+        self.frame_relative_4 = QFrame(self.main)
         self.frame_relative_4.setObjectName(u"frame_relative_4")
         self.frame_relative_4.setStyleSheet(u"background-color: rgba(50, 98, 115, 40);\n"
 "font-size: 11pt;\n"
@@ -2412,7 +2415,7 @@ class Ui_AddRelative(object):
 
         self.horizontalLayout.addLayout(self.verticalLayout)
 
-        self.wom_panel = QFrame(AddRelative)
+        self.wom_panel = QFrame(self.main)
         self.wom_panel.setObjectName(u"wom_panel")
         self.wom_panel.setMaximumSize(QSize(200, 16777215))
         self.wom_panel.setStyleSheet(u"background-color: rgba(50, 98, 115, 40);\n"
@@ -2752,7 +2755,7 @@ class Ui_AddRelative(object):
         self.horizontalLayout.addWidget(self.wom_panel)
 
 
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
+        self.verticalLayout_2.addWidget(self.main)
 
         QWidget.setTabOrder(self.lineEditPtRelativeKinship, self.lineEditPtRelativeFullName)
         QWidget.setTabOrder(self.lineEditPtRelativeFullName, self.lineEditPtRelativePhone)

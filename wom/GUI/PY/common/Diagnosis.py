@@ -26,15 +26,20 @@ class Ui_Diagnosis(object):
     def setupUi(self, Diagnosis):
         if not Diagnosis.objectName():
             Diagnosis.setObjectName(u"Diagnosis")
-        Diagnosis.resize(1102, 753)
+        Diagnosis.resize(1013, 712)
         Diagnosis.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout = QVBoxLayout(Diagnosis)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.gridLayout_4 = QGridLayout()
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.main = QFrame(Diagnosis)
+        self.main.setObjectName(u"main")
+        self.gridLayout_4 = QGridLayout(self.main)
         self.gridLayout_4.setSpacing(5)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.pt_info_block = QFrame(Diagnosis)
+        self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.pt_info_block = QFrame(self.main)
         self.pt_info_block.setObjectName(u"pt_info_block")
         self.pt_info_block.setMaximumSize(QSize(16777215, 50))
         self.pt_info_block.setStyleSheet(u"background-color: transparent;")
@@ -94,7 +99,7 @@ class Ui_Diagnosis(object):
 
         self.gridLayout_4.addWidget(self.pt_info_block, 0, 0, 1, 1)
 
-        self.groupBox_wom = QGroupBox(Diagnosis)
+        self.groupBox_wom = QGroupBox(self.main)
         self.groupBox_wom.setObjectName(u"groupBox_wom")
         self.groupBox_wom.setStyleSheet(u"font-size: 9pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
@@ -420,7 +425,7 @@ class Ui_Diagnosis(object):
         self.gridLayout_3 = QGridLayout()
         self.gridLayout_3.setSpacing(5)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.frame_3 = QFrame(Diagnosis)
+        self.frame_3 = QFrame(self.main)
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setMinimumSize(QSize(750, 0))
         self.frame_3.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
@@ -458,11 +463,12 @@ class Ui_Diagnosis(object):
         self.label_diagnosis = QLabel(self.frame_3)
         self.label_diagnosis.setObjectName(u"label_diagnosis")
         self.label_diagnosis.setMaximumSize(QSize(16777215, 25))
-        self.label_diagnosis.setStyleSheet(u"color: #326273;\n"
+        self.label_diagnosis.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 14pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label_diagnosis.setAlignment(Qt.AlignCenter)
 
         self.gridLayout.addWidget(self.label_diagnosis, 0, 0, 1, 3)
@@ -786,7 +792,7 @@ class Ui_Diagnosis(object):
 
         self.gridLayout_3.addWidget(self.frame_3, 0, 1, 1, 1)
 
-        self.frame_4 = QFrame(Diagnosis)
+        self.frame_4 = QFrame(self.main)
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setStyleSheet(u"color: rgba(50, 98, 115, 255);\n"
 "border: 1px solid  rgba(50, 98, 115, 255);\n"
@@ -2257,11 +2263,12 @@ class Ui_Diagnosis(object):
         self.label = QLabel(self.frame_4)
         self.label.setObjectName(u"label")
         self.label.setMaximumSize(QSize(16777215, 25))
-        self.label.setStyleSheet(u"color: #326273;\n"
+        self.label.setStyleSheet(u"color: White;\n"
 "font-weight: bold;\n"
 "font-size: 14pt;\n"
-"background-color: rgba(50, 98, 115, 40);\n"
-"border: none;")
+"background-color: rgba(112, 38, 50, 150);\n"
+"border: none;\n"
+"")
         self.label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_2.addWidget(self.label, 0, 0, 1, 5)
@@ -2281,8 +2288,26 @@ class Ui_Diagnosis(object):
         self.gridLayout_4.addLayout(self.gridLayout_3, 1, 0, 1, 1)
 
 
-        self.verticalLayout.addLayout(self.gridLayout_4)
+        self.verticalLayout.addWidget(self.main)
 
+        QWidget.setTabOrder(self.pushButton_helper_diag_main, self.plainTextEditPtDiagnosisMain)
+        QWidget.setTabOrder(self.plainTextEditPtDiagnosisMain, self.plainTextEditPtDiagnosisConcomitant)
+        QWidget.setTabOrder(self.plainTextEditPtDiagnosisConcomitant, self.pushButton_helper_diag_concominant)
+        QWidget.setTabOrder(self.pushButton_helper_diag_concominant, self.comboBoxDiagnosisFS_NIHSS)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_NIHSS, self.comboBoxDiagnosisFS_RRS_1)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_RRS_1, self.comboBoxDiagnosisFS_RRS_2)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_RRS_2, self.comboBoxDiagnosisFS_mRs_1)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_mRs_1, self.comboBoxDiagnosisFS_mRs_2)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_mRs_2, self.comboBoxDiagnosisFS_IMR_1)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_IMR_1, self.comboBoxDiagnosisFS_IMR_2)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_IMR_2, self.comboBoxDiagnosisFS_Hauser_1)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_Hauser_1, self.comboBoxDiagnosisFS_Hauser_2)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_Hauser_2, self.checkBoxPainCheck)
+        QWidget.setTabOrder(self.checkBoxPainCheck, self.comboBoxDiagnosisFS_VAS_1)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_VAS_1, self.comboBoxDiagnosisFS_VAS_2)
+        QWidget.setTabOrder(self.comboBoxDiagnosisFS_VAS_2, self.pushButtonNotSaveExit)
+        QWidget.setTabOrder(self.pushButtonNotSaveExit, self.pushButtonSaveExit)
+        QWidget.setTabOrder(self.pushButtonSaveExit, self.pushButtonHelp)
 
         self.retranslateUi(Diagnosis)
 
