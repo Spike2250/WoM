@@ -9,7 +9,9 @@ from copy import deepcopy
 
 from wom.GUI.PY.omr import omr_Appointments
 from wom.app_logic.db_func\
-    .bucket_func import upload_history_to_yandex_cloud_bucket
+    .bucket_func import (upload_history_to_yandex_cloud_bucket,
+                         download_templates_json_from_yandex_cloud_bucket,
+                         upload_templates_json_from_yandex_cloud_bucket)
 from wom.app_logic.db_func\
     .json_templates import (read_templates,
                             templates_json_recording)
@@ -554,6 +556,7 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         self.list_lfk.pop(i)
         self.refresh_lfk_table()
 
+    @download_templates_json_from_yandex_cloud_bucket('lfk_appointments')
     def set_templates_list_lfk(self):
         self.lfk_templates = read_templates('lfk_appointments')
         if self.lfk_templates is not None:
@@ -570,13 +573,14 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
 
         if name != '':
             self.lfk_templates[name] = self.list_lfk
+            templates_file = 'lfk_appointments'
             templates_json_recording(templates=self.lfk_templates,
-                                     templates_name='lfk_appointments')
-        else:
-            pass
-        # обновляем список шаблонов
-        self.lineEdit_lfk_new_template_name.setText('')
-        self.set_templates_list_lfk()
+                                     templates_name=templates_file)
+            # загружаем в бакет
+            upload_templates_json_from_yandex_cloud_bucket(templates_file)
+            # обновляем список шаблонов
+            self.lineEdit_lfk_new_template_name.setText('')
+            self.set_templates_list_lfk()
 
     def push_active_template_lfk(self):
         name = self.comboBox_lfk_template.currentText()
@@ -668,6 +672,7 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
         self.list_physio.pop(i)
         self.refresh_physio_table()
 
+    @download_templates_json_from_yandex_cloud_bucket('physio_appointments')
     def set_templates_list_physio(self):
         self.physio_templates = read_templates('physio_appointments')
         if self.physio_templates is not None:
@@ -684,13 +689,14 @@ class Ui_Appointments(QWidget, omr_Appointments.Ui_Appointments):
 
         if name != '':
             self.physio_templates[name] = self.list_physio
+            templates_file = 'physio_appointments'
             templates_json_recording(templates=self.physio_templates,
-                                     templates_name='physio_appointments')
-        else:
-            pass
-        # обновляем список шаблонов
-        self.lineEdit_new_template_name_physio.setText('')
-        self.set_templates_list_physio()
+                                     templates_name=templates_file)
+            # загружаем в бакет
+            upload_templates_json_from_yandex_cloud_bucket(templates_file)
+            # обновляем список шаблонов
+            self.lineEdit_new_template_name_physio.setText('')
+            self.set_templates_list_physio()
 
     def push_active_template_physio(self):
         name = self.comboBox_template_physio.currentText()

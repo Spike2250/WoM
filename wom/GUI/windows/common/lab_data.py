@@ -2,7 +2,9 @@ from PySide6 import QtWidgets, QtCore
 
 from wom.GUI.PY.common import Laboratory_data
 from wom.app_logic.db_func\
-    .bucket_func import upload_history_to_yandex_cloud_bucket
+    .bucket_func import (upload_history_to_yandex_cloud_bucket,
+                         download_templates_json_from_yandex_cloud_bucket,
+                         upload_templates_json_from_yandex_cloud_bucket)
 from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
 from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
 from wom.app_logic.db_func\
@@ -77,6 +79,7 @@ class Ui_Laboratory_data(QtWidgets.QWidget,
     def save_history_bta(self):
         write_all_data_to_db_bta(self.d)
 
+    @download_templates_json_from_yandex_cloud_bucket('lab_templates')
     def set_templates_list(self):
         # список шаблонов
         self.templates = read_templates('lab_templates')
@@ -560,8 +563,11 @@ class Ui_Laboratory_data(QtWidgets.QWidget,
                 dict_[f'mylab_{i}'] =\
                     self.widget[f'lineEdit_my_lab_{i}'].text()
             self.templates[f'{name_tpl}'] = dict_
+            templates_file = 'lab_templates'
             templates_json_recording(templates=self.templates,
-                                     templates_name='lab_templates')
+                                     templates_name=templates_file)
+            # загружаем в бакет
+            upload_templates_json_from_yandex_cloud_bucket(templates_file)
             self.set_templates_list()
             self.lineEdit_mylab_template.setText('')
             self.clean_mylab()

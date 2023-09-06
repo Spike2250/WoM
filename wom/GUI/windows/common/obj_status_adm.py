@@ -9,7 +9,9 @@ from wom.app_logic.db_func\
 from wom.app_logic.db_func\
     .bucket_func import (upload_history_to_yandex_cloud_bucket,
                          upload_templates_db_from_yandex_cloud_bucket,
-                         download_templates_db_from_yandex_cloud_bucket)
+                         download_templates_db_from_yandex_cloud_bucket,
+                         upload_templates_json_from_yandex_cloud_bucket,
+                         download_templates_json_from_yandex_cloud_bucket)
 from wom.app_logic.db_func\
     .json_templates import (read_templates,
                             templates_json_recording)
@@ -188,6 +190,7 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
         else:
             self.comboBoxGeneralStTemplate.addItems(self.templates_list)
 
+    @download_templates_json_from_yandex_cloud_bucket('complaints')
     def set_templates_list_jaloby(self):
         self.complaints_templates = read_templates('complaints')
         if self.complaints_templates is not None:
@@ -632,8 +635,11 @@ class Ui_StPrObjectivus_admission(QtWidgets.QWidget,
 
         if template['name'] != '':
             self.complaints_templates[template['name']] = template
+            templates_file = 'complaints'
             templates_json_recording(templates=self.complaints_templates,
-                                     templates_name='complaints')
+                                     templates_name=templates_file)
+            # загружаем в бакет
+            upload_templates_json_from_yandex_cloud_bucket(templates_file)
         else:
             pass
         # обновляем список шаблонов

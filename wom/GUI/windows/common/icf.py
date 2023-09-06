@@ -9,7 +9,9 @@ from wom.GUI.PY.common import Icf
 from wom.app_logic.handbooks.icf_dict import multy_domens, psylogo_domen
 from wom.app_logic.handbooks.description_of_domains import domains_desc
 from wom.app_logic.db_func\
-    .bucket_func import upload_history_to_yandex_cloud_bucket
+    .bucket_func import (upload_history_to_yandex_cloud_bucket,
+                         download_templates_icf_json_from_yandex_cloud_bucket,
+                         upload_templates_json_from_yandex_cloud_bucket)
 from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
 from wom.app_logic.db_func.db_bta import write_all_data_to_db_bta
 from wom.app_logic.db_func\
@@ -212,8 +214,11 @@ class Ui_icf(QtWidgets.QWidget, Icf.Ui_icf):
                 return False
 
     def set_templates_list(self):
+        templates_file = f'icf_{self.speciality}'
+        # скачиваем шаблоны
+        download_templates_icf_json_from_yandex_cloud_bucket(templates_file)
         # список шаблонов
-        self.templates_icf = read_templates(f'icf_{self.speciality}')
+        self.templates_icf = read_templates(templates_file)
 
         if self.templates_icf is not None:
             self.templates_list = list(self.templates_icf)
@@ -231,14 +236,14 @@ class Ui_icf(QtWidgets.QWidget, Icf.Ui_icf):
         # проверяем не пустое ли имя нового шаблона
         if new_template_name != '':
             self.templates_icf[new_template_name] = self.icf_l
+            templates_file = f'icf_{self.speciality}'
             templates_json_recording(templates=self.templates,
-                                     templates_name=f'icf_{self.speciality}')
-        else:
-            # имя шаблона пустое
-            pass
+                                     templates_name=templates_file)
+            # загружаем в бакет
+            upload_templates_json_from_yandex_cloud_bucket(templates_file)
 
-        self.lineEdit_new_template_name.setText('')
-        self.set_templates_list()
+            self.lineEdit_new_template_name.setText('')
+            self.set_templates_list()
 
     def push_active_template(self):
         '''

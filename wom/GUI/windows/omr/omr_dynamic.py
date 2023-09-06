@@ -2,7 +2,9 @@ from PySide6 import QtWidgets
 
 from wom.GUI.PY.omr import omr_Dynamic
 from wom.app_logic.db_func\
-    .bucket_func import upload_history_to_yandex_cloud_bucket
+    .bucket_func import (upload_history_to_yandex_cloud_bucket,
+                         download_templates_json_from_yandex_cloud_bucket,
+                         upload_templates_json_from_yandex_cloud_bucket)
 from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
 from wom.app_logic.db_func\
     .json_templates import (read_templates,
@@ -120,6 +122,7 @@ class Ui_Dynamic(QtWidgets.QWidget, omr_Dynamic.Ui_Dynamic):
             self.comboBox_logo_dysphagia\
                 .setCurrentText(self.d['ш_дисфагии'])
 
+    @download_templates_json_from_yandex_cloud_bucket('dynamic')
     def set_templates_list(self):
         self.templates = read_templates('dynamic')
         if self.templates is not None:
@@ -136,8 +139,11 @@ class Ui_Dynamic(QtWidgets.QWidget, omr_Dynamic.Ui_Dynamic):
 
         if name != '':
             self.templates[name] = self.plainTextEdit_dynamic.toPlainText()
+            templates_file = 'dynamic'
             templates_json_recording(templates=self.templates,
-                                     templates_name='dynamic')
+                                     templates_name=templates_file)
+            # загружаем в бакет
+            upload_templates_json_from_yandex_cloud_bucket(templates_file)
             # обновляем список шаблонов
             self.lineEdit_new_template_name.setText('')
             self.set_templates_list()

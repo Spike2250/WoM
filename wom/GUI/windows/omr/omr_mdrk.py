@@ -4,7 +4,9 @@ from PySide6.QtWidgets import QAbstractItemView, QCheckBox, QPlainTextEdit
 from wom.GUI.PY.omr import omr_MDRK
 from wom.app_logic.handbooks.mdrk_data import rehab_goals, rehab_limits
 from wom.app_logic.db_func\
-    .bucket_func import upload_history_to_yandex_cloud_bucket
+    .bucket_func import (upload_history_to_yandex_cloud_bucket,
+                         download_templates_json_from_yandex_cloud_bucket,
+                         upload_templates_json_from_yandex_cloud_bucket)
 from wom.app_logic.db_func.db_omr import write_all_data_to_db_omr
 from wom.app_logic.db_func\
     .json_templates import (read_templates,
@@ -226,6 +228,7 @@ class Ui_Mdrk(QtWidgets.QWidget, omr_MDRK.Ui_MDRK):
         self.d['ш_дисфагии'] = self.comboBox_logo_dysphagia.currentText()
         self.d['ФИО_логопед'] = self.comboBox_logo_name.currentText()
 
+    @download_templates_json_from_yandex_cloud_bucket('rehab_goal')
     def set_templates_list(self):
         self.templates = read_templates('rehab_goal')
         if self.templates is not None:
@@ -242,8 +245,11 @@ class Ui_Mdrk(QtWidgets.QWidget, omr_MDRK.Ui_MDRK):
 
         if name != '':
             self.templates[name] = self.plainTextEdit_goals.toPlainText()
+            templates_file = 'rehab_goal'
             templates_json_recording(templates=self.templates,
-                                     templates_name='rehab_goal')
+                                     templates_name=templates_file)
+            # загружаем в бакет
+            upload_templates_json_from_yandex_cloud_bucket(templates_file)
             # обновляем список шаблонов
             self.lineEdit_new_template_name.setText('')
             self.set_templates_list()
