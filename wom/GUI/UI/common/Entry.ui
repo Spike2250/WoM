@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>587</width>
+    <width>654</width>
     <height>800</height>
    </rect>
   </property>
@@ -1148,104 +1148,6 @@ background-color: rgba(50, 98, 115, 40);</string>
              <property name="spacing">
               <number>5</number>
              </property>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_7">
-               <property name="styleSheet">
-                <string notr="true">color: #326273;
-font-weight: bold;
-background-color: transparent;
-border: none;</string>
-               </property>
-               <property name="text">
-                <string>Статус:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QLabel" name="label_user_act_before">
-               <property name="styleSheet">
-                <string notr="true">color: #326273;
-font-weight: bold;
-background-color: transparent;
-border: none;</string>
-               </property>
-               <property name="text">
-                <string>#act_before#</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_4">
-               <property name="maximumSize">
-                <size>
-                 <width>100</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: #326273;
-font-weight: bold;
-background-color: transparent;
-border: none;</string>
-               </property>
-               <property name="text">
-                <string>Пользователь:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLabel" name="label_user_id">
-               <property name="styleSheet">
-                <string notr="true">color: #326273;
-font-weight: bold;
-background-color: transparent;
-border: none;</string>
-               </property>
-               <property name="text">
-                <string>#ID#</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLabel" name="label_user_status">
-               <property name="styleSheet">
-                <string notr="true">color: #326273;
-font-weight: bold;
-background-color: transparent;
-border: none;</string>
-               </property>
-               <property name="text">
-                <string>#status#</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_6">
-               <property name="styleSheet">
-                <string notr="true">color: #326273;
-font-weight: bold;
-background-color: transparent;
-border: none;</string>
-               </property>
-               <property name="text">
-                <string>UserID:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1" colspan="2">
-              <widget class="QLabel" name="label_user_name">
-               <property name="styleSheet">
-                <string notr="true">color: #326273;
-font-weight: bold;
-font-size: 14pt;
-background-color: transparent;
-border: none;</string>
-               </property>
-               <property name="text">
-                <string>#имя#</string>
-               </property>
-              </widget>
-             </item>
              <item row="3" column="0" colspan="3">
               <layout class="QHBoxLayout" name="horizontalLayout">
                <property name="spacing">
@@ -1749,7 +1651,7 @@ color:  rgba(50, 98, 115, 150);
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/account_box_white_36dp.svg</normaloff>:/icon/icons/account_box_white_36dp.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -2258,7 +2160,7 @@ color:  rgba(50, 98, 115, 150);
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/miscellaneous_services_white_36dp.svg</normaloff>:/icon/icons/miscellaneous_services_white_36dp.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -2767,7 +2669,7 @@ color:  rgba(50, 98, 115, 150);
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/analytics_white_36dp.svg</normaloff>:/icon/icons/analytics_white_36dp.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -3276,7 +3178,7 @@ color:  rgba(50, 98, 115, 150);
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/conditions_FILL1_wght400_GRAD0_opsz48.svg</normaloff>:/icon/icons/conditions_FILL1_wght400_GRAD0_opsz48.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -3785,7 +3687,7 @@ color:  rgba(50, 98, 115, 150);
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/auto_stories_white_36dp.svg</normaloff>:/icon/icons/auto_stories_white_36dp.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -4294,7 +4196,7 @@ color:  rgba(50, 98, 115, 150);
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/record_voice_over_FILL1.svg</normaloff>:/icon/icons/record_voice_over_FILL1.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -4803,7 +4705,7 @@ color:  rgba(50, 98, 115, 150);
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/sticky_note_2_white_36dp.svg</normaloff>:/icon/icons/sticky_note_2_white_36dp.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -5312,7 +5214,7 @@ color:  rgba(50, 98, 115, 150);
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../res_main.qrc">
+                  <iconset resource="../res_main.qrc">
                    <normaloff>:/icon/icons/west_white_36dp.svg</normaloff>:/icon/icons/west_white_36dp.svg</iconset>
                  </property>
                  <property name="iconSize">
@@ -5325,8 +5227,8 @@ color:  rgba(50, 98, 115, 150);
                </item>
               </layout>
              </item>
-             <item row="1" column="2">
-              <widget class="QLabel" name="label_user_login">
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_6">
                <property name="styleSheet">
                 <string notr="true">color: #326273;
 font-weight: bold;
@@ -5334,11 +5236,43 @@ background-color: transparent;
 border: none;</string>
                </property>
                <property name="text">
-                <string>#login#</string>
+                <string>UserID:</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="3" rowspan="4">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: #326273;
+font-weight: bold;
+background-color: transparent;
+border: none;</string>
+               </property>
+               <property name="text">
+                <string>Пользователь:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_7">
+               <property name="styleSheet">
+                <string notr="true">color: #326273;
+font-weight: bold;
+background-color: transparent;
+border: none;</string>
+               </property>
+               <property name="text">
+                <string>Статус:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="4" rowspan="4">
               <widget class="QLabel" name="label_user_img">
                <property name="minimumSize">
                 <size>
@@ -5365,10 +5299,89 @@ border: none;</string>
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="../../res_main.qrc">:/image/images/Logo_Medical_doc.png</pixmap>
+                <pixmap>:/image/images/Logo_Medical_doc.png</pixmap>
                </property>
                <property name="scaledContents">
                 <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="3">
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="0" column="1" colspan="3">
+              <widget class="QLabel" name="label_user_name">
+               <property name="styleSheet">
+                <string notr="true">color: #326273;
+font-weight: bold;
+font-size: 14pt;
+background-color: transparent;
+border: none;</string>
+               </property>
+               <property name="text">
+                <string>#имя#</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="QLabel" name="label_user_login">
+               <property name="styleSheet">
+                <string notr="true">color: #326273;
+font-weight: bold;
+background-color: transparent;
+border: none;</string>
+               </property>
+               <property name="text">
+                <string>#login#</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="3">
+              <widget class="QLabel" name="label_user_act_before">
+               <property name="styleSheet">
+                <string notr="true">color: #326273;
+font-weight: bold;
+background-color: transparent;
+border: none;</string>
+               </property>
+               <property name="text">
+                <string>#act_before#</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1" colspan="2">
+              <widget class="QLabel" name="label_user_status">
+               <property name="styleSheet">
+                <string notr="true">color: #326273;
+font-weight: bold;
+background-color: transparent;
+border: none;</string>
+               </property>
+               <property name="text">
+                <string>#status#</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" colspan="2">
+              <widget class="QLabel" name="label_user_id">
+               <property name="styleSheet">
+                <string notr="true">color: #326273;
+font-weight: bold;
+background-color: transparent;
+border: none;</string>
+               </property>
+               <property name="text">
+                <string>#ID#</string>
                </property>
               </widget>
              </item>
@@ -7086,10 +7099,11 @@ font-size: 10pt;
   <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>
-   <header>widgets.my_pushButton</header>
+   <header location="global">wom.GUI.widgets.my_pushButton</header>
   </customwidget>
  </customwidgets>
  <resources>
+  <include location="../res_main.qrc"/>
   <include location="../../res_main.qrc"/>
  </resources>
  <connections/>
