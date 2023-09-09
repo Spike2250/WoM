@@ -1,8 +1,8 @@
+pyside6-uic User_main_menu.ui > User_main_menu.py
 pyside6-uic Registration.ui > Registration.py
 pyside6-uic Login.ui > Login.py
-pyside6-uic Entry.ui > Entry.py
-pyside6-uic drugs_dictionary.ui > drugs_dictionary.py
 
+pyside6-uic drugs_dictionary.ui > drugs_dictionary.py
 
 pyside6-uic load_arch_data.ui > load_arch_data.py
 pyside6-uic PatientPassportData.ui > PatientPassportData.py

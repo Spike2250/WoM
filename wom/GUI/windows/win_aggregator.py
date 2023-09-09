@@ -19,7 +19,10 @@ from wom.GUI.windows\
                  # bta_recommends,
                  bta_discharge_details)
 from wom.GUI.windows\
-    .common import (load_arch,
+    .common import (login,
+                    registration,
+                    main_user_menu,
+                    load_arch,
                     passport_data,
                     add_relative,
                     obj_status_adm,
@@ -57,7 +60,9 @@ windows = {
         'dis_details': bta_discharge_details.Ui_Discharge_details
     },
     'common': {
-        'main_menu': '',
+        'login': login.Ui_Login,
+        'registration': registration.Ui_Registration,
+        'main_user_menu': main_user_menu.Ui_User_main_menu,
         'load_arch': load_arch.Ui_load_arch_data,
         'passport': passport_data.Ui_PatientPassportData,
         'add_relative': add_relative.Ui_AddRelative,
