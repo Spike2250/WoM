@@ -1,6 +1,7 @@
 from PySide6 import QtWidgets
 
 from wom.GUI.PY.common import Registration
+from wom.app_logic.checking_data import check_registation_data
 
 
 class Ui_Registration(QtWidgets.QWidget, Registration.Ui_Registration):
@@ -33,15 +34,18 @@ class Ui_Registration(QtWidgets.QWidget, Registration.Ui_Registration):
             .stateChanged.connect(self.activate_login)
 
     def registration(self):
-        self.user_email
-        self.user_phone
-        self.user_login
-        self.user_password
-        self.user_password_2
-        self.user_surname
-        self.user_name
-        self.user_dadname
-        self.dateEdit_user_bday
+        data = {
+            'email': self.user_email.text(),
+            'phone': self.user_phone.text(),
+            'login': self.user_login.text(),
+            'password': self.user_password.text(),
+            'password_2': self.user_password_2.text(),
+            'surname': self.user_surname.text(),
+            'name': self.user_name.text(),
+            'dadname': self.user_dadname.text(),
+            'b_day': self.dateEdit_user_bday.dateTime().toString('dd.MM.yyyy')
+        }
+        check_result = check_registation_data(data)
 
     def verify_phone(self):
         pass

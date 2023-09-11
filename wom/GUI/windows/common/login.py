@@ -56,7 +56,7 @@ class Ui_Login(QtWidgets.QWidget, Login.Ui_Login):
         match enter['result']:
             case 'success':
                 self.open_main_user_menu(
-                    enter['user_info']
+                    user_info=enter['user_info']
                 )
             case 'wrong login':
                 msg = 'Пользователя с таким логином не существует!'
