@@ -26,7 +26,7 @@ class Ui_Registration(object):
     def setupUi(self, Registration):
         if not Registration.objectName():
             Registration.setObjectName(u"Registration")
-        Registration.resize(520, 523)
+        Registration.resize(810, 523)
         Registration.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(238, 238, 238, 255), stop:1 rgba(190, 190, 190, 255));\n"
 "font-family: Roboto;")
         self.verticalLayout_5 = QVBoxLayout(Registration)
@@ -45,7 +45,7 @@ class Ui_Registration(object):
 
         self.main_frame = QFrame(self.main)
         self.main_frame.setObjectName(u"main_frame")
-        self.main_frame.setStyleSheet(u"background-color: transparent;")
+        self.main_frame.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(self.main_frame)
         self.verticalLayout.setSpacing(5)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -159,6 +159,7 @@ class Ui_Registration(object):
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.frame = QFrame(self.frame_user_data)
         self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(800, 0))
         self.frame.setStyleSheet(u"font-size: 11pt;\n"
 "color: rgba(50, 98, 115, 255);\n"
 "border: 1px solid  rgba(50, 98, 115, 255);\n"
@@ -386,11 +387,11 @@ class Ui_Registration(object):
 
         self.gridLayout.addWidget(self.label, 5, 0, 1, 1)
 
-        self.pushButton_check_phone_code = PushButton(self.frame)
-        self.pushButton_check_phone_code.setObjectName(u"pushButton_check_phone_code")
-        self.pushButton_check_phone_code.setEnabled(False)
-        self.pushButton_check_phone_code.setMinimumSize(QSize(0, 0))
-        self.pushButton_check_phone_code.setMaximumSize(QSize(120, 20))
+        self.pushButton_verify_phone_2 = PushButton(self.frame)
+        self.pushButton_verify_phone_2.setObjectName(u"pushButton_verify_phone_2")
+        self.pushButton_verify_phone_2.setEnabled(False)
+        self.pushButton_verify_phone_2.setMinimumSize(QSize(0, 0))
+        self.pushButton_verify_phone_2.setMaximumSize(QSize(120, 20))
         palette2 = QPalette()
         palette2.setBrush(QPalette.Active, QPalette.WindowText, brush6)
         palette2.setBrush(QPalette.Active, QPalette.Button, brush11)
@@ -446,15 +447,15 @@ class Ui_Registration(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette2.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
 #endif
-        self.pushButton_check_phone_code.setPalette(palette2)
+        self.pushButton_verify_phone_2.setPalette(palette2)
         font2 = QFont()
         font2.setFamilies([u"Roboto"])
         font2.setPointSize(7)
         font2.setBold(False)
         font2.setItalic(False)
-        self.pushButton_check_phone_code.setFont(font2)
-        self.pushButton_check_phone_code.setLayoutDirection(Qt.RightToLeft)
-        self.pushButton_check_phone_code.setStyleSheet(u"QPushButton {\n"
+        self.pushButton_verify_phone_2.setFont(font2)
+        self.pushButton_verify_phone_2.setLayoutDirection(Qt.RightToLeft)
+        self.pushButton_verify_phone_2.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 7pt;\n"
 "color: White;\n"
@@ -477,7 +478,7 @@ class Ui_Registration(object):
 "color:  rgba(50, 98, 115, 150);\n"
 "}")
 
-        self.gridLayout.addWidget(self.pushButton_check_phone_code, 4, 3, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_verify_phone_2, 4, 3, 1, 1)
 
         self.user_phone = QLineEdit(self.frame)
         self.user_phone.setObjectName(u"user_phone")
@@ -722,11 +723,11 @@ class Ui_Registration(object):
 
         self.gridLayout.addLayout(self.verticalLayout_4, 5, 1, 1, 1)
 
-        self.pushButton_add_workplace_2 = PushButton(self.frame)
-        self.pushButton_add_workplace_2.setObjectName(u"pushButton_add_workplace_2")
-        self.pushButton_add_workplace_2.setEnabled(False)
-        self.pushButton_add_workplace_2.setMinimumSize(QSize(0, 0))
-        self.pushButton_add_workplace_2.setMaximumSize(QSize(16777215, 16777215))
+        self.pushButton_verify_phone = PushButton(self.frame)
+        self.pushButton_verify_phone.setObjectName(u"pushButton_verify_phone")
+        self.pushButton_verify_phone.setEnabled(False)
+        self.pushButton_verify_phone.setMinimumSize(QSize(0, 0))
+        self.pushButton_verify_phone.setMaximumSize(QSize(16777215, 16777215))
         palette5 = QPalette()
         palette5.setBrush(QPalette.Active, QPalette.WindowText, brush6)
         palette5.setBrush(QPalette.Active, QPalette.Button, brush11)
@@ -782,10 +783,10 @@ class Ui_Registration(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette5.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush15)
 #endif
-        self.pushButton_add_workplace_2.setPalette(palette5)
-        self.pushButton_add_workplace_2.setFont(font1)
-        self.pushButton_add_workplace_2.setLayoutDirection(Qt.RightToLeft)
-        self.pushButton_add_workplace_2.setStyleSheet(u"QPushButton {\n"
+        self.pushButton_verify_phone.setPalette(palette5)
+        self.pushButton_verify_phone.setFont(font1)
+        self.pushButton_verify_phone.setLayoutDirection(Qt.RightToLeft)
+        self.pushButton_verify_phone.setStyleSheet(u"QPushButton {\n"
 "background-color: rgba(50, 98, 115, 190);\n"
 "font-size: 11pt;\n"
 "color: White;\n"
@@ -808,7 +809,7 @@ class Ui_Registration(object):
 "color:  rgba(50, 98, 115, 150);\n"
 "}")
 
-        self.gridLayout.addWidget(self.pushButton_add_workplace_2, 4, 1, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_verify_phone, 4, 1, 1, 1)
 
         self.label_check_phone = QLabel(self.frame)
         self.label_check_phone.setObjectName(u"label_check_phone")
@@ -1124,12 +1125,12 @@ class Ui_Registration(object):
         self.label_13.setText(QCoreApplication.translate("Registration", u"E-mail", None))
         self.label_check_email.setText("")
         self.label.setText(QCoreApplication.translate("Registration", u"\u041b\u043e\u0433\u0438\u043d", None))
-        self.pushButton_check_phone_code.setText(QCoreApplication.translate("Registration", u"\u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043a\u043e\u0434\n"
+        self.pushButton_verify_phone_2.setText(QCoreApplication.translate("Registration", u"\u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043a\u043e\u0434\n"
 "\u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044f", None))
         self.labelLogo_3.setText(QCoreApplication.translate("Registration", u"<html><head/><body><p align=\"center\">\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f \u043d\u043e\u0432\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f</p></body></html>", None))
         self.label_15.setText(QCoreApplication.translate("Registration", u"\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f", None))
         self.checkBox_login_same_email.setText(QCoreApplication.translate("Registration", u"\u0441\u043e\u0432\u043f\u0430\u0434\u0430\u0435\u0442 \u0441 e-mail", None))
-        self.pushButton_add_workplace_2.setText(QCoreApplication.translate("Registration", u"\u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u043d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0430", None))
+        self.pushButton_verify_phone.setText(QCoreApplication.translate("Registration", u"\u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u043d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0430", None))
         self.label_check_phone.setText("")
         self.label_14.setText(QCoreApplication.translate("Registration", u"\u0422\u0435\u043b\u0435\u0444\u043e\u043d", None))
         self.label_9.setText(QCoreApplication.translate("Registration", u"\u0414\u0430\u043d\u043d\u044b\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f", None))
