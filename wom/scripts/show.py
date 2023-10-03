@@ -49,19 +49,19 @@ def show():
     main_win = windows['Frameless']()
     # main_win.setWindowIcon(QIcon('Qt.ico'))\
 
-    # # добавление своего окна в главное (через FramelessWindow.setWidget)
-    # user_info = {}  # ВРЕМЕННО ДЛЯ ОТКРЫТИЯ БЕЗ АВТОРИЗАЦИИ
-    # main_win.setWidget(
-    #     windows['omr']['main_menu'](
-    #         user_info=user_info,  # ВРЕМЕННО
-    #         windows=windows,
-    #         main_win=main_win))
-    # main_win.show()
-    # sys.exit(app.exec_())
-
+    # добавление своего окна в главное (через FramelessWindow.setWidget)
+    user_info = {}  # ВРЕМЕННО ДЛЯ ОТКРЫТИЯ БЕЗ АВТОРИЗАЦИИ
     main_win.setWidget(
-        windows['common']['login'](
+        windows['omr']['main_menu'](
+            user_info=user_info,  # ВРЕМЕННО
             windows=windows,
             main_win=main_win))
     main_win.show()
     sys.exit(app.exec_())
+
+    # main_win.setWidget(
+    #     windows['common']['login'](
+    #         windows=windows,
+    #         main_win=main_win))
+    # main_win.show()
+    # sys.exit(app.exec_())
